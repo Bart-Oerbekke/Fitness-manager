@@ -1,4 +1,4 @@
-const CACHE="fitness-manager-shell-v10";
+const CACHE="fitness-manager-shell-v11";
 const ASSETS=["./index.html","./src/style.css","./src/app.mjs","./src/core.mjs","./src/library.mjs","./src/storage.mjs","./manifest.webmanifest","./icon.svg"];
 self.addEventListener("install",e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(ASSETS.map(a=>new Request(a,{cache:"reload"}))))));
 // Do not skip waiting: keep existing clients on their coherent shell until closed.

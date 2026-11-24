@@ -98,19 +98,20 @@ try{
  assert.ok(await evaluate("!!document.querySelector('.cal-shell')"));
  console.log('PASS_AGENDA_ROUTES');
  await click('#nav [data-page="settings"]');
- assert.equal(await evaluate("document.querySelector('#installed-version').textContent"),'0.9.0');
+ assert.equal(await evaluate("document.querySelector('#installed-version').textContent"),'0.10.0');
  await click('[data-action="update-check"]');
  assert.ok(await evaluate("document.querySelector('#update-message').textContent.includes('Geen internet')"));
  await cdp('Network.emulateNetworkConditions',{offline:false,latency:0,downloadThroughput:-1,uploadThroughput:-1});
  // Change served files in this disposable CI checkout only; restore in finally.
  originalApp=await readFile('src/app.mjs','utf8');originalSW=await readFile('sw.js','utf8');
- await writeFile('src/app.mjs',originalApp.replace('const APP_VERSION="0.9.0"','const APP_VERSION="0.9.1-test"'));
- await writeFile('sw.js',originalSW.replace('fitness-manager-shell-v10','fitness-manager-shell-v10-ci-update'));
+ await writeFile('src/app.mjs',originalApp.replace('const APP_VERSION="0.10.0"','const APP_VERSION="0.10.1-test"'));
+ await writeFile('sw.js',originalSW.replace('fitness-manager-shell-v11','fitness-manager-shell-v11-ci-update'));
  await wait(()=>evaluate("!!document.querySelector('[data-action=update-check]:not([disabled])')"),'update check ready');
  await click('[data-action="update-check"]');
  await wait(()=>evaluate("!!document.querySelector('[data-action=update-apply]:not([disabled])')"),'new worker waiting');
  // A persisted active workout blocks installation, even while viewing settings.
  await click('#nav [data-page="schemas"]');
+ await click('[data-action="schema-tab"][data-id="workouts"]');
  await click('[data-action="workout-open"][data-id="update-test-workout"]');
  await click('[data-action="start"]');
  await click('[data-action="back"]');
@@ -135,6 +136,7 @@ try{
  console.log('PASS_PROGRESS_RECOVERY');
  // Verify the existing workout remains unchanged after active-session editing.
  await click('#nav [data-page="schemas"]');
+ await click('[data-action="schema-tab"][data-id="workouts"]');
  await click('[data-action="workout-open"][data-id="update-test-workout"]');
  await click('[data-action="start"]');
  await click('[data-action="session-add"]');
@@ -151,6 +153,7 @@ try{
  const cancel=cdp('Runtime.evaluate',{expression:"document.querySelector('[data-action=cancel-training]').click()"});
  await sleep(300);await cdp('Page.handleJavaScriptDialog',{accept:true});await cancel;
  await click('#nav [data-page="schemas"]');
+ await click('[data-action="schema-tab"][data-id="workouts"]');
  await click('[data-action="workout-open"][data-id="update-test-workout"]');
  assert.equal(await evaluate("document.querySelectorAll('.set').length"),1);
  await click('[data-action="workout-edit"]');
@@ -163,6 +166,7 @@ try{
  console.log('PASS_SESSION_EDIT_WARMUP');
  // Edit a real per-set target and check that only the completed workset gives a PR.
  await click('#nav [data-page="schemas"]');
+ await click('[data-action="schema-tab"][data-id="workouts"]');
  await click('[data-action="workout-open"][data-id="update-test-workout"]');
  await click('[data-action="workout-edit"]');
  await evaluate("document.querySelector('.builder-advanced').open=true");
@@ -209,7 +213,7 @@ try{
  await click('#nav [data-page="agenda"]');
  assert.ok(await evaluate("document.querySelector('.cal-day-agenda').textContent.includes('Offline test')"));
  await click('#nav [data-page="settings"]');
- assert.equal(await evaluate("document.querySelector('#installed-version').textContent"),'0.9.1-test');
+ assert.equal(await evaluate("document.querySelector('#installed-version').textContent"),'0.10.1-test');
  console.log('PASS_APP_UPDATE');
  const date=await evaluate("(()=>{const d=new Date();return [d.getFullYear(),String(d.getMonth()+1).padStart(2,'0'),String(d.getDate()).padStart(2,'0')].join('-')})()");
  const existing=await evaluate("(async()=>{const m=await import('/src/storage.mjs'),s=await m.openLocalStore({legacyRaw:localStorage.getItem(m.LEGACY_KEY)});try{return m.parseBackup(JSON.stringify(s.state))}finally{s.close()}})()");

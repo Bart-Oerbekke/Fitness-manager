@@ -125,3 +125,6 @@ Expliciet gebruikersakkoord voor codecommit 6ca34e53b8ac60e61247b413b295ea2b4971
 
 ## Upgrade 0.10 — scope vooraf
 Gebruiker keurt P-47 t/m P-52 goed. Aannames: archiveren van workout blokkeert nieuwe planning, niet bestaande afspraken; programma archief pauzeert toekomstige planning; wijzigingen plannen alleen vanaf vandaag; verleden en actieve/voltooide events blijven beschermd. Historie-editor handmatige invoer, geen timer. Destructieve acties bevestigen, geen cascade naar andere historie. Risico's: verwijzingen in back-up, herberekening/dubbeltelling, verloren concept, behoud actieve sessie. Domein- en browserregressie, zelfreview; geen publicatie/merge zonder apart akkoord.
+
+### Implementatie 0.10
+Schemabeheer en historie-editor gebouwd; versie 0.10.0/SW v11. Geen wijziging actieve kaart, geen DB-migratie. Regressie en review nog open. Geen deployment.
