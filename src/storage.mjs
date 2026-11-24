@@ -2,7 +2,7 @@
 export const LEGACY_KEY="fm-local-preview-v1";
 export const DB_NAME="fitness-manager-local";
 const RECORD="preview";
-export function emptyState(){return {version:1,custom:[],workouts:[],programs:[],events:[],history:[],active:null,favorites:[],recent:[]}}
+export function emptyState(){return {version:1,custom:[],workouts:[],programs:[],events:[],history:[],active:null,favorites:[],recent:[],recovery:[]}}
 export function normalizeState(value){
   if(!value||value.version!==1||!["custom","workouts","programs","events","history"].every(k=>Array.isArray(value[k])))throw Error("Onbekende opslagstructuur");
   const obj=x=>x&&typeof x==="object"&&!Array.isArray(x);
@@ -14,6 +14,8 @@ export function normalizeState(value){
   const copy=structuredClone(value);
   copy.active=copy.active??null;
   for(const k of ["favorites","recent"]){if(copy[k]==null)copy[k]=[];if(!Array.isArray(copy[k])||!copy[k].every(x=>typeof x==="string"))throw Error("Onbekende voorkeuren")}
+  if(copy.recovery==null)copy.recovery=[];
+  if(!Array.isArray(copy.recovery)||!copy.recovery.every(x=>obj(x)&&/^\d{4}-\d{2}-\d{2}$/.test(x.date)&&["sleep","energy","soreness"].every(k=>Number.isInteger(x[k])&&x[k]>=1&&x[k]<=5)))throw Error("Onbekende herstelstructuur");
   return copy;
 }
 export function parseLegacy(raw){return raw===null?emptyState():normalizeState(JSON.parse(raw))}
