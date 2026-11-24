@@ -21,3 +21,13 @@ jobs:
           node-version: '22'
       - run: npm run check
       - run: npm test
+      - run: npm run build
+      - name: IndexedDB browser integration
+        run: |
+          python3 -m http.server 8000 > /tmp/fm-http.log 2>&1 &
+          server=$!
+          trap 'kill "$server"' EXIT
+          for i in $(seq 1 20); do curl -fsS http://localhost:8000/test/storage.browser.html >/dev/null && break; sleep 1; done
+          chrome="$(command -v google-chrome || command -v chromium)"
+          "$chrome" --headless --no-sandbox --disable-dev-shm-usage --virtual-time-budget=15000 --dump-dom http://localhost:8000/test/storage.browser.html > /tmp/fm-storage-test.html
+          grep -q '<pre id="result">PASS_STORAGE_BROWSER</pre>' /tmp/fm-storage-test.html || { cat /tmp/fm-storage-test.html; exit 1; }
