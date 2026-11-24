@@ -14,6 +14,10 @@ Afgeleide ontwerpwaarden op circa 390 CSS-px schermbreedte (te controleren op iP
 - Setrij circa 55–60 px, dunne donkere scheiding, 14 px horizontale padding, voldoende verticale ruimte. Omlijnde compacte invoervelden voor reps en kg met eenheidslabel; afvinkknop rechts met ruim aanraakgebied (minimaal 44 px). Geen zichtbare kolomkoppen nodig als velden eenheden tonen. Gedempte halftransparante placeholders met repdoel (bijv. 6–10) en richtgewicht (bijv. 80); echte invoer in helder wit. Richtwaarden zijn geen ingevulde logwaarden. Bij afvinken groene feedback zonder de hele kaart fel te kleuren.
 - Oranje #ff8900 voor focus, primaire acties en kleine contextacties; geen permanente grote oranje kopieerknop.
 
+## Inline oefeninghistorie tijdens training
+- Direct onder de laatste set van iedere oefenkaart: compacte gedempte tabel met datum van laatste eerdere sessie en werkelijke reps en kg per voltooide set, in setvolgorde. Geen grafiek, grote kop of permanente extra knop. Gebruik subtiel contrast met donkere achtergrond, kleine tekst (ca. 12–13 CSS-px) met leesbaar contrast, 14 px horizontale padding, compacte rijen (ca. 24–28 px). Setnummers links en waarden uitgelijnd; ea tonen waar van toepassing; kg per dumbbell expliciet indien relevant. Bodyweight laat gewichtkolom weg.
+- Klein historie-icoon rechts naast datum opent oudere sessies van dezelfde oefening (ook andere programma's); terugkeer bewaart actieve invoer en scroll. Geen historische waarden als werkelijke invoer overnemen. Bij geen historie een korte gedempte melding. Laatste eerdere sessie als voorgestelde standaard; geen huidige sessie in tabel.
+
 ## Eenvoudige workout builder
 - Trainingnaam en oefenkaarten met naam (bibliotheek zoeken of zelf toevoegen), aantal sets, repdoel of repbereik, optioneel richtgewicht in kg. Onder de velden een klein vinkvakje met label “Each (ea)”, standaard uit. Geen media-invoer.
 - Hergebruik dezelfde kaartmarges, kleuren en typografische hiërarchie als de actieve training. Toevoegen, verwijderen en ordenen van oefeningen; één duidelijke opslaanknop.
@@ -37,6 +41,8 @@ Afgeleide ontwerpwaarden op circa 390 CSS-px schermbreedte (te controleren op iP
 | D-04 | Afvinken / kopiëren | Duidelijke feedback; geen onbedoelde status- of veldwijzigingen. | interactietest |
 | D-05 | Lange naam / smallere breedte | Naam kan afbreken, velden blijven leesbaar en bediening bereikbaar. | 375/390/430 CSS-px |
 | D-06 | Each aan/uit | Vinkvakje in builder; repslabel wisselt tussen reps en reps ea in preview en actieve training zonder extra invoervelden of overlap. | handmatig |
+
+| D-07 | Actieve oefenkaart met historie | Compacte tabel direct onder setrijen, datum en werkelijke reps/kg in setvolgorde, subtiel historie-icoon; geen extra navigatie nodig voor laatste sessie. | screenshot en interactietest |
 
 ## Reviewstatus
 Concept op basis van screenshots en gebruikersfeedback; geen browser- of iPhone-test uitgevoerd, oefenkaart goedgekeurd door gebruiker, builder goedgekeurd met aanvullende Each-optie; geen publicatie. Verdere schermen en technische details volgen na beoordeling.
@@ -67,3 +73,5 @@ Besloten: vaste weekdagen en losse datums; bij afvinken zonder invoer bevestigin
 - Afvinken zonder feitelijke waarden: compact bevestigingspaneel met eenduidige richtwaarden en expliciet keuzeveld voor reps als richtlijn een bereik is. Behoud reeds ingevoerde waarden. Annuleren vinkt niet af.
 - Sessiedetail: bewerkactie, wijzig datum/reps/kg, opslaan of annuleren; herbereken records. Inloggen: officiële Apple-knop volgens merkrichtlijnen, externe configuratie vereist.
 - AI-voorstellen later vanuit Schema's: knop Nieuw voorstel, doel/duur/frequentie/equipment en historie, bewerkbare preview en bevestiging. Niet actief in MVP.
+
+- Programmaoverzicht ondersteunt meerdere gelijktijdige actieve programma's. Weekselector met weekgebonden richtreps en kg; wijziging raakt alleen gekozen toekomstige scope, niet afgesloten sessies. Appnaam en icoon voorlopig werknaam zonder definitief merkontwerp.
