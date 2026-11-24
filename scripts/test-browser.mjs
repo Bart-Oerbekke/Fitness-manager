@@ -159,8 +159,8 @@ try{
  await click('[data-action="recovery"]');
  await click('#dialog[open] button[type=submit]');
  assert.ok(await evaluate("document.querySelector('.recovery-metrics').textContent.includes('3/5')"));
- await click('#nav [data-page="settings"]');
  await reviewLayout('Progressie','.muscle-panel');
+ await click('#nav [data-page="settings"]');
  console.log('PASS_PROGRESS_RECOVERY');
  // Verify the existing workout remains unchanged after active-session editing.
  await click('#nav [data-page="schemas"]');
@@ -185,6 +185,7 @@ try{
  await click('[data-action="workout-open"][data-id="update-test-workout"]');
  assert.equal(await evaluate("document.querySelectorAll('.set').length"),1);
  await click('[data-action="workout-edit"]');
+ await reviewLayout('Workout-builder','#builder-form');
  await evaluate("document.querySelector('.builder-advanced').open=true;document.querySelector('[name=warmup0]').value='1'");
  await click('#builder-form button[type=submit]');
  assert.equal(await evaluate("document.querySelectorAll('.set.warmup').length"),1);
@@ -283,6 +284,7 @@ try{
  console.log('PASS_SCHEMA_MANAGEMENT');
  await click('#nav [data-page="progress"]');
  await click('[data-action="nav"][data-page="history"]');
+ await reviewLayout('Trainingshistorie','.history-list');
  await click('[data-action="history-new"]');
  await evaluate("document.querySelector('#dialog [name=name]').value='Handmatig CI'");
  await click('#dialog button[type=submit]');

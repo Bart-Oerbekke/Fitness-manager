@@ -146,3 +146,6 @@ Gedeelde periodeselector, lijniconen, programmadetail met tijdelijke weekselecti
 
 ### Zelfreview en UX-regressie 0.11
 Aanvullend: bestaande actieve/geschiedenis-menu's krijgen lijniconen; 44px actieknoppen, kleinere kalendermetadata, behoud invoer 16px en 38px formuliervelden. Browserreview voegt per hoofd-/subscherm 320/375/390/430px controles toe op documentbreedte, relevante targetafmetingen, naamgeving en SVG-periodeselector; keyboard Enter en focusbehoud. Geen volledige WCAG-audit of fysieke iPhone/VoiceOver-review. Bestaande core/storage ongewijzigd. Definitieve CI nog vereist.
+
+### CI-herstel UX
+Runs 45448596027 en 45448724746: 47/47 unit-tests, build en vijf layouts geslaagd; onvolledige Enter-gebeurtenis in Chromium. Run 45448836596 (6e3d66c04eb3917a5c49009a5c28b7c980893421): native keyboardtest en focusbehoud geslaagd; preview en actieve training layout groen; testfout Progressie gecontroleerd nadat Instellingen geopend was. Controle naar juiste scherm verplaatst, builder en historielijst toegevoegd. Appcode ongewijzigd; nieuwe volledige CI vereist. Core/storage/library en bestaande domeintests identiek aan 0.10.0.
