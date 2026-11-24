@@ -115,3 +115,6 @@ Goedgekeurde indeling: Vandaag zonder maandkalender; Agenda zonder dashboard. Vo
 
 ## UX 0.10
 Schema's met Programma's/Workouts/Archief, compacte voortgangskaarten en optiemenu's, bibliotheek altijd bereikbaar. Afzonderlijke historie-editor met bestaande setvelden, eenvoudige knoppen en expliciete opslaan/annuleren. Geen extra rijen in actieve training. Destructieve acties met bevestiging en concrete gevolgen. Historische data nooit door templatebewerking wijzigen.
+
+## UX 0.11
+Donkere stijl behouden. Gemeenschappelijke periodebalk met 44px pijltjes, 24px SVG, midden week/maand en datums, duidelijke focus. Hoofdtitels links, subtitels met terugknop; 4/8/12px ritme, kaarten 9–10px radius, gewone tekst 14–15px, metadata 12px waar ruimte, kalender compacte uitzondering. Menuopties met lijniconen en rode destructieve rij onderaan. Programmadetail één week, compacte rijen en duidelijk voortgang. Historie-editor behoudt 16px input, 44px actiegebieden. Actieve training behoudt setgeometrie. Formulieren 38px compact zoals gebruiker eerder goedkeurde; primaire knoppen 44px. Toetsenbord- en zichtbare focuscontrole, fysieke iPhone/VoiceOver afzonderlijk.

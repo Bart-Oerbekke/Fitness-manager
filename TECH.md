@@ -72,3 +72,6 @@ View today/agenda gescheiden, routes voor agenda-today, agenda-add en library-op
 
 ## Beheer 0.10
 Additief archived boolean op programma/workout; geen DB-versiewijziging. Zichtbare events afgeleid van archiveerstatus (toekomstige onvoltooide events verborgen, actieve/voltooide behouden). Planning reconciliatie houdt bestaande passende ids, beschermt verleden/actieve/voltooide. Bij programmaverwijdering behouden events loskoppelen; bij workoutverwijdering historische snapshots onafhankelijk. Historieconcept in geheugen, bibliotheekreturn history; validatie vóór één queued snapshot. Back-upvalidator accepteert optionele velden. Geen netwerk of nieuwe services.
+
+## UX 0.11
+Alleen app.mjs, style.css, service-worker cache v12 en tests. Geen wijzigingen aan core.mjs/storage.mjs/gegevenscontract. Programmaweek is tijdelijke viewstate, geen opgeslagen data; bediening hergebruikt bestaande acties. Focusherstel bij rerender voor periodeselectors; echte buttons en aria-labels. Lokale iconen zonder dependency. Browsergeometrie en keyboard CDP op 320–430px; regressies bestaande testflow. Geen nieuwe externe diensten.
