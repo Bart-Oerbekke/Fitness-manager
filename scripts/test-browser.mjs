@@ -129,9 +129,18 @@ try{
  await evaluate("document.querySelector('[name=streps0_0]').value='12';document.querySelector('[name=strir0_0]').value='2';document.querySelector('[name=instructions0]').value='Rustig uitvoeren'");
  await click('#builder-form button[type=submit]');
  assert.equal(await evaluate("document.querySelector('.set:not(.warmup) [data-field=reps]').placeholder"),'12');
- assert.ok(await evaluate("document.querySelector('.target-meta').textContent.includes('RIR 2')"));
- assert.ok(await evaluate("document.querySelector('.exercise-instructions').textContent.includes('Rustig uitvoeren')"));
+ assert.equal(await evaluate("document.querySelectorAll('#app .target-meta,#app .exercise-instructions,#app .pair-note').length"),0);
+ await click('[data-action="training-details"]');
+ assert.ok(await evaluate("document.querySelector('#dialog').textContent.includes('RIR 2') && document.querySelector('#dialog').textContent.includes('Rustig uitvoeren')"));
+ await click('#dialog [data-action="dialog-close"]');
  await click('[data-action="start"]');
+ assert.equal(await evaluate("document.querySelectorAll('#app .target-meta,#app .exercise-instructions,#app .pair-note').length"),0);
+ assert.equal(await evaluate("document.querySelector('.set:not(.warmup) [data-field=reps]').placeholder"),'12');
+ await click('[data-action="session-options"][data-i="0"]');
+ await click('#dialog [data-action="training-details"]');
+ assert.ok(await evaluate("document.querySelector('#dialog').textContent.includes('RIR 2') && document.querySelector('#dialog').textContent.includes('Rustig uitvoeren')"));
+ await click('#dialog [data-action="dialog-close"]');
+ console.log('PASS_FOCUSED_TRAINING');
  await click('.set:not(.warmup) [data-action="check"]');
  await click('#dialog[open] button[type=submit]');
  assert.ok(await evaluate("document.querySelector('.pr-notice')?.textContent.includes('12 reps')"));
@@ -139,6 +148,8 @@ try{
  await click('#dialog[open] button[type=submit]');
  await click('#nav [data-page="progress"]');
  assert.ok(await evaluate("document.querySelector('.muscle-panel')?.textContent.includes('sets')"));
+ assert.equal(await evaluate("/\\bkg\\b/i.test(document.querySelector('.muscle-panel').textContent)"),false);
+ console.log('PASS_MUSCLE_SETS_ONLY');
  await click('#nav [data-page="settings"]');
  console.log('PASS_ADVANCED_BUILDER_PR');
  // A second same-origin client must prevent forced activation.

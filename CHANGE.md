@@ -107,3 +107,6 @@ Domein, atomaire herstelopslag en UI gebouwd. Versie 0.8.0/SW v9; CI uitgebreid 
 
 ### Zelfreview 0.8
 Domeinrun 45432191712 38/38, herstelrun 45432335901 40/40, builder-integratierun 45432646288 40/40; bestaande browserflow telkens geslaagd. Aanvullend: tijdmodus-velden opschonen, circuitlabels, prototypeveilige spiergroepen, herstel/update-lock en browserflow voor echte per-setrichtwaarden, live PR en validatie van een daadwerkelijke geëxporteerde snapshot. Fysieke iPhone-review blijft open. Geen onafhankelijke review.
+
+### Gebruikersfeedback 0.8 vóór publicatie
+CI run 45433231372 op 1006e83d15bfad3df4a70eb1dbbf38972e80d4e1 geslaagd: 41/41 tests, build, PASS_ADVANCED_BUILDER_PR en PASS_BACKUP_DASHBOARD plus bestaande browserflow. Gebruiker wil actieve training visueel rustig houden en geen kg in spiergroepweekoverzicht. P-39/P-41/P-44 aangescherpt. Alleen presentatie en browsertest aangepast: optionele details achter menu/previewinfo, geen extra setrijen; kg uit spiergroeppanel. Zelfreview: geen datamutatie in detailweergave, setTargets blijven geldig, PR/gewichtprogressie behouden. Nieuwe CI vereist; fysieke iPhone-review open. Niet gepubliceerd of gemerged.

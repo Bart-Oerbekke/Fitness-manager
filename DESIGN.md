@@ -106,3 +106,6 @@ Actieve kaart: subtiele optiemenu's, warm-up label, supersetrondes met gekoppeld
 
 ## UX 0.8
 Kalender blijft centraal. Bovenaan compact Vandaag-overzicht met actuele sporttijd, programmavoortgang, eerstvolgende activiteit en herstel; historische kalenderselectie wijzigt het actuele overzicht niet. Builder: details uitklapbaar, individuele settargets, unitlabels, duidelijke modus en koppeling. PR-melding tijdelijk, niet modaal; geen alarm of medisch advies. Back-up: bestand selecteren, samenvatting, expliciet bevestigen, vorige lokale staat exporteerbaar. Spiergroepbalken met aantallen/volume en periodevergelijking; geen absolute norm of afgeleide spierbelasting. Fysieke Safari-review blijft open.
+
+### Focus tijdens training
+0.7-setkaart is de referentie: geavanceerde builder blijft buiten de actieve kaart. Geen extra rijen, lange bloknamen of instructieparagrafen. Richtwaarden en instructies op verzoek in dialoog via ⋯; info-icoon in preview alleen waar relevant. Tijd/AMRAP blijven binnen dezelfde invoerrij, D naast setnummer, klein bloklabel. Spiergroepen: sets met vorige-weekbalken, geen kilo's. PR-melding tijdelijk zoals eerder.

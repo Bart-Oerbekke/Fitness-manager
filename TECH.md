@@ -63,3 +63,6 @@ Additieve optionele velden in bestaand version:1 payload: warmupCount/warmupReps
 
 ## Upgrade 0.8 — plan
 Additieve templatevelden mode, setTargets, instructions en optionele muscle-snapshot; bestaande rep-veld slaat bij mode time seconden op en wordt als zodanig gelabeld. setTargets worden bij snapshot naar log.target gekopieerd; oude logs houden fallback. Circuit via bestaande supersetNext-keten, pairId op sessiesnapshot; koppelingen alleen aangrenzend. Herstel via strikt gecontroleerde JSON-parser (limiet 10 MiB), bestaande DB-versie 1, aparte restoreBackup op record, zelfde CAS-transactie. Queue flush vóór restore; UI blokkeert tijdens herstel; db pas vervangen na commit. Geen wijziging van legacy-sleutel of cloud. CI: domein, opslagtransactie/afwijzing, bestaande browserflow en nieuwe builder/dashboard/import- en PR-scenario's.
+
+### Presentatiefeedback 0.8
+Geen wijziging aan domein-, opslag- of updatecontract. Detailsdialoog leest bestaande sessiesnapshot/preview en muteert niets. Browserregressie controleert individuele placeholders, afwezigheid extra metadata in kaart, opvraagbare details en kg-vrij spiergroepweekoverzicht.
