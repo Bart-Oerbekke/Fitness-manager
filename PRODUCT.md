@@ -1,17 +1,17 @@
 # Fitness Manager — productbrief
 
-Status: productrichting en oefenkaart goedgekeurd; vereenvoudigde builder goedgekeurd met aanvullende Each-optie. 24 november 2026.
+Status: productrichting, oefenkaart en vereenvoudigde builder goedgekeurd; laatste intakekeuzes verwerkt. 24 november 2026.
 
 ## Doel en gebruikers
 Persoonlijke fitnessapp voor één sporter die nu BridgeAthletic gebruikt en zelfstandig trainingen wil maken. Snelle mobiele registratie van reps, kg en voltooide sets is de primaire gebruikersstroom. Installeerbare iPhone-webapp (PWA), Nederlandstalige interface met Engelse oefeningnamen. Eigen visuele stijl, donker met oranje accenten.
 
 ## Scope eerste bruikbare versie
-- Kalender, programma's met trainingsperiodes en workouts, plus losse herbruikbare workouts; dupliceren van workouts en schema's. Een workout met bijvoorbeeld twee oefeningen kan eenmaal worden samengesteld en voor zes weken op vaste weekdagen ingepland; losse datumplanning ook mogelijk. Voorgesteld: toekomstige afzonderlijke sessies kunnen afwijken, afgeronde historie blijft onafhankelijk.
+- Kalender, programma's met trainingsperiodes en workouts, plus losse herbruikbare workouts; dupliceren van workouts en schema's. Een workout met bijvoorbeeld twee oefeningen kan eenmaal worden samengesteld en voor zes weken op vaste weekdagen ingepland; losse datumplanning ook mogelijk. Meerdere programma's kunnen tegelijk actief zijn. Richtreps en richtgewicht zijn per programmaweek aanpasbaar; losse toekomstige sessies kunnen ook afwijken. Afgeronde historie blijft onafhankelijk.
 - Uitgebreide oefeningenbibliotheek met Engelse namen en eigen oefeningen; zoeken en filteren op spiergroep, apparatuur en eventueel eigen oefeningen. Metadata voor filters, geen video's, afbeeldingen of uitgebreide beschrijvingen.
 - Eenvoudige workout builder: oefeningnaam, aantal sets, vast repdoel of repbereik, optioneel richtgewicht in kg (gewicht per dumbbell), keuze om gewichtveld weg te laten voor bodyweight, rustduur per oefening (standaard 90 seconden), een vinkvakje Each (ea) per oefening (standaard uit) en volgorde. Each betekent dat de reps per arm of been gelden; geen afzonderlijke keuze voor lichaamsdeel en geen dubbele invoervelden in de eerste versie. Richtwaarden gelden standaard voor alle sets. Links/rechts, supersets en circuits blijven op de roadmap, niet nodig in de eerste builder.
 - Preview, actieve training, setregistratie, repdoelen en richtgewicht als gedempte placeholders; werkelijk uitgevoerde waarden afzonderlijk registreren, vinkjes, automatische instelbare rusttimer, hervatten en afronden.
 - Apply to all: subtiele tekstactie in een app-eigen balk direct boven het numerieke toetsenbord, uitsluitend tijdens invoer. De actieve invoercel bepaalt automatisch oefening, set, veld (reps of kg) en eventueel zijde. Kopieer alleen dat veld naar overige onvoltooide sets van dezelfde oefening. Geen setselector of permanente kopieerknop; geen automatische vinkjes, geen andere oefeningen, geen wijziging van template of historie. Reeds afgevinkte sets beschermen.
-- Historie, persoonlijke records en progressiegrafieken per oefening.
+- Historie, persoonlijke records en progressiegrafieken per oefening. Tijdens actieve training staat direct onder iedere oefening standaard een compacte tabel met de laatste eerdere sessie waarin dezelfde oefening is uitgevoerd: datum, feitelijke reps en kg per voltooide set (ea en kg per dumbbell waar relevant). Een subtiel historie-icoon opent oudere sessies. Match op stabiel oefening-ID, niet alleen naam of programma; ook over programma's heen. Geen automatische overname in actuele registratie. Bij afwezigheid van historie kleine lege toestand.
 - Privé account met Sign in with Apple, online synchronisatie en offline trainen; lokaal bewaren van wijzigingen, zichtbare syncstatus, herstel na onderbreking en bescherming tegen dubbele registratie. Geen echte persoonsgegevens in openbare repository.
 
 ## Gewenste uitbreidingen en afhankelijkheden
@@ -38,15 +38,19 @@ Persoonlijke fitnessapp voor één sporter die nu BridgeAthletic gebruikt en zel
 | P-12 | Persoonlijke trainingsdata zijn alleen voor bevoegde gebruiker; uitloggen en accountgrenzen voorkomen ongeautoriseerde toegang. | vereist | autorisatietest |
 | P-13 | Indien exportdata beschikbaar zijn, import toont fouten en doublures vóór bevestiging; import verandert bestaande records niet stilzwijgend. | uitbreiding | importtest |
 | P-14 | Als Each bij een oefening is aangevinkt, verschijnt het repdoel als bijvoorbeeld 6–8 reps ea en de werkelijke waarde als bijvoorbeeld 7 reps ea. Uitgeschakeld toont het veld alleen reps. Eén invoerveld en vinkje per set; Each blijft behouden bij dupliceren en in sessiehistorie. | vereist | functionele test |
-
 | P-15 | Maak een workout eenmaal, plan deze op vaste weekdagen voor een gekozen aantal weken of op een losse datum; geplande sessies kunnen afzonderlijk worden uitgevoerd zonder de historie te overschrijven. | vereist | functionele test |
 | P-16 | Filter oefeningen op spiergroep en apparatuur, combineer met zoeken, wis filters; eigen oefeningen kunnen worden toegevoegd. | vereist | functionele test |
 | P-17 | Bij bodyweight is geen kg-veld vereist of zichtbaar; bij dumbbells is kg per dumbbell en wordt die eenheid in historie behouden. | vereist | functionele test |
 | P-18 | Bij afvinken met ontbrekende werkelijke waarden vraagt app om bevestiging; een bereik vereist concreet werkelijk aantal reps; annuleren bewaart invoer zonder vinkje. | vereist | functionele test |
 | P-19 | Bewerk afgeronde sessie inclusief reps, kg en datum; historie en records/grafieken worden opnieuw berekend zonder duplicaat. | vereist | functionele test |
 | P-20 | Sign in with Apple werkt na externe configuratie; alleen de bevoegde persoonlijke gebruiker kan data openen. | vereist | integratie- en autorisatietest |
+| P-21 | Meerdere programma's zijn tegelijk actief en alle geplande sessies zijn in de kalender zichtbaar; geen programma overschrijft een ander. | vereist | functionele test |
+| P-22 | Stel per week afwijkende richtreps en kg in; de juiste weekwaarden worden gebruikt als placeholders, zonder eerdere sessies te wijzigen. | vereist | functionele test |
+| P-23 | Tijdens trainen is direct onder elke oefening de meest recente eerdere sessie zichtbaar met datum en werkelijke waarden per voltooide set in oorspronkelijke volgorde. Historie-icoon geeft toegang tot oudere sessies; dezelfde oefening is over programma's heen herkenbaar; geen huidige of niet-afgevinkte sets in de tabel. | vereist | functionele en regressietest |
 
 ## Open details en aannames
+- Appnaam en icoon later bepalen; Fitness Manager is werknaam. Kosten voor hosting, Apple-configuratie en AI afzonderlijk vooraf afstemmen; geen betaalde dienst activeren zonder akkoord.
+- Voorgestelde historische standaard: laatste eerdere sessie direct zichtbaar; oudere sessies via historie-icoon. Bodyweight toont alleen reps; geen automatische suggestie die richtwaarden overschrijft.
 - Apply to all zonder bronselector is gevraagd. Per actief veld kopiëren is de voorgestelde invulling; afgeronde sets blijven beschermd. Toetsenbordbalk testen in geïnstalleerde iPhone-PWA; de app kan de native iOS-toetsenbordbalk niet rechtstreeks aanpassen.
 - Rustduur per oefening configureerbaar, 90 seconden standaard (besloten); supersets/circuits kunnen afwijkende rustmomenten hebben.
 - Richtwaarden uit de builder hebben voorrang als placeholders; vorige gewichten eventueel later als afzonderlijke suggestie, nooit als gelogde prestatie. Links/rechts en circuits later als geavanceerde builderopties. Details van actieve flow toetsen aan aanvullende screenshots.
@@ -56,4 +60,4 @@ Persoonlijke fitnessapp voor één sporter die nu BridgeAthletic gebruikt en zel
 - HealthKit: https://developer.apple.com/documentation/Xcode/configuring-healthkit-access
 
 ## Fase
-De gebruiker heeft de visuele richting en oefenkaart goedgekeurd en de builder vereenvoudigd. De vereenvoudigde builder is goedgekeurd met als aanvulling een Each-vinkvakje. Aanvullende gebruikerskeuzes verwerkt; aangepaste planning en bibliotheekfilters ter beoordeling. Vervolgens implementatie op featurebranch volgens AGENTS.md. Eerdere ongeteste verkenningsschets blijft op exploration/initial-prototype. Geen release of hosting goedgekeurd.
+De gebruiker heeft de visuele richting en oefenkaart goedgekeurd en de builder vereenvoudigd. De vereenvoudigde builder is goedgekeurd met als aanvulling een Each-vinkvakje. Laatste gebruikerskeuzes verwerkt, inclusief inline oefeninghistorie, meerdere actieve programma's en weekvarianten. Inline historie is nog een ontwerpschets ter beoordeling; implementatie op featurebranch volgens AGENTS.md. Eerdere ongeteste verkenningsschets blijft op exploration/initial-prototype. Geen release of hosting goedgekeurd.
