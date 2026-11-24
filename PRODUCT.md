@@ -1,40 +1,49 @@
 # Fitness Manager — productbrief
 
-Status: concept, niet goedgekeurd. 24 november 2026.
+Status: keuzes uit gebruikersintake verwerkt; ter bevestiging. 24 november 2026.
 
-## Probleem, doelgroep en resultaat
-De gebruiker gebruikt BridgeAthletic en wil zelfstandig trainingen samenstellen in plaats van afhankelijk te zijn van een trainer. Behoud het snelle mobiele loggen van herhalingen, kilogrammen en voltooide sets. Eerste doelgroep: persoonlijk gebruik, nog te bevestigen. De screenshots zijn functionele en visuele referenties, geen broncode of licentie voor media.
+## Doel en gebruikers
+Persoonlijke fitnessapp voor één sporter die nu BridgeAthletic gebruikt en zelfstandig trainingen wil maken. Snelle mobiele registratie van reps, kg en voltooide sets is de primaire gebruikersstroom. Installeerbare iPhone-webapp (PWA), Nederlandstalige interface met Engelse oefeningnamen. Eigen visuele stijl, donker met oranje accenten.
 
-## Kernstromen
-1. Maak een programma, trainingsblok of workout aan; voeg oefeningen met sets, repdoelen en optioneel gewicht toe en orden ze.
-2. Open een workout vanuit een kalender of programma; bekijk oefeningen en doelwaarden.
-3. Start, voer werkelijk uitgevoerde reps en kg in, vink sets af en corrigeer invoer indien nodig.
-4. Hervat een onderbroken sessie, rond af en raadpleeg eerdere prestaties.
-5. Hergebruik trainingen en oefeningen zonder opnieuw alle gegevens in te voeren.
+## Scope eerste bruikbare versie
+- Kalender, programma's met trainingsperiodes en workouts, plus losse herbruikbare workouts; dupliceren van workouts en schema's.
+- Oefeningenbibliotheek met Engelse namen en eigen oefeningen. Alleen rechtmatig beschikbare content; geen kopie van BridgeAthletic-media.
+- Workout builder: volgorde, sets, repbereik, optioneel gewicht, afzonderlijke links/rechts-registratie, supersets en circuits.
+- Preview, actieve training, setregistratie, vorige gewichten vooraf invullen (per oefening en corresponderende set), vinkjes, automatische instelbare rusttimer, hervatten en afronden.
+- Apply to all: kopieer reps en kg van een gekozen set naar overige nog niet voltooide sets van dezelfde oefening in de actieve sessie. Bij eenzijdige oefeningen per zijde kopiëren. Niet automatisch afvinken, geen andere oefeningen, geen wijziging van template of historie. Reeds afgevinkte sets beschermen. Overschrijven van andere onvoltooide invoer duidelijk aankondigen.
+- Historie, persoonlijke records en progressiegrafieken per oefening.
+- Privé account, online synchronisatie en offline trainen; lokaal bewaren van wijzigingen, zichtbare syncstatus, herstel na onderbreking en bescherming tegen dubbele registratie. Geen echte persoonsgegevens in openbare repository.
 
-## Scope
-Voorgestelde MVP: kalender, workout builder, herbruikbare oefeningen, repbereiken, gewicht optioneel, per-zijde reps, setregistratie, historie, laatste waarden, basisprogressie. Rusttimer is een wens. Eigen stijl met donker thema en oranje accenten. Mogelijke latere scope: voedingslog, chat, coachrollen, uitgebreide analytics, automatische imports, externe integraties en oefenvideo's. Geen echte persoonlijke trainingsdata of geheimen in de openbare repository.
+## Gewenste uitbreidingen en afhankelijkheden
+- Import van BridgeAthletic-schema's en trainingshistorie indien beschikbaar: eerst representatieve CSV/PDF van gebruiker of trainer inspecteren. Geen aanname van directe API-toegang. Importpreview, veldmapping, deduplicatie en validatie vóór opslaan.
+- Apple Health: directe HealthKit-toegang vereist een native iOS-appcomponent met toestemming; niet rechtstreeks beschikbaar in een pure PWA. Onderzoek later native wrapper of optionele Opdrachten/Shortcuts-route voor ondersteunde gegevens. Geen automatische HealthKit-synchronisatie beloven voor PWA.
+- Voeding, coachrollen, chat, RPE/RIR buiten eerste scope tenzij later gevraagd.
 
 ## Acceptatiecriteria (concept)
 | ID | Gegeven / wanneer / dan | Prioriteit | Verificatie |
 | --- | --- | --- | --- |
-| P-01 | Een gebruiker maakt een workout aan met meerdere oefeningen en repbereiken; na opslaan kan deze opnieuw worden geopend en aangepast. | vereist | functionele test |
-| P-02 | De gebruiker start een workout en ziet de oefeningen in de gekozen volgorde met voorgeschreven sets en repdoelen. | vereist | functionele test |
-| P-03 | Een gebruiker voert geldige reps en optioneel kg in; een set is afvinkbaar en de voortgang wordt bijgewerkt; foutieve invoer wordt geweigerd. | vereist | functionele test |
-| P-04 | Een afgevinkte set kan worden gecorrigeerd; eerder gelogde gegevens blijven intact bij navigatie of herstart. | vereist | functionele test |
-| P-05 | Na afronden verschijnt de sessie in historie; een volgende sessie toont vorige waarden zonder deze als uitgevoerde sets te tellen. | vereist | functionele test |
-| P-06 | De mobiele interface blijft leesbaar en bedienbaar op een iPhone, inclusief numerieke invoer en grote afvinkknoppen. | vereist | handmatige mobiele test |
-| P-07 | Een training kan worden gepland en teruggevonden op de kalender. | wens | functionele test |
+| P-01 | Maak en wijzig programma's, periodes en losse workouts; duplicaten zijn zelfstandig bewerkbaar. | vereist | functionele test |
+| P-02 | Selecteer bibliotheek- of eigen oefeningen en configureer volgorde, sets, repbereiken, kg, zijden en groepen; preview klopt met template. | vereist | functionele test |
+| P-03 | Voer geldige werkelijke reps en kg in, vink sets af, corrigeer en zie voortgang; invalid input wordt geweigerd. | vereist | functionele test |
+| P-04 | Apply to all kopieert gekozen waarden alleen naar andere onvoltooide sets van diezelfde oefening, per zijde indien relevant; voltooide sets, andere oefeningen en historie blijven intact; geen automatische vinkjes. | vereist | functionele en regressietest |
+| P-05 | Start volgende workout: vorige gewichten staan vooraf ingevuld waar beschikbaar, zonder dat sets als uitgevoerd tellen. | vereist | functionele test |
+| P-06 | Na afvinken start configureerbare rusttimer; timer kan worden overgeslagen en volgt verstreken tijd na terugkeer uit achtergrond. | vereist | functionele test |
+| P-07 | Supersets/circuits tonen gekozen groepsvolgorde en rondes; elke set is apart registreerbaar. | vereist | functionele test |
+| P-08 | Offline geopende app kan vooraf beschikbare workouts uitvoeren, bewaren, heropenen en afronden; bij herverbinding worden wijzigingen idempotent gesynchroniseerd. | vereist | offline en sync-test |
+| P-09 | Afgeronde trainingen verschijnen in historie, records en progressiegrafieken; berekeningen gebruiken voltooide sets en correcte eenheden. | vereist | functionele test |
+| P-10 | Kalender toont geplande en afgeronde workouts. | vereist | functionele test |
+| P-11 | iPhone-interface blijft leesbaar, numerieke invoer en afvinkknoppen bruikbaar, ook als toetsenbord open is. | vereist | handmatige iPhone-test |
+| P-12 | Persoonlijke trainingsdata zijn alleen voor bevoegde gebruiker; uitloggen en accountgrenzen voorkomen ongeautoriseerde toegang. | vereist | autorisatietest |
+| P-13 | Indien exportdata beschikbaar zijn, import toont fouten en doublures vóór bevestiging; import verandert bestaande records niet stilzwijgend. | uitbreiding | importtest |
 
-## Open keuzes
-- Platform: installeerbare mobiele webapp (PWA) of native iOS/Android; voorkeur PWA tenzij platformvereisten anders vragen.
-- Alleen persoonlijk gebruik of meerdere gebruikers/coaches?
-- Cloudsync, accounts en offline werking; voorkeur offline loggen met veilige synchronisatie indien gewenst.
-- Programmastructuur: periodes, herhalende weken, flexibele workouts versus vaste kalender.
-- Setlog: vorige waarden als voorstel of vooraf ingevuld; gewenste rusttimer, RPE/RIR en aparte links/rechts-invoer.
-- Oefeningenbibliotheek: zelf toevoegen, initiële bibliotheek, instructies/media en rechten daarop.
-- Bestaande BridgeAthletic-trainingen en historie overnemen indien gebruiker deze kan exporteren.
-- Nederlandse of Engelse UI; taal van oefeningnamen.
+## Open details en aannames
+- Apply to all beschermt afgeronde sets en kopieert alleen invoer, niet status; voorgesteld gedrag ter beoordeling.
+- Rustduur per oefening configureerbaar, voorstel 90 seconden standaard; supersets/circuits kunnen afwijkende rustmomenten hebben.
+- Vorige gewichten per set; reps blijven doel/suggestie tot werkelijk ingevoerd of gekopieerd. Details van actieve flow toetsen aan aanvullende screenshots.
+- Technische stack, hosting, syncconflicten, Apple Health-route en importmapping worden na akkoord uitgewerkt in TECH.md.
+- Voor Apple Health eerst bepalen welke gegevens worden geschreven of gelezen; gebruiker kiest expliciet.
+- Bron voor import: https://intercom.help/bridgeathletic/en/articles/2029275-how-to-export-exercise-history-from-the-team-page en https://intercom.help/bridgeathletic/en/articles/4346671-athlete-web-experience
+- HealthKit: https://developer.apple.com/documentation/Xcode/configuring-healthkit-access
 
-## Fase en bewijs
-Productrichting nog niet bevestigd. Een voortijdige, ongeteste verkenningsschets is apart bewaard op exploration/initial-prototype; de appcode is uit main teruggenomen. Geen implementatie- of releaseakkoord. Eerst de open keuzes bespreken en productbrief bevestigen, daarna de schets beoordelen volgens AGENTS.md. Geen hosting of deployment aangevraagd of uitgevoerd via de gebruikte GitHub-acties.
+## Fase
+De intakekeuzes zijn verwerkt. Productbrief ter bevestiging; daarna beoordeelbare schets volgens AGENTS.md, gevolgd door implementatie op featurebranch. Eerdere ongeteste verkenningsschets blijft op exploration/initial-prototype. Geen release of hosting goedgekeurd.
