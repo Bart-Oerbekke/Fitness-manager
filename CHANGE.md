@@ -116,3 +116,6 @@ Expliciet gebruikersakkoord voor codecommit 29374283088e3a127a0df0ee93c38c485ad8
 
 ## Upgrade 0.9 — dagdashboard en agenda
 Gebruiker keurt ontwerp met Vandaag, Agenda, Schema's, Progressie, Instellingen en lijniconen goed. Scope P-45/P-46: split views, bibliotheek naar Schema's, behouden picker, route terug na planning, geen data- of trainingswijziging. Aannames: volgende activiteit openen via bestaande preview, geen directe start buiten preview; huidige datum onafhankelijk van agenda. Zelfreview routeverwijzingen en nav; CI uitgebreid, fysieke iPhone-review open. Geen betaalde diensten, deployment of merge zonder expliciet akkoord.
+
+### Zelfreview navigatie 0.9
+Extra controle: context van programma-preview behouden, historie-tab gekoppeld aan herkomst, planning na datumwijziging terug naar agenda, consistente terugroute bij annuleren, symmetrisch instellingenicoon. Browsercheck uitgebreid met kalenderperiode onafhankelijk van Vandaag, geplande workout openen/terug en voorkomen dubbele volgende activiteit. Geen wijziging core/storage. Geen onafhankelijke review.

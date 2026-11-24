@@ -54,6 +54,16 @@ try{
  assert.equal(await evaluate("document.querySelector('#nav [aria-current=page]').dataset.page"),'schemas');
  await click('[data-action="back"]');
  await click('#nav [data-page="agenda"]');
+ // Browsing the calendar must never change the date shown on Today.
+ const dateLabel=await evaluate("document.querySelector('.cal-grid [aria-current=date]')?.dataset.date");
+ await click('[data-action="cal-step"][data-n="1"]');
+ const advanced=await evaluate("document.querySelector('.cal-period strong').textContent");
+ await click('#nav [data-page="today"]');
+ assert.equal(await evaluate("document.querySelectorAll('.cal-shell').length"),0);
+ await click('#nav [data-page="agenda"]');
+ assert.equal(await evaluate("document.querySelector('.cal-period strong').textContent"),advanced);
+ await click('[data-action="cal-today"]');
+ assert.equal(await evaluate("document.querySelector('.cal-grid [aria-current=date]')?.dataset.date"),dateLabel);
  console.log('PASS_SPLIT_NAVIGATION');
  await click('.cal-header [data-action="cal-add"]');
  await click('#dialog[open] [data-action="cal-plan-other"]');
@@ -74,6 +84,19 @@ try{
  await click('#nav [data-page="agenda"]');
  await wait(()=>evaluate("document.querySelector('.cal-day-agenda')?.textContent.includes('Offline test') && navigator.onLine===false"),'offline record survived reload');
  console.log('PASS_OFFLINE_APP');
+ await click('#nav [data-page="today"]');
+ assert.ok(await evaluate("document.querySelector('.today-shell').textContent.includes('Offline test')"));
+ assert.equal(await evaluate("document.querySelectorAll('.today-shell [data-action=event-open]').length"),1);
+ await click('#nav [data-page="agenda"]');
+ // Plan a workout via the original dialog and check its preview/back route.
+ await click('.cal-header [data-action="cal-add"]');
+ await click('#dialog [data-action="cal-plan-fitness"]');
+ await click('#dialog[open] button[type=submit]');
+ await click('.cal-day-agenda .fitness [data-action="event-open"]');
+ assert.equal(await evaluate("document.querySelector('[data-action=back]').dataset.page"),'agenda');
+ await click('[data-action="back"]');
+ assert.ok(await evaluate("!!document.querySelector('.cal-shell')"));
+ console.log('PASS_AGENDA_ROUTES');
  await click('#nav [data-page="settings"]');
  assert.equal(await evaluate("document.querySelector('#installed-version').textContent"),'0.9.0');
  await click('[data-action="update-check"]');
