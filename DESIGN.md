@@ -100,3 +100,6 @@ Verwijder de dubbele Volgende-knop (native iOS pijlen bestaan); één kleine zwe
 
 ## Updatebediening
 Instellingen > Applicatie: versienummer, subtiele status, Controleer op updates en alleen bij wachtende update knop Bijwerken. Bij actieve training disabled met uitleg. Geen automatische reload; geen storende melding tijdens training.
+
+## Upgrade 0.7 — ontwerp
+Actieve kaart: subtiele optiemenu's, warm-up label, supersetrondes met gekoppelde A/B-markering, actieve setbediening; sessieaanpassingen nooit templates. Progressie: compacte KPI-tegels, periodechips, grafiek met eenheden en lijst historische prestaties; bodyweight en externe belasting niet mengen. Sportbelasting: dagelijkse minuten per sport en RPE-dekking, herstelcheck-in in eigen kaart. Geen pseudo-medische readinessscore. Donkere compacte stijl, 16px inputs en 44px primaire targets. Fysieke iPhone-review blijft vereist.

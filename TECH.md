@@ -57,3 +57,6 @@ Gedeelde veldcomponenten in app.mjs en CSS; name/id en FormData-contract behoude
 
 ## Appupdates
 SW v7/app 0.6.0. Register updateViaCache none, check bij start/online/zichtbaar en handmatig. Wachtende SW ontvangt expliciete FM_ACTIVATE via MessageChannel, alleen één windowclient in scope. UI bevriest en save queue wordt geflusht vooraf; geen IndexedDB/cachedata reset. Controllerchange herlaadt expliciet verzoek; bij meerdere vensters sluiten en opnieuw proberen. Oudere versies zonder updateknop moeten eenmalig normaal SW-lifecycle doorlopen. CI simuleert volgende release door tijdelijk appversie/cache in disposable checkout te wijzigen, controleert behoud van offline record na reload, herstelt bronbestanden. Geen nieuwe afhankelijkheden.
+
+## Upgrade 0.7 — implementatieplan
+Additieve optionele velden in bestaand version:1 payload: warmupCount/warmupReps op template, warmup boolean op log, supersetNext op template en session pair IDs afgeleid uit aangrenzende oefeningen, skipped op sessieoefening, rpe op historie en recovery array. Geen DB-versieverhoging, geen cloud. Oude records zonder velden blijven geldig; behoud onbekende data. Pure domeinhelpers voor sessiemutaties, rondetimer, progressie, belasting en herstelvalidatie. Test oude data, afgevinkte sets, koppelingen, ontbrekende waarden en offline browserflow.
