@@ -143,3 +143,6 @@ Gebruiker bevestigt P-53 t/m P-58 (UX only). Aannames: weekselectie in programma
 
 ### Implementatie UX 0.11
 Gedeelde periodeselector, lijniconen, programmadetail met tijdelijke weekselectie en menu, aangepaste historie/instellingen, betere contrasten en leesbaarheid, 44px belangrijke iconacties, behoud 38px formulieren en compacte trainingssetgrid. Versie 0.11.0/SW v12. CI uitgebreide keyboard- en programmaroutes; aanvullende layoutcontrole volgt. Geen domein- of opslagwijziging, geen publicatie.
+
+### Zelfreview en UX-regressie 0.11
+Aanvullend: bestaande actieve/geschiedenis-menu's krijgen lijniconen; 44px actieknoppen, kleinere kalendermetadata, behoud invoer 16px en 38px formuliervelden. Browserreview voegt per hoofd-/subscherm 320/375/390/430px controles toe op documentbreedte, relevante targetafmetingen, naamgeving en SVG-periodeselector; keyboard Enter en focusbehoud. Geen volledige WCAG-audit of fysieke iPhone/VoiceOver-review. Bestaande core/storage ongewijzigd. Definitieve CI nog vereist.

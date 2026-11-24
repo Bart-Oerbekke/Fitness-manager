@@ -33,11 +33,20 @@ try{
    await cdp('Page.reload');
    await wait(()=>evaluate("performance.timeOrigin!=="+previous+" && !!document.querySelector('.today-shell') && navigator.onLine===false && document.querySelector('#storage-status')?.textContent.includes('Offline') && !document.querySelector('#app').inert"),label);
  }
+ async function reviewLayout(label,selector=''){
+   for(const width of [320,375,390,430]){
+     await cdp('Emulation.setDeviceMetricsOverride',{width,height:844,deviceScaleFactor:1,mobile:true});
+     const layout=await evaluate("(()=>{const root=document.querySelector('#app'),buttons=[...root.querySelectorAll('.period-bar button,.icon-btn,.menu-icon,.session-options,.he-remove,.check')].filter(b=>b.getClientRects().length),r=root.getBoundingClientRect();return {width:innerWidth,overflow:document.documentElement.scrollWidth>innerWidth+1,targets:buttons.filter(b=>{const x=b.getBoundingClientRect();return x.width<43.5||x.height<43.5}).map(b=>b.dataset.action),unnamed:buttons.filter(b=>!b.getAttribute('aria-label')&&!b.textContent.trim()).map(b=>b.dataset.action),icons:buttons.filter(b=>b.matches('.period-bar button')&&!b.querySelector('svg')).length,missing:!document.querySelector("+JSON.stringify(selector||'#app')+")}})()");
+     assert.equal(layout.missing,false,label+' exists '+width);assert.equal(layout.overflow,false,label+' horizontal overflow '+width);assert.deepEqual(layout.targets,[],label+' target sizes '+width);assert.deepEqual(layout.unnamed,[],label+' accessible names '+width);assert.equal(layout.icons,0,label+' period icons '+width);
+   }
+   console.log('PASS_UX_LAYOUT '+label);
+ }
  async function click(selector){
    await wait(()=>evaluate("!!document.querySelector("+JSON.stringify(selector)+")"),"button "+selector);
    await evaluate("document.querySelector("+JSON.stringify(selector)+").click()");
  }
  await reloadOffline('offline app reopened');
+ await reviewLayout('Vandaag','.today-shell');
  assert.equal(await evaluate("document.querySelectorAll('.cal-grid,.cal-week-list,.cal-shell').length"),0);
  assert.deepEqual(await evaluate("[...document.querySelectorAll('#nav button')].map(b=>b.dataset.page)"),['today','agenda','schemas','progress','settings']);
  for(const width of [320,375,390,430]){
@@ -46,10 +55,16 @@ try{
   assert.equal(layout.icons,5);assert.equal(layout.active,'today');assert.equal(layout.fits,true,'nav at '+width);assert.equal(layout.overflow,false,'day at '+width);
  }
  await click('[data-action="agenda-today"]');
+ await reviewLayout('Agenda maand','.cal-grid');
+ await click('[data-action="cal-mode"][data-mode="week"]');
+ await reviewLayout('Agenda week','.cal-week-list');
+ await click('[data-action="cal-mode"][data-mode="month"]');
  assert.equal(await evaluate("document.querySelectorAll('.dashboard').length"),0);
  assert.equal(await evaluate("document.querySelector('#nav [aria-current=page]').dataset.page"),'agenda');
  await click('#nav [data-page="schemas"]');
+ await reviewLayout('Schemas','.schema-tabs');
  await click('[data-action="library-open"]');
+ await reviewLayout('Bibliotheek','#library-results');
  assert.ok(await evaluate("document.querySelector('#library-results').children.length>0"));
  assert.equal(await evaluate("document.querySelector('#nav [aria-current=page]').dataset.page"),'schemas');
  await click('[data-action="back"]');
@@ -121,7 +136,9 @@ try{
  await click('#nav [data-page="schemas"]');
  await click('[data-action="schema-tab"][data-id="workouts"]');
  await click('[data-action="workout-open"][data-id="update-test-workout"]');
+ await reviewLayout('Workout preview','.set');
  await click('[data-action="start"]');
+ await reviewLayout('Actieve training','.set');
  await click('[data-action="back"]');
  await click('#nav [data-page="settings"]');
  assert.equal(await evaluate("document.querySelector('[data-action=update-apply]').disabled"),true);
@@ -141,6 +158,7 @@ try{
  await click('#dialog[open] button[type=submit]');
  assert.ok(await evaluate("document.querySelector('.recovery-metrics').textContent.includes('3/5')"));
  await click('#nav [data-page="settings"]');
+ await reviewLayout('Progressie','.muscle-panel');
  console.log('PASS_PROGRESS_RECOVERY');
  // Verify the existing workout remains unchanged after active-session editing.
  await click('#nav [data-page="schemas"]');
@@ -250,6 +268,7 @@ try{
  const resume=cdp('Runtime.evaluate',{expression:"document.querySelector('#dialog [data-action=program-archive]').click()"});await sleep(200);await cdp('Page.handleJavaScriptDialog',{accept:true});await resume;
  assert.ok(await evaluate("document.querySelector('#app').textContent.includes('CI aangepast')"));
  await click('[data-action="program-open"]');
+ await reviewLayout('Programmadetails','.program-schedule');
  assert.equal(await evaluate("document.querySelectorAll('.program-schedule .period-bar').length"),1);
  assert.equal(await evaluate("document.querySelector('[data-action=program-week][data-n=\"-1\"]').disabled"),true);
  await click('[data-action="program-week"][data-n="1"]');
@@ -272,7 +291,9 @@ try{
  await evaluate("(()=>{document.querySelector('[name=hr0_1]').value='8';const k=document.querySelector('[name=k0_1]');if(k)k.value='15';document.querySelector('[name=hd0_1]').checked=true})()");
  await click('#history-form button[type=submit]');
  assert.ok(await evaluate("document.querySelector('#app').textContent.includes('Handmatig CI')"));
+ await reviewLayout('Historiedetail','.history-summary');
  await click('[data-action="history-edit"]');
+ await reviewLayout('Historie-editor','#history-form');
  await click('[data-action="he-add"]');
  await click('#library-results [data-action="exercise-pick"]');
  await evaluate("(()=>{document.querySelector('[name=hr1_0]').value='12';const k=document.querySelector('[name=k1_0]');if(k)k.value='10';document.querySelector('[name=hd1_0]').checked=true})()");
@@ -283,6 +304,7 @@ try{
  await click('#dialog button[type=submit]');
  assert.equal(await evaluate("document.querySelector('#app').textContent.includes('Handmatig CI')"),false);
  await click('#nav [data-page="settings"]');
+ await reviewLayout('Instellingen','.settings-stack');
  console.log('PASS_HISTORY_MANAGEMENT');
  const date=await evaluate("(()=>{const d=new Date();return [d.getFullYear(),String(d.getMonth()+1).padStart(2,'0'),String(d.getDate()).padStart(2,'0')].join('-')})()");
  const existing=await evaluate("(async()=>{const m=await import('/src/storage.mjs'),s=await m.openLocalStore({legacyRaw:localStorage.getItem(m.LEGACY_KEY)});try{return m.parseBackup(JSON.stringify(s.state))}finally{s.close()}})()");

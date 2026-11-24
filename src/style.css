@@ -189,3 +189,20 @@ button:disabled{opacity:.45}
 #app[data-view="training"] .field input::placeholder{color:#b3bdca;opacity:1}
 @media(max-width:360px){.navvisible button{font-size:10px}.cal-pill{font-size:9px;padding-inline:1px}.week-stats-grid small{font-size:10px}.period-label strong{font-size:15px}.period-label small{font-size:11px}.history-edit-set .field{padding-inline:3px}.history-edit-set .unit{font-size:10px}.screen-header h1{font-size:22px}.screen-header.sub-header h1{font-size:18px}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:0s!important;transition-duration:0s!important}}
+
+#app[data-view="training"] .intro>div:first-child{min-width:0}
+#app[data-view="training"] .set .field{min-width:0}
+#app[data-view="training"] .set .check{width:44px;min-width:44px;min-height:44px}
+#app[data-view="training"] .history td,#app[data-view="training"] .history th{font-size:12px}
+#app[data-view="training"] .set .unit{color:#b3bdca}
+#app[data-view="training"] .check span{border-color:#adb8c6}
+#app[data-view="training"] .check.done span{border-color:var(--green)}
+#app[data-view="training"] .rest-dock button{min-height:44px}
+#app[data-view="builder"] .builder-card .head .row{gap:3px}
+#app[data-view="builder"] .builder-card .head .row button{min-width:44px;padding:0}
+#app[data-view="historyEditor"] .history-edit-set .field input{min-width:0}
+#app[data-view="historyEditor"] .history-edit-set .field input,#app[data-view="builder"] .form-control input{font-size:16px}
+.cal-grid button:focus-visible{outline-offset:-3px}
+.form-control:focus-within{border-color:#ffc17a}
+dialog button:focus-visible{outline-offset:1px}
+@media(max-width:360px){.week-stats-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.cal-legend{gap:5px}.cal-pill{font-size:9px}}
