@@ -93,7 +93,7 @@ let updateRegistration=null,updateMessage="Nog niet gecontroleerd",updateBusy=fa
 function updateBlocked(){return !booted||!!db.active||!!storageError||!!queue?.status.failure||$("dialog").open||page!=="settings"}
 function updatePanel(){
  const waiting=!!updateRegistration?.waiting,active=!!db.active;
- return '<div class="row between"><small>Geïnstalleerde versie</small><strong id="installed-version">'+APP_VERSION+'</strong></div><div class="line"><p id="update-message" class="muted" role="status">'+h(waiting?(active?"Update beschikbaar · rond je training eerst af.":"Update beschikbaar. Je lokale gegevens blijven behouden."):updateMessage)+'</p>'+b(updateBusy?"Controleren…":"Controleren op updates","update-check","quiet full",updateBusy||updateApplying?"disabled":"")+(waiting?b("Bijwerken","update-apply","primary",updateBlocked()||updateApplying?"disabled":""):"")+'</div>';
+ return '<div class="row between"><small>Geïnstalleerde versie</small><strong id="installed-version">'+APP_VERSION+'</strong></div><div class="line"><p id="update-message" class="muted" role="status">'+h(waiting?(active?"Update beschikbaar · rond je training eerst af.":updateApplying?updateMessage:!["Nog niet gecontroleerd","Controleren…","Geen nieuwe update gevonden.","Update beschikbaar.","Update wordt gedownload…"].includes(updateMessage)?updateMessage:"Update beschikbaar. Je lokale gegevens blijven behouden."):updateMessage)+'</p>'+b(updateBusy?"Controleren…":"Controleren op updates","update-check","quiet full",updateBusy||updateApplying?"disabled":"")+(waiting?b("Bijwerken","update-apply","primary",updateBlocked()||updateApplying?"disabled":""):"")+'</div>';
 }
 function refreshUpdatePanel(){const el=$("update-panel");if(el)el.innerHTML=updatePanel()}
 function observeUpdate(reg){
@@ -108,7 +108,7 @@ async function checkUpdate(manual=false){
  if(navigator.onLine===false){if(manual){updateMessage="Geen internetverbinding. Probeer online opnieuw.";refreshUpdatePanel()}return}
  if(!updateRegistration){if(manual){updateMessage="Updatefunctie nog niet beschikbaar. Open de app opnieuw.";refreshUpdatePanel()}return}
  updateBusy=true;if(manual)updateMessage="Controleren…";refreshUpdatePanel();
- try{await updateRegistration.update();const worker=updateRegistration.installing;if(worker){await new Promise(resolve=>{if(["installed","activated","redundant"].includes(worker.state)){resolve();return}const timer=setTimeout(resolve,12000);worker.addEventListener("statechange",()=>{if(["installed","activated","redundant"].includes(worker.state)){clearTimeout(timer);resolve()}})})}updateMessage=updateRegistration.waiting?"Update beschikbaar.":updateRegistration.installing?"Update wordt gedownload…": "Geen nieuwe update gevonden."}
+ try{await updateRegistration.update();const worker=updateRegistration.installing;if(worker){await new Promise(resolve=>{if(["installed","activated","redundant"].includes(worker.state)){resolve();return}const timer=setTimeout(resolve,12000);worker.addEventListener("statechange",()=>{if(["installed","activated","redundant"].includes(worker.state)){clearTimeout(timer);resolve()}})})}updateMessage=updateRegistration.waiting?"Update beschikbaar.":worker?.state==="redundant"?"Update kon niet worden geïnstalleerd. Probeer opnieuw.":updateRegistration.installing?"Update wordt gedownload…": "Geen nieuwe update gevonden."}
  catch{updateMessage="Updatecontrole mislukt. Probeer opnieuw met internetverbinding."}
  finally{updateBusy=false;refreshUpdatePanel()}
 }

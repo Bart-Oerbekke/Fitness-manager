@@ -23,7 +23,7 @@ try{
  const status=await wait(()=>evaluate("(()=>{const t=document.querySelector('#result')?.textContent;return t&&t!=='RUNNING'?t:null})()"),'IndexedDB browser integration');
  assert.equal(status,'PASS_STORAGE_BROWSER');console.log(status);
  // Use a separate origin database name in the module test. Seed the real legacy key now.
- await evaluate("localStorage.setItem('fm-local-preview-v1',JSON.stringify({version:1,custom:[],workouts:[],programs:[],events:[],history:[],active:null,favorites:[],recent:[]}))");
+ await evaluate("localStorage.setItem('fm-local-preview-v1',JSON.stringify({version:1,custom:[],workouts:[{id:'update-test-workout',name:'Update test',exercises:[{id:'update-ex',exerciseId:'test-ex',name:'Push Up',sets:1,reps:'8',kg:'',ea:false,bodyweight:true,rest:0,equipment:'Bodyweight'}]}],programs:[],events:[],history:[],active:null,favorites:[],recent:[]}))");
  await cdp('Page.navigate',{url:base+'/'});
  await wait(()=>evaluate("!!document.querySelector('.cal-shell')"),'app initialized');
  await wait(()=>evaluate("!!navigator.serviceWorker.controller"),'service worker controls app');
@@ -65,8 +65,36 @@ try{
  originalApp=await readFile('src/app.mjs','utf8');originalSW=await readFile('sw.js','utf8');
  await writeFile('src/app.mjs',originalApp.replace('const APP_VERSION="0.6.0"','const APP_VERSION="0.6.1-test"'));
  await writeFile('sw.js',originalSW.replace('fitness-manager-shell-v7','fitness-manager-shell-v7-ci-update'));
+ await wait(()=>evaluate("!!document.querySelector('[data-action=update-check]:not([disabled])')"),'update check ready');
  await click('[data-action="update-check"]');
  await wait(()=>evaluate("!!document.querySelector('[data-action=update-apply]:not([disabled])')"),'new worker waiting');
+ // A persisted active workout blocks installation, even while viewing settings.
+ await click('#nav [data-page="schemas"]');
+ await click('[data-action="workout-open"][data-id="update-test-workout"]');
+ await click('[data-action="start"]');
+ await click('[data-action="back"]');
+ await click('#nav [data-page="settings"]');
+ assert.equal(await evaluate("document.querySelector('[data-action=update-apply]').disabled"),true);
+ assert.ok(await evaluate("document.querySelector('#update-message').textContent.includes('training')"));
+ await click('#nav [data-page="today"]');
+ await click('[data-action="resume"]');
+ await click('[data-action="check"]');
+ await click('#dialog[open] button[type=submit]');
+ await click('[data-action="finish"]');
+ await click('#dialog[open] button[type=submit]');
+ await click('#nav [data-page="settings"]');
+ await wait(()=>evaluate("!!document.querySelector('[data-action=update-apply]:not([disabled])')"),'update available after workout');
+ console.log('PASS_UPDATE_TRAINING_GUARD');
+ // A second same-origin client must prevent forced activation.
+ const second=await cdp('Target.createTarget',{url:base+'/icon.svg'});
+ try{
+   await wait(async()=>{const targets=await cdp('Target.getTargets');return targets.targetInfos.some(t=>t.targetId===second.targetId&&t.url===base+'/icon.svg')},'second client opened');
+   await sleep(500);
+   await click('[data-action="update-apply"]');
+   await wait(()=>evaluate("document.querySelector('#update-message')?.textContent.includes('Sluit andere Fitness Manager-vensters')"),'multiple windows blocked');
+ }finally{await cdp('Target.closeTarget',{targetId:second.targetId})}
+ await wait(()=>evaluate("!!document.querySelector('[data-action=update-apply]:not([disabled])')"),'update retry ready');
+ console.log('PASS_UPDATE_WINDOW_GUARD');
  const previous=await evaluate('performance.timeOrigin');
  await click('[data-action="update-apply"]');
  await wait(()=>evaluate("performance.timeOrigin!=="+previous+" && !!document.querySelector('.cal-shell') && !document.querySelector('#app').inert"),'updated app loaded');
