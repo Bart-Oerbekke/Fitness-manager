@@ -249,15 +249,15 @@ try{
  await click('#dialog button[type=submit]');
  await click('[data-action="he-add"]');
  await click('#library-results [data-action="exercise-pick"]');
- await evaluate("document.querySelector('[name=hr0_0]').value='10';const k=document.querySelector('[name=k0_0]');if(k)k.value='15';document.querySelector('[name=hd0_0]').checked=true");
+ await evaluate("(()=>{document.querySelector('[name=hr0_0]').value='10';const k=document.querySelector('[name=k0_0]');if(k)k.value='15';document.querySelector('[name=hd0_0]').checked=true})()");
  await click('[data-action="he-add-set"]');
- await evaluate("document.querySelector('[name=hr0_1]').value='8';const k=document.querySelector('[name=k0_1]');if(k)k.value='15';document.querySelector('[name=hd0_1]').checked=true");
+ await evaluate("(()=>{document.querySelector('[name=hr0_1]').value='8';const k=document.querySelector('[name=k0_1]');if(k)k.value='15';document.querySelector('[name=hd0_1]').checked=true})()");
  await click('#history-form button[type=submit]');
  assert.ok(await evaluate("document.querySelector('#app').textContent.includes('Handmatig CI')"));
  await click('[data-action="history-edit"]');
  await click('[data-action="he-add"]');
  await click('#library-results [data-action="exercise-pick"]');
- await evaluate("document.querySelector('[name=hr1_0]').value='12';const k=document.querySelector('[name=k1_0]');if(k)k.value='10';document.querySelector('[name=hd1_0]').checked=true");
+ await evaluate("(()=>{document.querySelector('[name=hr1_0]').value='12';const k=document.querySelector('[name=k1_0]');if(k)k.value='10';document.querySelector('[name=hd1_0]').checked=true})()");
  await click('#history-form button[type=submit]');
  assert.ok(await evaluate("document.querySelector('#app').textContent.includes('12 reps')"));
  await click('[data-action="history-delete"]');

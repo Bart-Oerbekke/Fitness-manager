@@ -131,3 +131,6 @@ Schemabeheer en historie-editor gebouwd; versie 0.10.0/SW v11. Geen wijziging ac
 
 ### Zelfreview 0.10
 Domeincommit 04d61d19129509b8e34bc1fe20e750dbd2e05075 run 45441924255: 46/46 en browser groen. Tussencommit 21578ac1a3a6897bd1d8cde0a7de0077b8bf3513 run 45442081938: browser timeout oude workoutselector; tabroute bijgewerkt. Extra review: archiefdatum voorkomt terugverschijnen gepauzeerde events; hervatten laat gemiste pauzeafspraken vervallen; workout uit programma behoudt beschermde events losgekoppeld met weektargets; eigen oefening in historie-picker. CI uitgebreid met beheer en handmatige registratie. Geen onafhankelijke review of fysieke iPhone-test. Geen publicatie.
+
+### CI-herstel 0.10
+Run 45442453477 op 2a75b0ae93bc6da1b77b24c4ca5cb3109083a3f7: 47/47 tests, syntax, build en browser tot PASS_SCHEMA_MANAGEMENT geslaagd; blokkerende SyntaxError: Identifier 'k' has already been declared in Runtime.evaluate. Drie historie-inputexpressies in afzonderlijke IIFE-scopes geplaatst; assertions en appcode ongewijzigd. Scope: alleen testscript en documentatie. Volledige CI opnieuw via bestaande workflow; geen publicatie of merge. Zelfreview; fysieke iPhone-review open.
