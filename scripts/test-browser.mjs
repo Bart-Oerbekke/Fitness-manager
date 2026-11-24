@@ -57,14 +57,14 @@ try{
  await wait(()=>evaluate("document.querySelector('.cal-day-agenda')?.textContent.includes('Offline test') && navigator.onLine===false"),'offline record survived reload');
  console.log('PASS_OFFLINE_APP');
  await click('#nav [data-page="settings"]');
- assert.equal(await evaluate("document.querySelector('#installed-version').textContent"),'0.6.0');
+ assert.equal(await evaluate("document.querySelector('#installed-version').textContent"),'0.7.0');
  await click('[data-action="update-check"]');
  assert.ok(await evaluate("document.querySelector('#update-message').textContent.includes('Geen internet')"));
  await cdp('Network.emulateNetworkConditions',{offline:false,latency:0,downloadThroughput:-1,uploadThroughput:-1});
  // Change served files in this disposable CI checkout only; restore in finally.
  originalApp=await readFile('src/app.mjs','utf8');originalSW=await readFile('sw.js','utf8');
- await writeFile('src/app.mjs',originalApp.replace('const APP_VERSION="0.6.0"','const APP_VERSION="0.6.1-test"'));
- await writeFile('sw.js',originalSW.replace('fitness-manager-shell-v7','fitness-manager-shell-v7-ci-update'));
+ await writeFile('src/app.mjs',originalApp.replace('const APP_VERSION="0.7.0"','const APP_VERSION="0.7.1-test"'));
+ await writeFile('sw.js',originalSW.replace('fitness-manager-shell-v8','fitness-manager-shell-v8-ci-update'));
  await wait(()=>evaluate("!!document.querySelector('[data-action=update-check]:not([disabled])')"),'update check ready');
  await click('[data-action="update-check"]');
  await wait(()=>evaluate("!!document.querySelector('[data-action=update-apply]:not([disabled])')"),'new worker waiting');
@@ -85,6 +85,13 @@ try{
  await click('#nav [data-page="settings"]');
  await wait(()=>evaluate("!!document.querySelector('[data-action=update-apply]:not([disabled])')"),'update available after workout');
  console.log('PASS_UPDATE_TRAINING_GUARD');
+ await click('#nav [data-page="progress"]');
+ assert.ok(await evaluate("document.querySelector('.load-panel').textContent.includes('Sportbelasting')"));
+ await click('[data-action="recovery"]');
+ await click('#dialog[open] button[type=submit]');
+ assert.ok(await evaluate("document.querySelector('.recovery-metrics').textContent.includes('3/5')"));
+ await click('#nav [data-page="settings"]');
+ console.log('PASS_PROGRESS_RECOVERY');
  // A second same-origin client must prevent forced activation.
  const second=await cdp('Target.createTarget',{url:base+'/icon.svg'});
  try{
@@ -100,7 +107,7 @@ try{
  await wait(()=>evaluate("performance.timeOrigin!=="+previous+" && !!document.querySelector('.cal-shell') && !document.querySelector('#app').inert"),'updated app loaded');
  assert.ok(await evaluate("document.querySelector('.cal-day-agenda').textContent.includes('Offline test')"));
  await click('#nav [data-page="settings"]');
- assert.equal(await evaluate("document.querySelector('#installed-version').textContent"),'0.6.1-test');
+ assert.equal(await evaluate("document.querySelector('#installed-version').textContent"),'0.7.1-test');
  console.log('PASS_APP_UPDATE');
 }finally{
  if(originalApp!==undefined)await writeFile('src/app.mjs',originalApp);if(originalSW!==undefined)await writeFile('sw.js',originalSW);

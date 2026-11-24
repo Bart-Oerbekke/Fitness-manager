@@ -89,3 +89,6 @@ Expliciet gebruikersakkoord voor codecommit 4b422b2f4d8e11d2933d33acd96e95a36b05
 
 ## Upgrade 0.7 — scope en acceptatie vooraf
 Gebruiker selecteert actieve training aanpassen, progressie/PR, sportbelasting/herstel, supersets/warming-upsets, algemene designverbeteringen. P-34 t/m P-38; aannames: supersets van 2, warm-up afzonderlijk, subjectieve check-in, geen automatische medische of trainingsadviezen. Risico's: templatewijziging door sessiemutatie, dubbeltelling van volume en sporttijd, oude IndexedDB-data, koppelingen en rusttimer. Beoogde checks: domeintests, regressie-/browserflow, zelfreview, documentatie. Geen extra kosten, publicatie of merge zonder apart akkoord.
+
+### Implementatie 0.7
+Sessiebewerking, warming-up, supersets, progressiemetrics, sessie-RPE, herstelcheck-in en compactere kaarten gebouwd. Additieve opslag; CI uitgebreid. Zelfreview en fysieke review nog open; niet gepubliceerd.
