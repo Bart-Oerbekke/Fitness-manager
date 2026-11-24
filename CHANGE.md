@@ -31,3 +31,8 @@ Geen merge/publicatie; gebruiker beoordeelt preview. Geen betaalde diensten aang
 
 ## Aanvulling: voorbereiding testhosting
 Gebruiker vraagt gratis testomgeving voor iPhone en heeft Apple Developer/Expo. Vercel Hobby geselecteerd als voorstel, accountverbinding nog nodig. Buildscript met allowlist en vercel.json toegevoegd; PREVIEW.md legt exacte instellingen, tests en publicatiegrenzen vast. Geen deployment, externe kosten, Apple-configuratie of wijziging van main uitgevoerd. De providerbuild en live smokecheck zijn nog niet uitgevoerd.
+
+## Eerste externe testdeployment — 24 november 2026
+- Gebruiker gaf opdracht de testomgeving voor te bereiden en koppelde Vercel. Afzonderlijk project fitness-manager-preview, zonder Git-integratie of automatische deployments. Geen betaalde add-ons, upgrade of domein aangeschaft; bestaand teamabonnement niet zichtbaar via team-API, werkelijke facturatie niet geverifieerd.
+- Handmatig gedeployed vanaf exact GitHub-snapshot d14314f682ea9f2673de887a5d758a1b98240d7a, 12 bronbestanden, build allowlist 8 publieke appbestanden. Deployment dpl_GXss6Pbd2LpUDzNPWbfY2Sv8GLxe, READY. URL https://fitness-manager-preview.vercel.app. Vercel retourneerde target production bij eerste deployment ondanks weggelaten target; dit is uitsluitend het afzonderlijke testproject, niet een vrijgave van main of productieapp. Geen merge, promotie of automatische Git-koppeling.
+- Buildlogs bevestigen npm run check, npm test (9 geslaagd, 0 mislukt), npm run build. Geauthenticeerde HTTP-controle van /, /manifest.webmanifest, /src/app.mjs en /sw.js: 200. Geen echte Safari/iPhone-interactie of offline test uitgevoerd. Vercel Authentication behouden; gebruiker kan mogelijk moeten inloggen. Alleen fictieve data, geen Apple-login/cloudsync.

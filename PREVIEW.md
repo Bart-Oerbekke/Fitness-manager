@@ -1,6 +1,6 @@
 # Testomgeving — Vercel Hobby
 
-Status: voorbereid in GitHub, niet gedeployed. Alleen fictieve data gebruiken.
+Status: afzonderlijk testproject gedeployed en HTTP-gecontroleerd; fysieke iPhone-test open. Alleen fictieve data gebruiken.
 
 ## Hosting
 Voorkeur Vercel Hobby, persoonlijke toepassing binnen gratis limieten. Geen domeinaankoop. Gebruik het toegewezen vercel.app HTTPS-adres. Een project of domein is pas bevestigd als Vercel dit daadwerkelijk heeft aangemaakt. GitHub Pages is een alternatief, maar niet geactiveerd. Geen database, Apple-login of Expo nodig voor deze preview.
@@ -21,3 +21,8 @@ Gebruiker heeft een Apple Developer-account en Expo-account. Voor web-login is l
 
 ## Nog open
 Vercel-verbinding, gratis plan, previewdeployment van concrete commit, live smokecheck, fysieke iPhone-test, CI-verificatie. Geen toestemming voor productiepublicatie of merge.
+
+## Eerste externe testdeployment — 24 november 2026
+- Gebruiker gaf opdracht de testomgeving voor te bereiden en koppelde Vercel. Afzonderlijk project fitness-manager-preview, zonder Git-integratie of automatische deployments. Geen betaalde add-ons, upgrade of domein aangeschaft; bestaand teamabonnement niet zichtbaar via team-API, werkelijke facturatie niet geverifieerd.
+- Handmatig gedeployed vanaf exact GitHub-snapshot d14314f682ea9f2673de887a5d758a1b98240d7a, 12 bronbestanden, build allowlist 8 publieke appbestanden. Deployment dpl_GXss6Pbd2LpUDzNPWbfY2Sv8GLxe, READY. URL https://fitness-manager-preview.vercel.app. Vercel retourneerde target production bij eerste deployment ondanks weggelaten target; dit is uitsluitend het afzonderlijke testproject, niet een vrijgave van main of productieapp. Geen merge, promotie of automatische Git-koppeling.
+- Buildlogs bevestigen npm run check, npm test (9 geslaagd, 0 mislukt), npm run build. Geauthenticeerde HTTP-controle van /, /manifest.webmanifest, /src/app.mjs en /sw.js: 200. Geen echte Safari/iPhone-interactie of offline test uitgevoerd. Vercel Authentication behouden; gebruiker kan mogelijk moeten inloggen. Alleen fictieve data, geen Apple-login/cloudsync.
