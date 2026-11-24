@@ -1,38 +1,34 @@
-# Designafspraken
+# Fitness Manager — ontwerpafspraken
 
-Status: in te vullen per app. Geen standaardstijl voorgeschreven. Eigenaar: [naam/rol].
+Status: ontwerpconcept ter beoordeling, 24 november 2026.
 
-## Richting en samenhang
-- Gewenste uitstraling, merk, doelgroep en gebruikscontext: [invullen]
-- Referenties met wat je ervan overneemt en waarom: [invullen]
-- Bestaand designsysteem of bewuste eigen keuzes: [invullen]
-- Kleuren en rollen, typografische hiërarchie, spacing, grids, iconen en beeldgebruik: [tokens of verwijzing]
-- Componenten en varianten, inclusief interactietoestanden: [bron van waarheid]
-- Tekststijl, labels en foutmeldingen: [concreet en passend bij doelgroep]
+## Referentie en richting
+De aangeleverde BridgeAthletic-screenshots (met name oefenpreview Strength Lowerbody en Core - Rotational) bepalen de visuele hiërarchie en spacing. De eerdere compacte tabelweergave en permanente kopieerknop zijn afgewezen. Behoud een rustige, ruime, verticaal scrollende oefenkaart; geen kopie van merk, broncode of beschermde video's. Voorbeelden met fictieve waarden.
 
-## Schermen en interacties
-- Informatiehiërarchie, navigatie en primaire actie per scherm: [invullen]
-- Belangrijkste gebruikersstromen: [verwijs naar PRODUCT.md]
-- Laden, leeg, succes, fout, validatie, disabled en ontbrekende rechten: [relevante toestanden en verwacht gedrag]
-- Feedback na acties, preventie en herstel van fouten: [invullen]
-- Responsive gedrag, doelapparaten, testbreedtes en ondersteunde browsers: [appkeuzes]
-- Lange tekst, grote/kleine datasets en afwijkende content: [verwacht gedrag]
+## Oefenkaart
+Afgeleide ontwerpwaarden op circa 390 CSS-px schermbreedte (te controleren op iPhone):
+- Zwarte achtergrond #000; horizontale schermmarge circa 9–10 px; verticale tussenruimte tussen kaarten circa 18 px.
+- Kaart met kleine radius 4–6 px, blauwgrijze header #3a4350, donker verloop #232c37 naar #151a20.
+- Header circa 36–38 px hoog met 14 px horizontale padding; oefeningnummer wit, aantal sets gedempt #9da1af. Condensed semibold typografie als visuele richting; geen onrechtmatig fontgebruik.
+- Oefenintro: circa 14 px padding, 72–74 px vierkante thumbnail links, 10 px tussenruimte, grote semibold oefeningnaam rechts; chevron rechts. Thumbnail is eigen/rechtmatig materiaal of duidelijke placeholder.
+- Setrij circa 55–60 px, dunne donkere scheiding, 14 px horizontale padding, voldoende verticale ruimte. Omlijnde compacte invoervelden voor reps en kg met eenheidslabel; afvinkknop rechts met ruim aanraakgebied (minimaal 44 px). Geen zichtbare kolomkoppen nodig als velden eenheden tonen. Gedempte placeholders. Bij afvinken groene feedback zonder de hele kaart fel te kleuren.
+- Oranje #ff8900 voor focus, primaire acties en kleine contextacties; geen permanente grote oranje kopieerknop.
 
-## Toegankelijkheid en kwaliteit
-- Toegankelijkheidsdoel en toepassingsgebied: [gekozen norm/niveau of concrete criteria]
-- Toetsenbordvolgorde, zichtbare focus en focusherstel: [verwachtingen]
-- Semantiek, toegankelijke namen, contrast, zoom en foutaankondiging: [controlewijze]
-- Bewegingsvoorkeuren en alternatieven voor kleurafhankelijke informatie: [indien relevant]
-- Prestatie en visuele stabiliteit van kernschermen: [meetbare doelen indien relevant]
+## Contextuele toetsenbordactie
+- Focus op numeriek veld toont app-eigen smalle balk direct boven zichtbaar iOS-toetsenbord met subtiele tekstactie “Apply to all” (rechts), zonder dropdown of setselector.
+- Actieve cel is bron; kopieer alleen het actieve veld (reps of kg, eventueel links/rechts) naar andere onvoltooide sets van dezelfde oefening. Bron kan elke set zijn. Voltooide sets blijven ongemoeid. Geen automatisch afvinken.
+- Balk verdwijnt bij sluiten toetsenbord of verlaten numerieke invoer. Geen extra permanente ruimte in de kaart.
+- PWA: native toetsenbordaccessoire kan niet rechtstreeks worden aangepast; app-eigen balk aan zichtbare viewport verankeren met VisualViewport en focusbeheer, met fallback bij afwijkend browsergedrag. Test op fysieke iPhone in Safari en geïnstalleerde PWA; behoud focus tijdens Apply to all, herstel scroll bij dismiss, laat toetsenbord invoer en vinkjes niet bedekken.
+- Toegankelijke veldnamen, zichtbare focus, numerieke toetsenborden, decimalen voor kg, feedback zonder uitsluitend kleur.
 
 ## Visuele acceptatiecriteria
-| ID | Scherm/toestand | Toetsbare verwachting | Controle |
+| ID | Toestand | Verwachting | Controle |
 | --- | --- | --- | --- |
-| D-01 | [scherm en breedte] | [bijv. primaire actie zichtbaar en bedienbaar zonder overlap] | [preview, screenshot of meting] |
+| D-01 | Oefenkaart op 390 CSS-px | Verhoudingen, hiërarchie en spacing dicht bij aangeleverde referentie; grote oefeningnaam, thumbnail, ruime setrijen en dunne lijnen. | screenshotvergelijking |
+| D-02 | Geen numerieke focus | Geen Apply to all, geen bronselector, geen extra balk. | handmatig |
+| D-03 | Reps/kg focus met toetsenbord open | Subtiele Apply to all actie net boven toetsenbord, focusveld zichtbaar; geen overlap. | fysieke iPhone Safari en PWA |
+| D-04 | Afvinken / kopiëren | Duidelijke feedback; geen onbedoelde status- of veldwijzigingen. | interactietest |
+| D-05 | Lange naam / smallere breedte | Naam kan afbreken, velden blijven leesbaar en bediening bereikbaar. | 375/390/430 CSS-px |
 
-## Preview en designreview
-- Representatieve schermen, breedtes en toestanden: [matrix of lijst]
-- Testdata en eventuele referenties voor vergelijking: [invullen]
-- Bewijs: [screenshots en/of werkende preview, versie vastgelegd in CHANGE.md]
-
-Beoordeel de werkende interface op visuele hiërarchie, leesbaarheid, spacing, consistentie, content en bedienbaarheid. Bekijk de volledige kernstroom, niet alleen het beginscherm. Een screenshot bewijst geen interactie of toetsenbordbediening. Automatische toegankelijkheidschecks vullen handmatige controle aan. Leg bevindingen en niet bekeken combinaties vast in CHANGE.md.
+## Reviewstatus
+Concept op basis van screenshots en gebruikersfeedback; geen browser- of iPhone-test uitgevoerd, geen ontwerpgoedkeuring of publicatie. Verdere schermen en technische details volgen na beoordeling.
