@@ -120,6 +120,27 @@ try{
  await click('[data-action="back"]');
  await click('#nav [data-page="settings"]');
  console.log('PASS_SESSION_EDIT_WARMUP');
+ // Edit a real per-set target and check that only the completed workset gives a PR.
+ await click('#nav [data-page="schemas"]');
+ await click('[data-action="workout-open"][data-id="update-test-workout"]');
+ await click('[data-action="workout-edit"]');
+ await evaluate("document.querySelector('.builder-advanced').open=true");
+ await click('[name="individual0"]');
+ await evaluate("document.querySelector('[name=streps0_0]').value='12';document.querySelector('[name=strrir0_0]').value='2';document.querySelector('[name=instructions0]').value='Rustig uitvoeren'");
+ await click('#builder-form button[type=submit]');
+ assert.equal(await evaluate("document.querySelector('.set:not(.warmup) [data-field=reps]').placeholder"),'12');
+ assert.ok(await evaluate("document.querySelector('.target-meta').textContent.includes('RIR 2')"));
+ assert.ok(await evaluate("document.querySelector('.exercise-instructions').textContent.includes('Rustig uitvoeren')"));
+ await click('[data-action="start"]');
+ await click('.set:not(.warmup) [data-action="check"]');
+ await click('#dialog[open] button[type=submit]');
+ assert.ok(await evaluate("document.querySelector('.pr-notice')?.textContent.includes('12 reps')"));
+ await click('[data-action="finish"]');
+ await click('#dialog[open] button[type=submit]');
+ await click('#nav [data-page="progress"]');
+ assert.ok(await evaluate("document.querySelector('.muscle-panel')?.textContent.includes('sets')"));
+ await click('#nav [data-page="settings"]');
+ console.log('PASS_ADVANCED_BUILDER_PR');
  // A second same-origin client must prevent forced activation.
  const second=await cdp('Target.createTarget',{url:base+'/icon.svg'});
  try{
@@ -138,6 +159,8 @@ try{
  assert.equal(await evaluate("document.querySelector('#installed-version').textContent"),'0.8.1-test');
  console.log('PASS_APP_UPDATE');
  const date=await evaluate("(()=>{const d=new Date();return [d.getFullYear(),String(d.getMonth()+1).padStart(2,'0'),String(d.getDate()).padStart(2,'0')].join('-')})()");
+ const existing=await evaluate("(async()=>{const m=await import('/src/storage.mjs'),s=await m.openLocalStore({legacyRaw:localStorage.getItem(m.LEGACY_KEY)});try{return m.parseBackup(JSON.stringify(s.state))}finally{s.close()}})()");
+ assert.ok(existing.history.length>=2,'actual app export validates');
  const imported={version:1,custom:[],workouts:[],programs:[],events:[{id:"restored-test",type:"football",name:"Herstelde activiteit",date,minutes:42}],history:[],active:null,favorites:[],recent:[],recovery:[]};
  await evaluate("(()=>{const f=document.querySelector('#backup-file'),dt=new DataTransfer();dt.items.add(new File(['{'],'bad.json',{type:'application/json'}));f.files=dt.files;f.dispatchEvent(new Event('change'))})()");
  await wait(()=>evaluate("document.querySelector('#backup-status')?.textContent.includes('JSON')"),'invalid import rejected');
@@ -148,6 +171,8 @@ try{
  await wait(()=>evaluate("document.querySelector('#backup-status')?.textContent.includes('Back-up hersteld')"),'backup committed');
  await click('#nav [data-page="today"]');
  assert.ok(await evaluate("document.querySelector('.dashboard').textContent.includes('Herstelde activiteit')"));
+ const restored=await evaluate("(async()=>{const m=await import('/src/storage.mjs'),s=await m.openLocalStore({legacyRaw:localStorage.getItem(m.LEGACY_KEY)});try{return {events:s.state.events,previous:(await s.previous()).payload.history.length}}finally{s.close()}})()");
+ assert.equal(restored.events[0].id,'restored-test');assert.equal(restored.previous,existing.history.length);
  console.log('PASS_BACKUP_DASHBOARD');
 }finally{
  if(originalApp!==undefined)await writeFile('src/app.mjs',originalApp);if(originalSW!==undefined)await writeFile('sw.js',originalSW);

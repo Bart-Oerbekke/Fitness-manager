@@ -104,3 +104,6 @@ Gebruiker vraagt geavanceerde builder, Vandaag-dashboard, spiergroep/volumeanaly
 
 ### Implementatie 0.8
 Domein, atomaire herstelopslag en UI gebouwd. Versie 0.8.0/SW v9; CI uitgebreid met back-upinterface. Zelfreview en definitieve CI nog open. Geen publicatie.
+
+### Zelfreview 0.8
+Domeinrun 45432191712 38/38, herstelrun 45432335901 40/40, builder-integratierun 45432646288 40/40; bestaande browserflow telkens geslaagd. Aanvullend: tijdmodus-velden opschonen, circuitlabels, prototypeveilige spiergroepen, herstel/update-lock en browserflow voor echte per-setrichtwaarden, live PR en validatie van een daadwerkelijke geëxporteerde snapshot. Fysieke iPhone-review blijft open. Geen onafhankelijke review.
