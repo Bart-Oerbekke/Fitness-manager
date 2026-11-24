@@ -112,3 +112,6 @@ Kalender blijft centraal. Bovenaan compact Vandaag-overzicht met actuele sportti
 
 ## UX 0.9
 Goedgekeurde indeling: Vandaag zonder maandkalender; Agenda zonder dashboard. Volgende activiteit bovenaan, andere activiteiten vandaag, weektijd met sportkleuren, programma's en herstel. Geen dubbele volgende activiteit. Bibliotheekkaart onder Schema's; geselecteerde nav-tab oranje met tekst en lijnicoon, overige grijs. Inline SVG zonder icon-font of netwerk, 22px, vijf gelijkwaardige knoppen. Compacte 320/375/390/430px layout. Trainingskaart ongewijzigd.
+
+## UX 0.10
+Schema's met Programma's/Workouts/Archief, compacte voortgangskaarten en optiemenu's, bibliotheek altijd bereikbaar. Afzonderlijke historie-editor met bestaande setvelden, eenvoudige knoppen en expliciete opslaan/annuleren. Geen extra rijen in actieve training. Destructieve acties met bevestiging en concrete gevolgen. Historische data nooit door templatebewerking wijzigen.
