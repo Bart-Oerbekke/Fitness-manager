@@ -64,6 +64,14 @@ try{
  assert.equal(await evaluate("document.querySelector('.cal-period strong').textContent"),advanced);
  await click('[data-action="cal-today"]');
  assert.equal(await evaluate("document.querySelector('.cal-grid [aria-current=date]')?.dataset.date"),dateLabel);
+ // Real keyboard activation must keep focus on the newly rendered period button.
+ await evaluate("document.querySelector('[data-action=cal-step][data-n=\"1\"]').focus()");
+ const beforePeriod=await evaluate("document.querySelector('.cal-period strong').textContent");
+ await cdp('Input.dispatchKeyEvent',{type:'keyDown',key:'Enter',code:'Enter',windowsVirtualKeyCode:13});
+ await cdp('Input.dispatchKeyEvent',{type:'keyUp',key:'Enter',code:'Enter',windowsVirtualKeyCode:13});
+ assert.notEqual(await evaluate("document.querySelector('.cal-period strong').textContent"),beforePeriod);
+ assert.equal(await evaluate("document.activeElement.dataset.action"),'cal-step');
+ await click('[data-action="cal-today"]');
  console.log('PASS_SPLIT_NAVIGATION');
  await click('.cal-header [data-action="cal-add"]');
  await click('#dialog[open] [data-action="cal-plan-other"]');
@@ -98,14 +106,14 @@ try{
  assert.ok(await evaluate("!!document.querySelector('.cal-shell')"));
  console.log('PASS_AGENDA_ROUTES');
  await click('#nav [data-page="settings"]');
- assert.equal(await evaluate("document.querySelector('#installed-version').textContent"),'0.10.0');
+ assert.equal(await evaluate("document.querySelector('#installed-version').textContent"),'0.11.0');
  await click('[data-action="update-check"]');
  assert.ok(await evaluate("document.querySelector('#update-message').textContent.includes('Geen internet')"));
  await cdp('Network.emulateNetworkConditions',{offline:false,latency:0,downloadThroughput:-1,uploadThroughput:-1});
  // Change served files in this disposable CI checkout only; restore in finally.
  originalApp=await readFile('src/app.mjs','utf8');originalSW=await readFile('sw.js','utf8');
- await writeFile('src/app.mjs',originalApp.replace('const APP_VERSION="0.10.0"','const APP_VERSION="0.10.1-test"'));
- await writeFile('sw.js',originalSW.replace('fitness-manager-shell-v11','fitness-manager-shell-v11-ci-update'));
+ await writeFile('src/app.mjs',originalApp.replace('const APP_VERSION="0.11.0"','const APP_VERSION="0.11.1-test"'));
+ await writeFile('sw.js',originalSW.replace('fitness-manager-shell-v12','fitness-manager-shell-v12-ci-update'));
  await wait(()=>evaluate("!!document.querySelector('[data-action=update-check]:not([disabled])')"),'update check ready');
  await click('[data-action="update-check"]');
  await wait(()=>evaluate("!!document.querySelector('[data-action=update-apply]:not([disabled])')"),'new worker waiting');
@@ -213,7 +221,7 @@ try{
  await click('#nav [data-page="agenda"]');
  assert.ok(await evaluate("document.querySelector('.cal-day-agenda').textContent.includes('Offline test')"));
  await click('#nav [data-page="settings"]');
- assert.equal(await evaluate("document.querySelector('#installed-version').textContent"),'0.10.1-test');
+ assert.equal(await evaluate("document.querySelector('#installed-version').textContent"),'0.11.1-test');
  console.log('PASS_APP_UPDATE');
  // Management UI: exercise the archive, resume and history flows before final backup restore.
  await click('#nav [data-page="schemas"]');
@@ -241,6 +249,16 @@ try{
  await click('[data-action="program-menu"]');
  const resume=cdp('Runtime.evaluate',{expression:"document.querySelector('#dialog [data-action=program-archive]').click()"});await sleep(200);await cdp('Page.handleJavaScriptDialog',{accept:true});await resume;
  assert.ok(await evaluate("document.querySelector('#app').textContent.includes('CI aangepast')"));
+ await click('[data-action="program-open"]');
+ assert.equal(await evaluate("document.querySelectorAll('.program-schedule .period-bar').length"),1);
+ assert.equal(await evaluate("document.querySelector('[data-action=program-week][data-n=\"-1\"]').disabled"),true);
+ await click('[data-action="program-week"][data-n="1"]');
+ assert.equal(await evaluate("document.querySelector('.program-schedule .period-label strong').textContent"),'Week 2');
+ await click('[data-action="program-entry-menu"]');
+ assert.equal(await evaluate("document.querySelectorAll('#dialog .menu-action svg').length"),3);
+ await click('#dialog [data-action="program-days"]');
+ assert.equal(await evaluate("document.querySelectorAll('#dialog [name=days]:checked').length"),1);
+ await click('#dialog [data-action="dialog-close"]');
  console.log('PASS_SCHEMA_MANAGEMENT');
  await click('#nav [data-page="progress"]');
  await click('[data-action="nav"][data-page="history"]');

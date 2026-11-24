@@ -140,3 +140,6 @@ Expliciet gebruikersakkoord voor codecommit 0c50947f51536e874ff5f957b203b7c9b78f
 
 ## Upgrade 0.11 — scope vooraf
 Gebruiker bevestigt P-53 t/m P-58 (UX only). Aannames: weekselectie in programmadetails alleen viewstate, initiële actuele week begrensd op beschikbare weken; compact 38px formuliervelden behouden; 44px voor primaire iconacties, maandcellen en mini-chips waar haalbaar. Risico's: horizontale uitloop op 320px, verborgen beheeracties, focusverlies door render, bereikbaarheid oude beschermde events, actieve training onbedoeld veranderd. CI en zelfreview; geen publicatie/merge, geen extra kosten. Vercel testproject niet Git-gekoppeld gecontroleerd.
+
+### Implementatie UX 0.11
+Gedeelde periodeselector, lijniconen, programmadetail met tijdelijke weekselectie en menu, aangepaste historie/instellingen, betere contrasten en leesbaarheid, 44px belangrijke iconacties, behoud 38px formulieren en compacte trainingssetgrid. Versie 0.11.0/SW v12. CI uitgebreide keyboard- en programmaroutes; aanvullende layoutcontrole volgt. Geen domein- of opslagwijziging, geen publicatie.
