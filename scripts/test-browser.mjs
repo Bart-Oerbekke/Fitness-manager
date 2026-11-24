@@ -41,6 +41,16 @@ try{
  await click('.cal-header [data-action="cal-add"]');
  await click('#dialog[open] [data-action="cal-plan-other"]');
  await wait(()=>evaluate("!!document.querySelector('#dialog[open] #dialog-form [name=name]')"),'activity form ready');
+ for(const width of [320,375,390,430]){
+   await cdp('Emulation.setDeviceMetricsOverride',{width,height:844,deviceScaleFactor:1,mobile:true});
+   const layout=await evaluate("(()=>{const d=document.querySelector('#dialog'),f=document.querySelector('#dialog-form'),r=d.getBoundingClientRect(),inputs=[...f.querySelectorAll('input:not([type=checkbox]),select')];return {fits:inputs.every(x=>{const b=x.getBoundingClientRect();return b.left>=r.left-1&&b.right<=r.right+1&&b.width>0}),overflow:d.scrollWidth>d.clientWidth+1,unit:f.querySelector('#minutes-unit')?.textContent,mode:f.elements.minutes.inputMode,height:f.elements.minutes.getBoundingClientRect().height,weekUnit:f.querySelector('#weeks-unit')?.textContent}})()");
+   assert.equal(layout.fits,true,'form fields fit at '+width);assert.equal(layout.overflow,false,'dialog horizontal overflow at '+width);assert.equal(layout.unit,'min');assert.equal(layout.weekUnit,'weken');assert.equal(layout.mode,'numeric');assert.ok(layout.height<=40);
+ }
+ assert.equal(await evaluate("document.querySelector('.repeat-days').hidden"),true);
+ await evaluate("document.querySelector('#dialog-form [name=weeks]').value='6';document.querySelector('#dialog-form [name=weeks]').dispatchEvent(new Event('input'))");
+ assert.equal(await evaluate("document.querySelectorAll('.weekday-option input:not([disabled])').length"),7);
+ await evaluate("document.querySelector('#dialog-form [name=weeks]').value='1';document.querySelector('#dialog-form [name=weeks]').dispatchEvent(new Event('input'))");
+ console.log('PASS_COMPACT_FORMS');
  await evaluate("document.querySelector('#dialog-form [name=name]').value='Offline test';document.querySelector('#dialog-form [name=minutes]').value='42';document.querySelector('#dialog-form').requestSubmit()");
  await wait(()=>evaluate("document.querySelector('.cal-day-agenda')?.textContent.includes('Offline test') && document.querySelector('#storage-status')?.textContent.includes('Offline')"),'offline write committed');
  await reloadOffline('second offline reload');

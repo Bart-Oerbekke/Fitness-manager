@@ -31,3 +31,33 @@ input:not(.field input),select,textarea{font-size:16px;padding:7px 8px;min-heigh
 .set-actions{display:flex;align-items:center;justify-content:space-between;padding:0 4px}
 .set-actions .set-remove{color:#a1a3b1;font-size:12px;min-height:44px;background:transparent;padding-inline:10px}
 .set-actions .extra-set{min-height:44px}
+
+/* Compact shared forms; 16px editable text prevents iOS focus zoom. */
+.form-field,.form-control{min-width:0;max-width:100%;width:100%}
+.form-field{display:grid;gap:4px;align-content:start}.form-field>label{margin:0;font-size:11px;font-weight:550;line-height:1.3;color:#abb3bf}
+.form-control{display:flex;align-items:center;background:#11161d;border:1px solid #414b58;border-radius:7px;min-height:38px;overflow:hidden}
+.form-control:focus-within{border-color:#ff8900;box-shadow:0 0 0 1px #ff890066}
+.form-control>input:not([type=checkbox]),.form-control>select{display:block;appearance:none;-webkit-appearance:none;flex:1 1 0;min-width:0;width:100%;max-width:100%;height:36px;min-height:36px;margin:0;border:0;border-radius:0;padding:5px 9px;background:transparent;font-size:16px;line-height:24px;outline:none;box-shadow:none;color:#edf0f4}
+.form-control>input:focus-visible,.form-control>select:focus-visible{outline:none}
+.form-control>input[type=date],.form-control>input[type=time]{min-inline-size:0;max-inline-size:100%;text-align:left}
+.form-control>input::-webkit-date-and-time-value{text-align:left;margin:0;min-height:24px}
+.form-control>input::-webkit-datetime-edit{padding:0}
+.form-control>input::-webkit-inner-spin-button,.form-control>input::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
+.form-control>input[type=number]{appearance:textfield;-moz-appearance:textfield}
+.form-control>select{padding-right:26px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23aab3c0' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 9px center}
+.form-unit{flex:0 0 auto;padding:0 8px 0 2px;color:#a2acba;font-size:11px;white-space:nowrap;pointer-events:none}
+.form-pair{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:8px;align-items:start;min-width:0}
+dialog{width:min(390px,calc(100% - 24px));max-width:calc(100% - 24px);padding:0;border:1px solid #39434e;border-radius:13px;background:#1b222b;max-height:calc(100dvh - 32px);overflow:auto;overscroll-behavior:contain}
+dialog::backdrop{background:#000a}.compact-form{display:grid;grid-template-columns:minmax(0,1fr);padding:13px;gap:10px;min-width:0}
+.dialog-heading{display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:32px}.dialog-heading h2{font-size:17px;line-height:1.25;margin:0;letter-spacing:-.2px}
+.dialog-x{background:transparent;color:#aeb7c3;min-height:36px;min-width:36px;padding:0;font-size:21px;line-height:1}
+.dialog-fields{display:grid;grid-template-columns:minmax(0,1fr);gap:9px;min-width:0}.dialog-fields>*{min-width:0;max-width:100%}.dialog-fields>label{margin:0;font-size:11px}.dialog-fields>p{margin:0}
+.dialog-fields>textarea,.dialog-fields>select,.dialog-fields>input:not([type=checkbox]){min-width:0;max-width:100%;font-size:16px;border-color:#414b58;border-radius:7px}
+.dialog-actions{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.5fr);gap:8px;border-top:1px solid #343d49;padding-top:9px}.dialog-actions button{min-height:44px;font-size:13px;border-radius:7px}
+.dialog-cancel{background:#252e38;color:#c0c7d0;border:1px solid #3a4552}.form-hint{font-size:11px;line-height:1.4;color:#a2acba}
+.weekday-picker{min-width:0;margin:0;padding:0;border:0}.weekday-picker legend{font-size:11px;font-weight:550;color:#abb3bf;padding:0;margin-bottom:5px}
+.weekday-options{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px}.weekday-option{display:grid;position:relative;min-width:0;margin:0;min-height:44px;cursor:pointer}
+.weekday-option input[type=checkbox]{position:absolute;opacity:0;width:100%;height:100%;margin:0;cursor:pointer}.weekday-option span{display:grid;place-items:center;min-width:0;min-height:44px;border:1px solid #414b58;background:#11161d;border-radius:6px;color:#bac3ce;font-size:12px}
+.weekday-option input:checked+span{border-color:#ff8900;background:#ff890022;color:#ffb568;font-weight:650}.weekday-option input:focus-visible+span{outline:2px solid #ff8900;outline-offset:2px}.repeat-days[hidden]{display:none}
+#builder-form>.form-field{margin-bottom:3px}.builder-card .inside.stack{gap:7px}.builder-card .formrow{grid-template-columns:minmax(0,.8fr) minmax(0,1.1fr) minmax(0,1fr)}.builder-card .checklabel{min-height:28px;font-size:12px}
+@media(max-width:360px){.compact-form{padding:11px}.form-pair{gap:6px}.form-control>input:not([type=checkbox]){padding-inline:6px}.form-unit{padding-right:5px}.weekday-options{gap:3px}.weekday-option span{font-size:11px}}

@@ -51,3 +51,6 @@ Zie CLOUD.md en database/fitness_state.draft.sql voor voorgestelde Supabase Free
 
 ## Kalender- en setfeedback
 calendarDisplayItems is uitsluitend presentatie; weekSummary gebruikt calendarItems voor actuals en planning, zodat verwijzingen niet dubbel tellen. removeSessionSet wijzigt alleen actieve snapshot, nooit template of historie. Service worker v5, geen wijziging aan IndexedDB-contract.
+
+## Formulieren
+Gedeelde veldcomponenten in app.mjs en CSS; name/id en FormData-contract behouden. SW v6, geen datamigratie. Chromium-test controleert geometrie, units, numeric inputmode en herhalen.

@@ -79,3 +79,6 @@ De gebruiker heeft de visuele richting en oefenkaart goedgekeurd en de builder v
 
 ## Fasebesluit
 Apple-login en cloudsynchronisatie voorlopig uitgesteld op verzoek gebruiker. De lokale ontwikkelversie blijft uitsluitend voor fictieve gegevens totdat beveiligde opslag en auth als volledige gebruikersstroom zijn gevalideerd.
+
+## Formulierfeedback iPhone
+P-32: compacte formulieren met zichtbare eenheden voor duur, weken, rusttijd en gewicht; datum/tijd passen binnen container; weekdagen alleen bij herhalen. Geen wijziging aan opslagcontract.
