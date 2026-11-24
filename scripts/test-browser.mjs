@@ -126,7 +126,7 @@ try{
  await click('[data-action="workout-edit"]');
  await evaluate("document.querySelector('.builder-advanced').open=true");
  await click('[name="individual0"]');
- await evaluate("document.querySelector('[name=streps0_0]').value='12';document.querySelector('[name=strrir0_0]').value='2';document.querySelector('[name=instructions0]').value='Rustig uitvoeren'");
+ await evaluate("document.querySelector('[name=streps0_0]').value='12';document.querySelector('[name=strir0_0]').value='2';document.querySelector('[name=instructions0]').value='Rustig uitvoeren'");
  await click('#builder-form button[type=submit]');
  assert.equal(await evaluate("document.querySelector('.set:not(.warmup) [data-field=reps]').placeholder"),'12');
  assert.ok(await evaluate("document.querySelector('.target-meta').textContent.includes('RIR 2')"));
