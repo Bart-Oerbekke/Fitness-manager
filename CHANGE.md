@@ -128,3 +128,6 @@ Gebruiker keurt P-47 t/m P-52 goed. Aannames: archiveren van workout blokkeert n
 
 ### Implementatie 0.10
 Schemabeheer en historie-editor gebouwd; versie 0.10.0/SW v11. Geen wijziging actieve kaart, geen DB-migratie. Regressie en review nog open. Geen deployment.
+
+### Zelfreview 0.10
+Domeincommit 04d61d19129509b8e34bc1fe20e750dbd2e05075 run 45441924255: 46/46 en browser groen. Tussencommit 21578ac1a3a6897bd1d8cde0a7de0077b8bf3513 run 45442081938: browser timeout oude workoutselector; tabroute bijgewerkt. Extra review: archiefdatum voorkomt terugverschijnen gepauzeerde events; hervatten laat gemiste pauzeafspraken vervallen; workout uit programma behoudt beschermde events losgekoppeld met weektargets; eigen oefening in historie-picker. CI uitgebreid met beheer en handmatige registratie. Geen onafhankelijke review of fysieke iPhone-test. Geen publicatie.
