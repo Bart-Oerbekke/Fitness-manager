@@ -28,11 +28,22 @@ try{
  await wait(()=>evaluate("!!document.querySelector('.cal-shell')"),'app initialized');
  await wait(()=>evaluate("!!navigator.serviceWorker.controller"),'service worker controls app');
  await cdp('Network.emulateNetworkConditions',{offline:true,latency:0,downloadThroughput:0,uploadThroughput:0});
- await cdp('Page.reload');
- await wait(()=>evaluate("!!document.querySelector('.cal-shell') && navigator.onLine===false && document.querySelector('#storage-status')?.textContent.includes('Offline')"),'offline app reopened');
- await evaluate("document.querySelector('[data-action=cal-add]').click();document.querySelector('[data-action=cal-plan-other]').click();document.querySelector('#dialog-form [name=name]').value='Offline test';document.querySelector('#dialog-form [name=minutes]').value='42';document.querySelector('#dialog-form').requestSubmit()");
+ async function reloadOffline(label){
+   const previous=await evaluate('performance.timeOrigin');
+   await cdp('Page.reload');
+   await wait(()=>evaluate("performance.timeOrigin!=="+previous+" && !!document.querySelector('.cal-shell') && navigator.onLine===false && document.querySelector('#storage-status')?.textContent.includes('Offline') && !document.querySelector('#app').inert"),label);
+ }
+ async function click(selector){
+   await wait(()=>evaluate("!!document.querySelector("+JSON.stringify(selector)+")"),"button "+selector);
+   await evaluate("document.querySelector("+JSON.stringify(selector)+").click()");
+ }
+ await reloadOffline('offline app reopened');
+ await click('.cal-header [data-action="cal-add"]');
+ await click('#dialog[open] [data-action="cal-plan-other"]');
+ await wait(()=>evaluate("!!document.querySelector('#dialog[open] #dialog-form [name=name]')"),'activity form ready');
+ await evaluate("document.querySelector('#dialog-form [name=name]').value='Offline test';document.querySelector('#dialog-form [name=minutes]').value='42';document.querySelector('#dialog-form').requestSubmit()");
  await wait(()=>evaluate("document.querySelector('.cal-day-agenda')?.textContent.includes('Offline test') && document.querySelector('#storage-status')?.textContent.includes('Offline')"),'offline write committed');
- await cdp('Page.reload');
+ await reloadOffline('second offline reload');
  await wait(()=>evaluate("document.querySelector('.cal-day-agenda')?.textContent.includes('Offline test') && navigator.onLine===false"),'offline record survived reload');
  console.log('PASS_OFFLINE_APP');
 }finally{
