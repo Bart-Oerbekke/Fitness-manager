@@ -1,6 +1,6 @@
 # Fitness Manager — ontwerpafspraken
 
-Status: oefenkaart goedgekeurd; builderconcept ter beoordeling, 24 november 2026.
+Status: oefenkaart goedgekeurd; builder goedgekeurd met Each-optie, 24 november 2026.
 
 ## Referentie en richting
 De aangeleverde BridgeAthletic-screenshots (met name oefenpreview Strength Lowerbody en Core - Rotational) bepalen de visuele hiërarchie en spacing. De eerdere compacte tabelweergave en permanente kopieerknop zijn afgewezen. Behoud een rustige, ruime, verticaal scrollende oefenkaart; geen kopie van merk, broncode of beschermde video's. Voorbeelden met fictieve waarden.
@@ -15,9 +15,11 @@ Afgeleide ontwerpwaarden op circa 390 CSS-px schermbreedte (te controleren op iP
 - Oranje #ff8900 voor focus, primaire acties en kleine contextacties; geen permanente grote oranje kopieerknop.
 
 ## Eenvoudige workout builder
-- Trainingnaam en oefenkaarten met naam (bibliotheek zoeken of zelf toevoegen), aantal sets, repdoel of repbereik, optioneel richtgewicht in kg. Geen media-invoer.
+- Trainingnaam en oefenkaarten met naam (bibliotheek zoeken of zelf toevoegen), aantal sets, repdoel of repbereik, optioneel richtgewicht in kg. Onder de velden een klein vinkvakje met label “Each (ea)”, standaard uit. Geen media-invoer.
 - Hergebruik dezelfde kaartmarges, kleuren en typografische hiërarchie als de actieve training. Toevoegen, verwijderen en ordenen van oefeningen; één duidelijke opslaanknop.
 - Richtwaarden gelden standaard voor iedere set; preview toont deze als gedempte placeholders, werkelijke registratie blijft onafhankelijk. Geen automatische vinkjes of wijziging van template tijdens training.
+
+- Each ingeschakeld: toon bijvoorbeeld “6–8 reps ea” als gedempte richtwaarde en “7 reps ea” als helder ingevulde waarde. Een enkel repsveld, geen aparte arm/been-selectie. Gebruik dezelfde eenheidsaanduiding bij preview, actieve training en historie. Laat de bestaande spacing intact en geef het repsveld voldoende breedte.
 
 ## Contextuele toetsenbordactie
 - Focus op numeriek veld toont app-eigen smalle balk direct boven zichtbaar iOS-toetsenbord met subtiele tekstactie “Apply to all” (rechts), zonder dropdown of setselector.
@@ -35,5 +37,7 @@ Afgeleide ontwerpwaarden op circa 390 CSS-px schermbreedte (te controleren op iP
 | D-04 | Afvinken / kopiëren | Duidelijke feedback; geen onbedoelde status- of veldwijzigingen. | interactietest |
 | D-05 | Lange naam / smallere breedte | Naam kan afbreken, velden blijven leesbaar en bediening bereikbaar. | 375/390/430 CSS-px |
 
+| D-06 | Each aan/uit | Vinkvakje in builder; repslabel wisselt tussen reps en reps ea in preview en actieve training zonder extra invoervelden of overlap. | handmatig |
+
 ## Reviewstatus
-Concept op basis van screenshots en gebruikersfeedback; geen browser- of iPhone-test uitgevoerd, oefenkaart goedgekeurd door gebruiker, builder nog te beoordelen; geen publicatie. Verdere schermen en technische details volgen na beoordeling.
+Concept op basis van screenshots en gebruikersfeedback; geen browser- of iPhone-test uitgevoerd, oefenkaart goedgekeurd door gebruiker, builder goedgekeurd met aanvullende Each-optie; geen publicatie. Verdere schermen en technische details volgen na beoordeling.
