@@ -1,51 +1,30 @@
-# Technische keuzes en uitvoering
+# Fitness Manager — technische architectuur
 
-Status: in te vullen per app. Kies technologie op basis van producteisen en bestaande omgeving. Noteer geen geheimen.
+Status: lokale ontwikkelversie; geen cloud, Apple-login of productiehosting. 24 november 2026.
 
-## Architectuur en besluiten
-- Stack, runtime en versies: [invullen]
-- Componentgrenzen, gegevensopslag en gegevensstromen: [invullen]
-- Authenticatie, autorisatie en validatie: [invullen]
-- Externe diensten en afhankelijkheden, met reden: [invullen]
-- Migraties, compatibiliteit en relevante beveiligingsrisico's: [invullen]
-- Besluiten en afwegingen: [invullen of verwijzing]
+## Architectuur
+- PWA met standaard HTML, CSS, ES modules, Web App Manifest en service worker. Node 22 voor tests, Python 3 voor lokale HTTP-preview. Geen npm-afhankelijkheden, geen buildstap, geen tracking. Voor deze persoonlijke app is een framework nog niet noodzakelijk; domeinfuncties blijven los van DOM en opslag.
+- src/core.mjs: pure trainingsregels (setvalidatie, kopiëren, richtwaarden, weekplanning, historie, sporttijd). src/app.mjs: schermen en tijdelijke localStorage-adapter. src/library.mjs: 118 handmatig samengestelde namen met spiergroep/apparatuur; geen externe media. src/style.css: goedgekeurde donkere kaartstijl.
+- Datamodel: bibliotheekoefening (stabiele ID), workouttemplate met geordende oefenconfiguraties, programma met herhaalregels en week-overrides, geplande activiteit met eigen UUID, actieve sessie met snapshot van richtwaarden, afgeronde sessie met werkelijke sets/duur. Historie onafhankelijk van template. Bodyweight en Each expliciet. Dumbbellkg per stuk.
+- Lokale versie bewaart fictieve data in localStorage (één versieerbaar document); service worker cachet alleen app-shell. Geen accountbeveiliging in deze versie. Geen echte trainingsdata gebruiken in lokale testversie. Lokale opslag kan gewist worden; JSON-export is mogelijk, import/herstel nog niet. Meerdere tabs kunnen elkaar overschrijven.
+- Toekomstige productie: IndexedDB voor lokale records en outbox, versieerbare server-API met PostgreSQL. Per gebruiker eigenaar-ID en autorisatie op alle tabellen, geen publiek leesbare trainingsdata. UUID's en unieke mutation-ID voor idempotente synchronisatie; serverrevision/optimistische concurrency; conflicten expliciet afhandelen en afgeronde sessies niet stilzwijgend overschrijven. Offline afmelden en accountwisseling wissen/isoleren lokale gegevens; authenticatie verversen zodra online. Dit contract is ontwerp, nog niet geïmplementeerd.
+- Sign in with Apple vereist externe configuratie (App ID, Services ID, domein, callback en servergeheim). Login op server, sessie met veilige HttpOnly/Secure/SameSite-cookie indien gekozen backend dit ondersteunt. Geen private keys in repo of browser. Database/hostingprovider en kosten vooraf afstemmen. Geen infrastructuur ingericht.
+- AI/HealthKit/Bridge-import zijn vervolgwerk. AI krijgt alleen geautoriseerde relevante records, expliciete bevestiging van bewerkbaar schema, geen directe schrijfrechten.
 
-## Reproduceerbare lokale uitvoering
-- Vereisten en installatiecommando: [invullen]
-- Startcommando en lokaal previewadres: [invullen]
-- Omgevingsvariabelen: [alleen namen, doel en veilige configuratiewijze]
-- Testdata en veilige testaccounts: [werkwijze zonder productiegegevens/geheimen]
+## Lokaal uitvoeren
+Node 22 en Python 3. Vanuit checkout: npm run check; npm test; npm start. Open http://localhost:8000. Geen installatie nodig. Gebruik fictieve data. HTTPS of localhost vereist voor service worker; fysieke iPhone heeft een afzonderlijk goedgekeurd bereikbaar HTTPS-previewadres nodig.
 
 ## Controles
-| Controle | Exact commando/methode | Toepassingsgebied en slaagcriterium | Verplicht wanneer |
-| --- | --- | --- | --- |
-| Tests | [invullen] | [kernstromen en regressies] | [invullen] |
-| Lint/typecontrole/build | [splits waar nodig] | [invullen] | [invullen] |
-| Toegankelijkheid/visueel | [tool en handmatige methode] | [DESIGN-criteria] | [invullen] |
-| Beveiliging/migratie | [risicogerichte methode] | [invullen] | [invullen] |
+| Controle | Commando/methode | Status |
+| --- | --- | --- |
+| Syntax | npm run check | CI ingericht; syntax ook via JS-parser in connectoromgeving gecontroleerd |
+| Domein | npm test | 9 scenario's; testbestand ook met eenvoudige JS-testadapter uitgevoerd, alle geslaagd |
+| Browser | Safari/iPhone: 375/390/430 px; keyboard, focus, offline, opslag, navigatie | open |
+| Toegankelijkheid | focus, semantiek, contrast, zoom en labels handmatig en geautomatiseerd | open |
+| Beveiliging | Apple-login, autorisatie, sync/replay/accountisolatie | niet gebouwd; blokkeert productie |
 
-Verwijder geen relevante controles om een groene status te krijgen. Markeer niet-toepasselijk met reden. Resultaten van een concrete uitvoering horen in CHANGE.md.
+## GitHub
+Branch feature/local-first-mvp; main alleen na mergeakkoord. Workflow .github/workflows/checks.yml, check Syntax and domain tests, PR en push op main/featurebranches, contents: read, geen deployment. Branchbescherming en vereiste checks nog niet geverifieerd of gewijzigd. Geen bestaande workflows op main aangetroffen. CI-foutdetectie nog niet aangetoond met een bewust falende run.
 
-## GitHub per repository
-- Repository, doelbranch en branch/PR-afspraken: [invullen]
-- Workflowbestanden en exacte checknamen: [invullen]
-- Verplichte checks en eventueel verplichte reviewers: [werkelijk ingestelde regels]
-- Rechten, secrets en omgang met onbetrouwbare PR-code: [invullen]
-- Activeringsbewijs: [PR/run en controle van falende check en mergeblokkade]
-- Status: [niet ingericht/gedeeltelijk/geverifieerd], beperkingen: [invullen]
-
-## Omgevingen, preview en publiceren
-| Omgeving | Doel en URL | Trigger/commando | Toegang en gegevens |
-| --- | --- | --- | --- |
-| Lokaal | [invullen] | [invullen] | [invullen] |
-| Preview indien gebruikt | [invullen] | [expliciet toegestane deployment] | [afgeschermd waar nodig] |
-| Productie | [invullen] | [inclusief automatische merge/push-trigger] | [invullen] |
-
-- Publicatieverantwoordelijke en vereiste rechten: [invullen]
-- Releaseprocedure voor exact beoordeelde versie/artifact: [stappen]
-- Configuratie, migratievolgorde en back-up indien nodig: [stappen]
-- Herstelprocedure, vorige versie en beperkingen van dataherstel: [invullen]
-- Smokecheck na deployment: [kernstroom, signalen en slaagcriteria]
-- Foutafhandeling en monitoring: [stoppen, herstel of escalatie binnen verleende bevoegdheid]
-
-Automatische productiedeployment mag het gebruikersakkoord niet omzeilen. Leg vast hoe uitvoering pas na akkoord plaatsvindt. Een teruggedraaide appversie herstelt niet vanzelf gewijzigde data.
+## Preview en release
+Lokale preview via bovenstaande startstappen. Geen publiek bereikbaar previewadres, geen productieomgeving of automatische deployment ingesteld. Externe preview/hosting, Apple Developer en database pas na afzonderlijk akkoord over kosten en doelomgeving. Publicatie pas na iPhone-test, auth/sync-test, review en versiegebonden akkoord. Herstel: vorige goedgekeurde appversie en afzonderlijk gevalideerde databasemigratie/back-up (nog te ontwerpen).
