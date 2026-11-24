@@ -41,3 +41,22 @@ Afgeleide ontwerpwaarden op circa 390 CSS-px schermbreedte (te controleren op iP
 
 ## Reviewstatus
 Concept op basis van screenshots en gebruikersfeedback; geen browser- of iPhone-test uitgevoerd, oefenkaart goedgekeurd door gebruiker, builder goedgekeurd met aanvullende Each-optie; geen publicatie. Verdere schermen en technische details volgen na beoordeling.
+
+## Volledige schermroute (voorstel ter beoordeling)
+1. Inloggen — persoonlijk account, sessie onthouden; na eerste login direct naar Vandaag.
+2. Vandaag — weekkalender, geplande training, hervatten, snelle toegang tot losse workouts.
+3. Schema's — actieve programma's en losse workouts; nieuw, dupliceren.
+4. Programma — trainingsperiode, weken en geplande workouts; datumplanning nog afstemmen.
+5. Workout builder — naam, oefenkaarten, sets, repdoel, richtgewicht en Each; toevoegen en ordenen.
+6. Oefening kiezen — zoekbare Engelse namen, eigen oefening toevoegen; ook rechtstreeks via tab Oefeningen.
+7. Workout preview — oefenkaarten met gedempte richtwaarden, start en bewerkactie.
+8. Actieve training — identieke kaartopbouw met werkelijke invoer, vinkjes, voortgang en rusttimer.
+9. Actieve training met numeriek toetsenbord — smalle contextbalk met Apply to all, geen setselector.
+10. Afronden — bevestig voltooide sets, eventueel onvoltooide sets; sessie opslaan.
+11. Trainingshistorie — datum en sessies, toegankelijk vanuit Progressie.
+12. Sessiedetail — feitelijk geregistreerde sets, reps/ea, kg, onvoltooide sets.
+13. Progressie — overzicht oefeningen, records en navigatie naar historiek.
+14. Oefeningprogressie — gewicht over tijd, recente sets, records; gewichtseenheid expliciet.
+15. Instellingen — account, syncstatus, rusttimer, data-export en import/integratie-status.
+Vaste navigatie op hoofdpagina's: Vandaag, Schema's, Oefeningen, Progressie, Instellingen. Tijdens actieve training en builder is de tabbar verborgen. Geen media of lege beeldruimte. Voorbeelddata zijn fictief.
+Open ter beoordeling: kalenderplanning, afvinken met uitsluitend richtwaarden versus expliciete invoer, rusttimer standaard, gewicht per dumbbell versus totaal (relevant voor historie), bewerken na afronden. BridgeAthletic-import en Apple Health blijven afhankelijk van export/technische haalbaarheid.
