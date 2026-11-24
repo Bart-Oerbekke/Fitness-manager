@@ -57,14 +57,14 @@ try{
  await wait(()=>evaluate("document.querySelector('.cal-day-agenda')?.textContent.includes('Offline test') && navigator.onLine===false"),'offline record survived reload');
  console.log('PASS_OFFLINE_APP');
  await click('#nav [data-page="settings"]');
- assert.equal(await evaluate("document.querySelector('#installed-version').textContent"),'0.7.0');
+ assert.equal(await evaluate("document.querySelector('#installed-version').textContent"),'0.8.0');
  await click('[data-action="update-check"]');
  assert.ok(await evaluate("document.querySelector('#update-message').textContent.includes('Geen internet')"));
  await cdp('Network.emulateNetworkConditions',{offline:false,latency:0,downloadThroughput:-1,uploadThroughput:-1});
  // Change served files in this disposable CI checkout only; restore in finally.
  originalApp=await readFile('src/app.mjs','utf8');originalSW=await readFile('sw.js','utf8');
- await writeFile('src/app.mjs',originalApp.replace('const APP_VERSION="0.7.0"','const APP_VERSION="0.7.1-test"'));
- await writeFile('sw.js',originalSW.replace('fitness-manager-shell-v8','fitness-manager-shell-v8-ci-update'));
+ await writeFile('src/app.mjs',originalApp.replace('const APP_VERSION="0.8.0"','const APP_VERSION="0.8.1-test"'));
+ await writeFile('sw.js',originalSW.replace('fitness-manager-shell-v9','fitness-manager-shell-v9-ci-update'));
  await wait(()=>evaluate("!!document.querySelector('[data-action=update-check]:not([disabled])')"),'update check ready');
  await click('[data-action="update-check"]');
  await wait(()=>evaluate("!!document.querySelector('[data-action=update-apply]:not([disabled])')"),'new worker waiting');
@@ -135,8 +135,20 @@ try{
  await wait(()=>evaluate("performance.timeOrigin!=="+previous+" && !!document.querySelector('.cal-shell') && !document.querySelector('#app').inert"),'updated app loaded');
  assert.ok(await evaluate("document.querySelector('.cal-day-agenda').textContent.includes('Offline test')"));
  await click('#nav [data-page="settings"]');
- assert.equal(await evaluate("document.querySelector('#installed-version').textContent"),'0.7.1-test');
+ assert.equal(await evaluate("document.querySelector('#installed-version').textContent"),'0.8.1-test');
  console.log('PASS_APP_UPDATE');
+ const date=await evaluate("(()=>{const d=new Date();return [d.getFullYear(),String(d.getMonth()+1).padStart(2,'0'),String(d.getDate()).padStart(2,'0')].join('-')})()");
+ const imported={version:1,custom:[],workouts:[],programs:[],events:[{id:"restored-test",type:"football",name:"Herstelde activiteit",date,minutes:42}],history:[],active:null,favorites:[],recent:[],recovery:[]};
+ await evaluate("(()=>{const f=document.querySelector('#backup-file'),dt=new DataTransfer();dt.items.add(new File(['{'],'bad.json',{type:'application/json'}));f.files=dt.files;f.dispatchEvent(new Event('change'))})()");
+ await wait(()=>evaluate("document.querySelector('#backup-status')?.textContent.includes('JSON')"),'invalid import rejected');
+ await evaluate("(()=>{const f=document.querySelector('#backup-file'),dt=new DataTransfer();dt.items.add(new File(["+JSON.stringify(JSON.stringify(imported))+"],'valid.json',{type:'application/json'}));f.files=dt.files;f.dispatchEvent(new Event('change'))})()");
+ await wait(()=>evaluate("!!document.querySelector('#dialog[open] [name=confirmRestore]')"),'import summary shown');
+ await evaluate("document.querySelector('[name=confirmRestore]').checked=true");
+ await click('#dialog[open] button[type=submit]');
+ await wait(()=>evaluate("document.querySelector('#backup-status')?.textContent.includes('Back-up hersteld')"),'backup committed');
+ await click('#nav [data-page="today"]');
+ assert.ok(await evaluate("document.querySelector('.dashboard').textContent.includes('Herstelde activiteit')"));
+ console.log('PASS_BACKUP_DASHBOARD');
 }finally{
  if(originalApp!==undefined)await writeFile('src/app.mjs',originalApp);if(originalSW!==undefined)await writeFile('sw.js',originalSW);
  ws?.close();chrome.kill();await sleep(300);await rm(dir,{recursive:true,force:true,maxRetries:3,retryDelay:200});

@@ -101,3 +101,6 @@ Expliciet gebruikersakkoord voor codecommit 061a5598ee4619b6c2e0f99b856a69f6b1cf
 
 ## Upgrade 0.8 — scope en acceptatie vooraf
 Gebruiker vraagt geavanceerde builder, Vandaag-dashboard, spiergroep/volumeanalyse, back-upherstel, live PR, designoptimalisatie. P-39 t/m P-44. Aannames: handmatige tijdregistratie en circuitvolgorde, maximaal zes gekoppelde oefeningen, dropset afzonderlijk, geen merge-import, eerste meting geen PR-melding, primaire spiergroep als telconventie. Risico's: dataverlies bij herstel, ongeldige import/HTML-injectie, verkeerde PR/volume, oude snapshots en weekoverrides. Testen/zelfreview volgens REVIEWFLOW, geen publicatie of merge zonder apart akkoord.
+
+### Implementatie 0.8
+Domein, atomaire herstelopslag en UI gebouwd. Versie 0.8.0/SW v9; CI uitgebreid met back-upinterface. Zelfreview en definitieve CI nog open. Geen publicatie.
