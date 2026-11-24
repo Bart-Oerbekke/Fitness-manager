@@ -1,6 +1,6 @@
 # Fitness Manager — productbrief
 
-Status: productrichting, oefenkaart en vereenvoudigde builder goedgekeurd; laatste intakekeuzes verwerkt. 24 november 2026.
+Status: productrichting, oefenkaart en vereenvoudigde builder goedgekeurd; laatste intakekeuzes en centrale sportkalender goedgekeurd. 24 november 2026.
 
 ## Doel en gebruikers
 Persoonlijke fitnessapp voor één sporter die nu BridgeAthletic gebruikt en zelfstandig trainingen wil maken. Snelle mobiele registratie van reps, kg en voltooide sets is de primaire gebruikersstroom. Installeerbare iPhone-webapp (PWA), Nederlandstalige interface met Engelse oefeningnamen. Eigen visuele stijl, donker met oranje accenten.
@@ -14,8 +14,10 @@ Persoonlijke fitnessapp voor één sporter die nu BridgeAthletic gebruikt en zel
 - Historie, persoonlijke records en progressiegrafieken per oefening. Tijdens actieve training staat direct onder iedere oefening standaard een compacte tabel met de laatste eerdere sessie waarin dezelfde oefening is uitgevoerd: datum, feitelijke reps en kg per voltooide set (ea en kg per dumbbell waar relevant). Een subtiel historie-icoon opent oudere sessies. Match op stabiel oefening-ID, niet alleen naam of programma; ook over programma's heen. Geen automatische overname in actuele registratie. Bij afwezigheid van historie kleine lege toestand.
 - Privé account met Sign in with Apple, online synchronisatie en offline trainen; lokaal bewaren van wijzigingen, zichtbare syncstatus, herstel na onderbreking en bescherming tegen dubbele registratie. Geen echte persoonsgegevens in openbare repository.
 
+- Centrale sportkalender: naast fitnessworkouts ook voetbaltraining, voetbalwedstrijd en overige sportactiviteiten plannen, eenmalig of wekelijks herhalend. Naam, datum, optioneel tijdstip en verwachte duur; afzonderlijk afronden en werkelijke duur registreren. Alle activiteiten in een weekoverzicht en historie; totale daadwerkelijk geregistreerde sporttijd per week, uitgesplitst per type. Geen sets/reps voor overige sportactiviteiten. De vaste voetbaltrainingen op dinsdag en donderdag en wisselende weekendwedstrijden zijn gebruiksscenario's, geen hardcoded afspraken of automatisch aangemaakte persoonlijke gegevens.
+
 ## Gewenste uitbreidingen en afhankelijkheden
-- AI-trainingsvoorstellen: later een nieuw meerweeks schema voorstellen op basis van doelen, beschikbare apparatuur, trainingsfrequentie, historie en feedback; gebruiker kan voorstel bewerken en expliciet accepteren. Geen automatische overschrijving of verzending van persoonlijke data zonder passende toestemming. Datamodel in MVP houdt oefeningen, templates, geplande sessies en feitelijke prestaties gescheiden. AI-provider, kosten en privacy nog te bepalen.
+- AI-trainingsvoorstellen: later een nieuw meerweeks schema voorstellen op basis van doelen, beschikbare apparatuur, trainingsfrequentie, historie, voetbaltrainingen, wedstrijden, andere geplande sportactiviteiten en feedback; gebruiker kan voorstel bewerken en expliciet accepteren. Geen automatische overschrijving of verzending van persoonlijke data zonder passende toestemming. Datamodel in MVP houdt oefeningen, templates, geplande sessies en feitelijke prestaties gescheiden. AI-provider, kosten en privacy nog te bepalen.
 - Sign in with Apple op web vereist Apple Developer-configuratie, primary App ID, Services ID, geregistreerd domein/return URL en private key. Beschikbaarheid van account en kosten voor productie nog afstemmen. Geen sleutels in GitHub. Bron: https://developer.apple.com/help/account/capabilities/configure-sign-in-with-apple-for-the-web
 - Import van BridgeAthletic-schema's en trainingshistorie indien beschikbaar: eerst representatieve CSV/PDF van gebruiker of trainer inspecteren. Geen aanname van directe API-toegang. Importpreview, veldmapping, deduplicatie en validatie vóór opslaan.
 - Apple Health: directe HealthKit-toegang vereist een native iOS-appcomponent met toestemming; niet rechtstreeks beschikbaar in een pure PWA. Onderzoek later native wrapper of optionele Opdrachten/Shortcuts-route voor ondersteunde gegevens. Geen automatische HealthKit-synchronisatie beloven voor PWA.
@@ -48,6 +50,9 @@ Persoonlijke fitnessapp voor één sporter die nu BridgeAthletic gebruikt en zel
 | P-22 | Stel per week afwijkende richtreps en kg in; de juiste weekwaarden worden gebruikt als placeholders, zonder eerdere sessies te wijzigen. | vereist | functionele test |
 | P-23 | Tijdens trainen is direct onder elke oefening de meest recente eerdere sessie zichtbaar met datum en werkelijke waarden per voltooide set in oorspronkelijke volgorde. Historie-icoon geeft toegang tot oudere sessies; dezelfde oefening is over programma's heen herkenbaar; geen huidige of niet-afgevinkte sets in de tabel. | vereist | functionele en regressietest |
 
+| P-24 | Plan een voetbaltraining of andere sportactiviteit eenmalig of op vaste weekdagen; verplaats een individuele wedstrijd naar zaterdag of zondag zonder andere afspraken te wijzigen; alle activiteiten verschijnen naast fitnessworkouts. | vereist | functionele test |
+| P-25 | Rond een sportactiviteit af en registreer de werkelijke duur; deze verschijnt in historie en de wekelijkse sporttijd telt alleen werkelijk geregistreerde duur, uitgesplitst per type, zonder dubbele telling. | vereist | functionele test |
+
 ## Open details en aannames
 - Appnaam en icoon later bepalen; Fitness Manager is werknaam. Kosten voor hosting, Apple-configuratie en AI afzonderlijk vooraf afstemmen; geen betaalde dienst activeren zonder akkoord.
 - Voorgestelde historische standaard: laatste eerdere sessie direct zichtbaar; oudere sessies via historie-icoon. Bodyweight toont alleen reps; geen automatische suggestie die richtwaarden overschrijft.
@@ -60,4 +65,4 @@ Persoonlijke fitnessapp voor één sporter die nu BridgeAthletic gebruikt en zel
 - HealthKit: https://developer.apple.com/documentation/Xcode/configuring-healthkit-access
 
 ## Fase
-De gebruiker heeft de visuele richting en oefenkaart goedgekeurd en de builder vereenvoudigd. De vereenvoudigde builder is goedgekeurd met als aanvulling een Each-vinkvakje. Laatste gebruikerskeuzes verwerkt, inclusief inline oefeninghistorie, meerdere actieve programma's en weekvarianten. Inline historie is nog een ontwerpschets ter beoordeling; implementatie op featurebranch volgens AGENTS.md. Eerdere ongeteste verkenningsschets blijft op exploration/initial-prototype. Geen release of hosting goedgekeurd.
+De gebruiker heeft de visuele richting en oefenkaart goedgekeurd en de builder vereenvoudigd. De vereenvoudigde builder is goedgekeurd met als aanvulling een Each-vinkvakje. Laatste gebruikerskeuzes verwerkt, inclusief inline oefeninghistorie, meerdere actieve programma's en weekvarianten. Centrale sportkalender is expliciet goedgekeurd; het inline historie-ontwerp en overige eerder besproken schermen blijven de basis voor implementatie op featurebranch volgens AGENTS.md. Eerdere ongeteste verkenningsschets blijft op exploration/initial-prototype. Geen release of hosting goedgekeurd.
