@@ -28,3 +28,6 @@ Geen bereikbare iPhone-preview omdat externe hosting nog niet is goedgekeurd. Br
 
 ## Oplevering
 Geen merge/publicatie; gebruiker beoordeelt preview. Geen betaalde diensten aangevraagd of ingericht. Externe kosten vooraf per dienst afstemmen.
+
+## Aanvulling: voorbereiding testhosting
+Gebruiker vraagt gratis testomgeving voor iPhone en heeft Apple Developer/Expo. Vercel Hobby geselecteerd als voorstel, accountverbinding nog nodig. Buildscript met allowlist en vercel.json toegevoegd; PREVIEW.md legt exacte instellingen, tests en publicatiegrenzen vast. Geen deployment, externe kosten, Apple-configuratie of wijziging van main uitgevoerd. De providerbuild en live smokecheck zijn nog niet uitgevoerd.

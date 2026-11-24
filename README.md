@@ -16,3 +16,6 @@ AGENTS.md, REVIEWFLOW.md en GITHUB-INRICHTING.md blijven leidend. PRODUCT.md en 
 
 ## Ontwikkelflow
 Eigen featurebranch, gerichte commits, PR, echte checks, zelfreview en preview. Merge en publicatie uitsluitend na afzonderlijk akkoord. Geen externe kosten zonder akkoord. Geen echte trainingsdata of sleutels in GitHub.
+
+## Testhosting
+Zie PREVIEW.md voor de gratis Vercel-preview. `npm run build` maakt een afzonderlijke dist-map met uitsluitend appbestanden. Nog geen deployment.
