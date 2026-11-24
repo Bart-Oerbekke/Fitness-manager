@@ -103,3 +103,6 @@ Instellingen > Applicatie: versienummer, subtiele status, Controleer op updates 
 
 ## Upgrade 0.7 — ontwerp
 Actieve kaart: subtiele optiemenu's, warm-up label, supersetrondes met gekoppelde A/B-markering, actieve setbediening; sessieaanpassingen nooit templates. Progressie: compacte KPI-tegels, periodechips, grafiek met eenheden en lijst historische prestaties; bodyweight en externe belasting niet mengen. Sportbelasting: dagelijkse minuten per sport en RPE-dekking, herstelcheck-in in eigen kaart. Geen pseudo-medische readinessscore. Donkere compacte stijl, 16px inputs en 44px primaire targets. Fysieke iPhone-review blijft vereist.
+
+## UX 0.8
+Kalender blijft centraal. Bovenaan compact Vandaag-overzicht met actuele sporttijd, programmavoortgang, eerstvolgende activiteit en herstel; historische kalenderselectie wijzigt het actuele overzicht niet. Builder: details uitklapbaar, individuele settargets, unitlabels, duidelijke modus en koppeling. PR-melding tijdelijk, niet modaal; geen alarm of medisch advies. Back-up: bestand selecteren, samenvatting, expliciet bevestigen, vorige lokale staat exporteerbaar. Spiergroepbalken met aantallen/volume en periodevergelijking; geen absolute norm of afgeleide spierbelasting. Fysieke Safari-review blijft open.
