@@ -55,6 +55,10 @@ Persoonlijke fitnessapp voor één sporter die nu BridgeAthletic gebruikt en zel
 
 | P-26 | Wissel tussen maand- en weekkalender; navigeer perioden en Vandaag; selecteer een datum en zie alle activiteiten inclusief afgeronde op werkelijke datum; nieuwe activiteit krijgt geselecteerde datum. | vereist | domein- en interactietest |
 
+| P-27 | Swipe wisselt kalenderperiode; weekstatistieken scheiden geplande en werkelijke duur; bewerk één geplande activiteit zonder andere of historie te wijzigen. | vereist | functionele en iPhone-test |
+| P-28 | Actieve training toont setnummers, volgende invoer, rusttimer met +15 sec en extra sets die alleen in de sessie bestaan. | vereist | functionele en iPhone-test |
+| P-29 | Builder ondersteunt verslepen en toetsen/pijlen, favorieten en recente oefeningen, weekrichtwaarden kopiëren na bevestiging. | vereist | functionele en iPhone-test |
+
 ## Open details en aannames
 - Appnaam en icoon later bepalen; Fitness Manager is werknaam. Kosten voor hosting, Apple-configuratie en AI afzonderlijk vooraf afstemmen; geen betaalde dienst activeren zonder akkoord.
 - Voorgestelde historische standaard: laatste eerdere sessie direct zichtbaar; oudere sessies via historie-icoon. Bodyweight toont alleen reps; geen automatische suggestie die richtwaarden overschrijft.
