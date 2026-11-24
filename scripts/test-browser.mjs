@@ -82,9 +82,11 @@ try{
  // Real keyboard activation must keep focus on the newly rendered period button.
  await evaluate("document.querySelector('[data-action=cal-step][data-n=\"1\"]').focus()");
  const beforePeriod=await evaluate("document.querySelector('.cal-period strong').textContent");
- await cdp('Input.dispatchKeyEvent',{type:'keyDown',key:'Enter',code:'Enter',windowsVirtualKeyCode:13});
- await cdp('Input.dispatchKeyEvent',{type:'keyUp',key:'Enter',code:'Enter',windowsVirtualKeyCode:13});
- assert.notEqual(await evaluate("document.querySelector('.cal-period strong').textContent"),beforePeriod);
+ await cdp('Page.bringToFront');
+ await cdp('Input.dispatchKeyEvent',{type:'rawKeyDown',key:'Enter',code:'Enter',windowsVirtualKeyCode:13,nativeVirtualKeyCode:13});
+ await cdp('Input.dispatchKeyEvent',{type:'char',key:'Enter',code:'Enter',text:'\r',unmodifiedText:'\r',windowsVirtualKeyCode:13});
+ await cdp('Input.dispatchKeyEvent',{type:'keyUp',key:'Enter',code:'Enter',windowsVirtualKeyCode:13,nativeVirtualKeyCode:13});
+ await wait(()=>evaluate("document.querySelector('.cal-period strong').textContent!=="+JSON.stringify(beforePeriod)),'keyboard activates period');
  assert.equal(await evaluate("document.activeElement.dataset.action"),'cal-step');
  await click('[data-action="cal-today"]');
  console.log('PASS_SPLIT_NAVIGATION');
