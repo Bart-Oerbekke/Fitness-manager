@@ -75,3 +75,10 @@ Besloten: vaste weekdagen en losse datums; bij afvinken zonder invoer bevestigin
 - AI-voorstellen later vanuit Schema's: knop Nieuw voorstel, doel/duur/frequentie/equipment en historie, bewerkbare preview en bevestiging. Niet actief in MVP.
 
 - Programmaoverzicht ondersteunt meerdere gelijktijdige actieve programma's. Weekselector met weekgebonden richtreps en kg; wijziging raakt alleen gekozen toekomstige scope, niet afgesloten sessies. Appnaam en icoon voorlopig werknaam zonder definitief merkontwerp.
+
+## Centrale sportkalender (goedgekeurd)
+- Vandaag/weekoverzicht toont fitness (oranje), voetbaltraining (blauw #4b99e9), wedstrijd (groen #95d65a) en overige sportactiviteiten met tekstlabels en iconen; kleur is niet het enige onderscheid. Dezelfde donkere kaartstijl en spacing. Meerdere activiteiten op dezelfde datum mogelijk.
+- Nieuwe activiteit: type, naam, datum, optioneel tijdstip, verwachte duur, wekelijks herhalen met dagselectie. Wedstrijd op een losse datum of individueel verplaatsen. Herhaalregels en wijzigingen voor toekomstige gebeurtenissen scheiden van afgeronde historie.
+- Activiteit afronden: werkelijk uitgevoerde duur invoeren/bevestigen en afvinken; geen oefenvelden. Historie bevat alle sporttypen; progressie toont totale werkelijke sporttijd per week en per type, los van krachttrainingsrecords. Geplande duur telt niet als gerealiseerde duur.
+- D-08: weekoverzicht met meerdere activiteitstypen, herkenbare labels, meerdere activiteiten per dag, herhalende voetbaltraining en losse wedstrijd; bevestiging en duurregistratie getest.
+- Later: RPE, herstelanalyse, wearabledata, wedstrijdimport en AI-planning rond sportactiviteiten. Geen betaalde diensten of externe deployment zonder expliciet akkoord.
