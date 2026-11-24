@@ -92,3 +92,6 @@ Gebruiker selecteert actieve training aanpassen, progressie/PR, sportbelasting/h
 
 ### Implementatie 0.7
 Sessiebewerking, warming-up, supersets, progressiemetrics, sessie-RPE, herstelcheck-in en compactere kaarten gebouwd. Additieve opslag; CI uitgebreid. Zelfreview en fysieke review nog open; niet gepubliceerd.
+
+### Zelfreview 0.7
+Domeincommit 833dd471cfe3b3ec201cf061c7f227d98ff30917: run 45417245734 groen (30 tests plus bestaande browserflow). Bij code-review van interface expliciete bescherming van gepaarde werksetverwijdering, warm-up labels, skip navigatie en werksettelling toegevoegd; CI uitgebreid met actieve sessie, template-isolatie en warming-up. Geen onafhankelijke review. Fysieke iPhone-review open.

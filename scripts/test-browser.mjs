@@ -92,6 +92,34 @@ try{
  assert.ok(await evaluate("document.querySelector('.recovery-metrics').textContent.includes('3/5')"));
  await click('#nav [data-page="settings"]');
  console.log('PASS_PROGRESS_RECOVERY');
+ // Verify the existing workout remains unchanged after active-session editing.
+ await click('#nav [data-page="schemas"]');
+ await click('[data-action="workout-open"][data-id="update-test-workout"]');
+ await click('[data-action="start"]');
+ await click('[data-action="session-add"]');
+ await click('#library-results [data-action="exercise-pick"]');
+ assert.equal(await evaluate("document.querySelectorAll('[data-action=session-options]').length"),2);
+ await click('[data-action="session-options"][data-i="1"]');
+ await click('#dialog[open] [data-action="session-skip"]');
+ assert.equal(await evaluate("document.querySelectorAll('.skipped-card').length"),1);
+ await click('.skipped-card [data-action="session-skip"]');
+ await click('[data-action="session-options"][data-i="1"]');
+ await click('#dialog[open] [data-action="session-move"][data-n="-1"]');
+ assert.equal(await evaluate("document.querySelectorAll('[data-action=session-options]').length"),2);
+ // No completed sets in this second session: cancel using a real dialog response.
+ const cancel=cdp('Runtime.evaluate',{expression:"document.querySelector('[data-action=cancel-training]').click()"});
+ await sleep(300);await cdp('Page.handleJavaScriptDialog',{accept:true});await cancel;
+ await click('#nav [data-page="schemas"]');
+ await click('[data-action="workout-open"][data-id="update-test-workout"]');
+ assert.equal(await evaluate("document.querySelectorAll('.set').length"),1);
+ await click('[data-action="workout-edit"]');
+ await evaluate("document.querySelector('.builder-advanced').open=true;document.querySelector('[name=warmup0]').value='1'");
+ await click('#builder-form button[type=submit]');
+ assert.equal(await evaluate("document.querySelectorAll('.set.warmup').length"),1);
+ assert.equal(await evaluate("document.querySelectorAll('.set').length"),2);
+ await click('[data-action="back"]');
+ await click('#nav [data-page="settings"]');
+ console.log('PASS_SESSION_EDIT_WARMUP');
  // A second same-origin client must prevent forced activation.
  const second=await cdp('Target.createTarget',{url:base+'/icon.svg'});
  try{
