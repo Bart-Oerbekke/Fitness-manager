@@ -19,3 +19,6 @@ Eigen featurebranch, gerichte commits, PR, echte checks, zelfreview en preview. 
 
 ## Testhosting
 Zie PREVIEW.md voor de gratis Vercel-preview. `npm run build` maakt een afzonderlijke dist-map met uitsluitend appbestanden. Nog geen deployment.
+
+## Lokale opslagreview
+De IndexedDB-versie staat alleen op de featurebranch totdat expliciet publicatieakkoord is gegeven. Start via npm start en gebruik fictieve gegevens. Test migratie met een bestaande localStorage-snapshot, maak een export, open de app offline na een eerste online bezoek en verifieer dat afgeronde opslagtransacties na herladen blijven bestaan. Herstelimport is niet gebouwd. Testbrowser: npm run check, npm test, npm run build; GitHub Actions voert daarnaast scripts/test-browser.mjs uit met Chromium en HTTP-server.

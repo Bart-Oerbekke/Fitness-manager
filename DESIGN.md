@@ -88,3 +88,6 @@ Gebruiker vindt eerste werkende preview te groot en onprettig. Maand- en weekwee
 
 ## UX-revisie 3
 Compacte weekstatistieken bij geselecteerde week, onbekende geplande duur expliciet. Horizontale swipe alleen in kalender; verticale scroll intact. Optiemenu bewerkt één activiteit. Rustdock tijdens rust, verborgen bij numerieke invoer, +15 sec/overslaan; volgende veld via contextbalk of Enter (native iOS toetsenbordgedrag nog testen). Extra set met + naast nummer; alleen sessiesnapshot. Favorietster en favorietenfilter, recente selectie boven gewone lijst; drag-handle en bestaande pijlen. Kopieer naar volgende week met bevestiging. Trilfeedback uitsluitend indien browser ondersteunt. Geen long-press menu in deze iteratie.
+
+## Lokale opslagstatus
+Subtiele statusregel alleen tijdens laden, opslaan of offline; duidelijke herstelmelding bij fout, export- en herlaadactie. Geen wijzigingen aan de goedgekeurde kalender/kaartverhoudingen. Instellingen toont IndexedDB-status, JSON-export en optionele aanvraag blijvende browseropslag. Geen nep-login of cloudstatus.

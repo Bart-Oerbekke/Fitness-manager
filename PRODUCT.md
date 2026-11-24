@@ -59,6 +59,8 @@ Persoonlijke fitnessapp voor één sporter die nu BridgeAthletic gebruikt en zel
 | P-28 | Actieve training toont setnummers, volgende invoer, rusttimer met +15 sec en extra sets die alleen in de sessie bestaan. | vereist | functionele en iPhone-test |
 | P-29 | Builder ondersteunt verslepen en toetsen/pijlen, favorieten en recente oefeningen, weekrichtwaarden kopiëren na bevestiging. | vereist | functionele en iPhone-test |
 
+| P-30 | Bestaande lokale trainingsgegevens migreren naar IndexedDB; offline opslaan en herladen zonder verlies van bevestigde transacties; conflicterende vensters of opslagfout leiden tot waarschuwing en exportmogelijkheid zonder stille overschrijving. | vereist | unit- en browsertest, fysieke iPhone-review |
+
 ## Open details en aannames
 - Appnaam en icoon later bepalen; Fitness Manager is werknaam. Kosten voor hosting, Apple-configuratie en AI afzonderlijk vooraf afstemmen; geen betaalde dienst activeren zonder akkoord.
 - Voorgestelde historische standaard: laatste eerdere sessie direct zichtbaar; oudere sessies via historie-icoon. Bodyweight toont alleen reps; geen automatische suggestie die richtwaarden overschrijft.
@@ -72,3 +74,6 @@ Persoonlijke fitnessapp voor één sporter die nu BridgeAthletic gebruikt en zel
 
 ## Fase
 De gebruiker heeft de visuele richting en oefenkaart goedgekeurd en de builder vereenvoudigd. De vereenvoudigde builder is goedgekeurd met als aanvulling een Each-vinkvakje. Laatste gebruikerskeuzes verwerkt, inclusief inline oefeninghistorie, meerdere actieve programma's en weekvarianten. Centrale sportkalender is expliciet goedgekeurd; het inline historie-ontwerp en overige eerder besproken schermen blijven de basis voor implementatie op featurebranch volgens AGENTS.md. Eerdere ongeteste verkenningsschets blijft op exploration/initial-prototype. Geen release of hosting goedgekeurd.
+
+## Fasebesluit
+Apple-login en cloudsynchronisatie voorlopig uitgesteld op verzoek gebruiker. De lokale ontwikkelversie blijft uitsluitend voor fictieve gegevens totdat beveiligde opslag en auth als volledige gebruikersstroom zijn gevalideerd.
