@@ -66,3 +66,6 @@ Additieve templatevelden mode, setTargets, instructions en optionele muscle-snap
 
 ### Presentatiefeedback 0.8
 Geen wijziging aan domein-, opslag- of updatecontract. Detailsdialoog leest bestaande sessiesnapshot/preview en muteert niets. Browserregressie controleert individuele placeholders, afwezigheid extra metadata in kaart, opvraagbare details en kg-vrij spiergroepweekoverzicht.
+
+## Navigatie 0.9
+View today/agenda gescheiden, routes voor agenda-today, agenda-add en library-open. Kalenderselectie blijft onafhankelijk van echte dag; planningsacties terug naar Agenda. Historie/preview/back-contexten in geheugen, geen persistent schemawijziging. Inline SVG in app.mjs, geen buildassets of dependencies. SW v10. Browsercheck nieuwe tabs, iconen, bibliotheekroute, mobiel geen horizontale uitloop, offline kalender en bestaande trainingsflow/restore/update.

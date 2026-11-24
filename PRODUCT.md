@@ -94,3 +94,6 @@ P-39 Builder: standaardwaarden behouden, optionele werksetrichtwaarden per set (
 
 ### Feedback vóór publicatie 0.8
 P-39/P-44: actieve trainingskaart behoudt vertrouwde setindeling, reps/gewicht, vinkje, historie en rusttimer; geen extra RIR/RPE-rijen of instructieblokken. Instructies, RIR/RPE en blokleden alleen op verzoek via bestaand oefenmenu; preview via info-icoon. Minimale aanduiding voor dropset, tijd/AMRAP en gekoppeld blok blijft. P-41: spiergroepweekoverzicht toont alleen aantallen werksets en vergelijking vorige week (tijdsets apart), geen kg-volume of uitleg daarover. Individuele oefeningprogressie blijft ongewijzigd.
+
+## Upgrade 0.9 — navigatie
+P-45: Vandaag is zelfstandig dagdashboard (actuele datum, volgende activiteit of actieve training, andere activiteiten vandaag, weektijd, programma's en herstel). Agenda zelfstandig tabblad met bestaande maand/week, planning, swipe, historie en kleurcodering. Vijf tabs Vandaag, Agenda, Schema's, Progressie, Instellingen. Bibliotheek onder Schema's, bestaande picker via builder en sessie behouden. Vanuit Vandaag ook directe Agenda-knop. Geen wijziging trainingslogica, gegevens of hosting. P-46 lijniconen lokaal, labels en actieve status.

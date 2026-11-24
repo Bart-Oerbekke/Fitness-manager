@@ -25,19 +25,36 @@ try{
  // Use a separate origin database name in the module test. Seed the real legacy key now.
  await evaluate("localStorage.setItem('fm-local-preview-v1',JSON.stringify({version:1,custom:[],workouts:[{id:'update-test-workout',name:'Update test',exercises:[{id:'update-ex',exerciseId:'test-ex',name:'Push Up',sets:1,reps:'8',kg:'',ea:false,bodyweight:true,rest:0,equipment:'Bodyweight'}]}],programs:[],events:[],history:[],active:null,favorites:[],recent:[]}))");
  await cdp('Page.navigate',{url:base+'/'});
- await wait(()=>evaluate("!!document.querySelector('.cal-shell')"),'app initialized');
+ await wait(()=>evaluate("!!document.querySelector('.today-shell')"),'app initialized');
  await wait(()=>evaluate("!!navigator.serviceWorker.controller"),'service worker controls app');
  await cdp('Network.emulateNetworkConditions',{offline:true,latency:0,downloadThroughput:0,uploadThroughput:0});
  async function reloadOffline(label){
    const previous=await evaluate('performance.timeOrigin');
    await cdp('Page.reload');
-   await wait(()=>evaluate("performance.timeOrigin!=="+previous+" && !!document.querySelector('.cal-shell') && navigator.onLine===false && document.querySelector('#storage-status')?.textContent.includes('Offline') && !document.querySelector('#app').inert"),label);
+   await wait(()=>evaluate("performance.timeOrigin!=="+previous+" && !!document.querySelector('.today-shell') && navigator.onLine===false && document.querySelector('#storage-status')?.textContent.includes('Offline') && !document.querySelector('#app').inert"),label);
  }
  async function click(selector){
    await wait(()=>evaluate("!!document.querySelector("+JSON.stringify(selector)+")"),"button "+selector);
    await evaluate("document.querySelector("+JSON.stringify(selector)+").click()");
  }
  await reloadOffline('offline app reopened');
+ assert.equal(await evaluate("document.querySelectorAll('.cal-grid,.cal-week-list,.cal-shell').length"),0);
+ assert.deepEqual(await evaluate("[...document.querySelectorAll('#nav button')].map(b=>b.dataset.page)"),['today','agenda','schemas','progress','settings']);
+ for(const width of [320,375,390,430]){
+  await cdp('Emulation.setDeviceMetricsOverride',{width,height:844,deviceScaleFactor:1,mobile:true});
+  const layout=await evaluate("(()=>{const n=document.querySelector('#nav'),r=n.getBoundingClientRect();return {icons:n.querySelectorAll('svg').length,active:n.querySelector('[aria-current=page]')?.dataset.page,fits:[...n.querySelectorAll('button')].every(b=>{const x=b.getBoundingClientRect();return x.left>=r.left&&x.right<=r.right&&b.scrollWidth<=b.clientWidth+1}),overflow:document.documentElement.scrollWidth>innerWidth+1}})()");
+  assert.equal(layout.icons,5);assert.equal(layout.active,'today');assert.equal(layout.fits,true,'nav at '+width);assert.equal(layout.overflow,false,'day at '+width);
+ }
+ await click('[data-action="agenda-today"]');
+ assert.equal(await evaluate("document.querySelectorAll('.dashboard').length"),0);
+ assert.equal(await evaluate("document.querySelector('#nav [aria-current=page]').dataset.page"),'agenda');
+ await click('#nav [data-page="schemas"]');
+ await click('[data-action="library-open"]');
+ assert.ok(await evaluate("document.querySelector('#library-results').children.length>0"));
+ assert.equal(await evaluate("document.querySelector('#nav [aria-current=page]').dataset.page"),'schemas');
+ await click('[data-action="back"]');
+ await click('#nav [data-page="agenda"]');
+ console.log('PASS_SPLIT_NAVIGATION');
  await click('.cal-header [data-action="cal-add"]');
  await click('#dialog[open] [data-action="cal-plan-other"]');
  await wait(()=>evaluate("!!document.querySelector('#dialog[open] #dialog-form [name=name]')"),'activity form ready');
@@ -54,17 +71,18 @@ try{
  await evaluate("document.querySelector('#dialog-form [name=name]').value='Offline test';document.querySelector('#dialog-form [name=minutes]').value='42';document.querySelector('#dialog-form').requestSubmit()");
  await wait(()=>evaluate("document.querySelector('.cal-day-agenda')?.textContent.includes('Offline test') && document.querySelector('#storage-status')?.textContent.includes('Offline')"),'offline write committed');
  await reloadOffline('second offline reload');
+ await click('#nav [data-page="agenda"]');
  await wait(()=>evaluate("document.querySelector('.cal-day-agenda')?.textContent.includes('Offline test') && navigator.onLine===false"),'offline record survived reload');
  console.log('PASS_OFFLINE_APP');
  await click('#nav [data-page="settings"]');
- assert.equal(await evaluate("document.querySelector('#installed-version').textContent"),'0.8.0');
+ assert.equal(await evaluate("document.querySelector('#installed-version').textContent"),'0.9.0');
  await click('[data-action="update-check"]');
  assert.ok(await evaluate("document.querySelector('#update-message').textContent.includes('Geen internet')"));
  await cdp('Network.emulateNetworkConditions',{offline:false,latency:0,downloadThroughput:-1,uploadThroughput:-1});
  // Change served files in this disposable CI checkout only; restore in finally.
  originalApp=await readFile('src/app.mjs','utf8');originalSW=await readFile('sw.js','utf8');
- await writeFile('src/app.mjs',originalApp.replace('const APP_VERSION="0.8.0"','const APP_VERSION="0.8.1-test"'));
- await writeFile('sw.js',originalSW.replace('fitness-manager-shell-v9','fitness-manager-shell-v9-ci-update'));
+ await writeFile('src/app.mjs',originalApp.replace('const APP_VERSION="0.9.0"','const APP_VERSION="0.9.1-test"'));
+ await writeFile('sw.js',originalSW.replace('fitness-manager-shell-v10','fitness-manager-shell-v10-ci-update'));
  await wait(()=>evaluate("!!document.querySelector('[data-action=update-check]:not([disabled])')"),'update check ready');
  await click('[data-action="update-check"]');
  await wait(()=>evaluate("!!document.querySelector('[data-action=update-apply]:not([disabled])')"),'new worker waiting');
@@ -164,10 +182,11 @@ try{
  console.log('PASS_UPDATE_WINDOW_GUARD');
  const previous=await evaluate('performance.timeOrigin');
  await click('[data-action="update-apply"]');
- await wait(()=>evaluate("performance.timeOrigin!=="+previous+" && !!document.querySelector('.cal-shell') && !document.querySelector('#app').inert"),'updated app loaded');
+ await wait(()=>evaluate("performance.timeOrigin!=="+previous+" && !!document.querySelector('.today-shell') && !document.querySelector('#app').inert"),'updated app loaded');
+ await click('#nav [data-page="agenda"]');
  assert.ok(await evaluate("document.querySelector('.cal-day-agenda').textContent.includes('Offline test')"));
  await click('#nav [data-page="settings"]');
- assert.equal(await evaluate("document.querySelector('#installed-version').textContent"),'0.8.1-test');
+ assert.equal(await evaluate("document.querySelector('#installed-version').textContent"),'0.9.1-test');
  console.log('PASS_APP_UPDATE');
  const date=await evaluate("(()=>{const d=new Date();return [d.getFullYear(),String(d.getMonth()+1).padStart(2,'0'),String(d.getDate()).padStart(2,'0')].join('-')})()");
  const existing=await evaluate("(async()=>{const m=await import('/src/storage.mjs'),s=await m.openLocalStore({legacyRaw:localStorage.getItem(m.LEGACY_KEY)});try{return m.parseBackup(JSON.stringify(s.state))}finally{s.close()}})()");

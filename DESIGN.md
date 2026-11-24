@@ -109,3 +109,6 @@ Kalender blijft centraal. Bovenaan compact Vandaag-overzicht met actuele sportti
 
 ### Focus tijdens training
 0.7-setkaart is de referentie: geavanceerde builder blijft buiten de actieve kaart. Geen extra rijen, lange bloknamen of instructieparagrafen. Richtwaarden en instructies op verzoek in dialoog via ⋯; info-icoon in preview alleen waar relevant. Tijd/AMRAP blijven binnen dezelfde invoerrij, D naast setnummer, klein bloklabel. Spiergroepen: sets met vorige-weekbalken, geen kilo's. PR-melding tijdelijk zoals eerder.
+
+## UX 0.9
+Goedgekeurde indeling: Vandaag zonder maandkalender; Agenda zonder dashboard. Volgende activiteit bovenaan, andere activiteiten vandaag, weektijd met sportkleuren, programma's en herstel. Geen dubbele volgende activiteit. Bibliotheekkaart onder Schema's; geselecteerde nav-tab oranje met tekst en lijnicoon, overige grijs. Inline SVG zonder icon-font of netwerk, 22px, vijf gelijkwaardige knoppen. Compacte 320/375/390/430px layout. Trainingskaart ongewijzigd.
