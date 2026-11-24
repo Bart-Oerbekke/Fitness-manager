@@ -91,3 +91,6 @@ Compacte weekstatistieken bij geselecteerde week, onbekende geplande duur explic
 
 ## Lokale opslagstatus
 Subtiele statusregel alleen tijdens laden, opslaan of offline; duidelijke herstelmelding bij fout, export- en herlaadactie. Geen wijzigingen aan de goedgekeurde kalender/kaartverhoudingen. Instellingen toont IndexedDB-status, JSON-export en optionele aanvraag blijvende browseropslag. Geen nep-login of cloudstatus.
+
+## Feedback iPhone — training
+Verwijder de dubbele Volgende-knop (native iOS pijlen bestaan); één kleine zwevende Apply to all-chip met kopie-icoon, neutrale tekst, rechts boven toetsenbord. Native toetsenbord niet aanpasbaar vanuit PWA. Voeg naast + Set toevoegen een gedempte − Set verwijderen actie toe: selecteer onafgeronde set en bevestig. Laat ingevulde waarden in keuze zien. Minimaal één set per oefening; vink een afgeronde set eerst uit als bewust verwijderen nodig is. Kalender toont actieve sessie en voltooid vinkje, ook een verwijzing op geplande datum bij afwijkende werkelijke datum. Na afronding naar werkelijke datum in kalender. Geen dubbeltelling. Fysieke iPhone-layout te beoordelen.

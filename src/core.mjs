@@ -33,3 +33,19 @@ export function extendRest(until,now,seconds){return Math.max(until||0,now)+seco
 export function nextInput(exercises,exIndex,setIndex,field){const fields=exercises[exIndex].bodyweight?["reps"]:["reps","kg"];if(field===fields[0]&&fields.length>1&&!exercises[exIndex].logs[setIndex].done)return {ex:exIndex,set:setIndex,field:fields[1]};for(let i=exIndex;i<exercises.length;i++){for(let j=i===exIndex?setIndex+1:0;j<exercises[i].logs.length;j++){if(!exercises[i].logs[j].done)return {ex:i,set:j,field:"reps"}}}return null}
 export function copyWeekValues(rows,source,target){if(source<0||target<0||source>=rows.length||target>=rows.length||source===target)return false;rows[target]=rows[source].map(x=>({...x}));return true}
 export function orderedLibrary(items,favorites,recent){const rank=x=>favorites.includes(x.id)?0:recent.includes(x.id)?1:2;return [...items].sort((a,b)=>rank(a)-rank(b)||(rank(a)===1?recent.indexOf(a.id)-recent.indexOf(b.id):a.name.localeCompare(b.name)))}
+
+export function removeSessionSet(ex,index){if(!Number.isInteger(index)||index<0||index>=ex.logs.length||ex.logs.length<=1||ex.logs[index].done)return false;ex.logs.splice(index,1);return true}
+// Planned-date references are for display only. Weekly totals use calendarItems.
+export function calendarDisplayItems(events,history,workouts,date,active=null){
+ const rows=calendarItems(events,history,workouts,date);
+ for(const e of events.filter(e=>e.date===date)){
+  const h=history.find(h=>h.eventId===e.id);
+  if(h&&h.date!==date)rows.push({id:h.id,type:h.type,name:h.name,time:e.time||"",minutes:0,done:true,reference:true,actualDate:h.date});
+ }
+ if(active){
+  const planned=rows.find(r=>!r.done&&r.id===active.eventId);
+  if(planned)planned.active=true;
+  if(active.date===date&&!planned)rows.push({id:active.id,type:"fitness",name:active.name,time:"",minutes:0,done:false,active:true});
+ }
+ return rows.sort((a,b)=>(a.time||"99:99").localeCompare(b.time||"99:99")||a.name.localeCompare(b.name));
+}

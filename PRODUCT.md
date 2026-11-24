@@ -61,6 +61,8 @@ Persoonlijke fitnessapp voor één sporter die nu BridgeAthletic gebruikt en zel
 
 | P-30 | Bestaande lokale trainingsgegevens migreren naar IndexedDB; offline opslaan en herladen zonder verlies van bevestigde transacties; conflicterende vensters of opslagfout leiden tot waarschuwing en exportmogelijkheid zonder stille overschrijving. | vereist | unit- en browsertest, fysieke iPhone-review |
 
+| P-31 | Actieve en afgeronde trainingen blijven vindbaar in de kalender; bij afwijkende datum blijft een verwijzing op geplande datum zonder dubbeltelling. Sets tijdens actieve training individueel verwijderen; afgevinkte sets en minimaal één set beschermd. | vereist | domein- en iPhone-test |
+
 ## Open details en aannames
 - Appnaam en icoon later bepalen; Fitness Manager is werknaam. Kosten voor hosting, Apple-configuratie en AI afzonderlijk vooraf afstemmen; geen betaalde dienst activeren zonder akkoord.
 - Voorgestelde historische standaard: laatste eerdere sessie direct zichtbaar; oudere sessies via historie-icoon. Bodyweight toont alleen reps; geen automatische suggestie die richtwaarden overschrijft.
