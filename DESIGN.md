@@ -36,19 +36,18 @@ Afgeleide ontwerpwaarden op circa 390 CSS-px schermbreedte (te controleren op iP
 | D-03 | Reps/kg focus met toetsenbord open | Subtiele Apply to all actie net boven toetsenbord, focusveld zichtbaar; geen overlap. | fysieke iPhone Safari en PWA |
 | D-04 | Afvinken / kopiëren | Duidelijke feedback; geen onbedoelde status- of veldwijzigingen. | interactietest |
 | D-05 | Lange naam / smallere breedte | Naam kan afbreken, velden blijven leesbaar en bediening bereikbaar. | 375/390/430 CSS-px |
-
 | D-06 | Each aan/uit | Vinkvakje in builder; repslabel wisselt tussen reps en reps ea in preview en actieve training zonder extra invoervelden of overlap. | handmatig |
 
 ## Reviewstatus
 Concept op basis van screenshots en gebruikersfeedback; geen browser- of iPhone-test uitgevoerd, oefenkaart goedgekeurd door gebruiker, builder goedgekeurd met aanvullende Each-optie; geen publicatie. Verdere schermen en technische details volgen na beoordeling.
 
 ## Volledige schermroute (voorstel ter beoordeling)
-1. Inloggen — persoonlijk account, sessie onthouden; na eerste login direct naar Vandaag.
+1. Inloggen — Sign in with Apple, persoonlijk account, sessie onthouden; na eerste login direct naar Vandaag.
 2. Vandaag — weekkalender, geplande training, hervatten, snelle toegang tot losse workouts.
 3. Schema's — actieve programma's en losse workouts; nieuw, dupliceren.
-4. Programma — trainingsperiode, weken en geplande workouts; datumplanning nog afstemmen.
+4. Programma — trainingsperiode, weken, herhaalbare workouts op vaste weekdagen en losse datumplanning.
 5. Workout builder — naam, oefenkaarten, sets, repdoel, richtgewicht en Each; toevoegen en ordenen.
-6. Oefening kiezen — zoekbare Engelse namen, eigen oefening toevoegen; ook rechtstreeks via tab Oefeningen.
+6. Oefening kiezen — zoekbare Engelse namen, combineerbare filters spiergroep/apparatuur, eigen oefening toevoegen; ook rechtstreeks via tab Oefeningen.
 7. Workout preview — oefenkaarten met gedempte richtwaarden, start en bewerkactie.
 8. Actieve training — identieke kaartopbouw met werkelijke invoer, vinkjes, voortgang en rusttimer.
 9. Actieve training met numeriek toetsenbord — smalle contextbalk met Apply to all, geen setselector.
@@ -59,4 +58,12 @@ Concept op basis van screenshots en gebruikersfeedback; geen browser- of iPhone-
 14. Oefeningprogressie — gewicht over tijd, recente sets, records; gewichtseenheid expliciet.
 15. Instellingen — account, syncstatus, rusttimer, data-export en import/integratie-status.
 Vaste navigatie op hoofdpagina's: Vandaag, Schema's, Oefeningen, Progressie, Instellingen. Tijdens actieve training en builder is de tabbar verborgen. Geen media of lege beeldruimte. Voorbeelddata zijn fictief.
-Open ter beoordeling: kalenderplanning, afvinken met uitsluitend richtwaarden versus expliciete invoer, rusttimer standaard, gewicht per dumbbell versus totaal (relevant voor historie), bewerken na afronden. BridgeAthletic-import en Apple Health blijven afhankelijk van export/technische haalbaarheid.
+Besloten: vaste weekdagen en losse datums; bij afvinken zonder invoer bevestiging vragen, repbereik vereist concreet aantal; 90 seconden rust standaard per oefening aanpasbaar; kg per dumbbell; afgeronde sessies inclusief datum bewerkbaar; bodyweight zonder kg-veld; Sign in with Apple. BridgeAthletic-import en Apple Health blijven afhankelijk van export/technische haalbaarheid.
+
+## Aanvullende schermvarianten
+- Bibliotheek: zoekbalk met subtiele filteractie, compacte filterchips voor actieve keuzes; filterpaneel met spiergroep en apparatuur en reset. Oefeningenlijst blijft naamgericht zonder media. Eigen oefening kan metadata krijgen voor filtering. Voorstel: categorie Eigen oefeningen, primaire spiergroep en apparatuur.
+- Programma aanmaken/plannen: naam, startdatum, aantal weken, bestaande of nieuwe workout, keuze vaste weekdagen of losse datums; toon overzicht van gegenereerde datums voor opslaan. Bijvoorbeeld twee oefeningen één keer instellen en dezelfde workout zes weken iedere dinsdag herhalen. Voorstel: wijzigen vanaf geselecteerde week of alleen een individuele toekomstige sessie, nooit historie stilzwijgend herschrijven.
+- Builder: bodyweight-optie verbergt kg-veld; subtiel rusttijdveld standaard 90 sec. Dumbbell gewicht per stuk.
+- Afvinken zonder feitelijke waarden: compact bevestigingspaneel met eenduidige richtwaarden en expliciet keuzeveld voor reps als richtlijn een bereik is. Behoud reeds ingevoerde waarden. Annuleren vinkt niet af.
+- Sessiedetail: bewerkactie, wijzig datum/reps/kg, opslaan of annuleren; herbereken records. Inloggen: officiële Apple-knop volgens merkrichtlijnen, externe configuratie vereist.
+- AI-voorstellen later vanuit Schema's: knop Nieuw voorstel, doel/duur/frequentie/equipment en historie, bewerkbare preview en bevestiging. Niet actief in MVP.
