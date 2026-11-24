@@ -17,6 +17,13 @@ try{
  a.close();b.close();
  c=await openLocalStore({name,legacyRaw:raw});
  check(c.revision===1&&c.state.events.length===2,'reopen persisted snapshot');
+ const incoming=emptyState();incoming.events=[{id:"imported",type:"football",name:"Restored",date:"2026-11-24",minutes:60}];
+ check(await c.restore(1,incoming)===2,"restore transaction");
+ check((await c.previous()).payload.events.length===2,"previous snapshot");
+ let invalidRestore=false;try{await c.restore(2,{version:2})}catch{invalidRestore=true}check(invalidRestore,"invalid restore accepted");
+ c.close();c=await openLocalStore({name,legacyRaw:raw});
+ check(c.revision===2&&c.state.events[0].id==="imported","restore reopened");
+ check((await c.previous()).payload.events.length===2,"previous snapshot reopened");
  c.close();let diverged=false;
  try{await openLocalStore({name,legacyRaw:JSON.stringify(emptyState())})}catch(e){diverged=!!e.recovery}
  check(diverged,'legacy divergence not detected');
