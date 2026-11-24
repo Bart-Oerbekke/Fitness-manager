@@ -88,7 +88,61 @@ function history(){return header("Trainingshistorie","progress")+db.history.slic
 function historyDetail(){let x=db.history.find(s=>s.id===detailId);if(!x)return history();return header(x.name,"history")+'<p class="muted">'+fmt(x.date)+' · '+x.minutes+' min</p>'+(x.exercises||[]).map(e=>card(e.name,e.logs.map((s,i)=>'<div class="row between line"><span>Set '+(i+1)+'</span><span>'+(s.done?h(s.reps)+' reps'+(e.ea?" ea":"")+(e.bodyweight?"":" · "+h(s.kg)+" kg"):"Niet voltooid")+'</span></div>').join(""))).join("")+(x.note?'<p>'+h(x.note)+'</p>':"")+b("Bewerken","history-edit","outline full")}
 function progress(){let totals=weeklyMinutes(db.history,monday(dateToday()));let ids=[...new Set(db.history.filter(x=>x.type==="fitness").flatMap(x=>x.exercises.map(e=>e.exerciseId)))];return header("Progressie")+'<h1>Sporttijd deze week</h1>'+card("Totaal",'<h1>'+Object.values(totals).reduce((a,b)=>a+b,0)+' min</h1>'+Object.entries(totals).map(([k,v])=>'<div class="row between line">'+h(types[k])+'<strong>'+v+' min</strong></div>').join(""))+b("Trainingshistorie","nav","outline full",'data-page="history"')+'<h1 class="sectiontitle">Per oefening</h1>'+ids.map(eid=>{let rows=priorSessions(db.history,eid),name=allLibrary().find(e=>e.id===eid)?.name||"Oefening";let max=Math.max(0,...rows.flatMap(r=>r.sets.map(s=>Number(r.bodyweight?s.reps:s.kg))));return card(name,b('<div class="row between"><span>Record: '+max+(rows[0]?.bodyweight?" reps":" kg")+'</span><span>›</span></div>',"progress-open","link",'data-id="'+h(eid)+'"'))}).join("")}
 function exerciseProgress(){let e=allLibrary().find(x=>x.id===selectedExercise),rows=priorSessions(db.history,selectedExercise);const values=rows.slice().reverse().map(r=>Math.max(...r.sets.map(s=>Number(r.bodyweight?s.reps:s.kg))));const max=Math.max(1,...values),points=values.map((v,i)=>[25+(values.length===1?140:i*270/(values.length-1)),125-v/max*100]);return header(e?.name||"Oefening","progress")+(rows.length?card("Progressie per sessie",'<h1>'+max+' '+(rows[0].bodyweight?"reps":"kg")+'</h1><svg class="chart" viewBox="0 0 320 150" role="img" aria-label="Grafiek hoogste waarde per sessie"><path d="M25 125 H300 M25 25 V125" stroke="#667080" fill="none"/><polyline points="'+points.map(p=>p.join(",")).join(" ")+'" fill="none" stroke="#ff8900" stroke-width="2"/>'+points.map(p=>'<circle cx="'+p[0]+'" cy="'+p[1]+'" r="4" fill="#ff8900"/>').join("")+'</svg>')+rows.map(r=>card(fmt(r.date),historyTable(r))).join(""):'<p class="empty">Nog geen prestaties.</p>')}
-function settings(){return header("Instellingen")+card("Account",'<p>Lokale testversie. Apple-login en cloudsynchronisatie zijn uitgesteld.</p>')+card("Gegevens",'<p id="storage-detail">Opgeslagen op dit apparaat (IndexedDB)</p>'+b("Exporteer lokale gegevens","export","outline full")+b("Vraag blijvende browseropslag aan","persist-storage","quiet full")+'<p class="muted">Gebruik fictieve testgegevens. Browseropslag kan gewist worden, bijvoorbeeld bij verwijderen van websitegegevens. Exporteer regelmatig een back-up. Er worden geen trainingsgegevens naar Supabase verzonden.</p>')+card("Toekomstige integraties","Apple-login · Cloudsynchronisatie · BridgeAthletic-import · Apple Health · AI")}
+const APP_VERSION="0.6.0";
+let updateRegistration=null,updateMessage="Nog niet gecontroleerd",updateBusy=false,updateApplying=false,updateSeenController=null;
+function updateBlocked(){return !booted||!!db.active||!!storageError||!!queue?.status.failure||$("dialog").open||page!=="settings"}
+function updatePanel(){
+ const waiting=!!updateRegistration?.waiting,active=!!db.active;
+ return '<div class="row between"><small>Geïnstalleerde versie</small><strong id="installed-version">'+APP_VERSION+'</strong></div><div class="line"><p id="update-message" class="muted" role="status">'+h(waiting?(active?"Update beschikbaar · rond je training eerst af.":"Update beschikbaar. Je lokale gegevens blijven behouden."):updateMessage)+'</p>'+b(updateBusy?"Controleren…":"Controleren op updates","update-check","quiet full",updateBusy||updateApplying?"disabled":"")+(waiting?b("Bijwerken","update-apply","primary",updateBlocked()||updateApplying?"disabled":""):"")+'</div>';
+}
+function refreshUpdatePanel(){const el=$("update-panel");if(el)el.innerHTML=updatePanel()}
+function observeUpdate(reg){
+ updateRegistration=reg;
+ const watch=worker=>{if(!worker)return;worker.addEventListener("statechange",()=>{if(worker.state==="redundant"&&!reg.waiting){updateMessage="Update kon niet worden geïnstalleerd. Probeer opnieuw."}refreshUpdatePanel()})};
+ watch(reg.installing);
+ reg.addEventListener("updatefound",()=>{watch(reg.installing);refreshUpdatePanel()});
+ refreshUpdatePanel();
+}
+async function checkUpdate(manual=false){
+ if(updateBusy||updateApplying)return;
+ if(navigator.onLine===false){if(manual){updateMessage="Geen internetverbinding. Probeer online opnieuw.";refreshUpdatePanel()}return}
+ if(!updateRegistration){if(manual){updateMessage="Updatefunctie nog niet beschikbaar. Open de app opnieuw.";refreshUpdatePanel()}return}
+ updateBusy=true;if(manual)updateMessage="Controleren…";refreshUpdatePanel();
+ try{await updateRegistration.update();const worker=updateRegistration.installing;if(worker){await new Promise(resolve=>{if(["installed","activated","redundant"].includes(worker.state)){resolve();return}const timer=setTimeout(resolve,12000);worker.addEventListener("statechange",()=>{if(["installed","activated","redundant"].includes(worker.state)){clearTimeout(timer);resolve()}})})}updateMessage=updateRegistration.waiting?"Update beschikbaar.":updateRegistration.installing?"Update wordt gedownload…": "Geen nieuwe update gevonden."}
+ catch{updateMessage="Updatecontrole mislukt. Probeer opnieuw met internetverbinding."}
+ finally{updateBusy=false;refreshUpdatePanel()}
+}
+function requestActivation(worker){
+ return new Promise((resolve,reject)=>{const channel=new MessageChannel();const timer=setTimeout(()=>{channel.port1.close();reject(Error("Geen bevestiging ontvangen. Sluit andere appvensters en probeer opnieuw."))},10000);channel.port1.onmessage=e=>{clearTimeout(timer);channel.port1.close();e.data?.ok?resolve():reject(Error(e.data?.reason||"Bijwerken niet mogelijk"))};try{worker.postMessage({type:"FM_ACTIVATE"},[channel.port2])}catch(e){clearTimeout(timer);channel.port1.close();reject(e)}});
+}
+async function applyUpdate(){
+ if(updateApplying||updateBlocked()||!updateRegistration?.waiting)return;
+ updateApplying=true;for(const id of ["app","nav","accessory","dialog"])$(id).inert=true;
+ updateMessage="Lokale wijzigingen opslaan…";refreshUpdatePanel();
+ try{
+  await queue.flush();
+  if(updateBlocked()||queue.status.pending)throw Error("Rond de training af en controleer de lokale opslag.");
+  const worker=updateRegistration.waiting;if(!worker)throw Error("Update niet meer beschikbaar. Controleer opnieuw.");
+  updateMessage="Bijwerken…";refreshUpdatePanel();
+  await requestActivation(worker);
+  // controllerchange will reload only this explicitly frozen, saved client.
+  setTimeout(()=>{if(updateApplying){updateApplying=false;for(const id of ["app","nav","accessory","dialog"])$(id).inert=!!(storageError||queue?.status.failure);updateMessage="Update nog niet actief. Sluit andere appvensters en probeer opnieuw.";refreshUpdatePanel()}},15000);
+ }catch(e){updateApplying=false;for(const id of ["app","nav","accessory","dialog"])$(id).inert=!!(storageError||queue?.status.failure);updateMessage=e.message;refreshUpdatePanel()}
+}
+async function initUpdates(){
+ if(!("serviceWorker" in navigator))return;
+ updateSeenController=navigator.serviceWorker.controller;
+ navigator.serviceWorker.addEventListener("controllerchange",()=>{
+  const current=navigator.serviceWorker.controller;
+  if(updateApplying&&current&&current!==updateSeenController){location.reload();return}
+  if(updateSeenController&&current!==updateSeenController){updateMessage="Appversie gewijzigd. Sluit de app na opslaan en open opnieuw.";refreshUpdatePanel()}
+  updateSeenController=current;
+ });
+ try{const reg=await navigator.serviceWorker.register("./sw.js",{updateViaCache:"none"});observeUpdate(reg);if(navigator.onLine!==false)checkUpdate()}
+ catch{updateMessage="Offline updatefunctie niet beschikbaar.";refreshUpdatePanel()}
+}
+
+function settings(){return header("Instellingen")+card("Applicatie",'<div id="update-panel">'+updatePanel()+'</div>')+card("Account",'<p>Lokale testversie. Apple-login en cloudsynchronisatie zijn uitgesteld.</p>')+card("Gegevens",'<p id="storage-detail">Opgeslagen op dit apparaat (IndexedDB)</p>'+b("Exporteer lokale gegevens","export","outline full")+b("Vraag blijvende browseropslag aan","persist-storage","quiet full")+'<p class="muted">Gebruik fictieve testgegevens. Browseropslag kan gewist worden, bijvoorbeeld bij verwijderen van websitegegevens. Exporteer regelmatig een back-up. Er worden geen trainingsgegevens naar Supabase verzonden.</p>')+card("Toekomstige integraties","Apple-login · Cloudsynchronisatie · BridgeAthletic-import · Apple Health · AI")}
 function showDialog(title,body,handler){let d=$("dialog");d.setAttribute("aria-labelledby","dialog-title");d.innerHTML='<form id="dialog-form" class="compact-form"><div class="dialog-heading"><h2 id="dialog-title">'+h(title)+'</h2>'+b("×","dialog-close","dialog-x",'aria-label="Sluiten"')+'</div><div class="dialog-fields">'+body+'</div><div class="dialog-actions">'+b("Annuleren","dialog-close","dialog-cancel")+'<button type="submit" class="primary">Bevestigen</button></div></form>';if(!d.open)d.showModal();$("dialog-form").onsubmit=ev=>{ev.preventDefault();const form=new FormData(ev.currentTarget);d.close();handler(form)}}
 function activityNew(){showDialog("Nieuwe activiteit",selectField("Type","type",'<option value="football">Voetbaltraining</option><option value="match">Voetbalwedstrijd</option><option value="other">Overige sport</option>')+field("Naam (optioneel)","name","","text",'placeholder="Bijv. teamtraining" maxlength=100')+fieldPair(field("Datum","date",selected,"date","required"),field("Tijdstip (optioneel)","time","","time"))+fieldPair(field("Verwachte duur","minutes","90","number","required min=1 max=1440"),field("Herhalen","weeks","1","number","required min=1 max=52"))+'<div class="repeat-days" hidden>'+weekdayPicker()+'</div><p class="form-hint">1 week = eenmalige activiteit.</p>',f=>{const date=f.get("date"),weeks=Number(f.get("weeks")),days=f.getAll("days").map(Number),type=f.get("type"),dates=weeks===1?[{date}]:occurrences(date,weeks,days.length?days:[weekday(date)]),series=id();dates.forEach(d=>db.events.push({id:id(),series,type,name:String(f.get("name")).trim()||types[type],date:d.date,time:f.get("time"),minutes:Number(f.get("minutes"))}));selected=date;week=monday(selected);save();go("today")});const form=$("dialog-form"),update=()=>{const repeating=Number(form.elements.weeks.value)>1;form.querySelector(".repeat-days").hidden=!repeating;for(const input of form.querySelectorAll('[name="days"]'))input.disabled=!repeating;form.querySelector(".form-hint").textContent=repeating?"Kies weekdagen; zonder selectie geldt de startdag.":"1 week = eenmalige activiteit."};form.elements.weeks.addEventListener("input",update);update()}
 function workoutOptions(){return db.workouts.map(w=>'<option value="'+w.id+'">'+h(w.name)+'</option>').join("")}
@@ -105,7 +159,7 @@ document.addEventListener("change",ev=>{const t=ev.target;if(t.matches("[data-bo
 document.addEventListener("focusin",ev=>{const t=ev.target;if(page==="training"&&t.dataset.field&&!t.disabled){activeCell={ex:Number(t.dataset.ex),set:Number(t.dataset.set),field:t.dataset.field};updateAccessory()}else if(!t.closest("#accessory")){activeCell=null;updateAccessory()}});
 document.addEventListener("focusout",ev=>{if(ev.target.dataset.field)setTimeout(()=>{if(!document.activeElement?.dataset?.field&&!document.activeElement?.closest("#accessory")){activeCell=null;updateAccessory()}},80)});
 $("accessory").addEventListener("pointerdown",e=>e.preventDefault());window.visualViewport?.addEventListener("resize",updateAccessory);window.visualViewport?.addEventListener("scroll",updateAccessory);
-document.addEventListener("click",ev=>{const t=ev.target.closest("[data-action]");if(!t||t.disabled)return;const a=t.dataset.action,i=Number(t.dataset.i),eid=t.dataset.id;if((!booted||storageError||queue?.status.failure)&&!["storage-export","storage-reload"].includes(a))return;switch(a){
+document.addEventListener("click",ev=>{const t=ev.target.closest("[data-action]");if(!t||t.disabled||updateApplying)return;const a=t.dataset.action,i=Number(t.dataset.i),eid=t.dataset.id;if((!booted||storageError||queue?.status.failure)&&!["storage-export","storage-reload"].includes(a))return;switch(a){
 case "nav":case "back":if(t.dataset.page!=="builder")libraryReturn=false;go(t.dataset.page);break;
 case "cal-mode":calendarMode=t.dataset.mode;try{localStorage.setItem("fm-calendar-mode",calendarMode)}catch{}render();break;
 case "cal-step":selected=calendarMode==="month"?monthShift(selected,Number(t.dataset.n)):dateAdd(selected,Number(t.dataset.n)*7);week=monday(selected);render();break;
@@ -139,6 +193,8 @@ case "program-new":newProgram();break;case "program-open":opened=eid;go("program
 case "week-copy":{if(!confirm("Richtwaarden van de volgende week vervangen?"))break;const f=$("dialog-form");for(let j=0;j<Number(t.dataset.count);j++)for(const prefix of ["r","k"]){const src=f.elements[prefix+i+"_"+j],dst=f.elements[prefix+(i+1)+"_"+j];if(src&&dst)dst.value=src.value}break}
 case "program-duplicate":{let p=copy(program(eid));showDialog("Programma dupliceren",field("Naam","name",p.name+" (kopie)","text","required")+field("Startdatum","start",dateToday(),"date","required"),f=>{p.id=id();p.name=f.get("name");p.start=f.get("start");const newOverrides={};p.entries.forEach(en=>{const original=workout(en.workoutId);const w=copy(original),oldId=w.id;w.id=id();w.name+=" (kopie)";const ids={};w.exercises.forEach(e=>{const old=e.id;e.id=id();ids[old]=e.id});db.workouts.push(w);newOverrides[w.id]={};for(const [weekNo,exs] of Object.entries(p.overrides[oldId]||{})){newOverrides[w.id][weekNo]={};for(const [oldEx,values] of Object.entries(exs)){if(ids[oldEx])newOverrides[w.id][weekNo][ids[oldEx]]=values}}en.workoutId=w.id;occurrences(p.start,p.weeks,en.days).forEach(o=>db.events.push({id:id(),type:"fitness",programId:p.id,workoutId:w.id,...o}))});p.overrides=newOverrides;db.programs.push(p);save();opened=p.id;go("programView")});break}
 case "dialog-close":$("dialog").close();break;
+case "update-check":checkUpdate(true);break;
+case "update-apply":applyUpdate();break;
 case "export":downloadJSON(db,"fitness-manager-"+dateToday()+".json");break;
 case "storage-export":exportRecovery();break;
 case "storage-reload":if(confirm("Herlaad na export. Niet-opgeslagen wijzigingen kunnen verloren gaan."))location.reload();break;
@@ -155,4 +211,5 @@ document.addEventListener("click",ev=>{if(Date.now()<suppressClickUntil){ev.stop
 window.addEventListener("online",storageStatus);window.addEventListener("offline",storageStatus);
 window.addEventListener("beforeunload",ev=>{if(queue?.status.pending||queue?.status.failure){ev.preventDefault();ev.returnValue=""}});
 setInterval(tick,500);initStorage();
-if("serviceWorker" in navigator)navigator.serviceWorker.register("./sw.js").catch(console.warn);
+initUpdates();
+window.addEventListener("online",()=>checkUpdate());document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="visible")checkUpdate()});

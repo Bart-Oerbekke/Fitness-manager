@@ -1,5 +1,5 @@
 import {spawn} from 'node:child_process';
-import {mkdtemp,readFile,rm} from 'node:fs/promises';
+import {mkdtemp,readFile,writeFile,rm} from 'node:fs/promises';
 import {tmpdir} from 'node:os';
 import {join} from 'node:path';
 import assert from 'node:assert/strict';
@@ -7,7 +7,7 @@ const dir=await mkdtemp(join(tmpdir(),'fm-chrome-'));
 const chrome=spawn(process.env.CHROME_BIN||'google-chrome',['--headless','--no-sandbox','--disable-dev-shm-usage','--disable-gpu','--remote-debugging-port=0','--user-data-dir='+dir,'about:blank'],{stdio:'ignore'});
 const sleep=ms=>new Promise(r=>setTimeout(r,ms));
 async function wait(fn,label,ms=20000){const end=Date.now()+ms;let last;while(Date.now()<end){try{const v=await fn();if(v)return v}catch(e){last=e}await sleep(150)}throw Error('Timeout: '+label+(last?' '+last.message:''))}
-let ws;
+let ws,originalApp,originalSW;
 try{
  const port=await wait(async()=>Number((await readFile(join(dir,'DevToolsActivePort'),'utf8')).split('\n')[0]),'Chrome debug port');
  const pages=await wait(async()=>{const v=await fetch('http://127.0.0.1:'+port+'/json/list').then(r=>r.json());return v.find(x=>x.type==='page')},'Chrome tab');
@@ -56,6 +56,25 @@ try{
  await reloadOffline('second offline reload');
  await wait(()=>evaluate("document.querySelector('.cal-day-agenda')?.textContent.includes('Offline test') && navigator.onLine===false"),'offline record survived reload');
  console.log('PASS_OFFLINE_APP');
+ await click('#nav [data-page="settings"]');
+ assert.equal(await evaluate("document.querySelector('#installed-version').textContent"),'0.6.0');
+ await click('[data-action="update-check"]');
+ assert.ok(await evaluate("document.querySelector('#update-message').textContent.includes('Geen internet')"));
+ await cdp('Network.emulateNetworkConditions',{offline:false,latency:0,downloadThroughput:-1,uploadThroughput:-1});
+ // Change served files in this disposable CI checkout only; restore in finally.
+ originalApp=await readFile('src/app.mjs','utf8');originalSW=await readFile('sw.js','utf8');
+ await writeFile('src/app.mjs',originalApp.replace('const APP_VERSION="0.6.0"','const APP_VERSION="0.6.1-test"'));
+ await writeFile('sw.js',originalSW.replace('fitness-manager-shell-v7','fitness-manager-shell-v7-ci-update'));
+ await click('[data-action="update-check"]');
+ await wait(()=>evaluate("!!document.querySelector('[data-action=update-apply]:not([disabled])')"),'new worker waiting');
+ const previous=await evaluate('performance.timeOrigin');
+ await click('[data-action="update-apply"]');
+ await wait(()=>evaluate("performance.timeOrigin!=="+previous+" && !!document.querySelector('.cal-shell') && !document.querySelector('#app').inert"),'updated app loaded');
+ assert.ok(await evaluate("document.querySelector('.cal-day-agenda').textContent.includes('Offline test')"));
+ await click('#nav [data-page="settings"]');
+ assert.equal(await evaluate("document.querySelector('#installed-version').textContent"),'0.6.1-test');
+ console.log('PASS_APP_UPDATE');
 }finally{
+ if(originalApp!==undefined)await writeFile('src/app.mjs',originalApp);if(originalSW!==undefined)await writeFile('sw.js',originalSW);
  ws?.close();chrome.kill();await sleep(300);await rm(dir,{recursive:true,force:true,maxRetries:3,retryDelay:200});
 }

@@ -54,3 +54,6 @@ calendarDisplayItems is uitsluitend presentatie; weekSummary gebruikt calendarIt
 
 ## Formulieren
 Gedeelde veldcomponenten in app.mjs en CSS; name/id en FormData-contract behouden. SW v6, geen datamigratie. Chromium-test controleert geometrie, units, numeric inputmode en herhalen.
+
+## Appupdates
+SW v7/app 0.6.0. Register updateViaCache none, check bij start/online/zichtbaar en handmatig. Wachtende SW ontvangt expliciete FM_ACTIVATE via MessageChannel, alleen één windowclient in scope. UI bevriest en save queue wordt geflusht vooraf; geen IndexedDB/cachedata reset. Controllerchange herlaadt expliciet verzoek; bij meerdere vensters sluiten en opnieuw proberen. Oudere versies zonder updateknop moeten eenmalig normaal SW-lifecycle doorlopen. CI simuleert volgende release door tijdelijk appversie/cache in disposable checkout te wijzigen, controleert behoud van offline record na reload, herstelt bronbestanden. Geen nieuwe afhankelijkheden.

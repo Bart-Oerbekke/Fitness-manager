@@ -97,3 +97,6 @@ Verwijder de dubbele Volgende-knop (native iOS pijlen bestaan); één kleine zwe
 
 ## UX-revisie 4 — compacte formulieren
 38px buitenhoogte, 16px invoertekst tegen iOS-zoom, 11px labels en eenheden, 4px labelafstand, 8–9px tussenruimte. Datum/tijd en programmastart/duur naast elkaar, 7 weekdagchips Ma–Zo, verborgen voor eenmalige activiteit. Donkere dialog met 13px padding, horizontale acties, sluitknop. D-10: 320/375/390/430px geen horizontale clipping; fysieke iPhone-test open.
+
+## Updatebediening
+Instellingen > Applicatie: versienummer, subtiele status, Controleer op updates en alleen bij wachtende update knop Bijwerken. Bij actieve training disabled met uitleg. Geen automatische reload; geen storende melding tijdens training.

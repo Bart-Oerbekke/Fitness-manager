@@ -82,3 +82,6 @@ Apple-login en cloudsynchronisatie voorlopig uitgesteld op verzoek gebruiker. De
 
 ## Formulierfeedback iPhone
 P-32: compacte formulieren met zichtbare eenheden voor duur, weken, rusttijd en gewicht; datum/tijd passen binnen container; weekdagen alleen bij herhalen. Geen wijziging aan opslagcontract.
+
+## Appupdates
+P-33: zichtbaar geïnstalleerd versienummer, handmatige en automatische updatecontrole, melding bij beschikbare update, expliciet bijwerken zonder lokale data te wissen. Geen geforceerde update tijdens actieve training; bij opslagfout of meerdere vensters blokkeren.

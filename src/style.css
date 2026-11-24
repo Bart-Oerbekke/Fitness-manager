@@ -61,3 +61,5 @@ dialog::backdrop{background:#000a}.compact-form{display:grid;grid-template-colum
 .weekday-option input:checked+span{border-color:#ff8900;background:#ff890022;color:#ffb568;font-weight:650}.weekday-option input:focus-visible+span{outline:2px solid #ff8900;outline-offset:2px}.repeat-days[hidden]{display:none}
 #builder-form>.form-field{margin-bottom:3px}.builder-card .inside.stack{gap:7px}.builder-card .formrow{grid-template-columns:minmax(0,.8fr) minmax(0,1.1fr) minmax(0,1fr)}.builder-card .checklabel{min-height:28px;font-size:12px}
 @media(max-width:360px){.compact-form{padding:11px}.form-pair{gap:6px}.form-control>input:not([type=checkbox]){padding-inline:6px}.form-unit{padding-right:5px}.weekday-options{gap:3px}.weekday-option span{font-size:11px}}
+
+#update-panel strong{font-size:13px;font-variant-numeric:tabular-nums}#update-panel .line{margin-top:8px;padding-bottom:0}#update-panel .line p{font-size:12px;margin:0 0 4px}#update-panel .primary{margin-top:5px}#update-panel button:disabled{opacity:.5}
