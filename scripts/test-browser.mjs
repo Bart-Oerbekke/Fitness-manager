@@ -162,9 +162,9 @@ try{
  const existing=await evaluate("(async()=>{const m=await import('/src/storage.mjs'),s=await m.openLocalStore({legacyRaw:localStorage.getItem(m.LEGACY_KEY)});try{return m.parseBackup(JSON.stringify(s.state))}finally{s.close()}})()");
  assert.ok(existing.history.length>=2,'actual app export validates');
  const imported={version:1,custom:[],workouts:[],programs:[],events:[{id:"restored-test",type:"football",name:"Herstelde activiteit",date,minutes:42}],history:[],active:null,favorites:[],recent:[],recovery:[]};
- await evaluate("(()=>{const f=document.querySelector('#backup-file'),dt=new DataTransfer();dt.items.add(new File(['{'],'bad.json',{type:'application/json'}));f.files=dt.files;f.dispatchEvent(new Event('change'))})()");
+ await evaluate("(()=>{const f=document.querySelector('#backup-file'),dt=new DataTransfer();dt.items.add(new File(['{'],'bad.json',{type:'application/json'}));f.files=dt.files;f.dispatchEvent(new Event('change',{bubbles:true}))})()");
  await wait(()=>evaluate("document.querySelector('#backup-status')?.textContent.includes('JSON')"),'invalid import rejected');
- await evaluate("(()=>{const f=document.querySelector('#backup-file'),dt=new DataTransfer();dt.items.add(new File(["+JSON.stringify(JSON.stringify(imported))+"],'valid.json',{type:'application/json'}));f.files=dt.files;f.dispatchEvent(new Event('change'))})()");
+ await evaluate("(()=>{const f=document.querySelector('#backup-file'),dt=new DataTransfer();dt.items.add(new File(["+JSON.stringify(JSON.stringify(imported))+"],'valid.json',{type:'application/json'}));f.files=dt.files;f.dispatchEvent(new Event('change',{bubbles:true}))})()");
  await wait(()=>evaluate("!!document.querySelector('#dialog[open] [name=confirmRestore]')"),'import summary shown');
  await evaluate("document.querySelector('[name=confirmRestore]').checked=true");
  await click('#dialog[open] button[type=submit]');
