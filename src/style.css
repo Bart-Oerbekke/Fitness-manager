@@ -407,3 +407,12 @@ nav.navvisible{padding:3px 3px max(5px,env(safe-area-inset-bottom));background:#
 .period-bar .cal-arrow{background:transparent;border-color:transparent}
 .form-control{border-color:#414b58}
 @media(prefers-reduced-motion:reduce){dialog#dialog[open]{animation:none}}
+
+/* 0.17.1 — safe top margin and full workout swipe canvas */
+:root{--fm-safe-top:calc(env(safe-area-inset-top, 0px) + 12px)}
+body{padding-top:var(--fm-safe-top)}
+main#app{padding-top:0;min-height:calc(100dvh - var(--fm-safe-top))}
+#app[data-view="preview"],#app[data-view="training"],#app[data-view="builder"]{touch-action:pan-y pinch-zoom}
+#app[data-view="preview"] .set input:disabled,#app[data-view="preview"] .set button:disabled{pointer-events:none}
+.training-sticky{top:max(var(--fm-safe-top),calc(var(--fm-viewport-top) + 8px))}
+#app[data-view="training"] .workout-pages{scroll-margin-top:calc(112px + var(--fm-safe-top))}
