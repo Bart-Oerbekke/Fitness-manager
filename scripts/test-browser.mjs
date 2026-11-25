@@ -154,14 +154,14 @@ try{
  assert.ok(await evaluate("!!document.querySelector('.cal-shell')"));
  console.log('PASS_AGENDA_ROUTES');
  await click('#nav [data-page="settings"]');
- assert.equal(await evaluate("document.querySelector('#installed-version').textContent"),'0.17.3');
+ assert.equal(await evaluate("document.querySelector('#installed-version').textContent"),'0.17.4');
  await click('[data-action="update-check"]');
  assert.ok(await evaluate("document.querySelector('#update-message').textContent.includes('Geen internet')"));
  await cdp('Network.emulateNetworkConditions',{offline:false,latency:0,downloadThroughput:-1,uploadThroughput:-1});
  // Change served files in this disposable CI checkout only; restore in finally.
  originalApp=await readFile('src/app.mjs','utf8');originalSW=await readFile('sw.js','utf8');
- await writeFile('src/app.mjs',originalApp.replace('const APP_VERSION="0.17.3"','const APP_VERSION="0.17.4-test"'));
- await writeFile('sw.js',originalSW.replace('fitness-manager-shell-v26','fitness-manager-shell-v26-ci-update'));
+ await writeFile('src/app.mjs',originalApp.replace('const APP_VERSION="0.17.4"','const APP_VERSION="0.17.5-test"'));
+ await writeFile('sw.js',originalSW.replace('fitness-manager-shell-v27','fitness-manager-shell-v27-ci-update'));
  await wait(()=>evaluate("!!document.querySelector('[data-action=update-check]:not([disabled])')"),'update check ready');
  await click('[data-action="update-check"]');
  await wait(()=>evaluate("!!document.querySelector('[data-action=update-apply]:not([disabled])')"),'new worker waiting');
@@ -313,7 +313,7 @@ try{
  await click('#nav [data-page="agenda"]');
  assert.ok(await evaluate("document.querySelector('.cal-day-agenda').textContent.includes('Offline test')"));
  await click('#nav [data-page="settings"]');
- assert.equal(await evaluate("document.querySelector('#installed-version').textContent"),'0.17.4-test');
+ assert.equal(await evaluate("document.querySelector('#installed-version').textContent"),'0.17.5-test');
  console.log('PASS_APP_UPDATE');
  // Management UI: exercise the archive, resume and history flows before final backup restore.
  await click('#nav [data-page="schemas"]');
@@ -453,6 +453,44 @@ try{
  assert.equal(await evaluate("document.querySelector('.training-sticky [role=progressbar]').getAttribute('aria-valuenow')"),'0');
  assert.equal(await evaluate("document.querySelectorAll('#elapsed').length"),1);
  console.log('PASS_LIVE_WORKOUT_PAGES');
+ async function edgeSwipe(dx,dy,selector='#app'){
+   await evaluate("(()=>{const el=document.querySelector("+JSON.stringify(selector)+"),touch=(x,y)=>new Touch({identifier:7,target:el,clientX:x,clientY:y});el.dispatchEvent(new TouchEvent('touchstart',{bubbles:true,touches:[touch(14,360)],changedTouches:[touch(14,360)]}));el.dispatchEvent(new TouchEvent('touchmove',{bubbles:true,cancelable:true,touches:[touch("+String(14+dx/2)+","+String(360+dy/2)+")]}));el.dispatchEvent(new TouchEvent('touchend',{bubbles:true,touches:[],changedTouches:[touch("+String(14+dx)+","+String(360+dy)+")]}))})()");
+ }
+ const currentView=()=>evaluate("document.querySelector('#app').dataset.view");
+ await edgeSwipe(5,130);
+ assert.equal(await currentView(),'training','vertical edge scroll stays in training');
+ await edgeSwipe(25,0);
+ assert.equal(await currentView(),'training','short edge swipe stays in training');
+ await edgeSwipe(140,0,'.workout-page:not([hidden]) input[data-field=reps]');
+ assert.equal(await currentView(),'training','input gesture protected');
+ await click('[data-action="training-menu"]');
+ await edgeSwipe(140,0);
+ assert.equal(await currentView(),'training','open modal blocks back gesture');
+ assert.equal(await evaluate("document.querySelector('#dialog').open"),true);
+ await click('#dialog [data-action="dialog-close"]');
+ await edgeSwipe(140,0);
+ assert.equal(await currentView(),'today','edge swipe returns from active workout');
+ await sleep(400);
+ await click('[data-action="resume"]');
+ assert.equal(await currentView(),'training','active workout can resume');
+ assert.ok(await evaluate("document.querySelector('[data-session-index=\"2\"]')!==null&&[...document.querySelectorAll('[data-session-index=\"2\"] input[data-field=reps]')].every(n=>n.value==='20')"),'session data survives back gesture');
+ await edgeSwipe(140,0);await sleep(400);
+ await click('#nav [data-page="schemas"]');
+ await click('[data-action="library-open"]');
+ await click('[data-action="exercise-detail"][data-id="bench-dip-armen"]');
+ await edgeSwipe(140,0);
+ assert.equal(await currentView(),'libraryView','exercise detail returns to library');
+ await sleep(400);
+ await edgeSwipe(140,0);
+ assert.equal(await currentView(),'schemas','library returns to schemas');
+ await sleep(400);
+ await edgeSwipe(140,0);
+ assert.equal(await currentView(),'schemas','root tab has no back action');
+ await click('#nav [data-page="today"]');
+ await click('[data-action="demo-workout"]');
+ await edgeSwipe(140,0);
+ assert.equal(await currentView(),'today','preview returns to originating screen');
+ console.log('PASS_EDGE_BACK_NAVIGATION');
 }finally{
  if(originalApp!==undefined)await writeFile('src/app.mjs',originalApp);if(originalSW!==undefined)await writeFile('sw.js',originalSW);
  ws?.close();chrome.kill();await sleep(300);await rm(dir,{recursive:true,force:true,maxRetries:3,retryDelay:200});
