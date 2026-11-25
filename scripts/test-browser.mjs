@@ -161,14 +161,14 @@ try{
  assert.ok(await evaluate("!!document.querySelector('.cal-shell')"));
  console.log('PASS_AGENDA_ROUTES');
  await click('#nav [data-page="settings"]');
- assert.equal(await evaluate("document.querySelector('#installed-version').textContent"),'0.19.0');
+ assert.equal(await evaluate("document.querySelector('#installed-version').textContent"),'0.19.1');
  await click('[data-action="update-check"]');
  assert.ok(await evaluate("document.querySelector('#update-message').textContent.includes('Geen internet')"));
  await cdp('Network.emulateNetworkConditions',{offline:false,latency:0,downloadThroughput:-1,uploadThroughput:-1});
  // Change served files in this disposable CI checkout only; restore in finally.
  originalApp=await readFile('src/app.mjs','utf8');originalSW=await readFile('sw.js','utf8');
- await writeFile('src/app.mjs',originalApp.replace('const APP_VERSION="0.19.0"','const APP_VERSION="0.19.1-test"'));
- await writeFile('sw.js',originalSW.replace('fitness-manager-shell-v29','fitness-manager-shell-v29-ci-update'));
+ await writeFile('src/app.mjs',originalApp.replace('const APP_VERSION="0.19.1"','const APP_VERSION="0.19.2-test"'));
+ await writeFile('sw.js',originalSW.replace('fitness-manager-shell-v30','fitness-manager-shell-v30-ci-update'));
  await wait(()=>evaluate("!!document.querySelector('[data-action=update-check]:not([disabled])')"),'update check ready');
  await click('[data-action="update-check"]');
  await wait(()=>evaluate("!!document.querySelector('[data-action=update-apply]:not([disabled])')"),'new worker waiting');
@@ -353,7 +353,7 @@ try{
  await click('#nav [data-page="agenda"]');
  assert.ok(await evaluate("document.querySelector('.cal-day-agenda').textContent.includes('Offline test')"));
  await click('#nav [data-page="settings"]');
- assert.equal(await evaluate("document.querySelector('#installed-version').textContent"),'0.19.1-test');
+ assert.equal(await evaluate("document.querySelector('#installed-version').textContent"),'0.19.2-test');
  console.log('PASS_APP_UPDATE');
  // Management UI: exercise the archive, resume and history flows before final backup restore.
  await click('#nav [data-page="schemas"]');
@@ -385,10 +385,33 @@ try{
  assert.ok(await evaluate("document.querySelector('#app').textContent.includes('CI aangepast')"));
  await click('[data-action="program-open"]');
  await reviewLayout('Programmadetails','.program-schedule');
- assert.equal(await evaluate("document.querySelectorAll('.program-schedule .period-bar').length"),1);
- assert.equal(await evaluate("document.querySelector('[data-action=program-week][data-n=\"-1\"]').disabled"),true);
- await click('[data-action="program-week"][data-n="1"]');
- assert.equal(await evaluate("document.querySelector('.program-schedule .period-label strong').textContent"),'Week 2');
+ assert.ok(await evaluate("document.querySelector('.screen-header [data-action=program-menu]')&&document.querySelector('.program-overview:not(.manage-card)')"));
+ assert.equal(await evaluate("document.querySelectorAll('.program-week-tabs button').length"),6);
+ assert.equal(await evaluate("document.querySelector('.program-schedule').dataset.week"),'1');
+ await evaluate("window.stableProgramHeader=document.querySelector('.screen-header')");
+ await click('[data-action="program-week-select"][data-n="2"]');
+ assert.equal(await evaluate("document.querySelector('.program-schedule').dataset.week"),'2');
+ assert.ok(await evaluate("window.stableProgramHeader===document.querySelector('.screen-header')"));
+ await click('[data-action="program-workout-open"]');
+ assert.equal(await evaluate("document.querySelector('#app').dataset.view"),'preview');
+ await click('[data-action="back"]');
+ assert.equal(await evaluate("document.querySelector('.program-schedule').dataset.week"),'2');
+ async function programSwipe(dx,dy){
+  await evaluate("(()=>{const el=document.querySelector('.program-timeline'),t=(x,y)=>new Touch({identifier:8,target:el,clientX:x,clientY:y});el.dispatchEvent(new TouchEvent('touchstart',{bubbles:true,touches:[t(190,400)]}));el.dispatchEvent(new TouchEvent('touchend',{bubbles:true,touches:[],changedTouches:[t("+String(190+dx)+","+String(400+dy)+")]}))})()");
+ }
+ await programSwipe(-130,0);
+ assert.equal(await evaluate("document.querySelector('.program-schedule').dataset.week"),'3');
+ await programSwipe(0,130);
+ assert.equal(await evaluate("document.querySelector('.program-schedule').dataset.week"),'3');
+ await programSwipe(130,0);
+ assert.equal(await evaluate("document.querySelector('.program-schedule').dataset.week"),'2');
+ await sleep(400);
+ assert.ok(await evaluate("document.querySelector('.timeline-row .timeline-date')&&document.querySelector('.timeline-row [data-action=program-event-menu]')&&!document.querySelector('#app [data-action=event-move]')"));
+ await click('[data-action="program-event-menu"]');
+ await click('#dialog [data-action="event-move"]');
+ assert.ok(await evaluate("document.querySelector('#dialog [name=date]')&&document.querySelector('#dialog [data-action=event-delete]')"));
+ await click('#dialog [data-action="dialog-close"]');
+ console.log('PASS_PROGRAM_TIMELINE');
  await click('[data-action="program-entry-menu"]');
  assert.equal(await evaluate("document.querySelectorAll('#dialog .menu-action svg').length"),3);
  await click('#dialog [data-action="program-days"]');
