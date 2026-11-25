@@ -235,7 +235,7 @@ function exerciseChart(rows,key,unit){
 }
 function exerciseProgress(){const all=exerciseMetrics(db.history,selectedExercise,"",dateToday()),name=all[0]?.name||allLibrary().find(x=>x.id===selectedExercise)?.name||"Oefening",variant=all.find(v=>v.key===progressVariant)||all[0];if(!variant)return header(name,progressBack)+'<p class="empty">Nog geen voltooide werksets.</p>';const from=progressMonths?monthShift(dateToday(),-progressMonths):"",v=exerciseMetrics(db.history,selectedExercise,from,dateToday()).find(x=>x.key===variant.key),metric=variant.bodyweight?"reps":progressMetric,key={weight:"maxWeight",reps:"maxReps",e1rm:"e1rm",volume:"volume"}[metric],unit=metric==="reps"?"reps":"kg",rows=(v?.rows||[]).filter(x=>x[key]!==null);return header(name,progressBack)+'<p class="muted">'+h(variant.bodyweight?"Bodyweight":variant.equipment||"Gewicht")+(variant.ea?" · each":"")+'</p>'+(all.length>1?'<div class="chip-row">'+all.map(x=>b(h((x.bodyweight?"Bodyweight":x.equipment||"Gewicht")+(x.ea?" · ea":"")),"progress-variant",x.key===variant.key?"chip on":"chip",'data-id="'+h(x.key)+'"')).join("")+'</div>':"")+'<div class="chip-row">'+[1,3,6,12,0].map(m=>b(m?m+"M":"Alles","progress-period",m===progressMonths?"chip on":"chip",'data-n="'+m+'"')).join("")+'</div><div class="metric-grid">'+(variant.bodyweight?[["Record reps (alles)",variant.maxReps,"reps"],["Werksetsessies",v?.rows.length||0,""]]:[["Record kg (alles)",variant.maxWeight,"kg"],["Beste 1RM (alles)",variant.e1rm,"kg"],["Volume periode",v?.volume||0,"kg"]]).map(([k,n,u])=>'<div><small>'+k+'</small><strong>'+amount(n)+' <small>'+u+'</small></strong></div>').join("")+'</div><section class="card inside"><div class="chip-row">'+(variant.bodyweight?[["reps","Reps"]]:[["weight","Gewicht"],["e1rm","1RM"],["volume","Volume"],["reps","Reps"]]).map(([k,l])=>b(l,"progress-metric",metric===k?"chip on":"chip",'data-id="'+k+'"')).join("")+'</div>'+(rows.length?exerciseChart(rows,key,unit):'<p class="empty">Geen waarden in deze periode.</p>')+'<p class="form-hint">Werksets; warming-up uitgesloten. 1RM is een schatting (1–10 reps). Volume = kg × reps, ×2 bij each of dumbbell, niet dubbel.</p></section>'+rows.slice().reverse().map(r=>card(fmt(r.date),b(amount(r[key])+" "+unit+" ›","history-open","link",'data-id="'+h(r.id)+'"'))).join("")}
 
-const APP_VERSION="0.17.0";
+const APP_VERSION="0.17.1";
 let updateRegistration=null,updateMessage="Nog niet gecontroleerd",updateBusy=false,updateApplying=false,updateSeenController=null;
 function updateBlocked(){return restoreBusy||!booted||!!db.active||!!storageError||!!queue?.status.failure||$("dialog").open||page!=="settings"}
 function updatePanel(){
@@ -323,18 +323,27 @@ function historyDelete(){const x=db.history.find(s=>s.id===detailId);if(!x)retur
 let workoutTouch=null;
 document.addEventListener("touchstart",ev=>{
   const t=ev.touches[0];
-  workoutTouch=ev.touches.length===1&&ev.target.closest(".workout-page")&&
-    !ev.target.closest("input,select,textarea,button,label")?{x:t.clientX,y:t.clientY,id:t.identifier}:null;
+  const root=$("app"),target=ev.target;
+  workoutTouch=ev.touches.length===1&&["preview","training","builder"].includes(page)&&
+    root.contains(target)&&root.querySelectorAll("[data-workout-page]").length>1&&!$("dialog").open&&
+    !target.closest("input:not(:disabled),select,textarea,button:not(:disabled),label,a,summary,[contenteditable],.drag-handle,.preview-dock,.training-dock,.rest-dock")?
+    {x:t.clientX,y:t.clientY,id:t.identifier,view:page,index:workoutPage}:null;
 },{passive:true});
 document.addEventListener("touchcancel",()=>{workoutTouch=null});
 document.addEventListener("touchend",ev=>{
   const start=workoutTouch;
   workoutTouch=null;
-  if(!start)return;
+  if(!start||page!==start.view||workoutPage!==start.index||$("dialog").open||ev.touches.length)return;
   const t=[...ev.changedTouches].find(touch=>touch.identifier===start.id);
   if(!t)return;
   const dx=t.clientX-start.x,dy=t.clientY-start.y;
-  if(Math.abs(dx)>50&&Math.abs(dx)>Math.abs(dy)*1.5)selectWorkoutPage(workoutPage+Math.sign(-dx));
+  if(Math.abs(dx)>50&&Math.abs(dx)>Math.abs(dy)*1.5){
+    const index=workoutPage+Math.sign(-dx);
+    if($("app").querySelector('[data-workout-page="'+index+'"]')){
+      suppressClickUntil=Date.now()+350;
+      selectWorkoutPage(index);
+    }
+  }
 },{passive:true});
 document.addEventListener("toggle",ev=>{const fold=ev.target;if(page==="builder"&&fold.matches?.(".builder-fold")&&fold.isConnected){const i=Number(fold.dataset.builderIndex);if(fold.open)builderClosed.delete(i);else builderClosed.add(i)}},true);
 document.addEventListener("invalid",ev=>{
