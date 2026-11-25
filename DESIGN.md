@@ -148,3 +148,6 @@ Dubbele agendanavigatie en testknop uit Vandaag, directe planactie behouden. Tes
 
 ## UX 0.19.0
 Progressie: grafieken centraal, vlakke secties en compacte records-/sessielijsten; geen rekenkundige wijziging. Korte fades bij echte navigatie, respecteer reduced motion en behoud vaste knoppen. Nederlandse bedieningsteksten, gangbare fitnesstermen en Apply to all blijven. Lokale progressieupdates, stabiele builder-ID's, deduplicatie statusupdates. Geen andere voorstellen implementeren.
+
+## UX 0.19.1
+Programmadetail: compacte kop zonder statuskaart, menu naast titel, workoutrij direct openen met onafhankelijk optiemenu. Weekknoppen tot zes weken; langere programma's directe select met pijlen. Horizontale swipe op planning, rand-terug behoudt prioriteit. Lokale weekupdate, tijdlijn met datumkolom, status, compacte activiteit en verplaatsactie achter menu. Bestaande data en routes behouden.
