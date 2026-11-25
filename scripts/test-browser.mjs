@@ -154,14 +154,14 @@ try{
  assert.ok(await evaluate("!!document.querySelector('.cal-shell')"));
  console.log('PASS_AGENDA_ROUTES');
  await click('#nav [data-page="settings"]');
- assert.equal(await evaluate("document.querySelector('#installed-version').textContent"),'0.17.0');
+ assert.equal(await evaluate("document.querySelector('#installed-version').textContent"),'0.17.1');
  await click('[data-action="update-check"]');
  assert.ok(await evaluate("document.querySelector('#update-message').textContent.includes('Geen internet')"));
  await cdp('Network.emulateNetworkConditions',{offline:false,latency:0,downloadThroughput:-1,uploadThroughput:-1});
  // Change served files in this disposable CI checkout only; restore in finally.
  originalApp=await readFile('src/app.mjs','utf8');originalSW=await readFile('sw.js','utf8');
- await writeFile('src/app.mjs',originalApp.replace('const APP_VERSION="0.17.0"','const APP_VERSION="0.17.1-test"'));
- await writeFile('sw.js',originalSW.replace('fitness-manager-shell-v23','fitness-manager-shell-v23-ci-update'));
+ await writeFile('src/app.mjs',originalApp.replace('const APP_VERSION="0.17.1"','const APP_VERSION="0.17.2-test"'));
+ await writeFile('sw.js',originalSW.replace('fitness-manager-shell-v24','fitness-manager-shell-v24-ci-update'));
  await wait(()=>evaluate("!!document.querySelector('[data-action=update-check]:not([disabled])')"),'update check ready');
  await click('[data-action="update-check"]');
  await wait(()=>evaluate("!!document.querySelector('[data-action=update-apply]:not([disabled])')"),'new worker waiting');
@@ -302,7 +302,7 @@ try{
  await click('#nav [data-page="agenda"]');
  assert.ok(await evaluate("document.querySelector('.cal-day-agenda').textContent.includes('Offline test')"));
  await click('#nav [data-page="settings"]');
- assert.equal(await evaluate("document.querySelector('#installed-version').textContent"),'0.17.1-test');
+ assert.equal(await evaluate("document.querySelector('#installed-version').textContent"),'0.17.2-test');
  console.log('PASS_APP_UPDATE');
  // Management UI: exercise the archive, resume and history flows before final backup restore.
  await click('#nav [data-page="schemas"]');
@@ -388,9 +388,32 @@ try{
  console.log('PASS_BACKUP_DASHBOARD');
  await click('[data-action="demo-workout"]');
  assert.equal(await evaluate("document.querySelectorAll('.workout-dot').length"),3);
+ assert.ok(await evaluate("parseFloat(getComputedStyle(document.body).paddingTop)>=12"));
+ async function swipeWorkout(dx,dy,selector='#app'){
+   await evaluate("(()=>{const el=document.querySelector("+JSON.stringify(selector)+"),touch=(x,y)=>new Touch({identifier:1,target:el,clientX:x,clientY:y});el.dispatchEvent(new TouchEvent('touchstart',{bubbles:true,touches:[touch(220,600)],changedTouches:[touch(220,600)]}));el.dispatchEvent(new TouchEvent('touchend',{bubbles:true,touches:[],changedTouches:[touch("+String(220+dx)+","+String(600+dy)+")]}))})()");
+ }
+ const selectedWorkoutPage=()=>evaluate("Number(document.querySelector('.workout-page:not([hidden])').dataset.workoutPage)");
+ assert.equal(await selectedWorkoutPage(),0);
+ await swipeWorkout(-140,0);
+ assert.equal(await selectedWorkoutPage(),1,'swipe from blank preview canvas');
+ await swipeWorkout(-8,140);
+ assert.equal(await selectedWorkoutPage(),1,'vertical gesture does not switch');
+ await swipeWorkout(140,0);
+ assert.equal(await selectedWorkoutPage(),0,'reverse swipe');
+ await swipeWorkout(140,0);
+ assert.equal(await selectedWorkoutPage(),0,'no swipe beyond first page');
+ await sleep(400);
  await click('[data-action="start"]');
  assert.equal(await evaluate("document.querySelectorAll('.workout-dot').length"),3);
+ await swipeWorkout(-140,0);
+ assert.equal(await selectedWorkoutPage(),1,'swipe from blank active training canvas');
+ await swipeWorkout(-140,0,'.workout-page:not([hidden]) input[data-field=reps]');
+ assert.equal(await selectedWorkoutPage(),1,'input protected from swipe');
+ await swipeWorkout(140,0);
+ assert.equal(await selectedWorkoutPage(),0);
+ await sleep(400);
  await click('.workout-dot[data-n="2"]');
+ console.log('PASS_FULL_WORKOUT_SWIPE');
  assert.equal(await evaluate("document.querySelector('.workout-page:not([hidden]) .workout-page-name').textContent"),'Core');
  assert.equal(await evaluate("document.querySelector('.workout-page:not([hidden]) input[data-field=reps]').placeholder"),'20');
  assert.equal(await evaluate("getComputedStyle(document.querySelector('.training-sticky')).position"),'sticky');
