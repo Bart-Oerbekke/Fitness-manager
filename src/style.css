@@ -416,3 +416,26 @@ main#app{padding-top:0;min-height:calc(100dvh - var(--fm-safe-top))}
 #app[data-view="preview"] .set input:disabled,#app[data-view="preview"] .set button:disabled{pointer-events:none}
 .training-sticky{top:max(var(--fm-safe-top),calc(var(--fm-viewport-top) + 8px))}
 #app[data-view="training"] .workout-pages{scroll-margin-top:calc(112px + var(--fm-safe-top))}
+
+/* 0.17.2 — directional page motion and consistent workout cards */
+.workout-pages{overflow-x:clip;overflow-y:visible}
+.workout-page.page-forward{animation:workout-forward .22s cubic-bezier(.2,.7,.25,1) both}
+.workout-page.page-backward{animation:workout-backward .22s cubic-bezier(.2,.7,.25,1) both}
+@keyframes workout-forward{from{transform:translateX(22px);opacity:.72}to{transform:translateX(0);opacity:1}}
+@keyframes workout-backward{from{transform:translateX(-22px);opacity:.72}to{transform:translateX(0);opacity:1}}
+@media(prefers-reduced-motion:reduce){.workout-page.page-forward,.workout-page.page-backward{animation:none}}
+#app[data-view="preview"] .workout-summary{margin:0 0 2px;font-size:13px}
+#app:is([data-view="preview"],[data-view="training"],[data-view="builder"]) .workout-dots{margin:0;gap:0}
+#app:is([data-view="preview"],[data-view="training"],[data-view="builder"]) .workout-dot{flex-basis:26px}
+#app:is([data-view="preview"],[data-view="training"],[data-view="builder"]) .workout-page-name{margin:-3px 0 1px;font-size:13px;line-height:1.25}
+#app[data-view="preview"] .screen-header.sub-header{padding:0;min-height:44px}
+#app[data-view="preview"] .workout-card{border:0;border-radius:var(--fm-radius);background:#191f27}
+#app[data-view="preview"] .workout-card .intro{padding:8px 10px 5px}
+#app[data-view="preview"] .set-columns,#app[data-view="preview"] .workout-card .set{display:grid;grid-template-columns:30px minmax(0,1fr) minmax(0,1fr) 44px;gap:6px;align-items:center;padding-inline:10px}
+#app[data-view="preview"] .set-columns.bodyweight,#app[data-view="preview"] .workout-card .set.bodyweight{grid-template-columns:30px minmax(0,1fr) 44px}
+#app[data-view="preview"] .set-columns{min-height:27px;font-size:11px;font-weight:600;color:#aeb8c5;text-align:center}
+#app[data-view="preview"] .workout-card .set{min-height:48px;border-top:1px solid #2b3440;padding-block:2px}
+#app[data-view="preview"] .workout-card .field{border:1px solid transparent;border-radius:7px;background:#252d37;min-height:36px;padding:0 7px}
+#app[data-view="preview"] .workout-card .field input{font-size:16px;text-align:center;padding:5px 0;outline:none;box-shadow:none;border:0;min-width:0}
+#app[data-view="preview"] .workout-card .field .unit{display:none}
+#app[data-view="preview"] .workout-card .check{visibility:hidden}
