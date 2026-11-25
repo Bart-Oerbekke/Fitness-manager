@@ -439,3 +439,31 @@ main#app{padding-top:0;min-height:calc(100dvh - var(--fm-safe-top))}
 #app[data-view="preview"] .workout-card .field input{font-size:16px;text-align:center;padding:5px 0;outline:none;box-shadow:none;border:0;min-width:0}
 #app[data-view="preview"] .workout-card .field .unit{display:none}
 #app[data-view="preview"] .workout-card .check{visibility:hidden}
+
+/* 0.17.3 — stable canvas, inline copy and builder dock */
+#storage-status{position:fixed;z-index:5;left:50%;transform:translateX(-50%);bottom:calc(60px + env(safe-area-inset-bottom));width:max-content;max-width:calc(100% - 24px);border-radius:8px;margin:0;padding:3px 8px;background:#202832;color:#c1cad5;pointer-events:none;font-size:10px;line-height:1.3}
+body:has(#app[data-view="training"]) #storage-status{bottom:calc(120px + env(safe-area-inset-bottom))}
+body:has(#app.keyboard-open) #storage-status:not(.storage-blocked){visibility:hidden}
+#storage-status.storage-blocked{pointer-events:auto;z-index:10;top:var(--fm-safe-top);bottom:auto;width:min(100% - 24px,516px);max-height:calc(var(--fm-viewport-height) - var(--fm-safe-top) - 12px);overflow:auto;padding:12px;border:1px solid #92613e;box-shadow:0 8px 24px #000b}
+#app[data-view="training"] .pr-notice{position:fixed;z-index:4;bottom:calc(148px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);width:min(calc(100% - 24px),516px);margin:0;pointer-events:none;box-shadow:0 4px 16px #0008}
+#app[data-view="training"].keyboard-open .pr-notice{visibility:hidden}
+#app[data-view="training"] .training-status{grid-template-columns:minmax(0,1fr) auto}
+#app[data-view="training"] .training-status #elapsed{grid-column:2}
+#app[data-view="training"] .workout-card .set-actions{display:grid;grid-template-columns:minmax(0,1fr) 44px 44px;align-items:center;min-height:46px}
+.apply-slot{min-width:0;min-height:44px;display:flex;align-items:center}
+#accessory{position:static;inset:auto;width:100%;display:flex;justify-content:flex-start;padding:0;pointer-events:auto}
+#app[data-view="training"] .workout-card .set-actions #accessory button{display:flex;align-items:center;justify-content:center;width:auto;min-width:0;min-height:44px;gap:5px;padding:5px 9px;font-size:12px;color:#ffbf7a;background:#3c2c1d;border:1px solid #805429;border-radius:8px;white-space:nowrap}
+#accessory button:disabled{opacity:.45}
+#accessory[hidden]{display:none}
+#app[data-view="builder"]{padding-bottom:calc(80px + env(safe-area-inset-bottom))}
+.builder-dock{position:fixed;z-index:3;left:50%;bottom:0;transform:translateX(-50%);width:min(100%,540px);min-height:calc(60px + env(safe-area-inset-bottom));padding:7px 12px calc(8px + env(safe-area-inset-bottom));display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.5fr);gap:8px;background:#10151b;border-top:1px solid var(--fm-line)}
+.builder-dock button{min-height:44px;min-width:0;padding:5px 8px;font-size:14px;border-radius:9px}
+.builder-dock .builder-add{display:flex;align-items:center;justify-content:center;gap:6px;border:1px solid #424c59;color:#dce4ed;background:#202832}
+.builder-add .ui-icon{width:18px;height:18px}
+.builder-dock.typing{display:none}
+.builder-page-heading{display:grid;grid-template-columns:44px minmax(0,1fr) 44px;align-items:center;min-height:44px;margin-top:-7px}
+#app[data-view="builder"] .builder-page-heading .workout-page-name{grid-column:2;margin:0}
+.builder-page-menu{grid-column:3;display:grid;place-items:center;min-width:44px;min-height:44px;padding:0;background:transparent;color:#b3bdca}
+.builder-page-menu .ui-icon{width:21px;height:21px}
+#app:is([data-view="training"],[data-view="builder"]){overflow-anchor:none;min-height:calc(100svh - var(--fm-safe-top))}
+#app[data-view="training"] .workout-card .set input{scroll-margin-top:calc(116px + var(--fm-safe-top));scroll-margin-bottom:64px}
