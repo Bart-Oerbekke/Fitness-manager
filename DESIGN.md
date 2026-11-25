@@ -121,3 +121,7 @@ Donkere stijl behouden. Gemeenschappelijke periodebalk met 44px pijltjes, 24px S
 
 ## UX 0.12
 Zelfstandige bibliotheek: compacte rijen, naam opent detail; ster blijft apart. Detail toont twee posekaarten of één voor hold, Nederlandse instructies, techniekfouten, spieren, materiaal, alternatieven en bron. Externe video via herkenbare knop, internet nodig; geen iframe/autoplay. Onbeschikbare uitleg/afbeelding/video eerlijk melden. Terug naar gefilterde lijst en scrollpositie; bestaande progressieactie bereikbaar. Geen wijziging aan training/pickers.
+
+## Bibliotheek 0.13.1
+
+Eigen schematische illustraties gebruiken een lichte achtergrond, een donkere voorste ledemaat, een lichtere kleur voor diepte en oranje voor gewicht of kabel. Statische houdingen hebben één kaart. Bij sprongen en samengestelde bewegingen kunnen meer dan twee stappen worden afgebeeld. Het onderschrift noemt de houding als die extra uitleg nodig heeft.

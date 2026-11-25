@@ -81,3 +81,7 @@ Losse read-only module op bestaande ID's; geen schemawijziging. PNG-afbeeldingen
 
 ## Exercise Library 0.13 vervolg
 Additieve detaildataset, 118 bestaande ID's ongewijzigd. Nieuwe illustraties in bestaande offline manifest en build. Geen extra afhankelijkheden of diensten; bestaande videolinks behouden. Algemene bronregisters gelabeld, volledige individuele externe inhoudsvalidatie en fysieke iPhone-review nog open.
+
+## Exercise Library 0.13.1
+
+Schematische PNG's in `media/exercises/fm-*.png`, op oefening-ID gekoppeld met eigen credit. De build gebruikt de mediapaden uit de detailrecords. Serviceworker v15 precachet ieder pad en behoudt de bestaande activeringsflow. Tests controleren volledige dekking en offline weergave van zowel bestaande als schematische illustraties.

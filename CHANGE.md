@@ -175,3 +175,9 @@ Gebruiker akkoord: alle 118 beschrijvingen, zoveel mogelijk passende offline afb
 
 ### Extra beelddekking 0.13
 Basis 4c19854afdb8e1d2dcd7d60cdbf03d9a6e216065: beide CI-runs groen. 12 nieuwe oefeningdetails met 24 visueel gecontroleerde, blob-identieke PNG's. 42/118 lokaal beeld, 83 PNG's, 118/118 tekst en 42 bestaande videolinks. Geen nieuwe video, geen wijziging ID's of trainings-/opslaglogica. Afgekeurde voorbeelden: kuitheffing zonder zichtbare voeten, deadlift met ongeschikte startpositie, pulldown achter het hoofd. CI opnieuw vereist; geen publicatie of merge. Individuele externe tekstvalidatie en fysieke iPhone-review blijven open.
+
+## Volledige offline beelddekking 0.13
+
+Basis 751de5b. Doel: lokaal beeld voor alle 118 bestaande oefening-ID's, met eigen schematische illustraties voor de ontbrekende varianten. Behoud Nederlandse details, bestaande media en optionele videolinks. Controleer per variant pose, materiaal, leesbaarheid en cachedekking. Geen trainings- of opslagwijziging. Risico's: verwisselde varianten, onduidelijke projectie en cache-upgrade.
+
+Resultaat: 76 oefeningdetails voorzien van 153 eigen schematische PNG's. Totaal 118/118 met beeld en tekst, 236 PNG's. Visuele zelfreview met vier contactvellen, vergeleken met de uitvoeringsbeschrijvingen. Syntax, 52 Node-tests, build (248 bestanden) en de Chromium-integratiesuite geslaagd. Die suite controleert offline afbeeldingen, de browserlayout bij 320/375/390/430 px, terugkeer naar de gefilterde lijst en updategedrag. Onafhankelijke techniekreview en fysieke iPhone/Safari-test staan open. Lokale preview: `npm start`, open `http://localhost:8000` en ga naar Schema's → Oefeningenbibliotheek.

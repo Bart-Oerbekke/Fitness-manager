@@ -290,7 +290,13 @@ export const exerciseDetails={
     ],
     "source": "https://www.nasm.org/resource-center/exercise-library/plank",
     "video": "https://www.youtube.com/watch?v=mwlp75MS6Rg",
-    "poses": []
+    "poses": [
+      {
+        "label": "Houding",
+        "file": "media/exercises/fm-plank-core-1.png"
+      }
+    ],
+    "artCredit": "Fitness Manager"
   },
   "dead-bug-core": {
     "primary": "Buikspieren, diepe rompspieren",
@@ -313,7 +319,17 @@ export const exerciseDetails={
     ],
     "source": "https://www.nasm.org/resource-center/exercise-library/dead-bug",
     "video": "https://www.youtube.com/watch?v=bxn9FBrt4-A",
-    "poses": []
+    "poses": [
+      {
+        "label": "Armen omhoog, knieën gebogen",
+        "file": "media/exercises/fm-dead-bug-core-1.png"
+      },
+      {
+        "label": "Tegengestelde arm en been strekken",
+        "file": "media/exercises/fm-dead-bug-core-2.png"
+      }
+    ],
+    "artCredit": "Fitness Manager"
   },
   "bird-dog-core": {
     "primary": "Rompstabilisatoren, rugstrekkers",
@@ -336,7 +352,17 @@ export const exerciseDetails={
     ],
     "source": "https://www.nasm.org/resource-center/exercise-library/bird-dog",
     "video": "https://www.youtube.com/watch?v=ZdAHe9_HeEw",
-    "poses": []
+    "poses": [
+      {
+        "label": "Handen en knieën",
+        "file": "media/exercises/fm-bird-dog-core-1.png"
+      },
+      {
+        "label": "Tegengestelde arm en been strekken",
+        "file": "media/exercises/fm-bird-dog-core-2.png"
+      }
+    ],
+    "artCredit": "Fitness Manager"
   },
   "close-grip-bench-press-barbell-armen": {
     "primary": "Triceps, borstspieren",
@@ -392,7 +418,17 @@ export const exerciseDetails={
     ],
     "source": "https://www.nasm.org/resource-center/exercise-library/single-leg-seated-leg-curl",
     "video": "https://www.youtube.com/watch?v=PXNJ71rksvU",
-    "poses": []
+    "poses": [
+      {
+        "label": "Beginhouding",
+        "file": "media/exercises/fm-seated-single-leg-curl-machine-benen-1.png"
+      },
+      {
+        "label": "Uitvoering",
+        "file": "media/exercises/fm-seated-single-leg-curl-machine-benen-2.png"
+      }
+    ],
+    "artCredit": "Fitness Manager"
   },
   "romanian-deadlift-dumbbell-benen": {
     "primary": "Hamstrings, bilspieren",
@@ -415,7 +451,17 @@ export const exerciseDetails={
     ],
     "source": "https://www.youtube.com/watch?v=aa57T45iFSE",
     "video": "https://www.youtube.com/watch?v=aa57T45iFSE",
-    "poses": []
+    "poses": [
+      {
+        "label": "Beginhouding",
+        "file": "media/exercises/fm-romanian-deadlift-dumbbell-benen-1.png"
+      },
+      {
+        "label": "Uitvoering",
+        "file": "media/exercises/fm-romanian-deadlift-dumbbell-benen-2.png"
+      }
+    ],
+    "artCredit": "Fitness Manager"
   },
   "deadlift-barbell-benen": {
     "primary": "Bilspieren, hamstrings, quadriceps",
@@ -436,7 +482,17 @@ export const exerciseDetails={
     ],
     "source": "https://www.nasm.org/resource-center/exercise-library/barbell-deadlift",
     "video": "https://www.youtube.com/watch?v=Z6gcRfPNcZo",
-    "poses": []
+    "poses": [
+      {
+        "label": "Beginhouding",
+        "file": "media/exercises/fm-deadlift-barbell-benen-1.png"
+      },
+      {
+        "label": "Uitvoering",
+        "file": "media/exercises/fm-deadlift-barbell-benen-2.png"
+      }
+    ],
+    "artCredit": "Fitness Manager"
   },
   "romanian-deadlift-barbell-benen": {
     "primary": "Hamstrings, bilspieren",
@@ -491,7 +547,17 @@ export const exerciseDetails={
     ],
     "source": "https://www.nasm.org/resource-center/exercise-library/bulgarian-split-squat",
     "video": "https://www.youtube.com/watch?v=hbw7hdyOpq0",
-    "poses": []
+    "poses": [
+      {
+        "label": "Beginhouding",
+        "file": "media/exercises/fm-bulgarian-split-squat-dumbbell-benen-1.png"
+      },
+      {
+        "label": "Uitvoering",
+        "file": "media/exercises/fm-bulgarian-split-squat-dumbbell-benen-2.png"
+      }
+    ],
+    "artCredit": "Fitness Manager"
   },
   "goblet-squat-dumbbell-benen": {
     "primary": "Quadriceps, bilspieren",
@@ -513,7 +579,17 @@ export const exerciseDetails={
     ],
     "source": "https://www.nasm.org/resource-center/exercise-library/goblet-squat",
     "video": "https://www.youtube.com/watch?v=nfX7IFK9UNI",
-    "poses": []
+    "poses": [
+      {
+        "label": "Beginhouding",
+        "file": "media/exercises/fm-goblet-squat-dumbbell-benen-1.png"
+      },
+      {
+        "label": "Uitvoering",
+        "file": "media/exercises/fm-goblet-squat-dumbbell-benen-2.png"
+      }
+    ],
+    "artCredit": "Fitness Manager"
   },
   "goblet-squat-kettlebell-benen": {
     "primary": "Quadriceps, bilspieren",
@@ -535,7 +611,17 @@ export const exerciseDetails={
     ],
     "source": "https://www.nasm.org/resource-center/exercise-library/goblet-squat",
     "video": "https://www.youtube.com/watch?v=nfX7IFK9UNI",
-    "poses": []
+    "poses": [
+      {
+        "label": "Beginhouding",
+        "file": "media/exercises/fm-goblet-squat-kettlebell-benen-1.png"
+      },
+      {
+        "label": "Uitvoering",
+        "file": "media/exercises/fm-goblet-squat-kettlebell-benen-2.png"
+      }
+    ],
+    "artCredit": "Fitness Manager"
   },
   "good-morning-barbell-benen": {
     "primary": "Hamstrings, bilspieren",
@@ -589,7 +675,17 @@ export const exerciseDetails={
     ],
     "source": "https://www.nasm.org/resource-center/exercise-library/single-leg-squat",
     "video": "https://www.youtube.com/watch?v=sSXnaFyhiZs",
-    "poses": []
+    "poses": [
+      {
+        "label": "Beginhouding",
+        "file": "media/exercises/fm-single-leg-squat-benen-1.png"
+      },
+      {
+        "label": "Uitvoering",
+        "file": "media/exercises/fm-single-leg-squat-benen-2.png"
+      }
+    ],
+    "artCredit": "Fitness Manager"
   },
   "glute-bridge-benen": {
     "primary": "Bilspieren",
@@ -676,7 +772,17 @@ export const exerciseDetails={
     ],
     "source": "https://www.nasm.org/resource-center/exercise-library/face-pull",
     "video": "https://www.youtube.com/watch?v=eTCBSFlCJ_s",
-    "poses": []
+    "poses": [
+      {
+        "label": "Beginhouding",
+        "file": "media/exercises/fm-face-pull-cable-rug-1.png"
+      },
+      {
+        "label": "Uitvoering",
+        "file": "media/exercises/fm-face-pull-cable-rug-2.png"
+      }
+    ],
+    "artCredit": "Fitness Manager"
   },
   "face-pull-cable-schouders": {
     "primary": "Achterste schouders, middenrug",
@@ -698,7 +804,17 @@ export const exerciseDetails={
     ],
     "source": "https://www.nasm.org/resource-center/exercise-library/face-pull",
     "video": "https://www.youtube.com/watch?v=eTCBSFlCJ_s",
-    "poses": []
+    "poses": [
+      {
+        "label": "Beginhouding",
+        "file": "media/exercises/fm-face-pull-cable-schouders-1.png"
+      },
+      {
+        "label": "Uitvoering",
+        "file": "media/exercises/fm-face-pull-cable-schouders-2.png"
+      }
+    ],
+    "artCredit": "Fitness Manager"
   },
   "box-jump-benen": {
     "primary": "Quadriceps, bilspieren, kuitspieren",
@@ -720,7 +836,17 @@ export const exerciseDetails={
     ],
     "source": "https://www.nasm.org/resource-center/exercise-library/box-jumps",
     "video": "https://www.youtube.com/watch?v=DXu-8TAJwi4",
-    "poses": []
+    "poses": [
+      {
+        "label": "Inveren voor de box",
+        "file": "media/exercises/fm-box-jump-benen-1.png"
+      },
+      {
+        "label": "Zachte landing op de box",
+        "file": "media/exercises/fm-box-jump-benen-2.png"
+      }
+    ],
+    "artCredit": "Fitness Manager"
   },
   "incline-push-up-borst": {
     "primary": "Borstspieren, triceps",
@@ -741,7 +867,17 @@ export const exerciseDetails={
     ],
     "source": "https://www.nasm.org/resource-center/exercise-library/incline-push-up",
     "video": "https://www.youtube.com/watch?v=0JUrOH--Kdk",
-    "poses": []
+    "poses": [
+      {
+        "label": "Beginhouding",
+        "file": "media/exercises/fm-incline-push-up-borst-1.png"
+      },
+      {
+        "label": "Uitvoering",
+        "file": "media/exercises/fm-incline-push-up-borst-2.png"
+      }
+    ],
+    "artCredit": "Fitness Manager"
   },
   "squat-jump-benen": {
     "primary": "Quadriceps, bilspieren, kuitspieren",
@@ -762,7 +898,21 @@ export const exerciseDetails={
     ],
     "source": "https://www.nasm.org/resource-center/exercise-library/squat-jump",
     "video": "https://www.youtube.com/watch?v=tZSYZdtbONc",
-    "poses": []
+    "poses": [
+      {
+        "label": "Inveren",
+        "file": "media/exercises/fm-squat-jump-benen-1.png"
+      },
+      {
+        "label": "Afzet",
+        "file": "media/exercises/fm-squat-jump-benen-2.png"
+      },
+      {
+        "label": "Zachte landing",
+        "file": "media/exercises/fm-squat-jump-benen-3.png"
+      }
+    ],
+    "artCredit": "Fitness Manager"
   },
   "chest-press-machine-borst": {
     "primary": "Borstspieren",
@@ -816,7 +966,17 @@ export const exerciseDetails={
     ],
     "source": "https://www.nasm.org/resource-center/exercise-library/kettlebell-deadlift",
     "video": "https://www.youtube.com/watch?v=LnIMaf-XOpM",
-    "poses": []
+    "poses": [
+      {
+        "label": "Beginhouding",
+        "file": "media/exercises/fm-deadlift-kettlebell-benen-1.png"
+      },
+      {
+        "label": "Uitvoering",
+        "file": "media/exercises/fm-deadlift-kettlebell-benen-2.png"
+      }
+    ],
+    "artCredit": "Fitness Manager"
   },
   "pike-push-up-schouders": {
     "primary": "Schouders, triceps",
@@ -838,7 +998,17 @@ export const exerciseDetails={
     ],
     "source": "https://www.nasm.org/resource-center/exercise-library/pike-push-up",
     "video": "https://www.youtube.com/watch?v=2b5t0Cu2nQI",
-    "poses": []
+    "poses": [
+      {
+        "label": "Beginhouding",
+        "file": "media/exercises/fm-pike-push-up-schouders-1.png"
+      },
+      {
+        "label": "Uitvoering",
+        "file": "media/exercises/fm-pike-push-up-schouders-2.png"
+      }
+    ],
+    "artCredit": "Fitness Manager"
   },
   "squat-barbell-benen": {
     "primary": "Quadriceps, bilspieren",
@@ -893,7 +1063,17 @@ export const exerciseDetails={
     ],
     "source": "https://www.nasm.org/resource-center/exercise-library/prisoner-squat",
     "video": "https://www.youtube.com/watch?v=UYbsgiiZgao",
-    "poses": [],
+    "poses": [
+      {
+        "label": "Beginhouding",
+        "file": "media/exercises/fm-squat-benen-1.png"
+      },
+      {
+        "label": "Uitvoering",
+        "file": "media/exercises/fm-squat-benen-2.png"
+      }
+    ],
+    "artCredit": "Fitness Manager",
     "videoNote": "Video toont een prisoner squat met handen achter het hoofd en extra hielheffing. Voor de gewone squat houd je de voeten plat."
   },
   "lying-leg-curl-machine-benen": {
@@ -979,7 +1159,17 @@ export const exerciseDetails={
     ],
     "source": "https://www.youtube.com/watch?v=XNf6TBErGys",
     "video": "https://www.youtube.com/watch?v=XNf6TBErGys",
-    "poses": []
+    "poses": [
+      {
+        "label": "Beginhouding",
+        "file": "media/exercises/fm-chest-fly-cable-borst-1.png"
+      },
+      {
+        "label": "Uitvoering",
+        "file": "media/exercises/fm-chest-fly-cable-borst-2.png"
+      }
+    ],
+    "artCredit": "Fitness Manager"
   },
   "seated-row-cable-rug": {
     "primary": "Brede rugspier, middenrug",
@@ -1096,7 +1286,17 @@ export const exerciseDetails={
       "lat-pulldown-machine-rug"
     ],
     "source": "https://www.nasm.org/resource-center/blog/training/the-biomechanics-of-the-lat-pulldown-muscles-grip-and-form",
-    "poses": []
+    "poses": [
+      {
+        "label": "Armen omhoog",
+        "file": "media/exercises/fm-lat-pulldown-cable-rug-1.png"
+      },
+      {
+        "label": "Trek naar de borst",
+        "file": "media/exercises/fm-lat-pulldown-cable-rug-2.png"
+      }
+    ],
+    "artCredit": "Fitness Manager"
   },
   "copenhagen-plank-core": {
     "primary": "Heupadductoren (binnenkant bovenbeen)",
@@ -1117,7 +1317,13 @@ export const exerciseDetails={
     ],
     "source": "https://e3rehab.com/copenhagenplanks/",
     "video": "https://www.youtube.com/watch?v=ypRpRbZykFQ",
-    "poses": [],
+    "poses": [
+      {
+        "label": "Houding",
+        "file": "media/exercises/fm-copenhagen-plank-core-1.png"
+      }
+    ],
+    "artCredit": "Fitness Manager",
     "sourceLabel": "E3 Rehab",
     "videoLabel": "E3 Rehab"
   },
@@ -1141,7 +1347,17 @@ export const exerciseDetails={
     ],
     "source": "https://e3rehab.com/copenhagenplanks/",
     "video": "https://www.youtube.com/watch?v=f4WdwcwPQnc",
-    "poses": [],
+    "poses": [
+      {
+        "label": "Beginhouding",
+        "file": "media/exercises/fm-copenhagen-plank-knee-dynamic-core-1.png"
+      },
+      {
+        "label": "Uitvoering",
+        "file": "media/exercises/fm-copenhagen-plank-knee-dynamic-core-2.png"
+      }
+    ],
+    "artCredit": "Fitness Manager",
     "sourceLabel": "E3 Rehab",
     "videoLabel": "E3 Rehab"
   },
@@ -1164,7 +1380,17 @@ export const exerciseDetails={
     ],
     "source": "https://hawkesphysiotherapy.co.uk/exercise/cable-exercise-band-pallof-press/",
     "video": "https://hawkesphysiotherapy.co.uk/exercise/cable-exercise-band-pallof-press/",
-    "poses": [],
+    "poses": [
+      {
+        "label": "Greep voor de borst",
+        "file": "media/exercises/fm-pallof-press-cable-core-1.png"
+      },
+      {
+        "label": "Armen strekken, romp blijft stil",
+        "file": "media/exercises/fm-pallof-press-cable-core-2.png"
+      }
+    ],
+    "artCredit": "Fitness Manager",
     "sourceLabel": "Hawkes Physiotherapy",
     "videoLabel": "Hawkes Physiotherapy",
     "videoNote": "De externe bronpagina bevat de instructievideo; kabel- of bandvariant."
@@ -1317,7 +1543,17 @@ export const exerciseDetails={
     ],
     "source": "https://tanrenica.com/exercises?lang=en",
     "sourceLabel": "Tanrenica (oefenregister)",
-    "poses": []
+    "poses": [
+      {
+        "label": "Beginhouding",
+        "file": "media/exercises/fm-hip-thrust-barbell-benen-1.png"
+      },
+      {
+        "label": "Uitvoering",
+        "file": "media/exercises/fm-hip-thrust-barbell-benen-2.png"
+      }
+    ],
+    "artCredit": "Fitness Manager"
   },
   "split-squat-barbell-benen": {
     "primary": "Quadriceps, bilspieren",
@@ -1338,7 +1574,17 @@ export const exerciseDetails={
     ],
     "source": "https://tanrenica.com/exercises?lang=en",
     "sourceLabel": "Tanrenica (oefenregister)",
-    "poses": []
+    "poses": [
+      {
+        "label": "Beginhouding",
+        "file": "media/exercises/fm-split-squat-barbell-benen-1.png"
+      },
+      {
+        "label": "Uitvoering",
+        "file": "media/exercises/fm-split-squat-barbell-benen-2.png"
+      }
+    ],
+    "artCredit": "Fitness Manager"
   },
   "calf-raise-barbell-benen": {
     "primary": "Gastrocnemius, soleus",
@@ -1359,7 +1605,17 @@ export const exerciseDetails={
     ],
     "source": "https://tanrenica.com/exercises?lang=en",
     "sourceLabel": "Tanrenica (oefenregister)",
-    "poses": []
+    "poses": [
+      {
+        "label": "Hielen laag",
+        "file": "media/exercises/fm-calf-raise-barbell-benen-1.png"
+      },
+      {
+        "label": "Hielen omhoog",
+        "file": "media/exercises/fm-calf-raise-barbell-benen-2.png"
+      }
+    ],
+    "artCredit": "Fitness Manager"
   },
   "walking-lunges-dumbbell-benen": {
     "primary": "Quadriceps, bilspieren",
@@ -1479,7 +1735,17 @@ export const exerciseDetails={
     ],
     "source": "https://tanrenica.com/exercises?lang=en",
     "sourceLabel": "Tanrenica (oefenregister)",
-    "poses": []
+    "poses": [
+      {
+        "label": "Beginhouding",
+        "file": "media/exercises/fm-single-leg-deadlift-dumbbell-benen-1.png"
+      },
+      {
+        "label": "Uitvoering",
+        "file": "media/exercises/fm-single-leg-deadlift-dumbbell-benen-2.png"
+      }
+    ],
+    "artCredit": "Fitness Manager"
   },
   "calf-raise-dumbbell-benen": {
     "primary": "Gastrocnemius, soleus",
@@ -1500,7 +1766,17 @@ export const exerciseDetails={
     ],
     "source": "https://tanrenica.com/exercises?lang=en",
     "sourceLabel": "Tanrenica (oefenregister)",
-    "poses": []
+    "poses": [
+      {
+        "label": "Hielen laag",
+        "file": "media/exercises/fm-calf-raise-dumbbell-benen-1.png"
+      },
+      {
+        "label": "Hielen omhoog",
+        "file": "media/exercises/fm-calf-raise-dumbbell-benen-2.png"
+      }
+    ],
+    "artCredit": "Fitness Manager"
   },
   "leg-extension-machine-benen": {
     "primary": "Quadriceps",
@@ -1553,7 +1829,17 @@ export const exerciseDetails={
     ],
     "source": "https://tanrenica.com/exercises?lang=en",
     "sourceLabel": "Tanrenica (oefenregister)",
-    "poses": []
+    "poses": [
+      {
+        "label": "Beginhouding",
+        "file": "media/exercises/fm-hack-squat-machine-benen-1.png"
+      },
+      {
+        "label": "Uitvoering",
+        "file": "media/exercises/fm-hack-squat-machine-benen-2.png"
+      }
+    ],
+    "artCredit": "Fitness Manager"
   },
   "hip-abduction-machine-benen": {
     "primary": "Gluteus medius en minimus",
@@ -1574,7 +1860,17 @@ export const exerciseDetails={
     ],
     "source": "https://tanrenica.com/exercises?lang=en",
     "sourceLabel": "Tanrenica (oefenregister)",
-    "poses": []
+    "poses": [
+      {
+        "label": "Beginhouding",
+        "file": "media/exercises/fm-hip-abduction-machine-benen-1.png"
+      },
+      {
+        "label": "Uitvoering",
+        "file": "media/exercises/fm-hip-abduction-machine-benen-2.png"
+      }
+    ],
+    "artCredit": "Fitness Manager"
   },
   "hip-adduction-machine-benen": {
     "primary": "Heupadductoren",
@@ -1595,7 +1891,17 @@ export const exerciseDetails={
     ],
     "source": "https://tanrenica.com/exercises?lang=en",
     "sourceLabel": "Tanrenica (oefenregister)",
-    "poses": []
+    "poses": [
+      {
+        "label": "Beginhouding",
+        "file": "media/exercises/fm-hip-adduction-machine-benen-1.png"
+      },
+      {
+        "label": "Uitvoering",
+        "file": "media/exercises/fm-hip-adduction-machine-benen-2.png"
+      }
+    ],
+    "artCredit": "Fitness Manager"
   },
   "standing-calf-raise-machine-benen": {
     "primary": "Gastrocnemius, soleus",
@@ -1616,7 +1922,17 @@ export const exerciseDetails={
     ],
     "source": "https://tanrenica.com/exercises?lang=en",
     "sourceLabel": "Tanrenica (oefenregister)",
-    "poses": []
+    "poses": [
+      {
+        "label": "Hielen laag",
+        "file": "media/exercises/fm-standing-calf-raise-machine-benen-1.png"
+      },
+      {
+        "label": "Hielen omhoog",
+        "file": "media/exercises/fm-standing-calf-raise-machine-benen-2.png"
+      }
+    ],
+    "artCredit": "Fitness Manager"
   },
   "seated-calf-raise-machine-benen": {
     "primary": "Soleus",
@@ -1637,7 +1953,17 @@ export const exerciseDetails={
     ],
     "source": "https://tanrenica.com/exercises?lang=en",
     "sourceLabel": "Tanrenica (oefenregister)",
-    "poses": []
+    "poses": [
+      {
+        "label": "Hielen laag",
+        "file": "media/exercises/fm-seated-calf-raise-machine-benen-1.png"
+      },
+      {
+        "label": "Hielen omhoog",
+        "file": "media/exercises/fm-seated-calf-raise-machine-benen-2.png"
+      }
+    ],
+    "artCredit": "Fitness Manager"
   },
   "walking-lunges-benen": {
     "primary": "Quadriceps, bilspieren",
@@ -1658,7 +1984,17 @@ export const exerciseDetails={
     ],
     "source": "https://tanrenica.com/exercises?lang=en",
     "sourceLabel": "Tanrenica (oefenregister)",
-    "poses": []
+    "poses": [
+      {
+        "label": "Stap naar voren",
+        "file": "media/exercises/fm-walking-lunges-benen-1.png"
+      },
+      {
+        "label": "Zak en duw terug",
+        "file": "media/exercises/fm-walking-lunges-benen-2.png"
+      }
+    ],
+    "artCredit": "Fitness Manager"
   },
   "reverse-lunges-benen": {
     "primary": "Quadriceps, bilspieren",
@@ -1679,7 +2015,17 @@ export const exerciseDetails={
     ],
     "source": "https://www.keele.ac.uk/sportatkeele/activekeele/exerciselibrary/",
     "sourceLabel": "Sport Keele (oefenregister)",
-    "poses": []
+    "poses": [
+      {
+        "label": "Stand",
+        "file": "media/exercises/fm-reverse-lunges-benen-1.png"
+      },
+      {
+        "label": "Stap achteruit en zak",
+        "file": "media/exercises/fm-reverse-lunges-benen-2.png"
+      }
+    ],
+    "artCredit": "Fitness Manager"
   },
   "nordic-hamstring-curl-benen": {
     "primary": "Hamstrings",
@@ -1700,7 +2046,17 @@ export const exerciseDetails={
     ],
     "source": "https://tanrenica.com/exercises?lang=en",
     "sourceLabel": "Tanrenica (oefenregister)",
-    "poses": []
+    "poses": [
+      {
+        "label": "Geknield",
+        "file": "media/exercises/fm-nordic-hamstring-curl-benen-1.png"
+      },
+      {
+        "label": "Rem de voorwaartse beweging",
+        "file": "media/exercises/fm-nordic-hamstring-curl-benen-2.png"
+      }
+    ],
+    "artCredit": "Fitness Manager"
   },
   "calf-raise-benen": {
     "primary": "Gastrocnemius, soleus",
@@ -1721,7 +2077,17 @@ export const exerciseDetails={
     ],
     "source": "https://www.keele.ac.uk/sportatkeele/activekeele/exerciselibrary/",
     "sourceLabel": "Sport Keele (oefenregister)",
-    "poses": []
+    "poses": [
+      {
+        "label": "Hielen laag",
+        "file": "media/exercises/fm-calf-raise-benen-1.png"
+      },
+      {
+        "label": "Hielen omhoog",
+        "file": "media/exercises/fm-calf-raise-benen-2.png"
+      }
+    ],
+    "artCredit": "Fitness Manager"
   },
   "pull-through-cable-benen": {
     "primary": "Bilspieren, hamstrings",
@@ -1742,7 +2108,17 @@ export const exerciseDetails={
     ],
     "source": "https://tanrenica.com/exercises?lang=en",
     "sourceLabel": "Tanrenica (oefenregister)",
-    "poses": []
+    "poses": [
+      {
+        "label": "Beginhouding",
+        "file": "media/exercises/fm-pull-through-cable-benen-1.png"
+      },
+      {
+        "label": "Uitvoering",
+        "file": "media/exercises/fm-pull-through-cable-benen-2.png"
+      }
+    ],
+    "artCredit": "Fitness Manager"
   },
   "hip-abduction-cable-benen": {
     "primary": "Gluteus medius en minimus",
@@ -1763,7 +2139,17 @@ export const exerciseDetails={
     ],
     "source": "https://tanrenica.com/exercises?lang=en",
     "sourceLabel": "Tanrenica (oefenregister)",
-    "poses": []
+    "poses": [
+      {
+        "label": "Beginhouding",
+        "file": "media/exercises/fm-hip-abduction-cable-benen-1.png"
+      },
+      {
+        "label": "Uitvoering",
+        "file": "media/exercises/fm-hip-abduction-cable-benen-2.png"
+      }
+    ],
+    "artCredit": "Fitness Manager"
   },
   "hip-adduction-cable-benen": {
     "primary": "Heupadductoren",
@@ -1784,7 +2170,17 @@ export const exerciseDetails={
     ],
     "source": "https://tanrenica.com/exercises?lang=en",
     "sourceLabel": "Tanrenica (oefenregister)",
-    "poses": []
+    "poses": [
+      {
+        "label": "Beginhouding",
+        "file": "media/exercises/fm-hip-adduction-cable-benen-1.png"
+      },
+      {
+        "label": "Uitvoering",
+        "file": "media/exercises/fm-hip-adduction-cable-benen-2.png"
+      }
+    ],
+    "artCredit": "Fitness Manager"
   },
   "swing-kettlebell-benen": {
     "primary": "Bilspieren, hamstrings",
@@ -1805,7 +2201,17 @@ export const exerciseDetails={
     ],
     "source": "https://tanrenica.com/exercises?lang=en",
     "sourceLabel": "Tanrenica (oefenregister)",
-    "poses": []
+    "poses": [
+      {
+        "label": "Heupscharnier",
+        "file": "media/exercises/fm-swing-kettlebell-benen-1.png"
+      },
+      {
+        "label": "Heupen gestrekt",
+        "file": "media/exercises/fm-swing-kettlebell-benen-2.png"
+      }
+    ],
+    "artCredit": "Fitness Manager"
   },
   "decline-bench-press-barbell-borst": {
     "primary": "Borstspieren",
@@ -1826,7 +2232,17 @@ export const exerciseDetails={
     ],
     "source": "https://tanrenica.com/exercises?lang=en",
     "sourceLabel": "Tanrenica (oefenregister)",
-    "poses": []
+    "poses": [
+      {
+        "label": "Armen gestrekt",
+        "file": "media/exercises/fm-decline-bench-press-barbell-borst-1.png"
+      },
+      {
+        "label": "Stang bij onderborst",
+        "file": "media/exercises/fm-decline-bench-press-barbell-borst-2.png"
+      }
+    ],
+    "artCredit": "Fitness Manager"
   },
   "bench-press-dumbbell-borst": {
     "primary": "Borstspieren",
@@ -1847,7 +2263,17 @@ export const exerciseDetails={
     ],
     "source": "https://tanrenica.com/exercises?lang=en",
     "sourceLabel": "Tanrenica (oefenregister)",
-    "poses": []
+    "poses": [
+      {
+        "label": "Armen gestrekt",
+        "file": "media/exercises/fm-bench-press-dumbbell-borst-1.png"
+      },
+      {
+        "label": "Gewichten naast de borst",
+        "file": "media/exercises/fm-bench-press-dumbbell-borst-2.png"
+      }
+    ],
+    "artCredit": "Fitness Manager"
   },
   "chest-fly-dumbbell-borst": {
     "primary": "Borstspieren",
@@ -1868,7 +2294,17 @@ export const exerciseDetails={
     ],
     "source": "https://tanrenica.com/exercises?lang=en",
     "sourceLabel": "Tanrenica (oefenregister)",
-    "poses": []
+    "poses": [
+      {
+        "label": "Boven de borst",
+        "file": "media/exercises/fm-chest-fly-dumbbell-borst-1.png"
+      },
+      {
+        "label": "Armen openen",
+        "file": "media/exercises/fm-chest-fly-dumbbell-borst-2.png"
+      }
+    ],
+    "artCredit": "Fitness Manager"
   },
   "incline-chest-fly-dumbbell-borst": {
     "primary": "Borstspieren, bovenste vezels",
@@ -1889,7 +2325,17 @@ export const exerciseDetails={
     ],
     "source": "https://tanrenica.com/exercises?lang=en",
     "sourceLabel": "Tanrenica (oefenregister)",
-    "poses": []
+    "poses": [
+      {
+        "label": "Boven de borst",
+        "file": "media/exercises/fm-incline-chest-fly-dumbbell-borst-1.png"
+      },
+      {
+        "label": "Armen openen",
+        "file": "media/exercises/fm-incline-chest-fly-dumbbell-borst-2.png"
+      }
+    ],
+    "artCredit": "Fitness Manager"
   },
   "pec-deck-machine-borst": {
     "primary": "Borstspieren",
@@ -1943,7 +2389,17 @@ export const exerciseDetails={
     ],
     "source": "https://tanrenica.com/exercises?lang=en",
     "sourceLabel": "Tanrenica (oefenregister)",
-    "poses": []
+    "poses": [
+      {
+        "label": "Beginhouding",
+        "file": "media/exercises/fm-low-to-high-fly-cable-borst-1.png"
+      },
+      {
+        "label": "Uitvoering",
+        "file": "media/exercises/fm-low-to-high-fly-cable-borst-2.png"
+      }
+    ],
+    "artCredit": "Fitness Manager"
   },
   "diamond-push-up-borst": {
     "primary": "Triceps, borstspieren",
@@ -1964,7 +2420,17 @@ export const exerciseDetails={
     ],
     "source": "https://www.keele.ac.uk/sportatkeele/activekeele/exerciselibrary/",
     "sourceLabel": "Sport Keele (oefenregister)",
-    "poses": []
+    "poses": [
+      {
+        "label": "Handen dicht bij elkaar",
+        "file": "media/exercises/fm-diamond-push-up-borst-1.png"
+      },
+      {
+        "label": "Borst zakt naar de handen",
+        "file": "media/exercises/fm-diamond-push-up-borst-2.png"
+      }
+    ],
+    "artCredit": "Fitness Manager"
   },
   "dip-borst": {
     "primary": "Borstspieren, triceps",
@@ -2018,7 +2484,17 @@ export const exerciseDetails={
     ],
     "source": "https://tanrenica.com/exercises?lang=en",
     "sourceLabel": "Tanrenica (oefenregister)",
-    "poses": []
+    "poses": [
+      {
+        "label": "Beginhouding",
+        "file": "media/exercises/fm-bent-over-row-barbell-rug-1.png"
+      },
+      {
+        "label": "Uitvoering",
+        "file": "media/exercises/fm-bent-over-row-barbell-rug-2.png"
+      }
+    ],
+    "artCredit": "Fitness Manager"
   },
   "pendlay-row-barbell-rug": {
     "primary": "Middenrug, brede rugspier",
@@ -2039,7 +2515,17 @@ export const exerciseDetails={
     ],
     "source": "https://tanrenica.com/exercises?lang=en",
     "sourceLabel": "Tanrenica (oefenregister)",
-    "poses": []
+    "poses": [
+      {
+        "label": "Beginhouding",
+        "file": "media/exercises/fm-pendlay-row-barbell-rug-1.png"
+      },
+      {
+        "label": "Uitvoering",
+        "file": "media/exercises/fm-pendlay-row-barbell-rug-2.png"
+      }
+    ],
+    "artCredit": "Fitness Manager"
   },
   "single-arm-row-dumbbell-rug": {
     "primary": "Brede rugspier, middenrug",
@@ -2060,7 +2546,17 @@ export const exerciseDetails={
     ],
     "source": "https://tanrenica.com/exercises?lang=en",
     "sourceLabel": "Tanrenica (oefenregister)",
-    "poses": []
+    "poses": [
+      {
+        "label": "Beginhouding",
+        "file": "media/exercises/fm-single-arm-row-dumbbell-rug-1.png"
+      },
+      {
+        "label": "Uitvoering",
+        "file": "media/exercises/fm-single-arm-row-dumbbell-rug-2.png"
+      }
+    ],
+    "artCredit": "Fitness Manager"
   },
   "bent-over-row-dumbbell-rug": {
     "primary": "Brede rugspier, middenrug",
@@ -2081,7 +2577,17 @@ export const exerciseDetails={
     ],
     "source": "https://tanrenica.com/exercises?lang=en",
     "sourceLabel": "Tanrenica (oefenregister)",
-    "poses": []
+    "poses": [
+      {
+        "label": "Beginhouding",
+        "file": "media/exercises/fm-bent-over-row-dumbbell-rug-1.png"
+      },
+      {
+        "label": "Uitvoering",
+        "file": "media/exercises/fm-bent-over-row-dumbbell-rug-2.png"
+      }
+    ],
+    "artCredit": "Fitness Manager"
   },
   "reverse-fly-dumbbell-rug": {
     "primary": "Achterste schouders, middenrug",
@@ -2102,7 +2608,17 @@ export const exerciseDetails={
     ],
     "source": "https://tanrenica.com/exercises?lang=en",
     "sourceLabel": "Tanrenica (oefenregister)",
-    "poses": []
+    "poses": [
+      {
+        "label": "Beginhouding",
+        "file": "media/exercises/fm-reverse-fly-dumbbell-rug-1.png"
+      },
+      {
+        "label": "Uitvoering",
+        "file": "media/exercises/fm-reverse-fly-dumbbell-rug-2.png"
+      }
+    ],
+    "artCredit": "Fitness Manager"
   },
   "straight-arm-pulldown-cable-rug": {
     "primary": "Brede rugspier",
@@ -2155,7 +2671,17 @@ export const exerciseDetails={
     ],
     "source": "https://tanrenica.com/exercises?lang=en",
     "sourceLabel": "Tanrenica (oefenregister)",
-    "poses": []
+    "poses": [
+      {
+        "label": "Armen omhoog",
+        "file": "media/exercises/fm-lat-pulldown-machine-rug-1.png"
+      },
+      {
+        "label": "Trek naar de borst",
+        "file": "media/exercises/fm-lat-pulldown-machine-rug-2.png"
+      }
+    ],
+    "artCredit": "Fitness Manager"
   },
   "seated-row-machine-rug": {
     "primary": "Middenrug, brede rugspier",
@@ -2176,7 +2702,17 @@ export const exerciseDetails={
     ],
     "source": "https://tanrenica.com/exercises?lang=en",
     "sourceLabel": "Tanrenica (oefenregister)",
-    "poses": []
+    "poses": [
+      {
+        "label": "Beginhouding",
+        "file": "media/exercises/fm-seated-row-machine-rug-1.png"
+      },
+      {
+        "label": "Uitvoering",
+        "file": "media/exercises/fm-seated-row-machine-rug-2.png"
+      }
+    ],
+    "artCredit": "Fitness Manager"
   },
   "chest-supported-row-machine-rug": {
     "primary": "Middenrug, brede rugspier",
@@ -2197,7 +2733,17 @@ export const exerciseDetails={
     ],
     "source": "https://tanrenica.com/exercises?lang=en",
     "sourceLabel": "Tanrenica (oefenregister)",
-    "poses": []
+    "poses": [
+      {
+        "label": "Beginhouding",
+        "file": "media/exercises/fm-chest-supported-row-machine-rug-1.png"
+      },
+      {
+        "label": "Uitvoering",
+        "file": "media/exercises/fm-chest-supported-row-machine-rug-2.png"
+      }
+    ],
+    "artCredit": "Fitness Manager"
   },
   "chin-up-rug": {
     "primary": "Brede rugspier, biceps",
@@ -2284,7 +2830,17 @@ export const exerciseDetails={
     ],
     "source": "https://tanrenica.com/exercises?lang=en",
     "sourceLabel": "Tanrenica (oefenregister)",
-    "poses": []
+    "poses": [
+      {
+        "label": "Stang bij de schouders",
+        "file": "media/exercises/fm-overhead-press-barbell-schouders-1.png"
+      },
+      {
+        "label": "Stang boven het hoofd",
+        "file": "media/exercises/fm-overhead-press-barbell-schouders-2.png"
+      }
+    ],
+    "artCredit": "Fitness Manager"
   },
   "push-press-barbell-schouders": {
     "primary": "Schouders, triceps",
@@ -2305,7 +2861,21 @@ export const exerciseDetails={
     ],
     "source": "https://tanrenica.com/exercises?lang=en",
     "sourceLabel": "Tanrenica (oefenregister)",
-    "poses": []
+    "poses": [
+      {
+        "label": "Stang bij de schouders",
+        "file": "media/exercises/fm-push-press-barbell-schouders-1.png"
+      },
+      {
+        "label": "Korte kniebuiging",
+        "file": "media/exercises/fm-push-press-barbell-schouders-2.png"
+      },
+      {
+        "label": "Stang boven het hoofd",
+        "file": "media/exercises/fm-push-press-barbell-schouders-3.png"
+      }
+    ],
+    "artCredit": "Fitness Manager"
   },
   "front-raise-dumbbell-schouders": {
     "primary": "Voorste schouders",
@@ -2392,7 +2962,17 @@ export const exerciseDetails={
     ],
     "source": "https://tanrenica.com/exercises?lang=en",
     "sourceLabel": "Tanrenica (oefenregister)",
-    "poses": []
+    "poses": [
+      {
+        "label": "Beginhouding",
+        "file": "media/exercises/fm-reverse-fly-dumbbell-schouders-1.png"
+      },
+      {
+        "label": "Uitvoering",
+        "file": "media/exercises/fm-reverse-fly-dumbbell-schouders-2.png"
+      }
+    ],
+    "artCredit": "Fitness Manager"
   },
   "lateral-raise-cable-schouders": {
     "primary": "Middelste schouders",
@@ -2413,7 +2993,17 @@ export const exerciseDetails={
     ],
     "source": "https://tanrenica.com/exercises?lang=en",
     "sourceLabel": "Tanrenica (oefenregister)",
-    "poses": []
+    "poses": [
+      {
+        "label": "Beginhouding",
+        "file": "media/exercises/fm-lateral-raise-cable-schouders-1.png"
+      },
+      {
+        "label": "Uitvoering",
+        "file": "media/exercises/fm-lateral-raise-cable-schouders-2.png"
+      }
+    ],
+    "artCredit": "Fitness Manager"
   },
   "front-raise-cable-schouders": {
     "primary": "Voorste schouders",
@@ -2498,7 +3088,17 @@ export const exerciseDetails={
     ],
     "source": "https://tanrenica.com/exercises?lang=en",
     "sourceLabel": "Tanrenica (oefenregister)",
-    "poses": []
+    "poses": [
+      {
+        "label": "Beginhouding",
+        "file": "media/exercises/fm-lateral-raise-machine-schouders-1.png"
+      },
+      {
+        "label": "Uitvoering",
+        "file": "media/exercises/fm-lateral-raise-machine-schouders-2.png"
+      }
+    ],
+    "artCredit": "Fitness Manager"
   },
   "reverse-pec-deck-machine-schouders": {
     "primary": "Achterste schouders",
@@ -2519,7 +3119,17 @@ export const exerciseDetails={
     ],
     "source": "https://tanrenica.com/exercises?lang=en",
     "sourceLabel": "Tanrenica (oefenregister)",
-    "poses": []
+    "poses": [
+      {
+        "label": "Beginhouding",
+        "file": "media/exercises/fm-reverse-pec-deck-machine-schouders-1.png"
+      },
+      {
+        "label": "Uitvoering",
+        "file": "media/exercises/fm-reverse-pec-deck-machine-schouders-2.png"
+      }
+    ],
+    "artCredit": "Fitness Manager"
   },
   "concentration-curl-dumbbell-armen": {
     "primary": "Biceps, brachialis",
@@ -2540,7 +3150,17 @@ export const exerciseDetails={
     ],
     "source": "https://tanrenica.com/exercises?lang=en",
     "sourceLabel": "Tanrenica (oefenregister)",
-    "poses": []
+    "poses": [
+      {
+        "label": "Beginhouding",
+        "file": "media/exercises/fm-concentration-curl-dumbbell-armen-1.png"
+      },
+      {
+        "label": "Uitvoering",
+        "file": "media/exercises/fm-concentration-curl-dumbbell-armen-2.png"
+      }
+    ],
+    "artCredit": "Fitness Manager"
   },
   "triceps-extension-dumbbell-armen": {
     "primary": "Triceps",
@@ -2561,7 +3181,17 @@ export const exerciseDetails={
     ],
     "source": "https://tanrenica.com/exercises?lang=en",
     "sourceLabel": "Tanrenica (oefenregister)",
-    "poses": []
+    "poses": [
+      {
+        "label": "Gewicht boven het hoofd",
+        "file": "media/exercises/fm-triceps-extension-dumbbell-armen-1.png"
+      },
+      {
+        "label": "Buig alleen de ellebogen",
+        "file": "media/exercises/fm-triceps-extension-dumbbell-armen-2.png"
+      }
+    ],
+    "artCredit": "Fitness Manager"
   },
   "skull-crusher-dumbbell-armen": {
     "primary": "Triceps",
@@ -2582,7 +3212,17 @@ export const exerciseDetails={
     ],
     "source": "https://tanrenica.com/exercises?lang=en",
     "sourceLabel": "Tanrenica (oefenregister)",
-    "poses": []
+    "poses": [
+      {
+        "label": "Beginhouding",
+        "file": "media/exercises/fm-skull-crusher-dumbbell-armen-1.png"
+      },
+      {
+        "label": "Uitvoering",
+        "file": "media/exercises/fm-skull-crusher-dumbbell-armen-2.png"
+      }
+    ],
+    "artCredit": "Fitness Manager"
   },
   "biceps-curl-cable-armen": {
     "primary": "Biceps, brachialis",
@@ -2635,7 +3275,17 @@ export const exerciseDetails={
     ],
     "source": "https://tanrenica.com/exercises?lang=en",
     "sourceLabel": "Tanrenica (oefenregister)",
-    "poses": []
+    "poses": [
+      {
+        "label": "Beginhouding",
+        "file": "media/exercises/fm-overhead-triceps-extension-cable-armen-1.png"
+      },
+      {
+        "label": "Uitvoering",
+        "file": "media/exercises/fm-overhead-triceps-extension-cable-armen-2.png"
+      }
+    ],
+    "artCredit": "Fitness Manager"
   },
   "preacher-curl-machine-armen": {
     "primary": "Biceps, brachialis",
@@ -2754,7 +3404,17 @@ export const exerciseDetails={
     ],
     "source": "https://www.keele.ac.uk/sportatkeele/activekeele/exerciselibrary/",
     "sourceLabel": "Sport Keele (oefenregister)",
-    "poses": []
+    "poses": [
+      {
+        "label": "Beginhouding",
+        "file": "media/exercises/fm-reverse-crunch-core-1.png"
+      },
+      {
+        "label": "Uitvoering",
+        "file": "media/exercises/fm-reverse-crunch-core-2.png"
+      }
+    ],
+    "artCredit": "Fitness Manager"
   },
   "mountain-climber-core": {
     "primary": "Rompstabilisatoren, heupbuigers",
@@ -2775,7 +3435,17 @@ export const exerciseDetails={
     ],
     "source": "https://www.keele.ac.uk/sportatkeele/activekeele/exerciselibrary/",
     "sourceLabel": "Sport Keele (oefenregister)",
-    "poses": []
+    "poses": [
+      {
+        "label": "Beginhouding",
+        "file": "media/exercises/fm-mountain-climber-core-1.png"
+      },
+      {
+        "label": "Uitvoering",
+        "file": "media/exercises/fm-mountain-climber-core-2.png"
+      }
+    ],
+    "artCredit": "Fitness Manager"
   },
   "hanging-knee-raise-core": {
     "primary": "Rechte buikspieren, heupbuigers",
@@ -2796,7 +3466,17 @@ export const exerciseDetails={
     ],
     "source": "https://coresatraining.com/exercises/",
     "sourceLabel": "Coresa (oefenregister)",
-    "poses": []
+    "poses": [
+      {
+        "label": "Beginhouding",
+        "file": "media/exercises/fm-hanging-knee-raise-core-1.png"
+      },
+      {
+        "label": "Uitvoering",
+        "file": "media/exercises/fm-hanging-knee-raise-core-2.png"
+      }
+    ],
+    "artCredit": "Fitness Manager"
   },
   "hollow-hold-core": {
     "primary": "Rechte buikspieren, rompstabilisatoren",
@@ -2817,7 +3497,13 @@ export const exerciseDetails={
     ],
     "source": "https://www.keele.ac.uk/sportatkeele/activekeele/exerciselibrary/",
     "sourceLabel": "Sport Keele (oefenregister)",
-    "poses": []
+    "poses": [
+      {
+        "label": "Houding",
+        "file": "media/exercises/fm-hollow-hold-core-1.png"
+      }
+    ],
+    "artCredit": "Fitness Manager"
   },
   "wood-chop-cable-core": {
     "primary": "Schuine buikspieren, romp",
@@ -2838,7 +3524,17 @@ export const exerciseDetails={
     ],
     "source": "https://coresatraining.com/exercises/",
     "sourceLabel": "Coresa (oefenregister)",
-    "poses": []
+    "poses": [
+      {
+        "label": "Beginhouding",
+        "file": "media/exercises/fm-wood-chop-cable-core-1.png"
+      },
+      {
+        "label": "Uitvoering",
+        "file": "media/exercises/fm-wood-chop-cable-core-2.png"
+      }
+    ],
+    "artCredit": "Fitness Manager"
   },
   "crunch-cable-core": {
     "primary": "Rechte buikspieren",
@@ -2859,7 +3555,17 @@ export const exerciseDetails={
     ],
     "source": "https://tanrenica.com/exercises?lang=en",
     "sourceLabel": "Tanrenica (oefenregister)",
-    "poses": []
+    "poses": [
+      {
+        "label": "Beginhouding",
+        "file": "media/exercises/fm-crunch-cable-core-1.png"
+      },
+      {
+        "label": "Uitvoering",
+        "file": "media/exercises/fm-crunch-cable-core-2.png"
+      }
+    ],
+    "artCredit": "Fitness Manager"
   },
   "russian-twist-dumbbell-core": {
     "primary": "Schuine buikspieren",
@@ -2880,7 +3586,17 @@ export const exerciseDetails={
     ],
     "source": "https://www.keele.ac.uk/sportatkeele/activekeele/exerciselibrary/",
     "sourceLabel": "Sport Keele (oefenregister)",
-    "poses": []
+    "poses": [
+      {
+        "label": "Gewicht voor de borst",
+        "file": "media/exercises/fm-russian-twist-dumbbell-core-1.png"
+      },
+      {
+        "label": "Draai rustig opzij",
+        "file": "media/exercises/fm-russian-twist-dumbbell-core-2.png"
+      }
+    ],
+    "artCredit": "Fitness Manager"
   },
   "side-bend-dumbbell-core": {
     "primary": "Schuine buikspieren, quadratus lumborum",
@@ -2934,7 +3650,17 @@ export const exerciseDetails={
     ],
     "source": "https://tanrenica.com/exercises?lang=en",
     "sourceLabel": "Tanrenica (oefenregister)",
-    "poses": []
+    "poses": [
+      {
+        "label": "Rechtop staan",
+        "file": "media/exercises/fm-suitcase-carry-dumbbell-core-1.png"
+      },
+      {
+        "label": "Gecontroleerde pas",
+        "file": "media/exercises/fm-suitcase-carry-dumbbell-core-2.png"
+      }
+    ],
+    "artCredit": "Fitness Manager"
   },
   "farmer-carry-kettlebell-core": {
     "primary": "Onderarmen, trapezius, rompstabilisatoren",
@@ -2955,7 +3681,17 @@ export const exerciseDetails={
     ],
     "source": "https://tanrenica.com/exercises?lang=en",
     "sourceLabel": "Tanrenica (oefenregister)",
-    "poses": []
+    "poses": [
+      {
+        "label": "Rechtop staan",
+        "file": "media/exercises/fm-farmer-carry-kettlebell-core-1.png"
+      },
+      {
+        "label": "Gecontroleerde pas",
+        "file": "media/exercises/fm-farmer-carry-kettlebell-core-2.png"
+      }
+    ],
+    "artCredit": "Fitness Manager"
   },
   "suitcase-carry-kettlebell-core": {
     "primary": "Schuine buikspieren, rompstabilisatoren",
@@ -2976,7 +3712,17 @@ export const exerciseDetails={
     ],
     "source": "https://tanrenica.com/exercises?lang=en",
     "sourceLabel": "Tanrenica (oefenregister)",
-    "poses": []
+    "poses": [
+      {
+        "label": "Rechtop staan",
+        "file": "media/exercises/fm-suitcase-carry-kettlebell-core-1.png"
+      },
+      {
+        "label": "Gecontroleerde pas",
+        "file": "media/exercises/fm-suitcase-carry-kettlebell-core-2.png"
+      }
+    ],
+    "artCredit": "Fitness Manager"
   },
   "turkish-get-up-kettlebell-core": {
     "primary": "Schouder- en rompstabilisatoren, bilspieren",
@@ -2997,92 +3743,26 @@ export const exerciseDetails={
     ],
     "source": "https://www.keele.ac.uk/sportatkeele/activekeele/exerciselibrary/",
     "sourceLabel": "Sport Keele (oefenregister)",
-    "poses": []
+    "poses": [
+      {
+        "label": "Ruglig",
+        "file": "media/exercises/fm-turkish-get-up-kettlebell-core-1.png"
+      },
+      {
+        "label": "Steun op de vrije hand",
+        "file": "media/exercises/fm-turkish-get-up-kettlebell-core-2.png"
+      },
+      {
+        "label": "Halfkniel",
+        "file": "media/exercises/fm-turkish-get-up-kettlebell-core-3.png"
+      },
+      {
+        "label": "Stand",
+        "file": "media/exercises/fm-turkish-get-up-kettlebell-core-4.png"
+      }
+    ],
+    "artCredit": "Fitness Manager"
   }
 };
-export const exerciseMedia=[
-  "media/exercises/bench-dips-1.png",
-  "media/exercises/bench-dips-2.png",
-  "media/exercises/push-ups-1.png",
-  "media/exercises/push-ups-2.png",
-  "media/exercises/bench-press-2.png",
-  "media/exercises/bench-press-1.png",
-  "media/exercises/incline-bench-press-2.png",
-  "media/exercises/incline-bench-press-1.png",
-  "media/exercises/pull-ups-1.png",
-  "media/exercises/pull-ups-2.png",
-  "media/exercises/leg-press-1.png",
-  "media/exercises/leg-press-2.png",
-  "media/exercises/seated-leg-curl-1.png",
-  "media/exercises/seated-leg-curl-2.png",
-  "media/exercises/side-plank-1.png",
-  "media/exercises/barbell-good-mornings-1.png",
-  "media/exercises/barbell-good-mornings-2.png",
-  "media/exercises/barbell-squat-1.png",
-  "media/exercises/barbell-squat-2.png",
-  "media/exercises/lying-leg-curl-machine-1.png",
-  "media/exercises/lying-leg-curl-machine-2.png",
-  "media/exercises/dumbbell-incline-bench-press-1.png",
-  "media/exercises/dumbbell-incline-bench-press-2.png",
-  "media/exercises/lateral-dumbbell-raises-2.png",
-  "media/exercises/lateral-dumbbell-raises-1.png",
-  "media/exercises/front-squat-with-barbell-1.png",
-  "media/exercises/front-squat-with-barbell-2.png",
-  "media/exercises/leg-extensions-1.png",
-  "media/exercises/leg-extensions-2.png",
-  "media/exercises/arnold-press-1.png",
-  "media/exercises/arnold-press-2.png",
-  "media/exercises/crunches-1.png",
-  "media/exercises/crunches-2.png",
-  "media/exercises/biceps-curl-with-dumbbell-1.png",
-  "media/exercises/biceps-curl-with-dumbbell-2.png",
-  "media/exercises/bicep-hammer-curl-with-dumbbell-1.png",
-  "media/exercises/bicep-hammer-curl-with-dumbbell-2.png",
-  "media/exercises/bridging-1.png",
-  "media/exercises/bridging-2.png",
-  "media/exercises/close-grip-barbell-bench-press-2.png",
-  "media/exercises/close-grip-barbell-bench-press-1.png",
-  "media/exercises/seated-cable-rows-2.png",
-  "media/exercises/seated-cable-rows-1.png",
-  "media/exercises/dumbbell-shoulder-press-1.png",
-  "media/exercises/dumbbell-shoulder-press-2.png",
-  "media/exercises/romanian-dead-lift-1.png",
-  "media/exercises/romanian-dead-lift-2.png",
-  "media/exercises/triceps-pushdown-with-cable-1.png",
-  "media/exercises/triceps-pushdown-with-cable-2.png",
-  "media/exercises/rear-lunges-with-dumbbell-1.png",
-  "media/exercises/rear-lunges-with-dumbbell-2.png",
-  "media/exercises/walking-lunges-1.png",
-  "media/exercises/walking-lunges-2.png",
-  "media/exercises/step-ups-with-dumbbells-1.png",
-  "media/exercises/step-ups-with-dumbbells-2.png",
-  "media/exercises/chin-ups-1.png",
-  "media/exercises/chin-ups-2.png",
-  "media/exercises/body-row-2.png",
-  "media/exercises/body-row-1.png",
-  "media/exercises/butterfly-machine-1.png",
-  "media/exercises/butterfly-machine-2.png",
-  "media/exercises/chest-dips-1.png",
-  "media/exercises/chest-dips-2.png",
-  "media/exercises/front-dumbbell-raise-1.png",
-  "media/exercises/front-dumbbell-raise-2.png",
-  "media/exercises/front-cable-raises-1.png",
-  "media/exercises/front-cable-raises-2.png",
-  "media/exercises/seated-shoulder-press-machine-1.png",
-  "media/exercises/seated-shoulder-press-machine-2.png",
-  "media/exercises/bicep-curls-with-barbell-1.png",
-  "media/exercises/bicep-curls-with-barbell-2.png",
-  "media/exercises/standing-biceps-curl-with-cable-1.png",
-  "media/exercises/standing-biceps-curl-with-cable-2.png",
-  "media/exercises/preacher-curl-with-machine-1.png",
-  "media/exercises/preacher-curl-with-machine-2.png",
-  "media/exercises/triceps-extensions-using-machine-1.png",
-  "media/exercises/triceps-extensions-using-machine-2.png",
-  "media/exercises/straight-arm-push-down-1.png",
-  "media/exercises/straight-arm-push-down-2.png",
-  "media/exercises/machine-bench-press-1.png",
-  "media/exercises/machine-bench-press-2.png",
-  "media/exercises/side-bend-with-dumbbell-1.png",
-  "media/exercises/side-bend-with-dumbbell-2.png"
-];
+export const exerciseMedia=[...new Set(Object.values(exerciseDetails).flatMap(detail=>detail.poses.map(pose=>pose.file)))];
 export function getExerciseDetail(id){return Object.hasOwn(exerciseDetails,id)?exerciseDetails[id]:null}
