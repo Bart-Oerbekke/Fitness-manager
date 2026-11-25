@@ -127,3 +127,6 @@ Behoud donker/oranje identiteit en 44px primaire doelen. Oefeningnaam en setvoor
 
 ## UX 0.16.1
 Workoutpreview heeft een vaste compacte actiezone boven de safe area met Bewerken secundair en Start training primair. Agendaperiode is de kop; pijlen zonder zware achtergrond, compacte Maand/Week-pill met behoud 44px tikgebied. Geen generieke Agendatitel of dubbel plusje; toevoegen op de datum zelf, terug naar vandaag alleen indien relevant. Geen nieuwe trainingsfuncties of gegevensmodel.
+
+## UX 0.17
+Vaste trainingsactiezone; annuleren in trainingsmenu met bevestiging; afzonderlijke rusttimer erboven. Gedeelde setkolommen, 16px invoer, enkelvoudige focusindicator, 44px tikdoelen. Kopieeractie in header, niet over toetsenbord. Safe area, footer en timer verdwijnen bij invoer. Afvinken wijzigt relevante DOM en voortgang. Modale formulieren als bottom sheets met scrollbare velden en vaste acties. Compacte vijf-tabnavigatie, subtielere omlijning; builder en paginanavigatie inhoudelijk ongewijzigd.
