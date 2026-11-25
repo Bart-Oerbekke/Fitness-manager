@@ -130,3 +130,6 @@ Workoutpreview heeft een vaste compacte actiezone boven de safe area met Bewerke
 
 ## UX 0.17
 Vaste trainingsactiezone; annuleren in trainingsmenu met bevestiging; afzonderlijke rusttimer erboven. Gedeelde setkolommen, 16px invoer, enkelvoudige focusindicator, 44px tikdoelen. Kopieeractie in header, niet over toetsenbord. Safe area, footer en timer verdwijnen bij invoer. Afvinken wijzigt relevante DOM en voortgang. Modale formulieren als bottom sheets met scrollbare velden en vaste acties. Compacte vijf-tabnavigatie, subtielere omlijning; builder en paginanavigatie inhoudelijk ongewijzigd.
+
+## UX 0.17.1
+Extra 12 CSS-px onder dynamische veilige bovenrand, ook bij sticky trainingsheader. Volledig workoutcanvas vangt horizontale swipes op (preview, training en builder), inclusief lege ruimte. Normale verticale scroll, pinch-zoom en interactieve velden/knoppen blijven beschermd. Geen andere UI-voorstellen automatisch implementeren.
