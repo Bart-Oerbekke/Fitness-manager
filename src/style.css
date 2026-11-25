@@ -467,3 +467,7 @@ body:has(#app.keyboard-open) #storage-status:not(.storage-blocked){visibility:hi
 .builder-page-menu .ui-icon{width:21px;height:21px}
 #app:is([data-view="training"],[data-view="builder"]){overflow-anchor:none;min-height:calc(100svh - var(--fm-safe-top))}
 #app[data-view="training"] .workout-card .set input{scroll-margin-top:calc(116px + var(--fm-safe-top));scroll-margin-bottom:64px}
+
+/* 0.17.4 — in-app edge back gesture; preserve vertical scrolling and zoom */
+#app:has(.screen-header [data-action="back"]){touch-action:pan-y pinch-zoom}
+html:has(#app .screen-header [data-action="back"]){overscroll-behavior-x:none}
