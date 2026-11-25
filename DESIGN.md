@@ -139,3 +139,6 @@ Richtingsbewuste korte pagina-animatie (220ms) met reduced-motion; preview dezel
 
 ## UX 0.17.3
 Stabiele documentflow: tijdelijke status/PR buiten layout, foutmelding blijft bereikbaar en blokkerend. Apply to all links in gereserveerde setactierij, accentkleur en 44px tikdoel, zichtbaar bij invoer. Geen globale hertekening voor lokale set-/builderwijzigingen; focus en scroll zoveel mogelijk behouden. Vaste builderactiezone met Oefening en Opslaan, verborgen bij softwaretoetsenbord. Pagina-instellingen naast groepsnaam als bottom sheet; lege pagina verwijderen volgens bestaande regel. Geen overige UI-voorstellen implementeren.
+
+## UX 0.17.4
+Vanaf linkerrand (32 CSS-px) rechts swipen activeert bestaande terugroute; midden van workout blijft voor paginawisseling. Geen swipe-navigatie bij modal, invoer, toetsenbord of root-tab; verticale scroll/zoom behouden. Active training behouden; onopgeslagen builderwijzigingen niet zonder bevestiging verlaten. Geen nieuw navigatiemodel of datawijzigingen.
