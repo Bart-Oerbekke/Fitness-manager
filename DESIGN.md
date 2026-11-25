@@ -124,3 +124,6 @@ Zelfstandige bibliotheek: compacte rijen, naam opent detail; ster blijft apart. 
 
 ## UX 0.16
 Behoud donker/oranje identiteit en 44px primaire doelen. Oefeningnaam en setvoortgang in één compacte kop, afgeronde sets met rustige groene achtergrond en leesbare waarden. Sticky trainingsstatus met tijd en sets. Builderkaart is een native details-element met samenvatting; invoer blijft in DOM en validatie opent verborgen velden. Vandaag prioriteert eerstvolgende activiteit, dan snelle start en ondersteunende informatie; weekstatistieken onder de agenda. Grafiek gebruikt datumproportionele x-as, raster, gelabelde eenheid en toegankelijke datapunttitels. Respecteer reduced motion. Geen wijziging aan domein- of opslagmodel.
+
+## UX 0.16.1
+Workoutpreview heeft een vaste compacte actiezone boven de safe area met Bewerken secundair en Start training primair. Agendaperiode is de kop; pijlen zonder zware achtergrond, compacte Maand/Week-pill met behoud 44px tikgebied. Geen generieke Agendatitel of dubbel plusje; toevoegen op de datum zelf, terug naar vandaag alleen indien relevant. Geen nieuwe trainingsfuncties of gegevensmodel.
