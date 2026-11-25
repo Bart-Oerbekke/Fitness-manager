@@ -118,3 +118,6 @@ Schema's met Programma's/Workouts/Archief, compacte voortgangskaarten en optieme
 
 ## UX 0.11
 Donkere stijl behouden. Gemeenschappelijke periodebalk met 44px pijltjes, 24px SVG, midden week/maand en datums, duidelijke focus. Hoofdtitels links, subtitels met terugknop; 4/8/12px ritme, kaarten 9–10px radius, gewone tekst 14–15px, metadata 12px waar ruimte, kalender compacte uitzondering. Menuopties met lijniconen en rode destructieve rij onderaan. Programmadetail één week, compacte rijen en duidelijk voortgang. Historie-editor behoudt 16px input, 44px actiegebieden. Actieve training behoudt setgeometrie. Formulieren 38px compact zoals gebruiker eerder goedkeurde; primaire knoppen 44px. Toetsenbord- en zichtbare focuscontrole, fysieke iPhone/VoiceOver afzonderlijk.
+
+## UX 0.12
+Zelfstandige bibliotheek: compacte rijen, naam opent detail; ster blijft apart. Detail toont twee posekaarten of één voor hold, Nederlandse instructies, techniekfouten, spieren, materiaal, alternatieven en bron. Externe video via herkenbare knop, internet nodig; geen iframe/autoplay. Onbeschikbare uitleg/afbeelding/video eerlijk melden. Terug naar gefilterde lijst en scrollpositie; bestaande progressieactie bereikbaar. Geen wijziging aan training/pickers.
