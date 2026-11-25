@@ -142,3 +142,6 @@ Stabiele documentflow: tijdelijke status/PR buiten layout, foutmelding blijft be
 
 ## UX 0.17.4
 Vanaf linkerrand (32 CSS-px) rechts swipen activeert bestaande terugroute; midden van workout blijft voor paginawisseling. Geen swipe-navigatie bij modal, invoer, toetsenbord of root-tab; verticale scroll/zoom behouden. Active training behouden; onopgeslagen builderwijzigingen niet zonder bevestiging verlaten. Geen nieuw navigatiemodel of datawijzigingen.
+
+## UX 0.18.0
+Dubbele agendanavigatie en testknop uit Vandaag, directe planactie behouden. Testworkout en technische uitleg in inklapbare instellingen; back-upwaarschuwing en updates zichtbaar. Buildernaam/summary met sleepgreep en optiemenu, geen aparte kop. Schemakaart als grote openknop met aparte opties, aanmaak via plus. Bibliotheek zoekveld en filtericoon met actieve telling, filters uitklapbaar. Terugroutes herstellen scroll per scherm/context en bestaande filter/tabselecties; geen gegevensmodelwijziging.
