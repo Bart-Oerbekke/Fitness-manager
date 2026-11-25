@@ -119,17 +119,22 @@ function blockStart(list,index){
 function exerciseGroup(exercise,names){
   return names.includes(exercise.workoutGroup)?exercise.workoutGroup:names[0];
 }
-function workoutPages(list,names,card){
-  if(!names[workoutPage])workoutPage=0;
+function workoutPages(list,names,card,editing=false){
   const groups=names.map(()=>[]);
   list.forEach((exercise,index)=>{
     const group=exerciseGroup(list[blockStart(list,index)],names);
     groups[names.indexOf(group)].push(card(exercise,index,list));
   });
-  return '<div class="workout-pages"><div class="workout-tabs" role="group" aria-label="Workoutindeling">'+
-    names.map((label,index)=>b(h(label),"workout-page","outline",'data-n="'+index+'" aria-pressed="'+(index===workoutPage)+'"')).join("")+
-    '</div>'+groups.map((cards,index)=>'<div class="workout-page stack" data-workout-page="'+index+'" '+(index===workoutPage?"":"hidden")+'>'+
-      (cards.join("")||'<p class="empty">Geen oefeningen in deze groep.</p>')+'</div>').join("")+'</div>';
+  const pages=names.map((name,index)=>({name,cards:groups[index]}))
+    .filter(({cards})=>editing||!list.length||cards.length);
+  if(!pages[workoutPage])workoutPage=0;
+  const dots=pages.length>1?'<div class="workout-dots" role="group" aria-label="Workoutpagina’s">'+
+    pages.map(({name},index)=>b('<span aria-hidden="true"></span>',"workout-page","workout-dot",
+      'data-n="'+index+'" aria-label="'+h(name)+'" aria-pressed="'+(index===workoutPage)+'"')).join("")+'</div>':"";
+  return '<div class="workout-pages">'+dots+pages.map(({name,cards},index)=>
+    '<div class="workout-page stack" data-workout-page="'+index+'" '+(index===workoutPage?"":"hidden")+'>'+
+    (name===defaultWorkoutPage&&pages.length===1?"":'<h2 class="workout-page-name">'+h(name)+'</h2>')+
+    (cards.join("")||'<p class="empty">Geen oefeningen in deze groep.</p>')+'</div>').join("")+'</div>';
 }
 function selectWorkoutPage(index){
   const panel=document.querySelector(".workout-pages");
@@ -137,6 +142,8 @@ function selectWorkoutPage(index){
   workoutPage=index;
   panel.querySelectorAll("[data-workout-page]").forEach(node=>{node.hidden=Number(node.dataset.workoutPage)!==index});
   panel.querySelectorAll('[data-action="workout-page"]').forEach(node=>node.setAttribute("aria-pressed",Number(node.dataset.n)===index));
+  if(page==="builder")document.querySelector('[data-action="workout-remove-page"]').hidden=!canRemoveWorkoutPage();
+  if(panel.getBoundingClientRect().top<0)panel.scrollIntoView({block:"start"});
 }
 function workoutGroupControl(index){
   const list=draft.exercises,start=blockStart(list,index),names=workoutPageNames(draft),group=exerciseGroup(list[start],names);
@@ -147,7 +154,11 @@ function workoutGroupControl(index){
     (next?'<label class="checklabel"><input type="checkbox" name="superset'+index+'" '+(list[index].supersetNext?"checked":"")+
     '> Superset of circuit met '+h(next.name)+'</label>':"");
 }
-function builder(){return header("Training bewerken","schemas")+'<form id="builder-form" data-form="builder" class="stack">'+field("Naam training","name",draft.name,"text","required maxlength=100")+workoutPages(draft.exercises,workoutPageNames(draft),(e,i)=>builderCard(e,i))+'<div class="row wrap">'+b("+ Pagina toevoegen","workout-add-page","outline")+b("Pagina hernoemen","workout-rename-page","quiet")+'</div>'+b("+ Oefening toevoegen","library-pick","outline full")+'<button class="primary" type="submit">Training opslaan</button></form>'}
+function canRemoveWorkoutPage(){
+  const names=workoutPageNames(draft),name=names[workoutPage],list=draft.exercises;
+  return names.length>1&&!list.some((_,index)=>exerciseGroup(list[blockStart(list,index)],names)===name);
+}
+function builder(){return header("Training bewerken","schemas")+'<form id="builder-form" data-form="builder" class="stack">'+field("Naam training","name",draft.name,"text","required maxlength=100")+workoutPages(draft.exercises,workoutPageNames(draft),(e,i)=>builderCard(e,i),true)+'<div class="row wrap">'+b("+ Pagina toevoegen","workout-add-page","outline")+b("Pagina hernoemen","workout-rename-page","quiet")+b("Pagina verwijderen","workout-remove-page","quiet",canRemoveWorkoutPage()?"":"hidden")+'</div>'+b("+ Oefening toevoegen","library-pick","outline full")+'<button class="primary" type="submit">Training opslaan</button></form>'}
 function builderCard(e,i){return '<section class="card builder-card" data-order="'+i+'"><div class="head row between"><span>Oefening '+(i+1)+'/'+draft.exercises.length+'</span><span class="row">'+b("⠿","drag-handle","drag-handle",'data-i="'+i+'" aria-label="Versleep oefening"')+b(uiIcon("up"),"exercise-up","quiet",'data-i="'+i+'" aria-label="Omhoog"')+b(uiIcon("down"),"exercise-down","quiet",'data-i="'+i+'" aria-label="Omlaag"')+b(uiIcon("close"),"exercise-remove","quiet danger",'data-i="'+i+'" aria-label="Verwijderen"')+'</span></div><div class="inside stack"><h2>'+h(e.name)+'</h2><div class="formrow"><div>'+field("Sets","sets"+i,e.sets,"number","required min=1 max=30")+'</div><div>'+field(e.mode==="time"?"Tijd (sec)":"Reps","reps"+i,e.reps,"text","required")+'</div><div>'+(!e.bodyweight?field("Gewicht","kg"+i,e.kg,"number","min=0 max=2000 step=any"):"")+'</div></div><label class="checklabel"><input name="ea'+i+'" type="checkbox" '+(e.ea?"checked":"")+'> Each (ea)</label><label class="checklabel"><input name="bw'+i+'" data-bodyweight type="checkbox" '+(e.bodyweight?"checked":"")+'> Bodyweight (geen kg)</label>'+field("Rusttijd","rest"+i,e.rest,"number","required min=0 max=900")+workoutGroupControl(i)+advancedBuilder(e,i)+(e.equipment==="Dumbbell"?'<small>Gewicht per dumbbell</small>':"")+'</div></section>'}
 function libraryMatches(){const list=filterLibrary(allLibrary(),filters.q,filters.m,filters.e);return orderedLibrary(favoriteOnly?list.filter(x=>db.favorites.includes(x.id)):list,db.favorites,db.recent)}
 function libraryView(){let matches=libraryMatches();return header("Oefeningen",libraryReturn==="history"?"historyEditor":libraryReturn==="session"?"training":libraryReturn?"builder":"schemas")+(libraryReturn?"":'<p class="muted">'+Object.keys(exerciseDetails).length+' van '+library.length+' standaardoefeningen met uitleg. Beeld en video worden aangevuld.</p>')+'<div class="stack"><input id="search" aria-label="Zoek oefening" placeholder="Zoek een oefening..." value="'+h(filters.q)+'"><div class="row"><div class="grow"><label for="muscle">Spiergroep</label><select id="muscle">'+options([...new Set(allLibrary().map(e=>e.muscle))].sort(),filters.m,"Alle")+'</select></div><div class="grow"><label for="equipment">Apparatuur</label><select id="equipment">'+options([...new Set(allLibrary().map(e=>e.equipment))].sort(),filters.e,"Alle")+'</select></div></div><div class="row between"><small id="match-count">'+matches.length+' oefeningen</small>'+b(favoriteOnly?"★ Favorieten":"☆ Favorieten","favorites-filter",favoriteOnly?"quiet selected":"quiet",'aria-pressed="'+favoriteOnly+'"')+b("Filters wissen","filter-clear","quiet")+'</div>'+b("+ Eigen oefening toevoegen","library-custom","outline full")+'<div id="library-results">'+libraryRows(matches)+'</div></div>'}
@@ -185,7 +196,7 @@ function musclePanel(){const current=muscleStats(db.history,allLibrary(),muscleW
 function progress(){const ids=[...new Set(db.history.filter(x=>x.type==="fitness").flatMap(x=>x.exercises.map(e=>e.exerciseId)))];return header("Progressie")+loadPanel()+musclePanel()+b("Trainingshistorie","nav","outline full",'data-page="history"')+'<h1 class="sectiontitle">Persoonlijke records</h1>'+ids.map(eid=>{const variants=exerciseMetrics(db.history,eid);if(!variants.length)return "";const v=variants[0];return card(v.name,b('<div class="row between"><span>'+h(v.bodyweight?amount(v.maxReps)+" reps":amount(v.maxWeight)+" kg")+(variants.length>1?' · '+variants.length+' varianten':'')+'</span>'+uiIcon("chevron")+'</div>',"progress-open","link",'data-id="'+h(eid)+'"'))}).join("")}
 function exerciseProgress(){const all=exerciseMetrics(db.history,selectedExercise,"",dateToday()),name=all[0]?.name||allLibrary().find(x=>x.id===selectedExercise)?.name||"Oefening",variant=all.find(v=>v.key===progressVariant)||all[0];if(!variant)return header(name,progressBack)+'<p class="empty">Nog geen voltooide werksets.</p>';const from=progressMonths?monthShift(dateToday(),-progressMonths):"",v=exerciseMetrics(db.history,selectedExercise,from,dateToday()).find(x=>x.key===variant.key),metric=variant.bodyweight?"reps":progressMetric,key={weight:"maxWeight",reps:"maxReps",e1rm:"e1rm",volume:"volume"}[metric],unit=metric==="reps"?"reps":"kg",rows=(v?.rows||[]).filter(x=>x[key]!==null),max=Math.max(1,...rows.map(x=>x[key])),points=rows.map((x,i)=>[28+(rows.length===1?132:i*268/(rows.length-1)),111-x[key]/max*86]);return header(name,progressBack)+'<p class="muted">'+h(variant.bodyweight?"Bodyweight":variant.equipment||"Gewicht")+(variant.ea?" · each":"")+'</p>'+(all.length>1?'<div class="chip-row">'+all.map(x=>b(h((x.bodyweight?"Bodyweight":x.equipment||"Gewicht")+(x.ea?" · ea":"")),"progress-variant",x.key===variant.key?"chip on":"chip",'data-id="'+h(x.key)+'"')).join("")+'</div>':"")+'<div class="chip-row">'+[1,3,6,12,0].map(m=>b(m?m+"M":"Alles","progress-period",m===progressMonths?"chip on":"chip",'data-n="'+m+'"')).join("")+'</div><div class="metric-grid">'+(variant.bodyweight?[["Record reps (alles)",variant.maxReps,"reps"],["Werksetsessies",v?.rows.length||0,""]]:[["Record kg (alles)",variant.maxWeight,"kg"],["Beste 1RM (alles)",variant.e1rm,"kg"],["Volume periode",v?.volume||0,"kg"]]).map(([k,n,u])=>'<div><small>'+k+'</small><strong>'+amount(n)+' <small>'+u+'</small></strong></div>').join("")+'</div><section class="card inside"><div class="chip-row">'+(variant.bodyweight?[["reps","Reps"]]:[["weight","Gewicht"],["e1rm","1RM"],["volume","Volume"],["reps","Reps"]]).map(([k,l])=>b(l,"progress-metric",metric===k?"chip on":"chip",'data-id="'+k+'"')).join("")+'</div>'+(rows.length?'<svg class="chart" viewBox="0 0 320 138" role="img" aria-label="Progressie '+unit+'"><path d="M28 111 H300 M28 25 V111" stroke="#667080" fill="none"/><text x="1" y="25">'+amount(max)+'</text><text x="1" y="112">0</text><polyline points="'+points.map(p=>p.join(",")).join(" ")+'" fill="none" stroke="#ff8900" stroke-width="2"/>'+points.map(p=>'<circle cx="'+p[0]+'" cy="'+p[1]+'" r="3" fill="#ff8900"/>').join("")+'<text x="28" y="132">'+h(rows[0].date.slice(5))+'</text><text x="300" y="132" text-anchor="end">'+h(rows.at(-1).date.slice(5))+'</text></svg>':'<p class="empty">Geen waarden in deze periode.</p>')+'<p class="form-hint">Werksets; warming-up uitgesloten. 1RM is een schatting (1–10 reps). Volume = kg × reps, ×2 bij each of dumbbell, niet dubbel.</p></section>'+rows.slice().reverse().map(r=>card(fmt(r.date),b(amount(r[key])+" "+unit+" ›","history-open","link",'data-id="'+h(r.id)+'"'))).join("")}
 
-const APP_VERSION="0.15.0";
+const APP_VERSION="0.15.1";
 let updateRegistration=null,updateMessage="Nog niet gecontroleerd",updateBusy=false,updateApplying=false,updateSeenController=null;
 function updateBlocked(){return restoreBusy||!booted||!!db.active||!!storageError||!!queue?.status.failure||$("dialog").open||page!=="settings"}
 function updatePanel(){
@@ -356,7 +367,21 @@ case "today-start-workout":{
   const w=workout(eid);if(!w||w.archived||!w.exercises.length)break;
   previewBack="today";opened={workoutId:w.id};startTraining();break;
 }
-case "workout-page":selectWorkoutPage(Number(t.dataset.n));break;
+case "workout-page":
+  selectWorkoutPage(Number(t.dataset.n));
+  break;
+case "workout-remove-page":{
+  if(!canRemoveWorkoutPage())break;
+  syncBuilder();
+  const names=workoutPageNames(draft),name=names[workoutPage];
+  for(const exercise of draft.exercises){
+    if(exercise.workoutGroup===name)delete exercise.workoutGroup;
+  }
+  draft.workoutPages=names.filter((_,index)=>index!==workoutPage);
+  workoutPage=Math.min(workoutPage,draft.workoutPages.length-1);
+  render();
+  break;
+}
 case "workout-add-page":case "workout-rename-page":{
   syncBuilder();
   const names=workoutPageNames(draft),renaming=a==="workout-rename-page",index=workoutPage;

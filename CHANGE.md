@@ -196,3 +196,6 @@ Controle: syntax, 52 Node-tests en statische build lokaal geslaagd. iPhone-beoor
 Bouwer en workoutpreview tonen zelfbenoemde workoutpagina’s met tik- en swipenavigatie. Bestaande workouts beginnen op één pagina. Oefeningen in een gekoppeld blok delen de pagina van de eerste oefening. Koppelen staat direct op de kaart. Verplaatsen van een geplande training vraagt bevestiging met beide datums.
 
 Acceptatie: groepswijzigingen blijven na opslaan zichtbaar, bestaande workouts openen zonder migratie, een gekoppeld blok blijft samen en een geannuleerde verplaatsing bewaart de datum. Actieve trainingsvolgorde en historiedata blijven intact. Fysieke iPhone-review volgt via de preview.
+## Subtiele workoutnavigatie (0.15.1)
+
+De bouwer en preview gebruiken stippen bij meerdere pagina’s. De preview slaat lege pagina’s over. In de bouwer kan een lege pagina worden verwijderd.

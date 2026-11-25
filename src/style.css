@@ -231,9 +231,12 @@ dialog button:focus-visible{outline-offset:1px}
 .exercise-credit{color:#b3bdca;font-size:12px;line-height:1.5;margin:12px 0}
 #app[data-view="exerciseDetail"] a:not(.exercise-video){color:#ffb568;text-underline-offset:2px}
 @media(max-width:360px){.exercise-poses img{height:140px}.exercise-poses.single img{height:170px}}
-.workout-tabs { display: flex; overflow-x: auto; gap: 4px; margin-bottom: 10px; }
-.workout-tabs button { flex: 0 0 auto; min-height: 44px; padding-inline: 10px; }
-.workout-tabs [aria-pressed="true"] { border-color: #ff9b36; color: #ffac57; }
+.workout-dots { display: flex; justify-content: safe center; overflow-x: auto; margin: 0 0 2px; }
+.workout-dot { flex: 0 0 28px; min-height: 44px; display: grid; place-items: center; padding: 0; border: 0; background: transparent; }
+.workout-dot span { width: 7px; height: 7px; border-radius: 50%; background: #647082; }
+.workout-dot[aria-pressed="true"] span { background: #f0f3f8; }
+.workout-page-name { text-align: center; margin: 0 0 3px; font-size: 15px; }
+[data-action="workout-remove-page"][hidden] { display: none; }
 .workout-page { touch-action: pan-y pinch-zoom; }
 .workout-page[hidden] { display: none; }
 .fitness .cal-more { font-size: 12px; padding-inline: 7px; }

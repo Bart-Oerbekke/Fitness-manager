@@ -150,14 +150,14 @@ try{
  assert.ok(await evaluate("!!document.querySelector('.cal-shell')"));
  console.log('PASS_AGENDA_ROUTES');
  await click('#nav [data-page="settings"]');
- assert.equal(await evaluate("document.querySelector('#installed-version').textContent"),'0.15.0');
+ assert.equal(await evaluate("document.querySelector('#installed-version').textContent"),'0.15.1');
  await click('[data-action="update-check"]');
  assert.ok(await evaluate("document.querySelector('#update-message').textContent.includes('Geen internet')"));
  await cdp('Network.emulateNetworkConditions',{offline:false,latency:0,downloadThroughput:-1,uploadThroughput:-1});
  // Change served files in this disposable CI checkout only; restore in finally.
  originalApp=await readFile('src/app.mjs','utf8');originalSW=await readFile('sw.js','utf8');
- await writeFile('src/app.mjs',originalApp.replace('const APP_VERSION="0.15.0"','const APP_VERSION="0.15.1-test"'));
- await writeFile('sw.js',originalSW.replace('fitness-manager-shell-v18','fitness-manager-shell-v18-ci-update'));
+ await writeFile('src/app.mjs',originalApp.replace('const APP_VERSION="0.15.1"','const APP_VERSION="0.15.2-test"'));
+ await writeFile('sw.js',originalSW.replace('fitness-manager-shell-v19','fitness-manager-shell-v19-ci-update'));
  await wait(()=>evaluate("!!document.querySelector('[data-action=update-check]:not([disabled])')"),'update check ready');
  await click('[data-action="update-check"]');
  await wait(()=>evaluate("!!document.querySelector('[data-action=update-apply]:not([disabled])')"),'new worker waiting');
@@ -222,7 +222,9 @@ try{
  assert.equal(await evaluate("document.querySelector('[data-workout-page=\"0\"]').hidden"),true);
  await evaluate("document.querySelector('.builder-advanced').open=true;document.querySelector('[name=warmup0]').value='1'");
  await click('#builder-form button[type=submit]');
- assert.equal(await evaluate("document.querySelector('[data-workout-page=\"1\"] .set')!==null"),true);
+ assert.equal(await evaluate("document.querySelectorAll('.workout-page').length"),1);
+ assert.equal(await evaluate("document.querySelector('.workout-page-name').textContent"),'Core');
+ assert.equal(await evaluate("document.querySelector('.workout-dots')===null"),true);
  assert.equal(await evaluate("document.querySelectorAll('.set.warmup').length"),1);
  assert.equal(await evaluate("document.querySelectorAll('.set').length"),2);
  await click('[data-action="back"]');
@@ -277,7 +279,7 @@ try{
  await click('#nav [data-page="agenda"]');
  assert.ok(await evaluate("document.querySelector('.cal-day-agenda').textContent.includes('Offline test')"));
  await click('#nav [data-page="settings"]');
- assert.equal(await evaluate("document.querySelector('#installed-version').textContent"),'0.15.1-test');
+ assert.equal(await evaluate("document.querySelector('#installed-version').textContent"),'0.15.2-test');
  console.log('PASS_APP_UPDATE');
  // Management UI: exercise the archive, resume and history flows before final backup restore.
  await click('#nav [data-page="schemas"]');
