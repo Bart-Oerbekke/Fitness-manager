@@ -161,14 +161,14 @@ try{
  assert.ok(await evaluate("!!document.querySelector('.cal-shell')"));
  console.log('PASS_AGENDA_ROUTES');
  await click('#nav [data-page="settings"]');
- assert.equal(await evaluate("document.querySelector('#installed-version').textContent"),'0.18.0');
+ assert.equal(await evaluate("document.querySelector('#installed-version').textContent"),'0.19.0');
  await click('[data-action="update-check"]');
  assert.ok(await evaluate("document.querySelector('#update-message').textContent.includes('Geen internet')"));
  await cdp('Network.emulateNetworkConditions',{offline:false,latency:0,downloadThroughput:-1,uploadThroughput:-1});
  // Change served files in this disposable CI checkout only; restore in finally.
  originalApp=await readFile('src/app.mjs','utf8');originalSW=await readFile('sw.js','utf8');
- await writeFile('src/app.mjs',originalApp.replace('const APP_VERSION="0.18.0"','const APP_VERSION="0.18.1-test"'));
- await writeFile('sw.js',originalSW.replace('fitness-manager-shell-v28','fitness-manager-shell-v28-ci-update'));
+ await writeFile('src/app.mjs',originalApp.replace('const APP_VERSION="0.19.0"','const APP_VERSION="0.19.1-test"'));
+ await writeFile('sw.js',originalSW.replace('fitness-manager-shell-v29','fitness-manager-shell-v29-ci-update'));
  await wait(()=>evaluate("!!document.querySelector('[data-action=update-check]:not([disabled])')"),'update check ready');
  await click('[data-action="update-check"]');
  await wait(()=>evaluate("!!document.querySelector('[data-action=update-apply]:not([disabled])')"),'new worker waiting');
@@ -224,6 +224,28 @@ try{
  await click('#dialog[open] button[type=submit]');
  assert.ok(await evaluate("document.querySelector('.recovery-metrics').textContent.includes('3/5')"));
  await reviewLayout('Progressie','.muscle-panel');
+ await evaluate("window.stableProgressHeader=document.querySelector('#app .screen-header');window.stableMuscle=document.querySelector('.muscle-panel')");
+ await click('[data-action="load-week"][data-n="-1"]');
+ assert.ok(await evaluate("window.stableProgressHeader===document.querySelector('#app .screen-header')&&window.stableMuscle===document.querySelector('.muscle-panel')"));
+ await click('[data-action="load-week"][data-n="1"]');
+ await evaluate("window.stableLoad=document.querySelector('.load-panel')");
+ await click('[data-action="muscle-week"][data-n="-1"]');
+ assert.ok(await evaluate("window.stableLoad===document.querySelector('.load-panel')&&window.stableProgressHeader===document.querySelector('#app .screen-header')"));
+ await click('[data-action="muscle-week"][data-n="1"]');
+ assert.ok(await evaluate("document.querySelector('.records-panel .progress-list-row')!==null"));
+ await click('.records-panel [data-action="progress-open"]');
+ assert.ok(await evaluate("document.querySelector('.exercise-chart-panel .progress-chart')!==null"));
+ await evaluate("window.stableExerciseHeader=document.querySelector('#app .screen-header')");
+ await click('[data-action="progress-period"][data-n="0"]');
+ assert.ok(await evaluate("window.stableExerciseHeader===document.querySelector('#app .screen-header')&&document.querySelector('.progress-chart')!==null"));
+ await click('[data-action="back"]');
+ assert.equal(await evaluate("document.querySelector('#app').dataset.navDirection"),'back');
+ await cdp('Emulation.setEmulatedMedia',{features:[{name:'prefers-reduced-motion',value:'reduce'}]});
+ await click('.records-panel [data-action="progress-open"]');
+ assert.equal(await evaluate("document.querySelector('#app').dataset.navDirection"),'none');
+ await click('[data-action="back"]');
+ await cdp('Emulation.setEmulatedMedia',{features:[]});
+ console.log('PASS_PROGRESS_LOCAL_UPDATES');
  await click('#nav [data-page="settings"]');
  console.log('PASS_PROGRESS_RECOVERY');
  // Verify the existing workout remains unchanged after active-session editing.
@@ -331,7 +353,7 @@ try{
  await click('#nav [data-page="agenda"]');
  assert.ok(await evaluate("document.querySelector('.cal-day-agenda').textContent.includes('Offline test')"));
  await click('#nav [data-page="settings"]');
- assert.equal(await evaluate("document.querySelector('#installed-version').textContent"),'0.18.1-test');
+ assert.equal(await evaluate("document.querySelector('#installed-version').textContent"),'0.19.1-test');
  console.log('PASS_APP_UPDATE');
  // Management UI: exercise the archive, resume and history flows before final backup restore.
  await click('#nav [data-page="schemas"]');
