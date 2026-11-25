@@ -54,7 +54,8 @@ try{
   const layout=await evaluate("(()=>{const n=document.querySelector('#nav'),r=n.getBoundingClientRect();return {icons:n.querySelectorAll('svg').length,active:n.querySelector('[aria-current=page]')?.dataset.page,fits:[...n.querySelectorAll('button')].every(b=>{const x=b.getBoundingClientRect();return x.left>=r.left&&x.right<=r.right&&b.scrollWidth<=b.clientWidth+1}),overflow:document.documentElement.scrollWidth>innerWidth+1}})()");
   assert.equal(layout.icons,5);assert.equal(layout.active,'today');assert.equal(layout.fits,true,'nav at '+width);assert.equal(layout.overflow,false,'day at '+width);
  }
- await click('[data-action="agenda-today"]');
+ assert.equal(await evaluate("document.querySelectorAll('.today-shell [data-action=agenda-today],.today-shell [data-action=demo-workout]').length"),0);
+ await click('#nav [data-page="agenda"]');
  await reviewLayout('Agenda maand','.cal-grid');
  assert.equal(await evaluate("document.querySelectorAll('.cal-header,.cal-local').length"),0);
  assert.equal(await evaluate("document.querySelectorAll('.agenda-toolbar [data-action=cal-add]').length"),0);
@@ -88,12 +89,18 @@ try{
  await click('[data-action="back"]');
  assert.equal(await evaluate("document.querySelector('#search').value"),'Bench Dip');
  assert.equal(await evaluate("document.activeElement.dataset.id"),'bench-dip-armen');
+ assert.equal(await evaluate("document.querySelector('#library-filters').hidden"),true);
+ await click('[data-action="library-filters"]');
+ assert.equal(await evaluate("document.querySelector('#library-filters').hidden"),false);
  await click('[data-action="filter-clear"]');
+ await click('[data-action="library-filters"]');
+ await evaluate("window.scrollTo(0,500);window.librarySavedY=scrollY");
  await click('[data-action="exercise-detail"][data-id="squat-barbell-benen"]');
  await wait(()=>evaluate("[...document.querySelectorAll('.exercise-poses img')].every(i=>i.complete&&i.naturalWidth>0)"),'new offline squat images decode');
  assert.equal(await evaluate("document.querySelectorAll('.exercise-poses img').length"),2);
  assert.equal(await evaluate("document.querySelector('.exercise-video').href"),'https://www.youtube.com/watch?v=-bJIpOq-LWk');
  await click('[data-action="back"]');
+ assert.ok(await evaluate("Math.abs(scrollY-window.librarySavedY)<2"),'library scroll restored');
  console.log('PASS_EXERCISE_REFERENCE_OFFLINE');
  assert.ok(await evaluate("document.querySelector('#library-results').children.length>0"));
  assert.equal(await evaluate("document.querySelector('#nav [aria-current=page]').dataset.page"),'schemas');
@@ -154,20 +161,27 @@ try{
  assert.ok(await evaluate("!!document.querySelector('.cal-shell')"));
  console.log('PASS_AGENDA_ROUTES');
  await click('#nav [data-page="settings"]');
- assert.equal(await evaluate("document.querySelector('#installed-version').textContent"),'0.17.4');
+ assert.equal(await evaluate("document.querySelector('#installed-version').textContent"),'0.18.0');
  await click('[data-action="update-check"]');
  assert.ok(await evaluate("document.querySelector('#update-message').textContent.includes('Geen internet')"));
  await cdp('Network.emulateNetworkConditions',{offline:false,latency:0,downloadThroughput:-1,uploadThroughput:-1});
  // Change served files in this disposable CI checkout only; restore in finally.
  originalApp=await readFile('src/app.mjs','utf8');originalSW=await readFile('sw.js','utf8');
- await writeFile('src/app.mjs',originalApp.replace('const APP_VERSION="0.17.4"','const APP_VERSION="0.17.5-test"'));
- await writeFile('sw.js',originalSW.replace('fitness-manager-shell-v27','fitness-manager-shell-v27-ci-update'));
+ await writeFile('src/app.mjs',originalApp.replace('const APP_VERSION="0.18.0"','const APP_VERSION="0.18.1-test"'));
+ await writeFile('sw.js',originalSW.replace('fitness-manager-shell-v28','fitness-manager-shell-v28-ci-update'));
  await wait(()=>evaluate("!!document.querySelector('[data-action=update-check]:not([disabled])')"),'update check ready');
  await click('[data-action="update-check"]');
  await wait(()=>evaluate("!!document.querySelector('[data-action=update-apply]:not([disabled])')"),'new worker waiting');
  // A persisted active workout blocks installation, even while viewing settings.
  await click('#nav [data-page="schemas"]');
  await click('[data-action="schema-tab"][data-id="workouts"]');
+ assert.equal(await evaluate("document.querySelectorAll('.schema-card .manage-link').length"),0);
+ await evaluate("const q=document.querySelector('#workout-search');q.value='Update test';q.dispatchEvent(new Event('input',{bubbles:true}))");
+ await click('[data-action="workout-open"][data-id="update-test-workout"]');
+ await click('[data-action="back"]');
+ assert.equal(await evaluate("document.querySelector('#workout-search').value"),'Update test');
+ assert.equal(await evaluate("document.querySelector('.schema-tabs .on').dataset.id"),'workouts');
+ await evaluate("const q=document.querySelector('#workout-search');q.value='';q.dispatchEvent(new Event('input',{bubbles:true}))");
  await click('[data-action="workout-open"][data-id="update-test-workout"]');
  await reviewLayout('Workout preview','.set');
  assert.equal(await evaluate("getComputedStyle(document.querySelector('.preview-dock')).position"),'fixed');
@@ -238,6 +252,10 @@ try{
  assert.equal(await evaluate("document.querySelectorAll('.set').length"),1);
  await click('[data-action="workout-edit"]');
  await reviewLayout('Workout-builder','#builder-form');
+ assert.equal(await evaluate("document.querySelectorAll('.builder-card .head,.builder-card [data-action=exercise-remove]').length"),0);
+ await click('[data-action="builder-exercise-menu"]');
+ assert.ok(await evaluate("document.querySelector('#dialog [data-action=exercise-remove]')&&document.querySelector('#dialog [data-action=builder-copy]')&&document.querySelector('#dialog [data-action=exercise-up]').disabled"));
+ await click('#dialog [data-action="dialog-close"]');
  await evaluate("document.querySelector('.builder-fold').open=false");
  assert.equal(await evaluate("document.querySelector('.builder-fold').open"),false);
  assert.ok(await evaluate("document.querySelector('.builder-fold summary').textContent.includes('sets')"));
@@ -313,7 +331,7 @@ try{
  await click('#nav [data-page="agenda"]');
  assert.ok(await evaluate("document.querySelector('.cal-day-agenda').textContent.includes('Offline test')"));
  await click('#nav [data-page="settings"]');
- assert.equal(await evaluate("document.querySelector('#installed-version').textContent"),'0.17.5-test');
+ assert.equal(await evaluate("document.querySelector('#installed-version').textContent"),'0.18.1-test');
  console.log('PASS_APP_UPDATE');
  // Management UI: exercise the archive, resume and history flows before final backup restore.
  await click('#nav [data-page="schemas"]');
@@ -325,7 +343,9 @@ try{
  await click('#dialog [data-action="workout-archive"]');
  assert.ok(await evaluate("document.querySelector('#workout-results').textContent.includes('Update test')"));
  await click('[data-action="schema-tab"][data-id="programs"]');
- await click('[data-action="program-new"]');
+ assert.equal(await evaluate("document.querySelectorAll('#app [data-action=program-new],#app [data-action=workout-new]').length"),0);
+ await click('[data-action="schema-add"]');
+ await click('#dialog [data-action="program-new"]');
  await evaluate("document.querySelector('#dialog [name=name]').value='CI programma'");
  await click('#dialog button[type=submit]');
  await click('#dialog [name=days]');
@@ -380,6 +400,7 @@ try{
  assert.equal(await evaluate("document.querySelector('#app').textContent.includes('Handmatig CI')"),false);
  await click('#nav [data-page="settings"]');
  await reviewLayout('Instellingen','.settings-stack');
+ assert.ok(await evaluate("document.querySelector('.settings-details:not([open])')&&document.querySelector('#update-panel')&&document.querySelector('[data-action=export]')"));
  console.log('PASS_HISTORY_MANAGEMENT');
  const date=await evaluate("(()=>{const d=new Date();return [d.getFullYear(),String(d.getMonth()+1).padStart(2,'0'),String(d.getDate()).padStart(2,'0')].join('-')})()");
  const existing=await evaluate("(async()=>{const m=await import('/src/storage.mjs'),s=await m.openLocalStore({legacyRaw:localStorage.getItem(m.LEGACY_KEY)});try{return m.parseBackup(JSON.stringify(s.state))}finally{s.close()}})()");
@@ -397,6 +418,8 @@ try{
  const restored=await evaluate("(async()=>{const m=await import('/src/storage.mjs'),s=await m.openLocalStore({legacyRaw:localStorage.getItem(m.LEGACY_KEY)});try{return {events:s.state.events,previous:(await s.previous()).payload.history.length}}finally{s.close()}})()");
  assert.equal(restored.events[0].id,'restored-test');assert.equal(restored.previous,existing.history.length);
  console.log('PASS_BACKUP_DASHBOARD');
+ await click('#nav [data-page="settings"]');
+ await evaluate("document.querySelector('.settings-details').open=true");
  await click('[data-action="demo-workout"]');
  assert.equal(await evaluate("document.querySelectorAll('.workout-dot').length"),3);
  assert.ok(await evaluate("parseFloat(getComputedStyle(document.body).paddingTop)>=12"));
@@ -487,9 +510,11 @@ try{
  await edgeSwipe(140,0);
  assert.equal(await currentView(),'schemas','root tab has no back action');
  await click('#nav [data-page="today"]');
+ await click('#nav [data-page="settings"]');
+ await evaluate("document.querySelector('.settings-details').open=true");
  await click('[data-action="demo-workout"]');
  await edgeSwipe(140,0);
- assert.equal(await currentView(),'today','preview returns to originating screen');
+ assert.equal(await currentView(),'settings','preview returns to originating screen');
  console.log('PASS_EDGE_BACK_NAVIGATION');
 }finally{
  if(originalApp!==undefined)await writeFile('src/app.mjs',originalApp);if(originalSW!==undefined)await writeFile('sw.js',originalSW);
