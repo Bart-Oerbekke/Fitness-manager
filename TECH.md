@@ -1,51 +1,87 @@
-# Technische keuzes en uitvoering
+# Fitness Manager — technische architectuur
 
-Status: in te vullen per app. Kies technologie op basis van producteisen en bestaande omgeving. Noteer geen geheimen.
+Status: lokale ontwikkelversie; geen cloud, Apple-login of productiehosting. 24 november 2026.
 
-## Architectuur en besluiten
-- Stack, runtime en versies: [invullen]
-- Componentgrenzen, gegevensopslag en gegevensstromen: [invullen]
-- Authenticatie, autorisatie en validatie: [invullen]
-- Externe diensten en afhankelijkheden, met reden: [invullen]
-- Migraties, compatibiliteit en relevante beveiligingsrisico's: [invullen]
-- Besluiten en afwegingen: [invullen of verwijzing]
+## Architectuur
+- PWA met standaard HTML, CSS, ES modules, Web App Manifest en service worker. Node 22 voor tests, Python 3 voor lokale HTTP-preview. Geen npm-afhankelijkheden, geen bundler, geen tracking. Een statische hostingbuild kopieert alleen expliciete appassets naar dist. Voor deze persoonlijke app is een framework nog niet noodzakelijk; domeinfuncties blijven los van DOM en opslag.
+- src/core.mjs: pure trainingsregels (setvalidatie, kopiëren, richtwaarden, weekplanning, historie, sporttijd). src/app.mjs: schermen en tijdelijke localStorage-adapter. src/library.mjs: 118 handmatig samengestelde namen met spiergroep/apparatuur; geen externe media. src/style.css: goedgekeurde donkere kaartstijl.
+- Datamodel: bibliotheekoefening (stabiele ID), workouttemplate met geordende oefenconfiguraties, programma met herhaalregels en week-overrides, geplande activiteit met eigen UUID, actieve sessie met snapshot van richtwaarden, afgeronde sessie met werkelijke sets/duur. Historie onafhankelijk van template. Bodyweight en Each expliciet. Dumbbellkg per stuk.
+- Lokale versie bewaart fictieve data in localStorage (één versieerbaar document); service worker cachet alleen app-shell. Geen accountbeveiliging in deze versie. Geen echte trainingsdata gebruiken in lokale testversie. Lokale opslag kan gewist worden; JSON-export is mogelijk, import/herstel nog niet. Meerdere tabs kunnen elkaar overschrijven.
+- Toekomstige productie: IndexedDB voor lokale records en outbox, versieerbare server-API met PostgreSQL. Per gebruiker eigenaar-ID en autorisatie op alle tabellen, geen publiek leesbare trainingsdata. UUID's en unieke mutation-ID voor idempotente synchronisatie; serverrevision/optimistische concurrency; conflicten expliciet afhandelen en afgeronde sessies niet stilzwijgend overschrijven. Offline afmelden en accountwisseling wissen/isoleren lokale gegevens; authenticatie verversen zodra online. Dit contract is ontwerp, nog niet geïmplementeerd.
+- Sign in with Apple vereist externe configuratie (App ID, Services ID, domein, callback en servergeheim). Login op server, sessie met veilige HttpOnly/Secure/SameSite-cookie indien gekozen backend dit ondersteunt. Geen private keys in repo of browser. Database/hostingprovider en kosten vooraf afstemmen. Geen infrastructuur ingericht.
+- AI/HealthKit/Bridge-import zijn vervolgwerk. AI krijgt alleen geautoriseerde relevante records, expliciete bevestiging van bewerkbaar schema, geen directe schrijfrechten.
 
-## Reproduceerbare lokale uitvoering
-- Vereisten en installatiecommando: [invullen]
-- Startcommando en lokaal previewadres: [invullen]
-- Omgevingsvariabelen: [alleen namen, doel en veilige configuratiewijze]
-- Testdata en veilige testaccounts: [werkwijze zonder productiegegevens/geheimen]
+## Lokaal uitvoeren
+Node 22 en Python 3. Vanuit checkout: npm run check; npm test; npm start. Open http://localhost:8000. Geen installatie nodig. Gebruik fictieve data. HTTPS of localhost vereist voor service worker; fysieke iPhone heeft een afzonderlijk goedgekeurd bereikbaar HTTPS-previewadres nodig.
 
 ## Controles
-| Controle | Exact commando/methode | Toepassingsgebied en slaagcriterium | Verplicht wanneer |
-| --- | --- | --- | --- |
-| Tests | [invullen] | [kernstromen en regressies] | [invullen] |
-| Lint/typecontrole/build | [splits waar nodig] | [invullen] | [invullen] |
-| Toegankelijkheid/visueel | [tool en handmatige methode] | [DESIGN-criteria] | [invullen] |
-| Beveiliging/migratie | [risicogerichte methode] | [invullen] | [invullen] |
+| Controle | Commando/methode | Status |
+| --- | --- | --- |
+| Syntax | npm run check | CI ingericht; syntax ook via JS-parser in connectoromgeving gecontroleerd |
+| Domein | npm test | 9 scenario's; testbestand ook met eenvoudige JS-testadapter uitgevoerd, alle geslaagd |
+| Browser | Safari/iPhone: 375/390/430 px; keyboard, focus, offline, opslag, navigatie | open |
+| Toegankelijkheid | focus, semantiek, contrast, zoom en labels handmatig en geautomatiseerd | open |
+| Beveiliging | Apple-login, autorisatie, sync/replay/accountisolatie | niet gebouwd; blokkeert productie |
 
-Verwijder geen relevante controles om een groene status te krijgen. Markeer niet-toepasselijk met reden. Resultaten van een concrete uitvoering horen in CHANGE.md.
+## GitHub
+Branch feature/local-first-mvp; main alleen na mergeakkoord. Workflow .github/workflows/checks.yml, check Syntax and domain tests, PR en push op main/featurebranches, contents: read, geen deployment. Branchbescherming en vereiste checks nog niet geverifieerd of gewijzigd. Geen bestaande workflows op main aangetroffen. CI-foutdetectie nog niet aangetoond met een bewust falende run.
 
-## GitHub per repository
-- Repository, doelbranch en branch/PR-afspraken: [invullen]
-- Workflowbestanden en exacte checknamen: [invullen]
-- Verplichte checks en eventueel verplichte reviewers: [werkelijk ingestelde regels]
-- Rechten, secrets en omgang met onbetrouwbare PR-code: [invullen]
-- Activeringsbewijs: [PR/run en controle van falende check en mergeblokkade]
-- Status: [niet ingericht/gedeeltelijk/geverifieerd], beperkingen: [invullen]
+## Preview en release
+Lokale preview via bovenstaande startstappen. Vercel Hobby-preview voorbereid met vercel.json en scripts/build.mjs; geen publiek bereikbaar previewadres, geen productieomgeving of automatische deployment ingesteld. Zie PREVIEW.md. De gebruiker heeft al een Apple Developer- en Expo-account; Expo is voor de huidige PWA niet vereist. Externe preview/hosting, Apple Developer en database pas na afzonderlijk akkoord over kosten en doelomgeving. Publicatie pas na iPhone-test, auth/sync-test, review en versiegebonden akkoord. Herstel: vorige goedgekeurde appversie en afzonderlijk gevalideerde databasemigratie/back-up (nog te ontwerpen).
 
-## Omgevingen, preview en publiceren
-| Omgeving | Doel en URL | Trigger/commando | Toegang en gegevens |
-| --- | --- | --- | --- |
-| Lokaal | [invullen] | [invullen] | [invullen] |
-| Preview indien gebruikt | [invullen] | [expliciet toegestane deployment] | [afgeschermd waar nodig] |
-| Productie | [invullen] | [inclusief automatische merge/push-trigger] | [invullen] |
+## Eerste externe testdeployment — 24 november 2026
+- Gebruiker gaf opdracht de testomgeving voor te bereiden en koppelde Vercel. Afzonderlijk project fitness-manager-preview, zonder Git-integratie of automatische deployments. Geen betaalde add-ons, upgrade of domein aangeschaft; bestaand teamabonnement niet zichtbaar via team-API, werkelijke facturatie niet geverifieerd.
+- Handmatig gedeployed vanaf exact GitHub-snapshot d14314f682ea9f2673de887a5d758a1b98240d7a, 12 bronbestanden, build allowlist 8 publieke appbestanden. Deployment dpl_GXss6Pbd2LpUDzNPWbfY2Sv8GLxe, READY. URL https://fitness-manager-preview.vercel.app. Vercel retourneerde target production bij eerste deployment ondanks weggelaten target; dit is uitsluitend het afzonderlijke testproject, niet een vrijgave van main of productieapp. Geen merge, promotie of automatische Git-koppeling.
+- Buildlogs bevestigen npm run check, npm test (9 geslaagd, 0 mislukt), npm run build. Geauthenticeerde HTTP-controle van /, /manifest.webmanifest, /src/app.mjs en /sw.js: 200. Geen echte Safari/iPhone-interactie of offline test uitgevoerd. Vercel Authentication behouden; gebruiker kan mogelijk moeten inloggen. Alleen fictieve data, geen Apple-login/cloudsync.
 
-- Publicatieverantwoordelijke en vereiste rechten: [invullen]
-- Releaseprocedure voor exact beoordeelde versie/artifact: [stappen]
-- Configuratie, migratievolgorde en back-up indien nodig: [stappen]
-- Herstelprocedure, vorige versie en beperkingen van dataherstel: [invullen]
-- Smokecheck na deployment: [kernstroom, signalen en slaagcriteria]
-- Foutafhandeling en monitoring: [stoppen, herstel of escalatie binnen verleende bevoegdheid]
+## UX-revisie 3 en cloudvoorbereiding
+Zie CLOUD.md en database/fitness_state.draft.sql voor voorgestelde Supabase Free + Apple OAuth/PKCE. SQL is alleen ontwerp, niet uitgevoerd. Bestaande localStorage-key blijft; favorieten en recente oefeningen zijn optionele arrays, bestaande data behouden. Geen cloudproject, account of paid upgrade ingericht. Service worker shell v3.
 
-Automatische productiedeployment mag het gebruikersakkoord niet omzeilen. Leg vast hoe uitvoering pas na akkoord plaatsvindt. Een teruggedraaide appversie herstelt niet vanzelf gewijzigde data.
+## Testdatabase ingericht — 24 november 2026
+- Gebruiker autoriseerde uitsluitend €0 extra, organisatie Wim-11, Frankfurt. Supabase bevestigde Free en offerte 0 per maand. Project fitness-manager aangemaakt, ACTIVE_HEALTHY, eu-central-1, PostgreSQL 17. Geen betaalde upgrade of domein.
+- Migratie initial_fitness_state, provider-versie 20261124131542, vastgelegd onder supabase/migrations. Afgedwongen RLS en eigenaarspolicies op public.fitness_state; anon heeft geen SELECT, authenticated geen DELETE of wijziging eigenaar. Trigger controleert revisies en laatste mutation-ID. Payload heeft basisstructuur- en groottevalidatie; diepe domeinvalidatie en applicatie-autorisatie blijven open.
+- SQL-test met twee synthetische auth.users, role authenticated en gesimuleerde JWT-claims, één rollback-transactie: eigen insert/read/update, cross-account insert/read/update geweigerd, stale CAS 0 rows, revision jump/laatste mutatie replay geweigerd, ongeldige payload geweigerd, DELETE en anon SELECT geweigerd. Na rollback 0 gebruikers, 0 records. Security Advisor: geen lints. Geen echte JWT-login/API-integratietest.
+- Apple-provider niet ingeschakeld: Apple Developer Services ID en signing key/client secret moeten door gebruiker in eigen accounts worden geconfigureerd. Exact Supabase-domain/callback in persoonlijk dashboard; geen sleutels of accountgegevens in publieke repo. App Site URL en redirect allowlist: bestaande stabiele Vercel-test-URL. Zie Apple en Supabase officiële docs. Geen clientauth/sync aangesloten. Geen gebruikersdata importeren tot end-to-end getest. Geen Vercel-deployment of main-merge.
+
+## IndexedDB en offline opslag — fase na UX 0.3
+- Gebruiker stelt Apple-login en cloudsynchronisatie uit. Supabase niet gewijzigd; geen koppeling, geen account of netwerkverkeer naar de database. Lokale testdata blijven op dit apparaat. Geen extra diensten of kosten.
+- Nieuwe module src/storage.mjs: lokale IndexedDB database fitness-manager-local, objectstore state, record preview. Bestaande localStorage key fm-local-preview-v1 wordt bij eerste start binnen één transactie gekopieerd. Originele sleutel blijft ongewijzigd als terugvalkopie. Bij nieuwe writes via een oudere appversie wordt divergentie gedetecteerd bij het openen; geen automatische samenvoeging. Export vóór rollback vereist; oudere app ziet nieuwe IndexedDB-mutaties niet.
+- Versie 1 van payload blijft compatibel, optionele favorieten/recent genormaliseerd; basisvorm gecontroleerd. Save queue kopieert ieder snapshot vóór async schrijven, revisie-CAS in dezelfde transactie, succes pas bij oncomplete. Bij conflict of opslagfout stopt de queue en worden invoer en navigatie geblokkeerd; herstelbestand bevat huidige gegevens, legacy snapshot en waar beschikbaar de conflicterende opgeslagen versie. JSON-export is handmatig, automatische restore/import nog niet geïmplementeerd. Geen stilzwijgende reset of automatische overschrijving. Bij abrupt afsluiten tijdens een nog lopende transactie kunnen de laatste wijzigingen verloren gaan. Browseropslag is geen gegarandeerde permanente back-up; persist-aanvraag is optioneel en browserafhankelijk.
+- Service worker v4 cachet uitsluitend de statische app-shell inclusief opslagmodule, versiegebonden cache, cache-first navigatie voor startpagina; update wacht op sluiten oude clients. Geen private gegevens in cache. Eerste online bezoek nodig. iPhone/Safari vliegtuigmodus, geïnstalleerde PWA, update/rollback, keyboard en opslagquota blijven fysieke testpunten. Geen productieclaim.
+
+## Kalender- en setfeedback
+calendarDisplayItems is uitsluitend presentatie; weekSummary gebruikt calendarItems voor actuals en planning, zodat verwijzingen niet dubbel tellen. removeSessionSet wijzigt alleen actieve snapshot, nooit template of historie. Service worker v5, geen wijziging aan IndexedDB-contract.
+
+## Formulieren
+Gedeelde veldcomponenten in app.mjs en CSS; name/id en FormData-contract behouden. SW v6, geen datamigratie. Chromium-test controleert geometrie, units, numeric inputmode en herhalen.
+
+## Appupdates
+SW v7/app 0.6.0. Register updateViaCache none, check bij start/online/zichtbaar en handmatig. Wachtende SW ontvangt expliciete FM_ACTIVATE via MessageChannel, alleen één windowclient in scope. UI bevriest en save queue wordt geflusht vooraf; geen IndexedDB/cachedata reset. Controllerchange herlaadt expliciet verzoek; bij meerdere vensters sluiten en opnieuw proberen. Oudere versies zonder updateknop moeten eenmalig normaal SW-lifecycle doorlopen. CI simuleert volgende release door tijdelijk appversie/cache in disposable checkout te wijzigen, controleert behoud van offline record na reload, herstelt bronbestanden. Geen nieuwe afhankelijkheden.
+
+## Upgrade 0.7 — implementatieplan
+Additieve optionele velden in bestaand version:1 payload: warmupCount/warmupReps op template, warmup boolean op log, supersetNext op template en session pair IDs afgeleid uit aangrenzende oefeningen, skipped op sessieoefening, rpe op historie en recovery array. Geen DB-versieverhoging, geen cloud. Oude records zonder velden blijven geldig; behoud onbekende data. Pure domeinhelpers voor sessiemutaties, rondetimer, progressie, belasting en herstelvalidatie. Test oude data, afgevinkte sets, koppelingen, ontbrekende waarden en offline browserflow.
+
+## Upgrade 0.8 — plan
+Additieve templatevelden mode, setTargets, instructions en optionele muscle-snapshot; bestaande rep-veld slaat bij mode time seconden op en wordt als zodanig gelabeld. setTargets worden bij snapshot naar log.target gekopieerd; oude logs houden fallback. Circuit via bestaande supersetNext-keten, pairId op sessiesnapshot; koppelingen alleen aangrenzend. Herstel via strikt gecontroleerde JSON-parser (limiet 10 MiB), bestaande DB-versie 1, aparte restoreBackup op record, zelfde CAS-transactie. Queue flush vóór restore; UI blokkeert tijdens herstel; db pas vervangen na commit. Geen wijziging van legacy-sleutel of cloud. CI: domein, opslagtransactie/afwijzing, bestaande browserflow en nieuwe builder/dashboard/import- en PR-scenario's.
+
+### Presentatiefeedback 0.8
+Geen wijziging aan domein-, opslag- of updatecontract. Detailsdialoog leest bestaande sessiesnapshot/preview en muteert niets. Browserregressie controleert individuele placeholders, afwezigheid extra metadata in kaart, opvraagbare details en kg-vrij spiergroepweekoverzicht.
+
+## Navigatie 0.9
+View today/agenda gescheiden, routes voor agenda-today, agenda-add en library-open. Kalenderselectie blijft onafhankelijk van echte dag; planningsacties terug naar Agenda. Historie/preview/back-contexten in geheugen, geen persistent schemawijziging. Inline SVG in app.mjs, geen buildassets of dependencies. SW v10. Browsercheck nieuwe tabs, iconen, bibliotheekroute, mobiel geen horizontale uitloop, offline kalender en bestaande trainingsflow/restore/update.
+
+## Beheer 0.10
+Additief archived boolean op programma/workout; geen DB-versiewijziging. Zichtbare events afgeleid van archiveerstatus (toekomstige onvoltooide events verborgen, actieve/voltooide behouden). Planning reconciliatie houdt bestaande passende ids, beschermt verleden/actieve/voltooide. Bij programmaverwijdering behouden events loskoppelen; bij workoutverwijdering historische snapshots onafhankelijk. Historieconcept in geheugen, bibliotheekreturn history; validatie vóór één queued snapshot. Back-upvalidator accepteert optionele velden. Geen netwerk of nieuwe services.
+
+## UX 0.11
+Alleen app.mjs, style.css, service-worker cache v12 en tests. Geen wijzigingen aan core.mjs/storage.mjs/gegevenscontract. Programmaweek is tijdelijke viewstate, geen opgeslagen data; bediening hergebruikt bestaande acties. Focusherstel bij rerender voor periodeselectors; echte buttons en aria-labels. Lokale iconen zonder dependency. Browsergeometrie en keyboard CDP op 320–430px; regressies bestaande testflow. Geen nieuwe externe diensten.
+
+## Exercise Library 0.12
+Losse read-only module op bestaande ID's; geen schemawijziging. PNG-afbeeldingen onveranderd uit Everkinetic/data commit 446bb9a3d0c3beb6b84f7c9d77dfc8af707a2ab6 onder CC BY-SA 4.0, bronvermelding en licentie per detail plus LICENSES.md; alleen bekeken poses, met variantlabel. Geen overname foto's met onduidelijke herkomst. Eigen Nederlandse tekst, bronverwijzingen naar NASM; geen video herhosting. Build en service-worker v13 bevatten lokale media. CI controleert ID's, alternatieven, bron, assets, offline detail en bestaande picker. Uitbreidbare dataset; niet alle standaardoefeningen hebben gecontroleerd materiaal.
+
+## Exercise Library 0.13 vervolg
+Additieve detaildataset, 118 bestaande ID's ongewijzigd. Nieuwe illustraties in bestaande offline manifest en build. Geen extra afhankelijkheden of diensten; bestaande videolinks behouden. Algemene bronregisters gelabeld, volledige individuele externe inhoudsvalidatie en fysieke iPhone-review nog open.
+
+## Exercise Library 0.13.1
+
+Schematische PNG's in `media/exercises/fm-*.png`, op oefening-ID gekoppeld met eigen credit. De build gebruikt de mediapaden uit de detailrecords. Serviceworker v15 precachet ieder pad en behoudt de bestaande activeringsflow. Tests controleren volledige dekking en offline weergave van zowel bestaande als schematische illustraties.

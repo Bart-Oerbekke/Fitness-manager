@@ -1,51 +1,183 @@
-# Actuele wijziging
+# Actuele wijziging — lokale MVP-basis
 
-Status: [voorbereiding/in uitvoering/in review/ter beoordeling/gereed voor publicatie/gepubliceerd].
+Status: eerste implementatie ter beoordeling; niet gereed voor productie.
 
-## Doel, scope en aannames
-- Gewenste uitkomst en relevante productcriteria: [invullen]
-- Binnen/buiten scope: [invullen]
-- Aannames en belangrijke keuzes: [reden en status]
-- Risico en gekozen controleomvang: [invullen]
+## Scope en risico
+Gebruiker gaf 24 november 2026 opdracht tot technische uitwerking en implementatie volgens goedgekeurde ontwerp; kosten vooraf afstemmen. Branch feature/local-first-mvp vanaf discovery/product-brief, doel main. Geen merge/publicatieakkoord. Eerste afgebakende stap: lokale PWA met programma's, kalender, builder, setregistratie, inline historie en progressie. Geen cloud of Apple-auth, geen externe diensten. Tijdelijke localStorage is geen productieopslag; verlies en multi-tab conflicten mogelijk.
 
-## Acceptatiecriteria en bewijs
-| ID | Toetsbaar criterium | Bewijs/verificatie | Status |
-| --- | --- | --- | --- |
-| [P-/D-/wijzigings-ID] | [verwacht gedrag] | [test/scenario/link] | [open/gehaald/niet gehaald] |
-
-## Uitvoering en preview
-- Gewijzigde onderdelen en reden: [invullen]
-- Beoordeelde commit/artifact: [ID; lokaal zonder commit: exacte bestandsversie/snapshot]
-- Preview: [URL of exacte startstappen, benodigdheden en testdata]
-- Scenario's voor gebruiker: [kernstroom, relevante schermen en toestanden]
-- Beperkingen preview: [invullen of geen]
+## Criteria en bewijs
+| ID | Status | Bewijs |
+| --- | --- | --- |
+| P-02–06, P-14, P-16–18, P-23 | gedeeltelijk | domeintests en markup-smoke; echte interactie/iPhone nog niet getest |
+| P-01, P-09–10, P-15, P-19, P-21–22, P-24–25 | gedeeltelijk | implementatie en deels domeintests; volledige end-to-end verificatie open |
+| P-08 | gedeeltelijk | app-shell cache en lokale opslag; echte offline run en cloudsync ontbreken |
+| P-11 | open | fysieke iPhone en keyboardbalk niet getest |
+| P-12/P-20 | open, blokkerend | account/auth/sync niet aangesloten |
+| P-07/P-13 | vervolg | buiten deze implementatie |
 
 ## Controlebewijs
-| Controle | Commando/methode en versie | Resultaat en bewijs |
-| --- | --- | --- |
-| [controle] | [invullen] | [niet uitgevoerd/geslaagd/mislukt, met reden of outputverwijzing] |
+- Code-snapshot 189492c3f4d10eca4975f89e7d9def62b90c77e2: uit GitHub gelezen. Eerdere snapshot had syntaxconflict tussen datumhelper en Vandaag-view; opgelost en parsercontrole herhaald. Programmaduplicatie nu eigen templates; kalenderdatumcorrectie verwerkt.
+- Uit test/core.test.mjs: 9 testfuncties uitgevoerd met eenvoudige JavaScript-test/assert-adapter in connectoromgeving, 9 geslaagd. Dit is niet hetzelfde als een Node CI-run. Syntax core/app/library/sw gecontroleerd met Function-parser na verwijderen module-import/export-declaraties.
+- Mock-DOM-smoketest van 12 schermrenderfuncties met fictieve data op code-snapshot 189492c3f4d10eca4975f89e7d9def62b90c77e2: alle renderden markup met verwachte tekst. Geen echte browserinteractie of visuele inspectie.
+- CI-workflow toegevoegd; daadwerkelijke run, opzettelijk falende run en branchblokkade nog niet bevestigd. Geen onafhankelijke review.
+- Zelfreview: input escaping en numerieke validatie, gescheiden snapshots, afgevinkte sets beschermen, stabiele oefening-ID, geplande vs werkelijke duur, geen externe netwerkcalls behalve eigen shell. Geen complete securityreview; echte persoonlijke data niet invoeren.
 
-GitHub indien gebruikt: [PR, run, exacte checks en status op beoordeelde commit; anders reden].
+## Preview
+Checkout branch feature/local-first-mvp, npm start, http://localhost:8000. Fictieve scenario's: eigen workout met drie sets en Each, zesweeks programma, weekrichtwaarden, log reps/kg en Apply to all, bevestiging bij lege set, afronden, herhalen voor inline historie, plan voetbaltraining op twee dagen en losse wedstrijd, rond af en bekijk sporttijd.
+Geen bereikbare iPhone-preview omdat externe hosting nog niet is goedgekeurd. Browser- en iPhone-tests, toegankelijkheidsreview, offline gedrag, sync/auth, volledige planningwijzigingen, definitieve grafieklabels en terugzetten van export zijn open. De huidige UI is een eerste werkende codeversie, geen bewezen volledige v1.
 
-## Code- en designreview
-Reviewtype/reviewer: [zelfreview of toegestane onafhankelijke review; naam/rol].
-Codereview: [scope en resultaat]. Designreview: [schermen/breedtes/toestanden en resultaat, of niet van toepassing met reden].
+## Oplevering
+Geen merge/publicatie; gebruiker beoordeelt preview. Geen betaalde diensten aangevraagd of ingericht. Externe kosten vooraf per dienst afstemmen.
 
-| Prioriteit | Locatie, probleem en effect | Oplossing/afweging | Status en hercontrole |
-| --- | --- | --- | --- |
-| [blokkerend/overig] | [invullen] | [actie, eigenaar en vervolg indien open] | [open/opgelost + bewijs] |
+## Aanvulling: voorbereiding testhosting
+Gebruiker vraagt gratis testomgeving voor iPhone en heeft Apple Developer/Expo. Vercel Hobby geselecteerd als voorstel, accountverbinding nog nodig. Buildscript met allowlist en vercel.json toegevoegd; PREVIEW.md legt exacte instellingen, tests en publicatiegrenzen vast. Geen deployment, externe kosten, Apple-configuratie of wijziging van main uitgevoerd. De providerbuild en live smokecheck zijn nog niet uitgevoerd.
 
-## Oplevering en besluit
-- Gehaalde criteria en resterende onzekerheden: [invullen]
-- Previewbeoordeling gebruiker: [nog niet beoordeeld/feedback/akkoord, met verwijzing]
-- Publicatietoestemming: niet verleend, tenzij hieronder concreet vastgelegd.
-- Expliciet akkoord: [gebruikersinstructie/verwijzing, datum, versie/artifact, omgeving en migraties]
-- Commit/push/mergebevoegdheid: [verleende scope; controleer automatische deployments]
+## Eerste externe testdeployment — 24 november 2026
+- Gebruiker gaf opdracht de testomgeving voor te bereiden en koppelde Vercel. Afzonderlijk project fitness-manager-preview, zonder Git-integratie of automatische deployments. Geen betaalde add-ons, upgrade of domein aangeschaft; bestaand teamabonnement niet zichtbaar via team-API, werkelijke facturatie niet geverifieerd.
+- Handmatig gedeployed vanaf exact GitHub-snapshot d14314f682ea9f2673de887a5d758a1b98240d7a, 12 bronbestanden, build allowlist 8 publieke appbestanden. Deployment dpl_GXss6Pbd2LpUDzNPWbfY2Sv8GLxe, READY. URL https://fitness-manager-preview.vercel.app. Vercel retourneerde target production bij eerste deployment ondanks weggelaten target; dit is uitsluitend het afzonderlijke testproject, niet een vrijgave van main of productieapp. Geen merge, promotie of automatische Git-koppeling.
+- Buildlogs bevestigen npm run check, npm test (9 geslaagd, 0 mislukt), npm run build. Geauthenticeerde HTTP-controle van /, /manifest.webmanifest, /src/app.mjs en /sw.js: 200. Geen echte Safari/iPhone-interactie of offline test uitgevoerd. Vercel Authentication behouden; gebruiker kan mogelijk moeten inloggen. Alleen fictieve data, geen Apple-login/cloudsync.
 
-## Publicatie en nazorg
-- Vrijgavecontrole: [zelfde versie als akkoord; vereiste checks en review gereed]
-- Uitvoering: [niet uitgevoerd of versie, omgeving, URL en resultaat]
-- Live smokecheck: [methode en resultaat]
-- Herstelactie of resterend probleem: [indien van toepassing]
+## UX-revisie 2 — kalender en compactere interface
+Opdracht: maand/week zoals agenda en algemene UI compacter. Scope P-26/D-09; bestaande opslagkey, templates en geschiedenis blijven ongewijzigd. Geen nieuwe dependencies of accountdiensten. Zelfreview: UTC-datumfuncties en werkelijke datum, geen dubbele activiteit, geescapete namen, geselecteerde datum voor planning. Drie extra domeintests. Syntaxcontrole via JS-parser uitgevoerd; Vercel build en echte browser/iPhone-review nog open. Geen main-merge of productiepublicatie; bestaande testproject-update alleen als afzonderlijke previewbeoordeling toegestaan.
 
-Bewaar afgeronde verslagen voordat dit bestand voor een volgende wijziging wordt hergebruikt.
+- Controlebewijs op codecommit 1004d21f3a92a738cad666a30ffc2dcca4a42d1c: 12 domeintestfuncties geslaagd via JavaScript-assertadapter (9 regressies + maandgrenzen/schrikkeljaar, volledige maandrijen, verplaatste afgeronde activiteit); 13 mock-DOM-schermrenderchecks geslaagd (maand, week en 11 overige schermen). Geen echte browserlayout of fysieke iPhone-interactie getest. Node CI-run nog niet geverifieerd. Service worker cache versie v2, opslagkey behouden. Zelfreview betreft code en markup; fysieke designreview wacht op testdeployment. Testdeployment van deze versie en main-merge nog niet uitgevoerd, afzonderlijk akkoord voor testversie gevraagd.
+
+## Testdeployment UX-revisie 2 — 24 november 2026
+- Expliciet gebruikersakkoord: bestaande Vercel-testomgeving, codecommit 1004d21f3a92a738cad666a30ffc2dcca4a42d1c, geen main-merge of extra kosten.
+- Handmatige deployment dpl_GSaNc91NMXCfbWDJdUuPWX9sND64, READY, https://fitness-manager-preview.vercel.app. Target production uitsluitend binnen afzonderlijk testproject voor behoud bestaande URL en origin/opslag. Geen wijziging aan accountplan, add-ons, domeinen of automatische Git-deployments; facturatie niet onafhankelijk geverifieerd.
+- GitHub CI voor codecommit succesvol; Vercel build: syntaxcheck, 12/12 Node-domeintests geslaagd, statische build 8 bestanden. Geauthenticeerde HTTP-check: index.html, src/app.mjs, src/style.css, sw.js allemaal 200 en inhoud exact gelijk aan goedgekeurde GitHub-versie. Main vóór en na deployment onveranderd fc42838a7bd73fc28e28b4ae197253f4dda20440.
+- Fysieke iPhone-review, werkelijke browserlayout, offline gebruik en opslagbehoud in bestaande geïnstalleerde PWA nog door gebruiker te testen. Geen productieapp of merge vrijgegeven. Vorige testdeployment dpl_GXss6Pbd2LpUDzNPWbfY2Sv8GLxe beschikbaar als terugvalversie.
+
+## UX-revisie 3 en cloudvoorbereiding
+Gebruiker vraagt kalender, actieve training, builder, database en Apple-login. UX-code op 390ab54ff1dfa3383bbbd43d7ee2c201d214800c. P-27–29. Zelfreview: weekstatistieken aansluiting gecontroleerd, actieve events beschermd, kopie bevestiging; lokale opslagkey behouden. Geautomatiseerde adapterchecks 18/18 domein en 13/13 mock-DOM renders; geen echte browser of iPhone-test, drag/swipe/keyboard/scroll nog te beoordelen. Geen long press; optiemenu. Geen nieuwe dependencies. SQL-draft en cloudplan voorbereid, niet gevalideerd tegen database. Auth/sync niet geïmplementeerd of aangesloten; blokkerend voor echte data. Geen nieuwe externe dienst of kosten geactiveerd. Geen merge of deployment van deze revisie zonder versiegebonden toestemming.
+
+## Testdatabase ingericht — 24 november 2026
+- Gebruiker autoriseerde uitsluitend €0 extra, organisatie Wim-11, Frankfurt. Supabase bevestigde Free en offerte 0 per maand. Project fitness-manager aangemaakt, ACTIVE_HEALTHY, eu-central-1, PostgreSQL 17. Geen betaalde upgrade of domein.
+- Migratie initial_fitness_state, provider-versie 20261124131542, vastgelegd onder supabase/migrations. Afgedwongen RLS en eigenaarspolicies op public.fitness_state; anon heeft geen SELECT, authenticated geen DELETE of wijziging eigenaar. Trigger controleert revisies en laatste mutation-ID. Payload heeft basisstructuur- en groottevalidatie; diepe domeinvalidatie en applicatie-autorisatie blijven open.
+- SQL-test met twee synthetische auth.users, role authenticated en gesimuleerde JWT-claims, één rollback-transactie: eigen insert/read/update, cross-account insert/read/update geweigerd, stale CAS 0 rows, revision jump/laatste mutatie replay geweigerd, ongeldige payload geweigerd, DELETE en anon SELECT geweigerd. Na rollback 0 gebruikers, 0 records. Security Advisor: geen lints. Geen echte JWT-login/API-integratietest.
+- Apple-provider niet ingeschakeld: Apple Developer Services ID en signing key/client secret moeten door gebruiker in eigen accounts worden geconfigureerd. Exact Supabase-domain/callback in persoonlijk dashboard; geen sleutels of accountgegevens in publieke repo. App Site URL en redirect allowlist: bestaande stabiele Vercel-test-URL. Zie Apple en Supabase officiële docs. Geen clientauth/sync aangesloten. Geen gebruikersdata importeren tot end-to-end getest. Geen Vercel-deployment of main-merge.
+
+## UX-testdeployment 0.3
+Expliciet akkoord voor 390ab54ff1dfa3383bbbd43d7ee2c201d214800c. Vercel deployment dpl_H6AahvJfo5yFsFQQ374qmfQFW7BN READY op https://fitness-manager-preview.vercel.app. Target production alleen binnen apart testproject om bestaande URL te houden. Build 18/18 Node-tests; HTML/app/CSS/SW via HTTP 200 exact gelijk aan de goedgekeurde commit. Geen merge, geen abonnementwijzigingen; facturatie niet onafhankelijk verifieerbaar.
+
+## IndexedDB en offline opslag — fase na UX 0.3
+- Gebruiker stelt Apple-login en cloudsynchronisatie uit. Supabase niet gewijzigd; geen koppeling, geen account of netwerkverkeer naar de database. Lokale testdata blijven op dit apparaat. Geen extra diensten of kosten.
+- Nieuwe module src/storage.mjs: lokale IndexedDB database fitness-manager-local, objectstore state, record preview. Bestaande localStorage key fm-local-preview-v1 wordt bij eerste start binnen één transactie gekopieerd. Originele sleutel blijft ongewijzigd als terugvalkopie. Bij nieuwe writes via een oudere appversie wordt divergentie gedetecteerd bij het openen; geen automatische samenvoeging. Export vóór rollback vereist; oudere app ziet nieuwe IndexedDB-mutaties niet.
+- Versie 1 van payload blijft compatibel, optionele favorieten/recent genormaliseerd; basisvorm gecontroleerd. Save queue kopieert ieder snapshot vóór async schrijven, revisie-CAS in dezelfde transactie, succes pas bij oncomplete. Bij conflict of opslagfout stopt de queue en worden invoer en navigatie geblokkeerd; herstelbestand bevat huidige gegevens, legacy snapshot en waar beschikbaar de conflicterende opgeslagen versie. JSON-export is handmatig, automatische restore/import nog niet geïmplementeerd. Geen stilzwijgende reset of automatische overschrijving. Bij abrupt afsluiten tijdens een nog lopende transactie kunnen de laatste wijzigingen verloren gaan. Browseropslag is geen gegarandeerde permanente back-up; persist-aanvraag is optioneel en browserafhankelijk.
+- Service worker v4 cachet uitsluitend de statische app-shell inclusief opslagmodule, versiegebonden cache, cache-first navigatie voor startpagina; update wacht op sluiten oude clients. Geen private gegevens in cache. Eerste online bezoek nodig. iPhone/Safari vliegtuigmodus, geïnstalleerde PWA, update/rollback, keyboard en opslagquota blijven fysieke testpunten. Geen productieclaim.
+
+### Verificatie IndexedDB
+Codecommit a060a86dcf6465f270be0ffa9244484f64ff318a: GitHub run 45402583737, syntax, 23/23 Node-tests en build geslaagd, browserstap mislukt doordat --dump-dom RUNNING teruggaf voor asynchrone IndexedDB-test klaar was. Correctie 10fbead455120bc93ad32018d3d8b3f2c6d3dca9 gebruikt CDP en expliciete wachttijden plus offline appflow. Nieuwe CI-resultaat nog te verifiëren. Lokale Chromium HTTP-test in de container geblokkeerd door browserbeheer; geen geslaagde lokale browsertest claimen. Geen onafhankelijke review. Geen deployment van IndexedDB zonder versiegebonden akkoord.
+
+## iPhone-feedback — kalender, toetsenbord, sets
+Gebruiker bevestigt logging offline in live UX 0.3, meldt verdwenen kalenderitem, dubbele toetsenbordactie en ontbrekende verwijderoptie. Oorzaak niet reproduceerbaar op gebruikersdata; code verwijderde geplande item bij afwijkende werkelijke datum, en losse actieve sessie verscheen niet in daglijst. Nieuwe kalenderpresentatie bewaart geplande verwijzing, actuele sessie en resultaat; afronding selecteert werkelijke datum. Geen dubbele statistieken. Eén compacte Apply to all-chip, native iOS navigatie; setverwijderdialog met bescherming. Testresultaat eerdere IndexedDB-correctie d0b3f832a3158dccbb0b0a56cf590523d9484189: GitHub run 45403302881 geslaagd. Nieuwe gecombineerde versie nog niet gepubliceerd; geen main merge, kosten of cloudwijzigingen. Fysieke iPhone-review open.
+
+## Testdeployment 0.4 — IndexedDB en iPhone-feedback
+Expliciet gebruikersakkoord voor codecommit 20b126f6b57de14d5097332b7c891a6a056415fb, uitsluitend na geslaagde vereiste controles, geen extra kosten en geen main-merge. GitHub Actions run 45406399014, job 138488185408: syntax, 26/26 Node-tests, build en Chromium-integratie geslaagd; log bevat PASS_STORAGE_BROWSER en PASS_OFFLINE_APP. Vercel deployment dpl_GJfw5hfbANmiG1Ny7yqx6XkJ9V4Z READY, https://fitness-manager-preview.vercel.app. Vercel target production uitsluitend in apart testproject voor behoud bestaande URL en lokale origin; geen productieapp-release. Vercel build 26/26 tests, 9 appbestanden. Alle negen live bestanden HTTP 200 en exacte inhoud gelijk aan goedgekeurde commit. Main vóór en na deployment fc42838a7bd73fc28e28b4ae197253f4dda20440. Geen nieuwe diensten, abonnementwijzigingen of cloudkoppeling; facturatie niet onafhankelijk geverifieerd. Fysieke iPhone-test van migratie, kalender, setverwijdering, toetsenbordchip en offline herladen blijft open. Originele localStorage-snapshot blijft behouden; export vóór eventuele rollback, oudere versie leest nieuwe IndexedDB-data niet. Geen automatische herstelimport. Gebruik fictieve testgegevens.
+
+## UX-revisie 4 — formulierfeedback
+P-32/D-10: compacte modal, eenheden min/weken/sec/kg, datum/tijd begrensd, weekdagchips, builder meegenomen. 16px invoertekst bewust behouden. Zelfreview: bestaande FormData-namen en validatie, eenmalige keuze uitgeschakeld, opslagcontract ongewijzigd. Syntax gecontroleerd; CI en fysieke iPhone-review open. Geen publicatie of merge zonder versiegebonden akkoord. Geen nieuwe diensten of kosten.
+
+## Testdeployment 0.5 — compacte formulieren
+Expliciet gebruikersakkoord voor codecommit 2182c4da9c92447153965748eb78133a7bd2c6fd, uitsluitend bij geslaagde CI, geen extra kosten of main-merge. GitHub Actions run 45411358780, job 138505706060: syntax, 26/26 Node-tests, build en browserintegratie geslaagd; PASS_STORAGE_BROWSER, PASS_COMPACT_FORMS (320/375/390/430 px, geometrie, units, inputmode en herhaalkeuze) en PASS_OFFLINE_APP. Vercel deployment dpl_5J8AEsYc87Xak9DwrBvjNFQbE3zB READY op https://fitness-manager-preview.vercel.app. Target production alleen binnen apart testproject voor behoud URL/origin; geen productieapp-release. Vercel build 26/26 tests en negen appbestanden. Alle negen live bestanden HTTP 200 en exacte inhoud gelijk aan goedgekeurde commit. Main vóór en na ongewijzigd fc42838a7bd73fc28e28b4ae197253f4dda20440. Geen nieuwe diensten of betaalde upgrades; facturatie niet onafhankelijk geverifieerd. Fysieke Safari/iPhone-review en native date/time rendering nog open. Geen wijziging IndexedDB-contract, geen Supabase-koppeling, geen data-import. SW v6; sluit oude clients om update te activeren. Gebruik fictieve testgegevens.
+
+## Appupdate UX
+P-33: versie zichtbaar, updatecontrole en expliciet toepassen. Scope lokale PWA, geen cloud of opslagmigratie. Zelfreview: actieve sessie, opslagfout en meerdere vensters blokkeren expliciete activatie; UI bevriezen vóór flush, geen cache wissen buiten normale shell lifecycle. Eerste upgrade van oudere versie nog afhankelijk van sluiten clients. CI uitgebreid; fysieke iPhone-review open. Geen publicatie zonder versiegebonden akkoord. Geen extra kosten.
+
+## Testdeployment 0.6.0 — appupdates
+Expliciet gebruikersakkoord voor codecommit 4b422b2f4d8e11d2933d33acd96e95a36b051ba7, uitsluitend na geslaagde CI, geen extra kosten of main-merge. GitHub Actions run 45414113505, job 138515526451: syntax, 26/26 Node-tests, build en Chromium-browserintegratie geslaagd; PASS_STORAGE_BROWSER, PASS_COMPACT_FORMS, PASS_OFFLINE_APP, PASS_UPDATE_TRAINING_GUARD, PASS_UPDATE_WINDOW_GUARD en PASS_APP_UPDATE. Vercel deployment dpl_6WaxswtEgo4PDQtQyPUJ8q7MEj4a READY op https://fitness-manager-preview.vercel.app. Target production uitsluitend in afzonderlijk testproject ter behoud van URL en origin; geen productieapp-release. Vercel build 26/26 tests en negen appbestanden. Alle negen live bestanden HTTP 200 en exacte inhoud gelijk aan goedgekeurde commit. Main vóór en na ongewijzigd fc42838a7bd73fc28e28b4ae197253f4dda20440. Geen nieuwe betaalde diensten, upgrades of cloudwijzigingen; facturatie niet onafhankelijk gecontroleerd. Fysieke iPhone/Safari-test en eerste overgang vanaf oude cache nog open. Oude client volledig sluiten en opnieuw openen; nooit browseropslag wissen. Gebruik fictieve testdata.
+
+## Upgrade 0.7 — scope en acceptatie vooraf
+Gebruiker selecteert actieve training aanpassen, progressie/PR, sportbelasting/herstel, supersets/warming-upsets, algemene designverbeteringen. P-34 t/m P-38; aannames: supersets van 2, warm-up afzonderlijk, subjectieve check-in, geen automatische medische of trainingsadviezen. Risico's: templatewijziging door sessiemutatie, dubbeltelling van volume en sporttijd, oude IndexedDB-data, koppelingen en rusttimer. Beoogde checks: domeintests, regressie-/browserflow, zelfreview, documentatie. Geen extra kosten, publicatie of merge zonder apart akkoord.
+
+### Implementatie 0.7
+Sessiebewerking, warming-up, supersets, progressiemetrics, sessie-RPE, herstelcheck-in en compactere kaarten gebouwd. Additieve opslag; CI uitgebreid. Zelfreview en fysieke review nog open; niet gepubliceerd.
+
+### Zelfreview 0.7
+Domeincommit 833dd471cfe3b3ec201cf061c7f227d98ff30917: run 45417245734 groen (30 tests plus bestaande browserflow). Bij code-review van interface expliciete bescherming van gepaarde werksetverwijdering, warm-up labels, skip navigatie en werksettelling toegevoegd; CI uitgebreid met actieve sessie, template-isolatie en warming-up. Geen onafhankelijke review. Fysieke iPhone-review open.
+
+## Testdeployment 0.7.0 — trainingsupgrade
+Expliciet gebruikersakkoord voor codecommit 061a5598ee4619b6c2e0f99b856a69f6b1cfe8d3, uitsluitend bij geslaagde CI, geen extra kosten of main-merge. GitHub Actions run 45417607166, job 138528012008: syntax, 33/33 Node-tests, build en Chromium-browserintegratie geslaagd; PASS_STORAGE_BROWSER, PASS_COMPACT_FORMS, PASS_OFFLINE_APP, PASS_UPDATE_TRAINING_GUARD, PASS_PROGRESS_RECOVERY, PASS_SESSION_EDIT_WARMUP, PASS_UPDATE_WINDOW_GUARD, PASS_APP_UPDATE. Niet-blokkerende waarschuwing over Node20-runtime van gepinde GitHub Actions; job geslaagd. Vercel deployment dpl_FDMSLBuwPjdXP8XvN8JnYWPovPVk READY op https://fitness-manager-preview.vercel.app. Target production uitsluitend binnen afzonderlijk testproject voor behoud URL/origin; geen productieapp-release. Vercel build 33/33 tests en negen appbestanden. Alle negen live bestanden HTTP 200, exacte inhoud gelijk aan goedgekeurde commit. Main vóór en na ongewijzigd fc42838a7bd73fc28e28b4ae197253f4dda20440. Geen nieuwe diensten, betaalde upgrades of Supabase-wijzigingen; facturatie niet onafhankelijk geverifieerd. Fysieke iPhone-review van actieve sessiewijzigingen, warming-up/superset, statistieken en herstel open. Supersetrust en PR-berekening op domeinniveau getest; geen claim volledige fysieke E2E-dekking. Update via Instellingen na afronding actieve training; gebruik fictieve gegevens en export voor eventuele rollback.
+
+## Upgrade 0.8 — scope en acceptatie vooraf
+Gebruiker vraagt geavanceerde builder, Vandaag-dashboard, spiergroep/volumeanalyse, back-upherstel, live PR, designoptimalisatie. P-39 t/m P-44. Aannames: handmatige tijdregistratie en circuitvolgorde, maximaal zes gekoppelde oefeningen, dropset afzonderlijk, geen merge-import, eerste meting geen PR-melding, primaire spiergroep als telconventie. Risico's: dataverlies bij herstel, ongeldige import/HTML-injectie, verkeerde PR/volume, oude snapshots en weekoverrides. Testen/zelfreview volgens REVIEWFLOW, geen publicatie of merge zonder apart akkoord.
+
+### Implementatie 0.8
+Domein, atomaire herstelopslag en UI gebouwd. Versie 0.8.0/SW v9; CI uitgebreid met back-upinterface. Zelfreview en definitieve CI nog open. Geen publicatie.
+
+### Zelfreview 0.8
+Domeinrun 45432191712 38/38, herstelrun 45432335901 40/40, builder-integratierun 45432646288 40/40; bestaande browserflow telkens geslaagd. Aanvullend: tijdmodus-velden opschonen, circuitlabels, prototypeveilige spiergroepen, herstel/update-lock en browserflow voor echte per-setrichtwaarden, live PR en validatie van een daadwerkelijke geëxporteerde snapshot. Fysieke iPhone-review blijft open. Geen onafhankelijke review.
+
+### Gebruikersfeedback 0.8 vóór publicatie
+CI run 45433231372 op 1006e83d15bfad3df4a70eb1dbbf38972e80d4e1 geslaagd: 41/41 tests, build, PASS_ADVANCED_BUILDER_PR en PASS_BACKUP_DASHBOARD plus bestaande browserflow. Gebruiker wil actieve training visueel rustig houden en geen kg in spiergroepweekoverzicht. P-39/P-41/P-44 aangescherpt. Alleen presentatie en browsertest aangepast: optionele details achter menu/previewinfo, geen extra setrijen; kg uit spiergroeppanel. Zelfreview: geen datamutatie in detailweergave, setTargets blijven geldig, PR/gewichtprogressie behouden. Nieuwe CI vereist; fysieke iPhone-review open. Niet gepubliceerd of gemerged.
+
+## Testdeployment 0.8.0 — geavanceerde builder en rustige trainingsweergave
+Expliciet gebruikersakkoord voor codecommit 29374283088e3a127a0df0ee93c38c485ad883af, uitsluitend na geslaagde CI, geen extra kosten of main-merge. GitHub Actions run 45437719619, job 138599978460: alle stappen geslaagd, 41/41 Node-tests, build en Chromium-browserintegratie; PASS_STORAGE_BROWSER, PASS_COMPACT_FORMS, PASS_OFFLINE_APP, PASS_UPDATE_TRAINING_GUARD, PASS_PROGRESS_RECOVERY, PASS_SESSION_EDIT_WARMUP, PASS_FOCUSED_TRAINING, PASS_MUSCLE_SETS_ONLY, PASS_ADVANCED_BUILDER_PR, PASS_UPDATE_WINDOW_GUARD, PASS_APP_UPDATE, PASS_BACKUP_DASHBOARD. Vercel deployment dpl_E2vkF2ovppN3s5VvtuSQC9wYu9r6 READY op https://fitness-manager-preview.vercel.app. Target production uitsluitend binnen afzonderlijk testproject ter behoud van URL/origin; geen productieapp-release. Vercel build 41/41 tests en negen appbestanden; niet-blokkerende npm-waarschuwing onbekende env-config cache-dir. Alle negen live bestanden HTTP 200 en exacte inhoud gelijk aan goedgekeurde commit. Main vóór en na ongewijzigd fc42838a7bd73fc28e28b4ae197253f4dda20440. Geen nieuwe diensten, betaalde upgrades of Supabase-wijzigingen; facturatie niet onafhankelijk geverifieerd. Fysieke iPhone-review blijft open; browserintegratie met synthetische data, geen hersteltest met echte persoonlijke back-up. Update via Instellingen na actieve training; exporteer eerst en test herstel uitsluitend met bewust gekozen testdata. Geen onafhankelijke review of runtime-monitoring uitgevoerd.
+
+## Upgrade 0.9 — dagdashboard en agenda
+Gebruiker keurt ontwerp met Vandaag, Agenda, Schema's, Progressie, Instellingen en lijniconen goed. Scope P-45/P-46: split views, bibliotheek naar Schema's, behouden picker, route terug na planning, geen data- of trainingswijziging. Aannames: volgende activiteit openen via bestaande preview, geen directe start buiten preview; huidige datum onafhankelijk van agenda. Zelfreview routeverwijzingen en nav; CI uitgebreid, fysieke iPhone-review open. Geen betaalde diensten, deployment of merge zonder expliciet akkoord.
+
+### Zelfreview navigatie 0.9
+Extra controle: context van programma-preview behouden, historie-tab gekoppeld aan herkomst, planning na datumwijziging terug naar agenda, consistente terugroute bij annuleren, symmetrisch instellingenicoon. Browsercheck uitgebreid met kalenderperiode onafhankelijk van Vandaag, geplande workout openen/terug en voorkomen dubbele volgende activiteit. Geen wijziging core/storage. Geen onafhankelijke review.
+
+## Testdeployment 0.9.0 — Vandaag en Agenda
+Expliciet gebruikersakkoord voor codecommit 6ca34e53b8ac60e61247b413b295ea2b497144d1, uitsluitend bij geslaagde CI, geen extra kosten of main-merge. GitHub Actions run 45440035297, job 138608273070: alle stappen geslaagd, 41/41 Node-tests, syntax, build en Chromium-browserintegratie; PASS_STORAGE_BROWSER, PASS_SPLIT_NAVIGATION, PASS_COMPACT_FORMS, PASS_OFFLINE_APP, PASS_AGENDA_ROUTES, PASS_UPDATE_TRAINING_GUARD, PASS_PROGRESS_RECOVERY, PASS_SESSION_EDIT_WARMUP, PASS_FOCUSED_TRAINING, PASS_MUSCLE_SETS_ONLY, PASS_ADVANCED_BUILDER_PR, PASS_UPDATE_WINDOW_GUARD, PASS_APP_UPDATE, PASS_BACKUP_DASHBOARD. Vercel deployment dpl_Br4CVm5LZJfJbD4QeBwywU4okMt3 READY op https://fitness-manager-preview.vercel.app. Target production uitsluitend binnen afzonderlijk testproject ter behoud van URL/origin; geen productieapp-release. Vercel build 41/41 tests en negen appbestanden. Niet-blokkerende waarschuwingen over Node engines >=22 en npm cache-dir. Alle negen live bestanden HTTP 200 en exacte inhoud gelijk aan goedgekeurde commit. Main vóór en na ongewijzigd fc42838a7bd73fc28e28b4ae197253f4dda20440. Geen nieuwe betaalde diensten, upgrades of Supabase-wijzigingen; facturatie niet onafhankelijk geverifieerd. Geen wijziging aan opslagcontract. Fysieke iPhone-review en runtime-monitoring niet uitgevoerd; CI test mobiele Chromium-layout 320–430px. Update via Instellingen na actieve training.
+
+## Upgrade 0.10 — scope vooraf
+Gebruiker keurt P-47 t/m P-52 goed. Aannames: archiveren van workout blokkeert nieuwe planning, niet bestaande afspraken; programma archief pauzeert toekomstige planning; wijzigingen plannen alleen vanaf vandaag; verleden en actieve/voltooide events blijven beschermd. Historie-editor handmatige invoer, geen timer. Destructieve acties bevestigen, geen cascade naar andere historie. Risico's: verwijzingen in back-up, herberekening/dubbeltelling, verloren concept, behoud actieve sessie. Domein- en browserregressie, zelfreview; geen publicatie/merge zonder apart akkoord.
+
+### Implementatie 0.10
+Schemabeheer en historie-editor gebouwd; versie 0.10.0/SW v11. Geen wijziging actieve kaart, geen DB-migratie. Regressie en review nog open. Geen deployment.
+
+### Zelfreview 0.10
+Domeincommit 04d61d19129509b8e34bc1fe20e750dbd2e05075 run 45441924255: 46/46 en browser groen. Tussencommit 21578ac1a3a6897bd1d8cde0a7de0077b8bf3513 run 45442081938: browser timeout oude workoutselector; tabroute bijgewerkt. Extra review: archiefdatum voorkomt terugverschijnen gepauzeerde events; hervatten laat gemiste pauzeafspraken vervallen; workout uit programma behoudt beschermde events losgekoppeld met weektargets; eigen oefening in historie-picker. CI uitgebreid met beheer en handmatige registratie. Geen onafhankelijke review of fysieke iPhone-test. Geen publicatie.
+
+### CI-herstel 0.10
+Run 45442453477 op 2a75b0ae93bc6da1b77b24c4ca5cb3109083a3f7: 47/47 tests, syntax, build en browser tot PASS_SCHEMA_MANAGEMENT geslaagd; blokkerende SyntaxError: Identifier 'k' has already been declared in Runtime.evaluate. Drie historie-inputexpressies in afzonderlijke IIFE-scopes geplaatst; assertions en appcode ongewijzigd. Scope: alleen testscript en documentatie. Volledige CI opnieuw via bestaande workflow; geen publicatie of merge. Zelfreview; fysieke iPhone-review open.
+
+## Testdeployment 0.10.0 — schema- en historiebeheer
+Expliciet gebruikersakkoord voor codecommit 0c50947f51536e874ff5f957b203b7c9b78f9436, uitsluitend na geslaagde CI, geen extra kosten of main-merge. GitHub Actions run 45443166236, job 138619620089: alle stappen geslaagd, 47/47 Node-tests, syntax, build en Chromium-browserintegratie; PASS_STORAGE_BROWSER, PASS_SPLIT_NAVIGATION, PASS_COMPACT_FORMS, PASS_OFFLINE_APP, PASS_AGENDA_ROUTES, PASS_UPDATE_TRAINING_GUARD, PASS_PROGRESS_RECOVERY, PASS_SESSION_EDIT_WARMUP, PASS_FOCUSED_TRAINING, PASS_MUSCLE_SETS_ONLY, PASS_ADVANCED_BUILDER_PR, PASS_UPDATE_WINDOW_GUARD, PASS_APP_UPDATE, PASS_SCHEMA_MANAGEMENT, PASS_HISTORY_MANAGEMENT, PASS_BACKUP_DASHBOARD. Vercel deployment dpl_HnLspLnfCjaaNx2bz39BS131ESP5 READY op https://fitness-manager-preview.vercel.app. Target production uitsluitend binnen afzonderlijk testproject ter behoud van URL/origin; geen productieapp-release. Vercel build 47/47 tests en negen appbestanden. Niet-blokkerende npm-waarschuwing cache-dir. Alle negen live bestanden HTTP 200 en exacte inhoud gelijk aan goedgekeurde commit. Main vóór en na ongewijzigd fc42838a7bd73fc28e28b4ae197253f4dda20440. Geen nieuwe betaalde diensten, upgrades of Supabase-wijzigingen; facturatie niet onafhankelijk geverifieerd. Fysieke iPhone-review en runtime-monitoring niet uitgevoerd; browserintegratie met synthetische data. Update via Instellingen na actieve training; exporteer eerst een back-up. Historie-editor en destructieve acties praktisch beoordelen met testdata.
+
+## Upgrade 0.11 — scope vooraf
+Gebruiker bevestigt P-53 t/m P-58 (UX only). Aannames: weekselectie in programmadetails alleen viewstate, initiële actuele week begrensd op beschikbare weken; compact 38px formuliervelden behouden; 44px voor primaire iconacties, maandcellen en mini-chips waar haalbaar. Risico's: horizontale uitloop op 320px, verborgen beheeracties, focusverlies door render, bereikbaarheid oude beschermde events, actieve training onbedoeld veranderd. CI en zelfreview; geen publicatie/merge, geen extra kosten. Vercel testproject niet Git-gekoppeld gecontroleerd.
+
+### Implementatie UX 0.11
+Gedeelde periodeselector, lijniconen, programmadetail met tijdelijke weekselectie en menu, aangepaste historie/instellingen, betere contrasten en leesbaarheid, 44px belangrijke iconacties, behoud 38px formulieren en compacte trainingssetgrid. Versie 0.11.0/SW v12. CI uitgebreide keyboard- en programmaroutes; aanvullende layoutcontrole volgt. Geen domein- of opslagwijziging, geen publicatie.
+
+### Zelfreview en UX-regressie 0.11
+Aanvullend: bestaande actieve/geschiedenis-menu's krijgen lijniconen; 44px actieknoppen, kleinere kalendermetadata, behoud invoer 16px en 38px formuliervelden. Browserreview voegt per hoofd-/subscherm 320/375/390/430px controles toe op documentbreedte, relevante targetafmetingen, naamgeving en SVG-periodeselector; keyboard Enter en focusbehoud. Geen volledige WCAG-audit of fysieke iPhone/VoiceOver-review. Bestaande core/storage ongewijzigd. Definitieve CI nog vereist.
+
+### CI-herstel UX
+Runs 45448596027 en 45448724746: 47/47 unit-tests, build en vijf layouts geslaagd; onvolledige Enter-gebeurtenis in Chromium. Run 45448836596 (6e3d66c04eb3917a5c49009a5c28b7c980893421): native keyboardtest en focusbehoud geslaagd; preview en actieve training layout groen; testfout Progressie gecontroleerd nadat Instellingen geopend was. Controle naar juiste scherm verplaatst, builder en historielijst toegevoegd. Appcode ongewijzigd; nieuwe volledige CI vereist. Core/storage/library en bestaande domeintests identiek aan 0.10.0.
+
+## Testdeployment 0.11.0 — Design & UX
+Expliciet gebruikersakkoord voor codecommit 3d49df5ba437dac13bd7fe8c2cbebcf2c9a16195, uitsluitend na geslaagde CI, geen extra kosten of main-merge. GitHub Actions run 45449061688, job 138640807192: alle stappen geslaagd, 47/47 Node-tests, syntax, build, bestaande browserregressies en 14 UX-layoutweergaven op 320/375/390/430px, keyboard en focusbehoud. Vercel deployment dpl_A1nsndA91B2RkB5tUTzC5bQ62W93 READY op https://fitness-manager-preview.vercel.app. Target production uitsluitend binnen afzonderlijk testproject ter behoud van URL/origin; geen productieapp-release. Vercel build 47/47 tests, negen appbestanden. Niet-blokkerende npm-waarschuwing cache-dir. Alle negen live bestanden HTTP 200 en exacte inhoud gelijk aan goedgekeurde commit. Main vóór en na ongewijzigd fc42838a7bd73fc28e28b4ae197253f4dda20440. Geen nieuwe betaalde diensten, upgrades of Supabase-wijzigingen; facturatie niet onafhankelijk geverifieerd. Fysieke iPhone-, VoiceOver-review, volledige toegankelijkheidsaudit en runtime-monitoring niet uitgevoerd. Update via Instellingen na actieve training; exporteer eerst een back-up.
+
+## Upgrade 0.12 — scope vooraf
+Gebruiker keurt P-59 t/m P-62 goed. Prioriteit: bron/licentie en juiste variant boven volledige maar ongecontroleerde dekking. Free Exercise DB vermeldt Unlicense maar foto's komen via oudere dataset; originele fotorechten niet per foto bevestigd, daarom niet overgenomen. Everkinetic/data expliciete CC BY-SA 4.0; geselecteerde tekeningen visueel bekeken, alleen originele bestanden met bron/credit. NASM links en eigen Nederlandse uitleg; geen claims coachvalidatie. Niet alle 118 oefeningen in deze tranche; ontbrekende media en uitleg expliciet. Risico's: onjuiste variant, privacy bij video, offline cache, regressie picker en historie. Geen kosten, publicatie of merge. Zelfreview, fysieke iPhone-review open.
+
+### Implementatie 0.12
+14/118 redactionele details, acht met lokale illustraties (15 PNG), vijf met directe NASM-video. Alle 118 IDs ongewijzigd, eigen oefeningen tonen eerlijke fallback. Bibliotheekdetails inclusief progressie, favoriet, filter/scroll terug, alternatieven, bron/licentie; pickers en actieve kaart intact. Bouw en shell v13 nemen lokale media en licenties mee. Testscript toetst offline decode, navigatie, ontbrekende content, bestaande stromen. CI nog vereist. Geen publicatie.
+
+### Inhoudelijke uitbreiding en zelfreview 0.12
+Eerste volledige CI op d220ab22d15937ff7c462fef23963e1a59e20aeb: run 45590743905, 49/49 Node-tests, build 27 bestanden, offline detail en alle browserregressies geslaagd. Daarna 17 extra brongebonden Nederlandse details, directe videolinks voor de 9 eerdere records zonder video. Totaal 31/118 uitleg, 31 video, 8/118 lokaal beeld (15 PNG's). Goblet-video kan andere materiaalvariant tonen; beide Face Pull-ID's blijven behouden. UI vermeldt dekking expliciet; algemene categorie bij ontbrekende details is geen primaire spier. Niet alle video's integraal bekeken; geen onafhankelijke coachreview. Nieuwe volledige CI vereist. Geen publicatie of merge.
+
+Aanvullend: twee originele, visueel beoordeelde Good Morning-illustraties, blob-SHA identiek aan Everkinetic. Totaal 9 oefeningen met lokaal beeld, 17 PNG's; offline manifest/build aangepast. Een tweede beoogde illustratieset was niet beschikbaar onder het gevonden bronpad en is niet overgenomen. Eindcontrole op deze commit vereist.
+
+## Upgrade 0.13 — Exercise Library, inhoudstranche
+Gebruiker akkoord voor inhoudsuitbreiding; geen nieuwe schermen of trainingsfunctionaliteit, geen extra kosten, deployment of merge naar main. Basissnapshot 7e2c9857f022ec8f7e06b3ecc1af56fca3b38971. Criteria: behoud 118 IDs en alle bestaande records, 15 brongebonden nieuwe Nederlandse details, 11 nieuwe videolinks en acht gecontroleerde PNG's met identieke bronblob, transparante ontbrekende media; offline precache, bestaande navigatie en trainings-/opslagregressies. Scope: detaildataset, versie/SW v14, bronlabels en expliciete video-variantnotitie, tests, documentatie. Geen DB-migratie. Broncontrole en visuele zelfreview uitgevoerd, geen onafhankelijke coachreview of volledig bekeken video's. CI en fysieke iPhone-review nog open. Niet gepubliceerd.
+
+## 0.13 — volledige tekstdekking
+Gebruiker akkoord: alle 118 beschrijvingen, zoveel mogelijk passende offline afbeeldingen, video's optioneel en niet verder uitbreiden. Basis 157a63f2e5c6696414acbfe67b8b0f0b20d4b45f, vorige CI push en PR groen. 72 aanvullende eigen NL records, 8 nieuwe visueel gecontroleerde en blob-identieke PNG's, 118/118 tekst en 17/118 beeld (33 PNG), 42 bestaande video's. Geen verandering aan ID's, oude records, trainingslogica of opslag; geen publicatie, merge of kosten. Zelfreview en algemene bronregisters; niet alle individuele varianten extern gevalideerd, geen onafhankelijke trainerreview. CI vereist; fysieke iPhone-review open. Browserregressie voor nieuwe gevulde oefening zonder afbeelding bijgewerkt.
+
+### Beeldtranche vervolg 0.13
+13 aanvullende oefeningdetails voorzien van 26 visueel gecontroleerde, blob-identieke Everkinetic-PNG's. Bronvolgorde waar nodig omgekeerd, variantnotities toegevoegd; onduidelijke deadlift-, kuitmachine- en andere tekeningen niet overgenomen. 30/118 lokaal beeld, 59 PNG's, 118/118 tekst, 42 video's ongewijzigd. Geen schema-, opslag- of trainingswijziging. CI opnieuw vereist. Geen deployment of main-merge.
+
+### Extra beelddekking 0.13
+Basis 4c19854afdb8e1d2dcd7d60cdbf03d9a6e216065: beide CI-runs groen. 12 nieuwe oefeningdetails met 24 visueel gecontroleerde, blob-identieke PNG's. 42/118 lokaal beeld, 83 PNG's, 118/118 tekst en 42 bestaande videolinks. Geen nieuwe video, geen wijziging ID's of trainings-/opslaglogica. Afgekeurde voorbeelden: kuitheffing zonder zichtbare voeten, deadlift met ongeschikte startpositie, pulldown achter het hoofd. CI opnieuw vereist; geen publicatie of merge. Individuele externe tekstvalidatie en fysieke iPhone-review blijven open.
+
+## Volledige offline beelddekking 0.13
+
+Basis 751de5b. Doel: lokaal beeld voor alle 118 bestaande oefening-ID's, met eigen schematische illustraties voor de ontbrekende varianten. Behoud Nederlandse details, bestaande media en optionele videolinks. Controleer per variant pose, materiaal, leesbaarheid en cachedekking. Geen trainings- of opslagwijziging. Risico's: verwisselde varianten, onduidelijke projectie en cache-upgrade.
+
+Resultaat: 76 oefeningdetails voorzien van 153 eigen schematische PNG's. Totaal 118/118 met beeld en tekst, 236 PNG's. Visuele zelfreview met vier contactvellen, vergeleken met de uitvoeringsbeschrijvingen. Syntax, 52 Node-tests, build (248 bestanden) en de Chromium-integratiesuite geslaagd. Die suite controleert offline afbeeldingen, de browserlayout bij 320/375/390/430 px, terugkeer naar de gefilterde lijst en updategedrag. Onafhankelijke techniekreview en fysieke iPhone/Safari-test staan open. Lokale preview: `npm start`, open `http://localhost:8000` en ga naar Schema's → Oefeningenbibliotheek.

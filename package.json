@@ -1,0 +1,14 @@
+{
+  "name": "fitness-manager",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test test/*.test.mjs",
+    "check": "node --check src/app.mjs && node --check src/core.mjs && node --check src/library.mjs && node --check sw.js && node --check scripts/build.mjs && node --check src/storage.mjs && node --check scripts/test-browser.mjs && node --check src/exercise-details.mjs",
+    "start": "python3 -m http.server 8000",
+    "build": "node scripts/build.mjs"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

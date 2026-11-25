@@ -1,21 +1,24 @@
-# Ontwikkelbasis voor nieuwe apps
+# Fitness Manager
 
-Dit is een zelfstandige, stackonafhankelijke startbasis. Er is nog geen app, actieve CI, hosting of cloudomgeving ingericht.
+Persoonlijke mobiele trainingsapp met fitness, voetbal en andere sportactiviteiten in één kalender. Dit is de eerste lokale ontwikkelversie, niet gereed voor productie.
 
-## Start een nieuwe app
-1. Gebruik op GitHub Use this template > Create a new repository. Kies een eigen repository per app.
-2. Koppel de nieuwe repository aan een Codex-cloudomgeving en laat dependencies, controles en veilige testdata passend inrichten. Publiceer de ontwikkelomgeving na controle; dit is geen publicatie van de app.
-3. Beschrijf je idee in de chat. Codex leest AGENTS.md, stelt gerichte verkenningsvragen en schrijft PRODUCT.md. Bevestig de productbrief voordat ontwerp begint; beoordeel daarna de eerste schets voordat verdere implementatie begint.
-4. Codex vult DESIGN.md en TECH.md in, bouwt een afgebakende versie en richt echte CI in volgens GITHUB-INRICHTING.md.
-5. Per wijziging: eigen branch, gerichte commits, PR, relevante controles, zelfreview en preview. De gebruiker beslist over merge en afzonderlijk over publicatie.
+## Start lokaal
+Node 22 en Python 3. Open een checkout van deze branch en voer uit:
+```sh
+npm run check
+npm test
+npm start
+```
+Open http://localhost:8000. Gebruik uitsluitend fictieve gegevens. Geen npm-installatie nodig. Apple-login en synchronisatie zijn nog niet aangesloten. Geen publieke preview/deployment ingesteld.
 
-## Algemeen en per app
-- Algemeen: de werkwijze, bevoegdheden, verkenning en kwaliteitseisen staan in AGENTS.md en REVIEWFLOW.md.
-- Per app: Codex werkt doelgroep, scope en criteria uit in PRODUCT.md; visuele en interactieafspraken in DESIGN.md; stack, echte commando's, cloudinrichting, preview en release in TECH.md.
-- Per wijziging: criteria, bewijs, review en akkoord in CHANGE.md. Bewaar afgeronde verslagen voordat dit bestand wordt hergebruikt.
+## Projectafspraken
+AGENTS.md, REVIEWFLOW.md en GITHUB-INRICHTING.md blijven leidend. PRODUCT.md en DESIGN.md bevatten de goedgekeurde productrichting en schermen. TECH.md beschrijft architectuur, controles en releasegrenzen. CHANGE.md bevat de actuele wijziging en bewijs.
 
-## Mobiel werken
-De afspraken staan in deze repository; er is geen lokale Windows-map nodig. Een cloudomgeving moet apart worden ingericht en beschikbaar zijn op je account. Een GitHub-koppeling alleen is geen draaiende cloudomgeving. Voor een interactieve preview op je telefoon is een bereikbaar previewadres nodig; hosting, toegang en kosten worden per app afgesproken.
+## Ontwikkelflow
+Eigen featurebranch, gerichte commits, PR, echte checks, zelfreview en preview. Merge en publicatie uitsluitend na afzonderlijk akkoord. Geen externe kosten zonder akkoord. Geen echte trainingsdata of sleutels in GitHub.
 
-## Template onderhouden
-Wijzigingen aan deze template worden niet automatisch doorgevoerd in eerder aangemaakte apps. Neem verbeteringen daar bewust en passend over. Repositoryregels, secrets, cloudomgevingen en hosting worden apart ingericht en gecontroleerd. Er zijn bewust geen fictieve CI-jobs of automatische deployments toegevoegd.
+## Testhosting
+Zie PREVIEW.md voor de gratis Vercel-preview. `npm run build` maakt een afzonderlijke dist-map met uitsluitend appbestanden. Nog geen deployment.
+
+## Lokale opslagreview
+De IndexedDB-versie staat alleen op de featurebranch totdat expliciet publicatieakkoord is gegeven. Start via npm start en gebruik fictieve gegevens. Test migratie met een bestaande localStorage-snapshot, maak een export, open de app offline na een eerste online bezoek en verifieer dat afgeronde opslagtransacties na herladen blijven bestaan. Herstelimport is niet gebouwd. Testbrowser: npm run check, npm test, npm run build; GitHub Actions voert daarnaast scripts/test-browser.mjs uit met Chromium en HTTP-server.

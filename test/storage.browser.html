@@ -1,0 +1,35 @@
+<!doctype html><meta charset="utf-8"><title>IndexedDB integration</title><pre id="result">RUNNING</pre><script type="module">
+import {openLocalStore,emptyState,createSaveQueue} from '../src/storage.mjs';
+const check=(v,m)=>{if(!v)throw Error(m)};
+const result=document.querySelector('#result');
+const name='fm-storage-test-'+crypto.randomUUID();
+let a,b,c;
+try{
+ const state=emptyState();state.events.push({id:'test',type:'football',date:'2026-11-24'});
+ const raw=JSON.stringify(state);
+ a=await openLocalStore({name,legacyRaw:raw});
+ check(a.revision===0&&a.state.events.length===1,'migration');
+ b=await openLocalStore({name,legacyRaw:raw});
+ const q=createSaveQueue(a);state.events.push({id:'new'});
+ check(await q.enqueue(state),'write');check(q.status.revision===1,'revision');
+ let conflict=false;try{await b.write(0,emptyState())}catch(e){conflict=e.code==='CONFLICT'}
+ check(conflict,'concurrent writer not blocked');
+ a.close();b.close();
+ c=await openLocalStore({name,legacyRaw:raw});
+ check(c.revision===1&&c.state.events.length===2,'reopen persisted snapshot');
+ const incoming=emptyState();incoming.events=[{id:"imported",type:"football",name:"Restored",date:"2026-11-24",minutes:60}];
+ check(await c.restore(1,incoming)===2,"restore transaction");
+ check((await c.previous()).payload.events.length===2,"previous snapshot");
+ let invalidRestore=false;try{await c.restore(2,{version:2})}catch{invalidRestore=true}check(invalidRestore,"invalid restore accepted");
+ c.close();c=await openLocalStore({name,legacyRaw:raw});
+ check(c.revision===2&&c.state.events[0].id==="imported","restore reopened");
+ check((await c.previous()).payload.events.length===2,"previous snapshot reopened");
+ c.close();let diverged=false;
+ try{await openLocalStore({name,legacyRaw:JSON.stringify(emptyState())})}catch(e){diverged=!!e.recovery}
+ check(diverged,'legacy divergence not detected');
+ let invalid=false;try{await openLocalStore({name:name+'-invalid',legacyRaw:'{'})}catch{invalid=true}
+ check(invalid,'invalid legacy accepted');
+ result.textContent='PASS_STORAGE_BROWSER';
+}catch(e){result.textContent='FAIL_STORAGE_BROWSER '+e.message}
+finally{a?.close();b?.close();c?.close();indexedDB.deleteDatabase(name);indexedDB.deleteDatabase(name+'-invalid')}
+</script>
