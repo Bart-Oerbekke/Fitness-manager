@@ -346,3 +346,64 @@ button:not(:disabled):active{filter:brightness(.88)}
 .cal-shell .cal-day-add .ui-icon{width:18px;height:18px}
 @media(max-width:360px){.agenda-toolbar .period-label strong{font-size:20px}.cal-shell .cal-cell{min-height:57px}}
 @media(prefers-reduced-motion:no-preference){.workout-page.page-enter{animation-duration:.14s}.agenda-toolbar .cal-switch button span{transition:background-color .14s ease,color .14s ease}}
+
+/* 0.17 — iPhone training ergonomics */
+:root{--training-dock-height:calc(60px + env(safe-area-inset-bottom));--fm-viewport-top:0px;--fm-viewport-bottom:0px;--fm-viewport-height:100dvh;--fm-line:#303945;--fm-radius:10px}
+#app[data-view="training"]{padding-bottom:calc(152px + env(safe-area-inset-bottom))}
+.training-dock{position:fixed;z-index:3;left:50%;bottom:0;transform:translateX(-50%);width:min(100%,540px);height:var(--training-dock-height);padding:7px 12px calc(8px + env(safe-area-inset-bottom));display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.5fr);gap:8px;background:#10151b;border-top:1px solid var(--fm-line)}
+.training-dock button{min-height:44px;min-width:0;padding:5px 8px;font-size:14px;border-radius:9px}
+.training-dock .training-add{display:flex;align-items:center;justify-content:center;gap:6px;border:1px solid #424c59;color:#dce4ed;background:#202832}
+.training-add .ui-icon{width:18px;height:18px}
+.training-dock.typing{display:none}
+#app[data-view="training"] .rest-dock{bottom:var(--training-dock-height);padding:4px 12px;z-index:4;background:#191f27;border-top:1px solid var(--fm-line)}
+.training-sticky{top:max(env(safe-area-inset-top),var(--fm-viewport-top));padding:3px 8px 7px;z-index:2;background:#10151b;border-radius:0 0 10px 10px}
+.training-sticky .screen-header h1{flex:1}
+.training-menu{min-width:44px;width:44px;min-height:44px;padding:0;display:grid;place-items:center;color:#b3bdca}
+.training-menu .ui-icon{width:21px;height:21px}
+.training-sticky .training-status{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:6px;min-height:44px;align-items:center;margin:0 1px 3px}
+.training-sticky #elapsed{grid-column:3;text-align:right}
+#app[data-view="training"] .workout-pages{scroll-margin-top:calc(112px + env(safe-area-inset-top))}
+#accessory{position:static;inset:auto;width:auto;z-index:auto;padding:0;display:flex;align-items:center;justify-content:center;pointer-events:auto;grid-column:2}
+#accessory button{min-height:44px;padding:4px 7px;font-size:12px;gap:4px;background:transparent;color:#ffb568;border:0;box-shadow:none;border-radius:7px}
+#accessory[hidden]{display:none}
+#app[data-view="training"] .workout-card{border:0;border-radius:var(--fm-radius);background:#191f27}
+#app[data-view="training"] .workout-card .intro{padding:8px 10px 5px}
+#app[data-view="training"] .set-columns,#app[data-view="training"] .workout-card .set{display:grid;grid-template-columns:30px minmax(0,1fr) minmax(0,1fr) 44px;gap:6px;align-items:center;padding-inline:10px}
+#app[data-view="training"] .set-columns.bodyweight,#app[data-view="training"] .workout-card .set.bodyweight{grid-template-columns:30px minmax(0,1fr) 44px}
+#app[data-view="training"] .set-columns{min-height:27px;font-size:11px;font-weight:600;color:#aeb8c5;text-align:center}
+#app[data-view="training"] .workout-card .set{min-height:48px;border-top:1px solid #2b3440;padding-block:2px}
+#app[data-view="training"] .workout-card .field{border:1px solid transparent;border-radius:7px;background:#252d37;min-height:36px;padding:0 7px}
+#app[data-view="training"] .workout-card .field input{font-size:16px;text-align:center;padding:5px 0;outline:none;box-shadow:none;border:0;min-width:0}
+#app[data-view="training"] .workout-card .field:focus-within{border-color:var(--orange);background:#2b3037;box-shadow:0 0 0 1px var(--orange)}
+#app[data-view="training"] .workout-card .field .unit{display:none}
+#app[data-view="training"] .workout-card .set-complete{background:#1b2823}
+#app[data-view="training"] .workout-card .set-complete .field{background:transparent;border-color:transparent}
+#app[data-view="training"] .workout-card .set-complete input{color:#c4d9cd}
+#app[data-view="training"] .workout-card .check span{border-radius:6px}
+#app[data-view="training"] .workout-card .set-actions{justify-content:flex-end;gap:2px;padding:0 6px;border-top:1px solid #2b3440}
+#app[data-view="training"] .workout-card .set-actions button{display:grid;place-items:center;width:44px;min-width:44px;min-height:44px;padding:0}
+#app[data-view="training"] .workout-card .set-actions .ui-icon{width:19px;height:19px}
+#app[data-view="training"] .workout-card .history{background:#161c23;border-top:1px solid #2b3440}
+dialog#dialog{position:fixed;inset:auto 0 var(--fm-viewport-bottom);margin:0 auto;width:min(100%,540px);max-width:100%;max-height:min(88dvh,calc(var(--fm-viewport-height) - 12px));border:1px solid #36414d;border-bottom:0;border-radius:17px 17px 0 0;padding:0;background:#1b222b;overflow:hidden}
+dialog#dialog .compact-form{display:grid;grid-template-rows:auto minmax(0,1fr) auto;max-height:min(88dvh,calc(var(--fm-viewport-height) - 12px));padding:10px 12px max(10px,env(safe-area-inset-bottom));gap:8px}
+dialog#dialog .dialog-heading{min-height:44px;border-bottom:1px solid #303945;padding-bottom:3px}
+dialog#dialog .dialog-x{background:transparent;border:0}
+dialog#dialog .dialog-x .ui-icon{width:20px;height:20px}
+dialog#dialog .dialog-fields{overflow:auto;overscroll-behavior:contain;min-height:0;align-content:start;padding:2px 2px 5px}
+dialog#dialog .dialog-actions{padding-top:7px;gap:7px}
+dialog#dialog .dialog-actions:has([type=submit][hidden]){grid-template-columns:minmax(0,1fr)}
+dialog#dialog [hidden]{display:none}
+dialog#dialog[open]{animation:sheet-in .16s ease-out}
+@keyframes sheet-in{from{transform:translateY(10px);opacity:.7}to{transform:translateY(0);opacity:1}}
+nav.navvisible{padding:3px 3px max(5px,env(safe-area-inset-bottom));background:#141a21;border-top:1px solid #2d3641}
+.navvisible button{min-height:44px;gap:2px;font-size:10px}
+.navvisible button .ui-icon{width:21px;height:21px;stroke-width:1.65}
+.navvisible button.active{color:#ffad60}
+.card,.manage-card,.today-tile,.today-hero,.today-empty{border-radius:var(--fm-radius)}
+.card{border-color:#2c3541}
+.manage-card,.metric-grid>div{border-color:#303945}
+.icon-btn,.day-icon,.menu-icon{background:transparent;border-color:transparent;color:#c3cdd9}
+.icon-btn .ui-icon,.day-icon .ui-icon,.menu-icon .ui-icon{width:21px;height:21px}
+.period-bar .cal-arrow{background:transparent;border-color:transparent}
+.form-control{border-color:#414b58}
+@media(prefers-reduced-motion:reduce){dialog#dialog[open]{animation:none}}
