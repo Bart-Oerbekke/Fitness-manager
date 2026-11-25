@@ -27,3 +27,14 @@ Eigen Nederlandse instructies; geraadpleegde NASM-bron per oefening in src/exerc
 
 ## Dekking
 31 van 118 standaard-ID's hebben redactionele uitleg en 31 hebben een directe NASM-videolink; 9 hebben lokaal beeld (inclusief één statische houding). Overige details geven ontbrekende dekking aan.
+
+## Uitbreiding 0.13
+- media/exercises/barbell-squat-1.png
+- media/exercises/barbell-squat-2.png
+- media/exercises/lying-leg-curl-machine-1.png
+- media/exercises/lying-leg-curl-machine-2.png
+- media/exercises/dumbbell-incline-bench-press-1.png
+- media/exercises/dumbbell-incline-bench-press-2.png
+- media/exercises/lateral-dumbbell-raises-2.png
+- media/exercises/lateral-dumbbell-raises-1.png
+Deze acht afbeeldingen zijn visueel op variant en volgorde beoordeeld, ongewijzigd overgenomen van dezelfde Everkinetic-commit, blob-SHA identiek. Nederlandse eigen tekst met aanvullende referenties NASM, E3 Rehab, Hawkes Physiotherapy en Train with Erika. Video's blijven externe links op verzoek; bij Pallof Press bronpagina met video. Titels/afzender of verwijzing vanuit bron gecontroleerd, geen volledige videoreview. Nieuwe dekking: 46/118 uitleg, 42/118 videolinks, 13/118 lokaal beeld (25 PNG). Niet gecontroleerde media niet toegevoegd.

@@ -782,6 +782,373 @@ export const exerciseDetails={
     "source": "https://www.nasm.org/resource-center/exercise-library/pike-push-up",
     "video": "https://www.youtube.com/watch?v=2b5t0Cu2nQI",
     "poses": []
+  },
+  "squat-barbell-benen": {
+    "primary": "Quadriceps, bilspieren",
+    "secondary": "Adductoren, rugstrekkers, romp",
+    "equipment": "Halter, squatrek, veiligheidssteunen",
+    "steps": [
+      "Plaats de stang op de bovenrug en stap gecontroleerd uit het rek.",
+      "Span je romp aan en buig tegelijk heupen en knieën tot een beheerste diepte.",
+      "Duw via je hele voet omhoog en zet de halter veilig terug na de set."
+    ],
+    "tips": [
+      "Laat je knieën in de richting van je tenen bewegen.",
+      "Gebruik veiligheidssteunen en houd je hielen op de vloer.",
+      "Vermijd een diepte waarbij je controle verliest."
+    ],
+    "alternatives": [
+      "goblet-squat-dumbbell-benen",
+      "leg-press-machine-benen",
+      "squat-benen"
+    ],
+    "source": "https://www.youtube.com/watch?v=-bJIpOq-LWk",
+    "video": "https://www.youtube.com/watch?v=-bJIpOq-LWk",
+    "poses": [
+      {
+        "file": "media/exercises/barbell-squat-1.png",
+        "label": "Beginpositie — staand"
+      },
+      {
+        "file": "media/exercises/barbell-squat-2.png",
+        "label": "Onderste positie — heupen en knieën gebogen"
+      }
+    ],
+    "artSource": "https://github.com/everkinetic/data/tree/446bb9a3d0c3beb6b84f7c9d77dfc8af707a2ab6/src/images-web",
+    "artLicense": "https://creativecommons.org/licenses/by-sa/4.0/"
+  },
+  "squat-benen": {
+    "primary": "Quadriceps, bilspieren",
+    "secondary": "Adductoren, rompstabilisatoren",
+    "equipment": "Lichaamsgewicht",
+    "steps": [
+      "Sta met je voeten ongeveer op schouderbreedte.",
+      "Buig je knieën en heupen en laat je heupen zakken terwijl je voeten volledig contact houden.",
+      "Strek heupen en knieën om weer rechtop te staan."
+    ],
+    "tips": [
+      "Laat de knieën de tenen volgen; voorkom inzakken naar binnen.",
+      "Gebruik een kleinere diepte of een stoel als balans lastig is."
+    ],
+    "alternatives": [
+      "goblet-squat-dumbbell-benen",
+      "leg-press-machine-benen"
+    ],
+    "source": "https://www.nasm.org/resource-center/exercise-library/prisoner-squat",
+    "video": "https://www.youtube.com/watch?v=UYbsgiiZgao",
+    "poses": [],
+    "videoNote": "Video toont een prisoner squat met handen achter het hoofd en extra hielheffing. Voor de gewone squat houd je de voeten plat."
+  },
+  "lying-leg-curl-machine-benen": {
+    "primary": "Hamstrings",
+    "secondary": "Kuitspieren",
+    "equipment": "Liggende leg curl-machine",
+    "steps": [
+      "Stel de machine in zodat de knie ter hoogte van het draaipunt ligt en de rol boven je hielen rust.",
+      "Lig op je buik en buig beide knieën om de rol omhoog te brengen.",
+      "Laat de rol beheerst terugzakken zonder het gewicht te laten vallen."
+    ],
+    "tips": [
+      "Houd je heupen op het kussen en voorkom een holle onderrug.",
+      "Kies een pijnvrije bewegingsuitslag en laat het gewicht niet stuiteren."
+    ],
+    "alternatives": [
+      "seated-leg-curl-machine-benen",
+      "seated-single-leg-curl-machine-benen"
+    ],
+    "source": "https://www.nasm.org/resource-center/exercise-library/lying-leg-curl",
+    "video": "https://www.youtube.com/watch?v=lUH80pneL5w",
+    "poses": [
+      {
+        "file": "media/exercises/lying-leg-curl-machine-1.png",
+        "label": "Beginpositie — benen bijna gestrekt"
+      },
+      {
+        "file": "media/exercises/lying-leg-curl-machine-2.png",
+        "label": "Eindpositie — knieën gebogen"
+      }
+    ],
+    "artSource": "https://github.com/everkinetic/data/tree/446bb9a3d0c3beb6b84f7c9d77dfc8af707a2ab6/src/images-web",
+    "artLicense": "https://creativecommons.org/licenses/by-sa/4.0/"
+  },
+  "incline-bench-press-dumbbell-borst": {
+    "primary": "Borstspieren (bovenste vezels)",
+    "secondary": "Triceps, voorste schouders",
+    "equipment": "Dumbbells, verstelbare bank",
+    "steps": [
+      "Zet de bank schuin, ongeveer 30–45 graden, met je voeten stevig op de vloer.",
+      "Breng de dumbbells naast je bovenborst met de onderarmen ongeveer verticaal.",
+      "Druk beide gewichten omhoog en laat ze vervolgens rustig terugzakken."
+    ],
+    "tips": [
+      "Houd je billen en rug tegen de bank; voorkom overmatig hollen.",
+      "Laat je ellebogen niet extreem wijd uitwaaieren en bots de dumbbells niet tegen elkaar."
+    ],
+    "alternatives": [
+      "incline-bench-press-barbell-borst",
+      "bench-press-dumbbell-borst"
+    ],
+    "source": "https://www.nasm.org/resource-center/exercise-library/two-arm-incline-dumbbell-chest-press",
+    "video": "https://www.youtube.com/watch?v=JKnpHchOWPU",
+    "poses": [
+      {
+        "file": "media/exercises/dumbbell-incline-bench-press-1.png",
+        "label": "Onderste positie — dumbbells naast de borst"
+      },
+      {
+        "file": "media/exercises/dumbbell-incline-bench-press-2.png",
+        "label": "Bovenste positie — armen gestrekt"
+      }
+    ],
+    "artSource": "https://github.com/everkinetic/data/tree/446bb9a3d0c3beb6b84f7c9d77dfc8af707a2ab6/src/images-web",
+    "artLicense": "https://creativecommons.org/licenses/by-sa/4.0/"
+  },
+  "chest-fly-cable-borst": {
+    "primary": "Borstspieren",
+    "secondary": "Voorste schouders, romp",
+    "equipment": "Kabelstation met twee handgrepen",
+    "steps": [
+      "Stel de katrollen ongeveer op borsthoogte in en pak beide handgrepen.",
+      "Stap naar voren met een stabiele stand en houd je ellebogen licht gebogen.",
+      "Breng je handen in een boog voor je borst samen en keer beheerst terug."
+    ],
+    "tips": [
+      "Houd de ellebooghoek ongeveer gelijk; maak er geen press van.",
+      "Laat je armen niet ver achter je romp trekken en gebruik geen aanloop."
+    ],
+    "alternatives": [
+      "chest-fly-dumbbell-borst",
+      "pec-deck-machine-borst"
+    ],
+    "source": "https://www.youtube.com/watch?v=XNf6TBErGys",
+    "video": "https://www.youtube.com/watch?v=XNf6TBErGys",
+    "poses": []
+  },
+  "seated-row-cable-rug": {
+    "primary": "Brede rugspier, middenrug",
+    "secondary": "Biceps, achterste schouders",
+    "equipment": "Lage kabel, zitbank en voetsteunen",
+    "steps": [
+      "Zit met licht gebogen knieën en houd de handgreep met beide handen vast.",
+      "Trek je ellebogen naar achteren en breng de greep richting je onderribben.",
+      "Strek je armen gecontroleerd en laat de schouderbladen natuurlijk naar voren bewegen."
+    ],
+    "tips": [
+      "Houd je romp stabiel; trek niet door achterover te zwaaien.",
+      "Houd je polsen neutraal en voorkom dat de gewichtstapel hard neerkomt."
+    ],
+    "alternatives": [
+      "seated-row-machine-rug",
+      "single-arm-row-dumbbell-rug"
+    ],
+    "source": "https://www.nasm.org/resource-center/exercise-library/seated-machine-row-close-grip",
+    "video": "https://www.youtube.com/watch?v=k0cTJCfxa0Y",
+    "poses": []
+  },
+  "shoulder-press-dumbbell-schouders": {
+    "primary": "Voorste en middelste schouders",
+    "secondary": "Triceps, bovenste borst, romp",
+    "equipment": "Twee dumbbells",
+    "steps": [
+      "Sta of zit stabiel met de dumbbells ter hoogte van je schouders.",
+      "Span je romp aan en duw de dumbbells omhoog tot de armen bijna gestrekt zijn.",
+      "Laat de gewichten rustig naar schouderhoogte zakken."
+    ],
+    "tips": [
+      "Voorkom dat je ribben omhoog komen of je rug sterk hol trekt.",
+      "Houd je onderarmen onder de gewichten en gebruik een comfortabele greep."
+    ],
+    "alternatives": [
+      "shoulder-press-machine-schouders",
+      "overhead-press-barbell-schouders"
+    ],
+    "source": "https://www.youtube.com/watch?v=MMjBnEBnZKM",
+    "video": "https://www.youtube.com/watch?v=MMjBnEBnZKM",
+    "poses": []
+  },
+  "lateral-raise-dumbbell-schouders": {
+    "primary": "Middelste schouders",
+    "secondary": "Bovenste trapezius, rotator cuff",
+    "equipment": "Twee lichte dumbbells",
+    "steps": [
+      "Sta stabiel met de gewichten naast je lichaam en licht gebogen ellebogen.",
+      "Til je armen zijwaarts, iets vóór je romp, tot ongeveer schouderhoogte.",
+      "Laat de dumbbells langzaam terugzakken."
+    ],
+    "tips": [
+      "Gebruik geen zwaai vanuit je heupen of knieën.",
+      "Houd je schouders ontspannen en dwing geen hogere positie af."
+    ],
+    "alternatives": [
+      "lateral-raise-cable-schouders",
+      "lateral-raise-machine-schouders"
+    ],
+    "source": "https://www.youtube.com/watch?v=XPPfnSEATJA",
+    "video": "https://www.youtube.com/watch?v=XPPfnSEATJA",
+    "poses": [
+      {
+        "file": "media/exercises/lateral-dumbbell-raises-2.png",
+        "label": "Beginpositie — armen naast het lichaam"
+      },
+      {
+        "file": "media/exercises/lateral-dumbbell-raises-1.png",
+        "label": "Bovenste positie — armen zijwaarts"
+      }
+    ],
+    "artSource": "https://github.com/everkinetic/data/tree/446bb9a3d0c3beb6b84f7c9d77dfc8af707a2ab6/src/images-web",
+    "artLicense": "https://creativecommons.org/licenses/by-sa/4.0/"
+  },
+  "lat-pulldown-cable-rug": {
+    "primary": "Brede rugspier",
+    "secondary": "Biceps, middenrug, achterste schouders",
+    "equipment": "Hoge kabel, stang en dijbeenkussen",
+    "steps": [
+      "Zet je dijen vast onder het kussen en pak de stang iets breder dan je schouders.",
+      "Trek je ellebogen omlaag totdat de stang je bovenborst nadert.",
+      "Laat de stang beheerst omhoog gaan terwijl je armen strekken."
+    ],
+    "tips": [
+      "Trek voor je hoofd langs, niet achter je nek.",
+      "Houd de romp stabiel; voorkom achterover zwaaien of aan de stang rukken."
+    ],
+    "alternatives": [
+      "pull-up-rug",
+      "lat-pulldown-machine-rug"
+    ],
+    "source": "https://www.nasm.org/resource-center/blog/training/the-biomechanics-of-the-lat-pulldown-muscles-grip-and-form",
+    "poses": []
+  },
+  "copenhagen-plank-core": {
+    "primary": "Heupadductoren (binnenkant bovenbeen)",
+    "secondary": "Schuine buikspieren, schouderstabilisatoren",
+    "equipment": "Mat, stabiel bankje",
+    "steps": [
+      "Lig zijwaarts met de elleboog onder je schouder en je bovenste enkel op een bankje.",
+      "Til je heupen en onderste been zodat je lichaam een rechte lijn vormt.",
+      "Houd die positie met rustige ademhaling en zak beheerst terug."
+    ],
+    "tips": [
+      "Begin bij onvoldoende controle met de knie op het bankje of een kortere houdtijd.",
+      "Voorkom draaien van je bekken en stop bij lies- of schouderpijn."
+    ],
+    "alternatives": [
+      "copenhagen-plank-knee-dynamic-core",
+      "side-plank-core"
+    ],
+    "source": "https://e3rehab.com/copenhagenplanks/",
+    "video": "https://www.youtube.com/watch?v=ypRpRbZykFQ",
+    "poses": [],
+    "sourceLabel": "E3 Rehab",
+    "videoLabel": "E3 Rehab"
+  },
+  "copenhagen-plank-knee-dynamic-core": {
+    "primary": "Heupadductoren",
+    "secondary": "Schuine buikspieren, schouderstabilisatoren",
+    "equipment": "Mat, stabiel bankje",
+    "steps": [
+      "Lig op je zij met de elleboog onder je schouder en de bovenste knie op het bankje.",
+      "Til je heupen op en beweeg het onderste been richting het bovenste been.",
+      "Laat je heupen en onderste been langzaam zakken en herhaal zonder te veren."
+    ],
+    "tips": [
+      "Houd je romp en bekken in één vlak.",
+      "Gebruik een kleine bewegingsuitslag als je de houding nog niet stabiel kunt houden."
+    ],
+    "alternatives": [
+      "copenhagen-plank-core",
+      "hip-adduction-machine-benen",
+      "side-plank-core"
+    ],
+    "source": "https://e3rehab.com/copenhagenplanks/",
+    "video": "https://www.youtube.com/watch?v=f4WdwcwPQnc",
+    "poses": [],
+    "sourceLabel": "E3 Rehab",
+    "videoLabel": "E3 Rehab"
+  },
+  "pallof-press-cable-core": {
+    "primary": "Rompstabilisatoren, schuine buikspieren",
+    "secondary": "Bilspieren, schouderstabilisatoren",
+    "equipment": "Kabelstation met handgreep",
+    "steps": [
+      "Sta zijwaarts naast de kabel met de katrol op borsthoogte.",
+      "Pak de handgreep met beide handen voor je borst en stap weg tot er spanning is.",
+      "Duw de handen recht naar voren zonder je romp te draaien en trek ze rustig terug."
+    ],
+    "tips": [
+      "Houd je ribben boven je bekken en adem door.",
+      "Verlaag de weerstand als de kabel je lichaam laat draaien."
+    ],
+    "alternatives": [
+      "dead-bug-core",
+      "side-plank-core"
+    ],
+    "source": "https://hawkesphysiotherapy.co.uk/exercise/cable-exercise-band-pallof-press/",
+    "video": "https://hawkesphysiotherapy.co.uk/exercise/cable-exercise-band-pallof-press/",
+    "poses": [],
+    "sourceLabel": "Hawkes Physiotherapy",
+    "videoLabel": "Hawkes Physiotherapy",
+    "videoNote": "De externe bronpagina bevat de instructievideo; kabel- of bandvariant."
+  },
+  "hammer-curl-dumbbell-armen": {
+    "primary": "Brachialis, brachioradialis, biceps",
+    "secondary": "Onderarmspieren",
+    "equipment": "Twee dumbbells",
+    "steps": [
+      "Sta rechtop met de handpalmen naar elkaar en de armen naast je romp.",
+      "Buig de ellebogen en beweeg de dumbbells richting je schouders.",
+      "Laat ze gecontroleerd zakken zonder de greep te draaien."
+    ],
+    "tips": [
+      "Houd de bovenarmen relatief stil en zwaai niet met je romp.",
+      "Houd de polsen recht; kies gewicht dat je in beide richtingen beheerst."
+    ],
+    "alternatives": [
+      "biceps-curl-dumbbell-armen",
+      "biceps-curl-barbell-armen"
+    ],
+    "source": "https://blog.nasm.org/9-best-arm-sculpting-exercises-for-tone-and-strength",
+    "poses": []
+  },
+  "triceps-pushdown-cable-armen": {
+    "primary": "Triceps",
+    "secondary": "Onderarm- en schouderstabilisatoren",
+    "equipment": "Hoge kabel met touw of stang",
+    "steps": [
+      "Pak de greep en sta stabiel met je ellebogen naast je lichaam.",
+      "Strek de ellebogen en duw de greep naar beneden zonder de bovenarmen mee te bewegen.",
+      "Laat de onderarmen rustig terugkomen tot de startpositie."
+    ],
+    "tips": [
+      "Gebruik geen lichaamsgewicht om de greep omlaag te duwen.",
+      "Voorkom zwaaien en houd je polsen neutraal."
+    ],
+    "alternatives": [
+      "close-grip-bench-press-barbell-armen",
+      "triceps-extension-dumbbell-armen"
+    ],
+    "source": "https://blog.nasm.org/9-best-arm-sculpting-exercises-for-tone-and-strength",
+    "poses": []
+  },
+  "biceps-curl-dumbbell-armen": {
+    "primary": "Biceps, brachialis",
+    "secondary": "Brachioradialis, onderarmspieren",
+    "equipment": "Twee dumbbells",
+    "steps": [
+      "Sta rechtop met de armen langs je lichaam en de handpalmen naar voren.",
+      "Buig je ellebogen en breng de dumbbells omhoog zonder te zwaaien.",
+      "Laat de gewichten langzaam terugzakken tot de armen weer bijna gestrekt zijn."
+    ],
+    "tips": [
+      "Houd je polsen neutraal en je bovenarmen grotendeels stil.",
+      "Vermijd achterover leunen of een snelle terugval."
+    ],
+    "alternatives": [
+      "biceps-curl-barbell-armen",
+      "hammer-curl-dumbbell-armen"
+    ],
+    "source": "https://www.erikakehrwaldfitness.com/exercise-library/standing-dumbbell-biceps-curl",
+    "poses": [],
+    "sourceLabel": "Train with Erika"
   }
 };
 export const exerciseMedia=[
@@ -801,6 +1168,14 @@ export const exerciseMedia=[
   "media/exercises/seated-leg-curl-2.png",
   "media/exercises/side-plank-1.png",
   "media/exercises/barbell-good-mornings-1.png",
-  "media/exercises/barbell-good-mornings-2.png"
+  "media/exercises/barbell-good-mornings-2.png",
+  "media/exercises/barbell-squat-1.png",
+  "media/exercises/barbell-squat-2.png",
+  "media/exercises/lying-leg-curl-machine-1.png",
+  "media/exercises/lying-leg-curl-machine-2.png",
+  "media/exercises/dumbbell-incline-bench-press-1.png",
+  "media/exercises/dumbbell-incline-bench-press-2.png",
+  "media/exercises/lateral-dumbbell-raises-2.png",
+  "media/exercises/lateral-dumbbell-raises-1.png"
 ];
 export function getExerciseDetail(id){return Object.hasOwn(exerciseDetails,id)?exerciseDetails[id]:null}
