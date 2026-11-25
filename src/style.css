@@ -245,3 +245,66 @@ dialog button:focus-visible{outline-offset:1px}
 .workout-page { touch-action: pan-y pinch-zoom; }
 .workout-page[hidden] { display: none; }
 .fitness .cal-more { font-size: 12px; padding-inline: 7px; }
+
+/* 0.16 — presentation only */
+:root{--card-radius:10px;--completed:#a6d99a}
+.card,.manage-card,.today-tile,.today-hero,.today-empty{border-radius:var(--card-radius)}
+.primary,.outline,.icon-btn,.day-icon,.menu-icon{border-radius:10px}
+.card{background:#1b222b;border:1px solid #303946}
+.workout-page.stack{gap:8px}
+.workout-page .workout-card{margin:0;border-radius:9px}
+.workout-card .intro{padding:8px 10px;min-height:48px}
+.workout-card .intro>div{min-width:0;flex:1}
+.workout-card .intro h2{margin-top:2px;font-size:16px;overflow-wrap:anywhere;line-height:1.25}
+.workout-card-meta{display:block;font-size:11px;color:#b3bdca;line-height:1.25}
+.workout-card .set{min-height:46px;padding-block:1px;border-top:1px solid #333c48}
+.workout-card .history{padding:5px 10px;border-top:1px solid #333c48}
+.workout-card .set-actions{border-top:1px solid #333c48}
+.workout-card .set-actions button{font-size:12px}
+.workout-card .set-complete{background:#1b2a25}
+.workout-card .set-complete .set-number{color:var(--completed)}
+.workout-card .set-complete .field{border-color:#486657;background:#1a2421}
+.workout-card .set-complete .field input:disabled{color:#c4d9cd;opacity:1;-webkit-text-fill-color:#c4d9cd}
+.workout-card .set-complete .check.done span{background:#294938;color:#a9e3a0;border-color:#7ab58a}
+.training-sticky{position:sticky;top:0;z-index:2;background:#10151b;border-bottom:1px solid #394350;padding:4px 8px 8px;margin:0 -2px 10px;border-radius:0 0 10px 10px}
+.training-sticky .screen-header{padding:0!important;min-height:44px!important}
+.training-sticky .training-status{font-variant-numeric:tabular-nums;min-height:22px;margin:0 1px 4px}
+.training-sticky #elapsed{font-size:14px;font-weight:650;color:#e3eaf2}
+.training-sticky .progress{height:5px}
+#app[data-view="training"] .workout-pages{scroll-margin-top:102px}
+.builder-card .head{background:#242d38;padding-block:2px}
+.builder-card .head .row button{color:#b3bdca}
+.builder-card .head .row .danger{color:#ffa1a1}
+.builder-card .builder-fold>summary{display:grid;grid-template-columns:minmax(0,1fr) 22px;grid-template-rows:auto auto;align-items:center;gap:2px 6px;padding:10px;min-height:48px;cursor:pointer;list-style:none}
+.builder-fold>summary::-webkit-details-marker{display:none}
+.builder-fold>summary::after{content:"";grid-column:2;grid-row:1/3;width:9px;height:9px;border-right:2px solid #b3bdca;border-bottom:2px solid #b3bdca;transform:rotate(45deg);justify-self:center}
+.builder-fold[open]>summary::after{transform:rotate(225deg)}
+.builder-fold>summary:focus-visible{outline:2px solid var(--orange);outline-offset:-3px}
+.builder-summary-name{font-size:16px;font-weight:650;overflow-wrap:anywhere}
+.builder-fold>summary small{font-size:12px;overflow-wrap:anywhere}
+.builder-fold[open]>.inside{border-top:1px solid #394350}
+.today-shell .dashboard{gap:10px}
+.today-hero{padding:13px 12px;border-left-width:3px;background:#202a34}
+.today-hero h2{font-size:21px;line-height:1.25}
+.today-tile{padding:11px 12px;background:#171e26}
+.today-tile h3{font-size:15px;color:#e5ebf2}
+.today-shell .demo-link{font-size:12px;color:#b3bdca}
+.cal-header{min-height:48px;padding:4px 0 5px}
+.cal-controls{gap:4px;padding-bottom:4px}
+.cal-controls .period-bar{gap:4px}
+.cal-switch{padding:0}
+.cal-legend{margin:3px 0 6px;gap:7px}
+.cal-shell .week-stats{margin:10px 0 0}
+.cal-week-day{padding-block:3px}
+.cal-week-items .cal-entry{margin-bottom:3px}
+.progress-chart .chart-grid{stroke:#46515e;stroke-width:.6}
+.progress-chart .chart-series{fill:none;stroke:var(--orange);stroke-width:2.25;stroke-linejoin:round;stroke-linecap:round}
+.progress-chart .chart-point{fill:var(--orange);stroke:#1b222b;stroke-width:1.2}
+.progress-chart text{fill:#c2cbd6;font-size:10px;font-variant-numeric:tabular-nums}
+.load-column{background:repeating-linear-gradient(to top,transparent 0,transparent 23px,#394350 24px,transparent 25px)}
+button:not(:disabled){transition:background-color .12s ease,border-color .12s ease}
+button:not(:disabled):active{filter:brightness(.88)}
+.training-sticky .progress i{transition:width .18s ease}
+.workout-page.page-enter{animation:workout-enter .16s ease-out}
+@keyframes workout-enter{from{opacity:.65;transform:translateX(5px)}to{opacity:1;transform:translateX(0)}}
+@media(prefers-reduced-motion:reduce){.workout-page.page-enter{animation:none}button:not(:disabled){transition:none}.training-sticky .progress i{transition:none}}
