@@ -128,6 +128,7 @@ try{
    const layout=await evaluate("(()=>{const d=document.querySelector('#dialog'),f=document.querySelector('#dialog-form'),r=d.getBoundingClientRect(),inputs=[...f.querySelectorAll('input:not([type=checkbox]),select')];return {fits:inputs.every(x=>{const b=x.getBoundingClientRect();return b.left>=r.left-1&&b.right<=r.right+1&&b.width>0}),overflow:d.scrollWidth>d.clientWidth+1,unit:f.querySelector('#minutes-unit')?.textContent,mode:f.elements.minutes.inputMode,height:f.elements.minutes.getBoundingClientRect().height,weekUnit:f.querySelector('#weeks-unit')?.textContent}})()");
    assert.equal(layout.fits,true,'form fields fit at '+width);assert.equal(layout.overflow,false,'dialog horizontal overflow at '+width);assert.equal(layout.unit,'min');assert.equal(layout.weekUnit,'weken');assert.equal(layout.mode,'numeric');assert.ok(layout.height<=40);
  }
+ await wait(()=>evaluate("(()=>{const d=document.querySelector('#dialog'),f=d.querySelector('.dialog-fields');return getComputedStyle(d).position==='fixed'&&Math.abs(d.getBoundingClientRect().bottom-innerHeight)<2&&getComputedStyle(f).overflowY==='auto'})()"),'bottom sheet geometry');
  assert.equal(await evaluate("document.querySelector('.repeat-days').hidden"),true);
  await evaluate("document.querySelector('#dialog-form [name=weeks]').value='6';document.querySelector('#dialog-form [name=weeks]').dispatchEvent(new Event('input'))");
  assert.equal(await evaluate("document.querySelectorAll('.weekday-option input:not([disabled])').length"),7);
@@ -153,14 +154,14 @@ try{
  assert.ok(await evaluate("!!document.querySelector('.cal-shell')"));
  console.log('PASS_AGENDA_ROUTES');
  await click('#nav [data-page="settings"]');
- assert.equal(await evaluate("document.querySelector('#installed-version').textContent"),'0.16.1');
+ assert.equal(await evaluate("document.querySelector('#installed-version').textContent"),'0.17.0');
  await click('[data-action="update-check"]');
  assert.ok(await evaluate("document.querySelector('#update-message').textContent.includes('Geen internet')"));
  await cdp('Network.emulateNetworkConditions',{offline:false,latency:0,downloadThroughput:-1,uploadThroughput:-1});
  // Change served files in this disposable CI checkout only; restore in finally.
  originalApp=await readFile('src/app.mjs','utf8');originalSW=await readFile('sw.js','utf8');
- await writeFile('src/app.mjs',originalApp.replace('const APP_VERSION="0.16.1"','const APP_VERSION="0.16.2-test"'));
- await writeFile('sw.js',originalSW.replace('fitness-manager-shell-v22','fitness-manager-shell-v22-ci-update'));
+ await writeFile('src/app.mjs',originalApp.replace('const APP_VERSION="0.17.0"','const APP_VERSION="0.17.1-test"'));
+ await writeFile('sw.js',originalSW.replace('fitness-manager-shell-v23','fitness-manager-shell-v23-ci-update'));
  await wait(()=>evaluate("!!document.querySelector('[data-action=update-check]:not([disabled])')"),'update check ready');
  await click('[data-action="update-check"]');
  await wait(()=>evaluate("!!document.querySelector('[data-action=update-apply]:not([disabled])')"),'new worker waiting');
@@ -173,14 +174,25 @@ try{
  assert.ok(await evaluate("(()=>{const r=document.querySelector('.preview-dock').getBoundingClientRect();return Math.abs(r.bottom-innerHeight)<2&&[...document.querySelectorAll('.preview-dock button')].every(b=>b.getBoundingClientRect().height>=44)})()"));
  await click('[data-action="start"]');
  await reviewLayout('Actieve training','.set');
+ assert.equal(await evaluate("getComputedStyle(document.querySelector('.training-dock')).position"),'fixed');
+ assert.ok(await evaluate("(()=>{const d=document.querySelector('.training-dock').getBoundingClientRect();return Math.abs(d.bottom-innerHeight)<2&&[...document.querySelectorAll('.training-dock button')].every(b=>b.getBoundingClientRect().height>=44)})()"));
+ assert.equal(await evaluate("document.querySelectorAll('[data-action=cancel-training]').length"),0);
+ await evaluate("document.querySelector('.set input[data-field=reps]').focus()");
+ assert.equal(await evaluate("document.querySelector('#accessory').closest('.training-sticky')!==null&&!document.querySelector('#accessory').hidden"),true);
+ assert.equal(await evaluate("getComputedStyle(document.querySelector('.training-dock')).display"),'none');
+ await evaluate("document.activeElement.blur()");
+ await wait(()=>evaluate("!document.querySelector('.training-dock').classList.contains('typing')"),'training footer after blur');
  await click('[data-action="back"]');
  await click('#nav [data-page="settings"]');
  assert.equal(await evaluate("document.querySelector('[data-action=update-apply]').disabled"),true);
  assert.ok(await evaluate("document.querySelector('#update-message').textContent.includes('training')"));
  await click('#nav [data-page="today"]');
  await click('[data-action="resume"]');
+ await evaluate("window.beforeSetNode=document.querySelector('.set');window.beforeHeader=document.querySelector('.training-sticky')");
  await click('[data-action="check"]');
  await click('#dialog[open] button[type=submit]');
+ assert.ok(await evaluate("window.beforeSetNode===document.querySelector('.set')&&window.beforeHeader===document.querySelector('.training-sticky')&&window.beforeSetNode.classList.contains('set-complete')"));
+ assert.ok(await evaluate("(()=>{const r=document.querySelector('.rest-dock'),d=document.querySelector('.training-dock');return r.hidden||r.getBoundingClientRect().bottom<=d.getBoundingClientRect().top+1})()"));
  await click('[data-action="finish"]');
  await click('#dialog[open] button[type=submit]');
  await click('#nav [data-page="settings"]');
@@ -210,6 +222,8 @@ try{
  await click('#dialog[open] [data-action="session-move"][data-n="-1"]');
  assert.equal(await evaluate("document.querySelectorAll('[data-action=session-options]').length"),2);
  // No completed sets in this second session: cancel using a real dialog response.
+ await click('[data-action="training-menu"]');
+ assert.ok(await evaluate("document.querySelector('#dialog[open] [data-action=cancel-training]')!==null"));
  const cancel=cdp('Runtime.evaluate',{expression:"document.querySelector('[data-action=cancel-training]').click()"});
  await sleep(300);await cdp('Page.handleJavaScriptDialog',{accept:true});await cancel;
  await click('#nav [data-page="schemas"]');
@@ -288,7 +302,7 @@ try{
  await click('#nav [data-page="agenda"]');
  assert.ok(await evaluate("document.querySelector('.cal-day-agenda').textContent.includes('Offline test')"));
  await click('#nav [data-page="settings"]');
- assert.equal(await evaluate("document.querySelector('#installed-version').textContent"),'0.16.2-test');
+ assert.equal(await evaluate("document.querySelector('#installed-version').textContent"),'0.17.1-test');
  console.log('PASS_APP_UPDATE');
  // Management UI: exercise the archive, resume and history flows before final backup restore.
  await click('#nav [data-page="schemas"]');
