@@ -236,6 +236,11 @@ dialog button:focus-visible{outline-offset:1px}
 .workout-dot span { width: 7px; height: 7px; border-radius: 50%; background: #647082; }
 .workout-dot[aria-pressed="true"] span { background: #f0f3f8; }
 .workout-page-name { text-align: center; margin: 0 0 3px; font-size: 15px; }
+.workout-page-name { color: #d7dfe9; overflow-wrap: anywhere; letter-spacing: .01em; }
+.workout-dot span { transition: background-color .16s ease, transform .16s ease; }
+.workout-dot[aria-pressed="true"] span { transform: scale(1.25); }
+.workout-dot:focus-visible { outline-offset: -3px; }
+#app[data-view="training"] .workout-pages { margin-bottom: 12px; }
 [data-action="workout-remove-page"][hidden] { display: none; }
 .workout-page { touch-action: pan-y pinch-zoom; }
 .workout-page[hidden] { display: none; }

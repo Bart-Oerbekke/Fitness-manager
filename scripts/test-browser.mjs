@@ -150,14 +150,14 @@ try{
  assert.ok(await evaluate("!!document.querySelector('.cal-shell')"));
  console.log('PASS_AGENDA_ROUTES');
  await click('#nav [data-page="settings"]');
- assert.equal(await evaluate("document.querySelector('#installed-version').textContent"),'0.15.1');
+ assert.equal(await evaluate("document.querySelector('#installed-version').textContent"),'0.15.2');
  await click('[data-action="update-check"]');
  assert.ok(await evaluate("document.querySelector('#update-message').textContent.includes('Geen internet')"));
  await cdp('Network.emulateNetworkConditions',{offline:false,latency:0,downloadThroughput:-1,uploadThroughput:-1});
  // Change served files in this disposable CI checkout only; restore in finally.
  originalApp=await readFile('src/app.mjs','utf8');originalSW=await readFile('sw.js','utf8');
- await writeFile('src/app.mjs',originalApp.replace('const APP_VERSION="0.15.1"','const APP_VERSION="0.15.2-test"'));
- await writeFile('sw.js',originalSW.replace('fitness-manager-shell-v19','fitness-manager-shell-v19-ci-update'));
+ await writeFile('src/app.mjs',originalApp.replace('const APP_VERSION="0.15.2"','const APP_VERSION="0.15.3-test"'));
+ await writeFile('sw.js',originalSW.replace('fitness-manager-shell-v20','fitness-manager-shell-v20-ci-update'));
  await wait(()=>evaluate("!!document.querySelector('[data-action=update-check]:not([disabled])')"),'update check ready');
  await click('[data-action="update-check"]');
  await wait(()=>evaluate("!!document.querySelector('[data-action=update-apply]:not([disabled])')"),'new worker waiting');
@@ -219,7 +219,7 @@ try{
  assert.equal(await evaluate("document.querySelector('[data-workout-page]:not([hidden])').dataset.workoutPage"),'1');
  await click('[data-action="workout-page"][data-n="0"]');
  await evaluate("const group=document.querySelector('[name=workoutGroup0]');group.value='Core';group.dispatchEvent(new Event('change',{bubbles:true}))");
- assert.equal(await evaluate("document.querySelector('[data-workout-page=\"0\"]').hidden"),true);
+ assert.equal(await evaluate("document.querySelectorAll('.workout-page').length"),1);
  await evaluate("document.querySelector('.builder-advanced').open=true;document.querySelector('[name=warmup0]').value='1'");
  await click('#builder-form button[type=submit]');
  assert.equal(await evaluate("document.querySelectorAll('.workout-page').length"),1);
@@ -279,7 +279,7 @@ try{
  await click('#nav [data-page="agenda"]');
  assert.ok(await evaluate("document.querySelector('.cal-day-agenda').textContent.includes('Offline test')"));
  await click('#nav [data-page="settings"]');
- assert.equal(await evaluate("document.querySelector('#installed-version').textContent"),'0.15.2-test');
+ assert.equal(await evaluate("document.querySelector('#installed-version').textContent"),'0.15.3-test');
  console.log('PASS_APP_UPDATE');
  // Management UI: exercise the archive, resume and history flows before final backup restore.
  await click('#nav [data-page="schemas"]');
@@ -363,6 +363,14 @@ try{
  const restored=await evaluate("(async()=>{const m=await import('/src/storage.mjs'),s=await m.openLocalStore({legacyRaw:localStorage.getItem(m.LEGACY_KEY)});try{return {events:s.state.events,previous:(await s.previous()).payload.history.length}}finally{s.close()}})()");
  assert.equal(restored.events[0].id,'restored-test');assert.equal(restored.previous,existing.history.length);
  console.log('PASS_BACKUP_DASHBOARD');
+ await click('[data-action="demo-workout"]');
+ assert.equal(await evaluate("document.querySelectorAll('.workout-dot').length"),3);
+ await click('[data-action="start"]');
+ assert.equal(await evaluate("document.querySelectorAll('.workout-dot').length"),3);
+ await click('.workout-dot[data-n="2"]');
+ assert.equal(await evaluate("document.querySelector('.workout-page:not([hidden]) .workout-page-name').textContent"),'Core');
+ assert.equal(await evaluate("document.querySelector('.workout-page:not([hidden]) input[data-field=reps]').placeholder"),'20');
+ console.log('PASS_LIVE_WORKOUT_PAGES');
 }finally{
  if(originalApp!==undefined)await writeFile('src/app.mjs',originalApp);if(originalSW!==undefined)await writeFile('sw.js',originalSW);
  ws?.close();chrome.kill();await sleep(300);await rm(dir,{recursive:true,force:true,maxRetries:3,retryDelay:200});

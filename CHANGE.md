@@ -199,3 +199,6 @@ Acceptatie: groepswijzigingen blijven na opslaan zichtbaar, bestaande workouts o
 ## Subtiele workoutnavigatie (0.15.1)
 
 De bouwer en preview gebruiken stippen bij meerdere pagina’s. De preview slaat lege pagina’s over. In de bouwer kan een lege pagina worden verwijderd.
+## Swipe-pagina’s tijdens training (0.15.2)
+
+De actieve sessie bewaart haar eigen pagina-indeling. Een lege standaardpagina verdwijnt zodra die overbodig is. Vandaag biedt een voorbeeldworkout met drie gevulde pagina’s.
