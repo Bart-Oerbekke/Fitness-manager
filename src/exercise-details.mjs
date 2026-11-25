@@ -532,7 +532,19 @@ export const exerciseDetails={
     ],
     "source": "https://www.nasm.org/resource-center/exercise-library/good-mornings",
     "video": "https://www.youtube.com/watch?v=Daq-wJMUnes",
-    "poses": []
+    "poses": [
+      {
+        "file": "media/exercises/barbell-good-mornings-1.png",
+        "label": "Startpositie"
+      },
+      {
+        "file": "media/exercises/barbell-good-mornings-2.png",
+        "label": "Voorover vanuit de heupen"
+      }
+    ],
+    "artSource": "https://github.com/everkinetic/data/tree/446bb9a3d0c3beb6b84f7c9d77dfc8af707a2ab6/src/images-web",
+    "artLicense": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "note": "De illustratie toont de beweging; kies een beperkte, beheerste bewegingsuitslag en begin licht."
   },
   "single-leg-squat-benen": {
     "primary": "Quadriceps, bilspieren",
@@ -787,6 +799,8 @@ export const exerciseMedia=[
   "media/exercises/leg-press-2.png",
   "media/exercises/seated-leg-curl-1.png",
   "media/exercises/seated-leg-curl-2.png",
-  "media/exercises/side-plank-1.png"
+  "media/exercises/side-plank-1.png",
+  "media/exercises/barbell-good-mornings-1.png",
+  "media/exercises/barbell-good-mornings-2.png"
 ];
 export function getExerciseDetail(id){return Object.hasOwn(exerciseDetails,id)?exerciseDetails[id]:null}

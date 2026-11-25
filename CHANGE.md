@@ -161,3 +161,5 @@ Gebruiker keurt P-59 t/m P-62 goed. Prioriteit: bron/licentie en juiste variant 
 
 ### Inhoudelijke uitbreiding en zelfreview 0.12
 Eerste volledige CI op d220ab22d15937ff7c462fef23963e1a59e20aeb: run 45590743905, 49/49 Node-tests, build 27 bestanden, offline detail en alle browserregressies geslaagd. Daarna 17 extra brongebonden Nederlandse details, directe videolinks voor de 9 eerdere records zonder video. Totaal 31/118 uitleg, 31 video, 8/118 lokaal beeld (15 PNG's). Goblet-video kan andere materiaalvariant tonen; beide Face Pull-ID's blijven behouden. UI vermeldt dekking expliciet; algemene categorie bij ontbrekende details is geen primaire spier. Niet alle video's integraal bekeken; geen onafhankelijke coachreview. Nieuwe volledige CI vereist. Geen publicatie of merge.
+
+Aanvullend: twee originele, visueel beoordeelde Good Morning-illustraties, blob-SHA identiek aan Everkinetic. Totaal 9 oefeningen met lokaal beeld, 17 PNG's; offline manifest/build aangepast. Een tweede beoogde illustratieset was niet beschikbaar onder het gevonden bronpad en is niet overgenomen. Eindcontrole op deze commit vereist.

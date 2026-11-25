@@ -19,8 +19,11 @@ Everkinetic (Greg Priday), [originele bron](https://github.com/everkinetic/data/
 - media/exercises/seated-leg-curl-2.png
 - media/exercises/side-plank-1.png
 
+- media/exercises/barbell-good-mornings-1.png
+- media/exercises/barbell-good-mornings-2.png
+
 ## Tekst en video
 Eigen Nederlandse instructies; geraadpleegde NASM-bron per oefening in src/exercise-details.mjs. Video's zijn externe links, geen kopie, thumbnail of embed. Videolinks gecontroleerd via de NASM-oefenpagina’s of titel en afzender; video's niet integraal bekeken. Geen onafhankelijke trainerbeoordeling. Geen foto's uit Free Exercise DB overgenomen wegens onvoldoende bevestigde oorspronkelijke fotorechten.
 
 ## Dekking
-31 van 118 standaard-ID's hebben redactionele uitleg en 31 hebben een directe NASM-videolink; 8 hebben lokaal beeld (inclusief één statische houding). Overige details geven ontbrekende dekking aan.
+31 van 118 standaard-ID's hebben redactionele uitleg en 31 hebben een directe NASM-videolink; 9 hebben lokaal beeld (inclusief één statische houding). Overige details geven ontbrekende dekking aan.
