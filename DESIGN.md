@@ -133,3 +133,6 @@ Vaste trainingsactiezone; annuleren in trainingsmenu met bevestiging; afzonderli
 
 ## UX 0.17.1
 Extra 12 CSS-px onder dynamische veilige bovenrand, ook bij sticky trainingsheader. Volledig workoutcanvas vangt horizontale swipes op (preview, training en builder), inclusief lege ruimte. Normale verticale scroll, pinch-zoom en interactieve velden/knoppen blijven beschermd. Geen andere UI-voorstellen automatisch implementeren.
+
+## UX 0.17.2
+Richtingsbewuste korte pagina-animatie (220ms) met reduced-motion; preview dezelfde setkolommen als actief, alleen-lezen waarden en geen schijnbare afvinkactie. Compactere workoutkop en groepsnaam, voorbeeldtitel zonder paginatelling. Optionele korte haptiek bij echte paginawissel, starten, set afronden; niet beschikbaar = stille no-op. Geen opgeslagen namen herschrijven, geen wijziging builderacties of andere voorstellen.
