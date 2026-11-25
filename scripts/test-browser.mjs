@@ -154,14 +154,14 @@ try{
  assert.ok(await evaluate("!!document.querySelector('.cal-shell')"));
  console.log('PASS_AGENDA_ROUTES');
  await click('#nav [data-page="settings"]');
- assert.equal(await evaluate("document.querySelector('#installed-version').textContent"),'0.17.2');
+ assert.equal(await evaluate("document.querySelector('#installed-version').textContent"),'0.17.3');
  await click('[data-action="update-check"]');
  assert.ok(await evaluate("document.querySelector('#update-message').textContent.includes('Geen internet')"));
  await cdp('Network.emulateNetworkConditions',{offline:false,latency:0,downloadThroughput:-1,uploadThroughput:-1});
  // Change served files in this disposable CI checkout only; restore in finally.
  originalApp=await readFile('src/app.mjs','utf8');originalSW=await readFile('sw.js','utf8');
- await writeFile('src/app.mjs',originalApp.replace('const APP_VERSION="0.17.2"','const APP_VERSION="0.17.3-test"'));
- await writeFile('sw.js',originalSW.replace('fitness-manager-shell-v25','fitness-manager-shell-v25-ci-update'));
+ await writeFile('src/app.mjs',originalApp.replace('const APP_VERSION="0.17.3"','const APP_VERSION="0.17.4-test"'));
+ await writeFile('sw.js',originalSW.replace('fitness-manager-shell-v26','fitness-manager-shell-v26-ci-update'));
  await wait(()=>evaluate("!!document.querySelector('[data-action=update-check]:not([disabled])')"),'update check ready');
  await click('[data-action="update-check"]');
  await wait(()=>evaluate("!!document.querySelector('[data-action=update-apply]:not([disabled])')"),'new worker waiting');
@@ -178,7 +178,13 @@ try{
  assert.ok(await evaluate("(()=>{const d=document.querySelector('.training-dock').getBoundingClientRect();return Math.abs(d.bottom-innerHeight)<2&&[...document.querySelectorAll('.training-dock button')].every(b=>b.getBoundingClientRect().height>=44)})()"));
  assert.equal(await evaluate("document.querySelectorAll('[data-action=cancel-training]').length"),0);
  await evaluate("document.querySelector('.set input[data-field=reps]').focus()");
- assert.equal(await evaluate("document.querySelector('#accessory').closest('.training-sticky')!==null&&!document.querySelector('#accessory').hidden"),true);
+ assert.equal(await evaluate("document.querySelector('#accessory').closest('[data-session-index]')!==null&&!document.querySelector('#accessory').hidden"),true);
+ assert.ok(await evaluate("document.querySelector('#accessory button').textContent.includes('Apply to all')"));
+ assert.equal(await evaluate("getComputedStyle(document.querySelector('#storage-status')).position"),'fixed');
+ await evaluate("window.focusedSet=document.activeElement;window.setTop=focusedSet.getBoundingClientRect().top;window.scrollBefore=scrollY;focusedSet.value='8';focusedSet.dispatchEvent(new Event('input',{bubbles:true}))");
+ await sleep(200);
+ assert.ok(await evaluate("document.activeElement===window.focusedSet&&Math.abs(focusedSet.getBoundingClientRect().top-setTop)<1&&Math.abs(scrollY-scrollBefore)<1"));
+ await evaluate("focusedSet.value='';focusedSet.dispatchEvent(new Event('input',{bubbles:true}))");
  assert.equal(await evaluate("getComputedStyle(document.querySelector('.training-dock')).display"),'none');
  await evaluate("document.activeElement.blur()");
  await wait(()=>evaluate("!document.querySelector('.training-dock').classList.contains('typing')"),'training footer after blur');
@@ -236,7 +242,11 @@ try{
  assert.equal(await evaluate("document.querySelector('.builder-fold').open"),false);
  assert.ok(await evaluate("document.querySelector('.builder-fold summary').textContent.includes('sets')"));
  await evaluate("document.querySelector('.builder-fold').open=true");
- await click('[data-action="workout-add-page"]');
+ assert.equal(await evaluate("getComputedStyle(document.querySelector('.builder-dock')).position"),'fixed');
+ assert.ok(await evaluate("(()=>{const d=document.querySelector('.builder-dock').getBoundingClientRect();return Math.abs(d.bottom-innerHeight)<2&&d.height>=44})()"));
+ await click('.workout-page:not([hidden]) [data-action="workout-page-menu"]');
+ assert.ok(await evaluate("document.querySelector('#dialog [data-action=workout-remove-page]').disabled"));
+ await click('#dialog [data-action="workout-add-page"]');
  await evaluate("document.querySelector('#dialog-form [name=name]').value='Core'");
  await click('#dialog-form [type=submit]');
  assert.equal(await evaluate("document.querySelector('[data-workout-page]:not([hidden])').dataset.workoutPage"),'1');
@@ -278,6 +288,7 @@ try{
  await click('.set:not(.warmup) [data-action="check"]');
  await click('#dialog[open] button[type=submit]');
  assert.ok(await evaluate("document.querySelector('.pr-notice')?.textContent.includes('12 reps')"));
+ assert.equal(await evaluate("getComputedStyle(document.querySelector('.pr-notice')).position"),'fixed');
  await click('[data-action="finish"]');
  await click('#dialog[open] button[type=submit]');
  await click('#nav [data-page="progress"]');
@@ -302,7 +313,7 @@ try{
  await click('#nav [data-page="agenda"]');
  assert.ok(await evaluate("document.querySelector('.cal-day-agenda').textContent.includes('Offline test')"));
  await click('#nav [data-page="settings"]');
- assert.equal(await evaluate("document.querySelector('#installed-version').textContent"),'0.17.3-test');
+ assert.equal(await evaluate("document.querySelector('#installed-version').textContent"),'0.17.4-test');
  console.log('PASS_APP_UPDATE');
  // Management UI: exercise the archive, resume and history flows before final backup restore.
  await click('#nav [data-page="schemas"]');
@@ -427,6 +438,15 @@ try{
  await sleep(400);
  await click('.workout-dot[data-n="2"]');
  console.log('PASS_FULL_WORKOUT_SWIPE');
+ await evaluate("window.otherCard=document.querySelector('[data-session-index=\"0\"]');window.stableHeader=document.querySelector('.training-sticky')");
+ await click('.workout-page:not([hidden]) [data-action="extra-set"]');
+ assert.ok(await evaluate("window.otherCard===document.querySelector('[data-session-index=\"0\"]')&&window.stableHeader===document.querySelector('.training-sticky')"));
+ await evaluate("const input=document.querySelector('.workout-page:not([hidden]) input[data-field=reps]');input.focus();input.value='20';input.dispatchEvent(new Event('input',{bubbles:true}))");
+ await click('#accessory [data-action="apply"]');
+ assert.ok(await evaluate("[...document.querySelectorAll('.workout-page:not([hidden]) input[data-field=reps]')].every(i=>i.value==='20')"));
+ await evaluate("document.activeElement.blur()");
+ await sleep(120);
+ console.log('PASS_STABLE_TRAINING_UI');
  assert.equal(await evaluate("document.querySelector('.workout-page:not([hidden]) .workout-page-name').textContent"),'Core');
  assert.equal(await evaluate("document.querySelector('.workout-page:not([hidden]) input[data-field=reps]').placeholder"),'20');
  assert.equal(await evaluate("getComputedStyle(document.querySelector('.training-sticky')).position"),'sticky');
