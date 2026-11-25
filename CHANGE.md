@@ -155,3 +155,6 @@ Expliciet gebruikersakkoord voor codecommit 3d49df5ba437dac13bd7fe8c2cbebcf2c9a1
 
 ## Upgrade 0.12 — scope vooraf
 Gebruiker keurt P-59 t/m P-62 goed. Prioriteit: bron/licentie en juiste variant boven volledige maar ongecontroleerde dekking. Free Exercise DB vermeldt Unlicense maar foto's komen via oudere dataset; originele fotorechten niet per foto bevestigd, daarom niet overgenomen. Everkinetic/data expliciete CC BY-SA 4.0; geselecteerde tekeningen visueel bekeken, alleen originele bestanden met bron/credit. NASM links en eigen Nederlandse uitleg; geen claims coachvalidatie. Niet alle 118 oefeningen in deze tranche; ontbrekende media en uitleg expliciet. Risico's: onjuiste variant, privacy bij video, offline cache, regressie picker en historie. Geen kosten, publicatie of merge. Zelfreview, fysieke iPhone-review open.
+
+### Implementatie 0.12
+14/118 redactionele details, acht met lokale illustraties (15 PNG), vijf met directe NASM-video. Alle 118 IDs ongewijzigd, eigen oefeningen tonen eerlijke fallback. Bibliotheekdetails inclusief progressie, favoriet, filter/scroll terug, alternatieven, bron/licentie; pickers en actieve kaart intact. Bouw en shell v13 nemen lokale media en licenties mee. Testscript toetst offline decode, navigatie, ontbrekende content, bestaande stromen. CI nog vereist. Geen publicatie.

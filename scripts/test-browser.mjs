@@ -65,6 +65,28 @@ try{
  await reviewLayout('Schemas','.schema-tabs');
  await click('[data-action="library-open"]');
  await reviewLayout('Bibliotheek','#library-results');
+ await evaluate("document.querySelector('#search').value='Bench Dip';document.querySelector('#search').dispatchEvent(new Event('input',{bubbles:true}))");
+ await click('[data-action="exercise-detail"][data-id="bench-dip-armen"]');
+ await reviewLayout('Oefeningdetail','.exercise-poses');
+ await wait(()=>evaluate("[...document.querySelectorAll('.exercise-poses img')].every(i=>i.complete&&i.naturalWidth>0)"),'offline images decode');
+ assert.equal(await evaluate("document.querySelectorAll('.exercise-poses img').length"),2);
+ assert.ok(await evaluate("document.querySelector('#app').textContent.includes('Triceps')&&document.querySelector('#app').textContent.includes('CC BY-SA 4.0')"));
+ assert.equal(await evaluate("document.querySelector('.exercise-video').href"),'https://www.youtube.com/watch?v=WVeZDBhZwLA');
+ assert.equal(await evaluate("document.querySelectorAll('iframe,video').length"),0);
+ await click('[data-action="favorite-toggle"]');
+ assert.equal(await evaluate("document.querySelector('[data-action=favorite-toggle]').getAttribute('aria-pressed')"),'true');
+ await click('[data-action="favorite-toggle"]');
+ await click('[data-action="progress-open"]');
+ assert.ok(await evaluate("document.querySelector('#app').textContent.includes('Nog geen voltooide werksets')"));
+ await click('[data-action="back"]');
+ assert.equal(await evaluate("document.querySelectorAll('.exercise-poses img').length"),2);
+ await click('[data-action="exercise-detail"][data-id="triceps-pushdown-cable-armen"]');
+ assert.ok(await evaluate("document.querySelector('#app').textContent.includes('nog geen gecontroleerde uitleg')"));
+ await click('[data-action="back"]');
+ assert.equal(await evaluate("document.querySelector('#search').value"),'Bench Dip');
+ assert.equal(await evaluate("document.activeElement.dataset.id"),'bench-dip-armen');
+ await click('[data-action="filter-clear"]');
+ console.log('PASS_EXERCISE_REFERENCE_OFFLINE');
  assert.ok(await evaluate("document.querySelector('#library-results').children.length>0"));
  assert.equal(await evaluate("document.querySelector('#nav [aria-current=page]').dataset.page"),'schemas');
  await click('[data-action="back"]');
@@ -123,14 +145,14 @@ try{
  assert.ok(await evaluate("!!document.querySelector('.cal-shell')"));
  console.log('PASS_AGENDA_ROUTES');
  await click('#nav [data-page="settings"]');
- assert.equal(await evaluate("document.querySelector('#installed-version').textContent"),'0.11.0');
+ assert.equal(await evaluate("document.querySelector('#installed-version').textContent"),'0.12.0');
  await click('[data-action="update-check"]');
  assert.ok(await evaluate("document.querySelector('#update-message').textContent.includes('Geen internet')"));
  await cdp('Network.emulateNetworkConditions',{offline:false,latency:0,downloadThroughput:-1,uploadThroughput:-1});
  // Change served files in this disposable CI checkout only; restore in finally.
  originalApp=await readFile('src/app.mjs','utf8');originalSW=await readFile('sw.js','utf8');
- await writeFile('src/app.mjs',originalApp.replace('const APP_VERSION="0.11.0"','const APP_VERSION="0.11.1-test"'));
- await writeFile('sw.js',originalSW.replace('fitness-manager-shell-v12','fitness-manager-shell-v12-ci-update'));
+ await writeFile('src/app.mjs',originalApp.replace('const APP_VERSION="0.12.0"','const APP_VERSION="0.12.1-test"'));
+ await writeFile('sw.js',originalSW.replace('fitness-manager-shell-v13','fitness-manager-shell-v13-ci-update'));
  await wait(()=>evaluate("!!document.querySelector('[data-action=update-check]:not([disabled])')"),'update check ready');
  await click('[data-action="update-check"]');
  await wait(()=>evaluate("!!document.querySelector('[data-action=update-apply]:not([disabled])')"),'new worker waiting');
@@ -242,7 +264,7 @@ try{
  await click('#nav [data-page="agenda"]');
  assert.ok(await evaluate("document.querySelector('.cal-day-agenda').textContent.includes('Offline test')"));
  await click('#nav [data-page="settings"]');
- assert.equal(await evaluate("document.querySelector('#installed-version').textContent"),'0.11.1-test');
+ assert.equal(await evaluate("document.querySelector('#installed-version').textContent"),'0.12.1-test');
  console.log('PASS_APP_UPDATE');
  // Management UI: exercise the archive, resume and history flows before final backup restore.
  await click('#nav [data-page="schemas"]');
