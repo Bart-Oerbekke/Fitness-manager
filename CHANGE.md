@@ -172,3 +172,6 @@ Gebruiker akkoord: alle 118 beschrijvingen, zoveel mogelijk passende offline afb
 
 ### Beeldtranche vervolg 0.13
 13 aanvullende oefeningdetails voorzien van 26 visueel gecontroleerde, blob-identieke Everkinetic-PNG's. Bronvolgorde waar nodig omgekeerd, variantnotities toegevoegd; onduidelijke deadlift-, kuitmachine- en andere tekeningen niet overgenomen. 30/118 lokaal beeld, 59 PNG's, 118/118 tekst, 42 video's ongewijzigd. Geen schema-, opslag- of trainingswijziging. CI opnieuw vereist. Geen deployment of main-merge.
+
+### Extra beelddekking 0.13
+Basis 4c19854afdb8e1d2dcd7d60cdbf03d9a6e216065: beide CI-runs groen. 12 nieuwe oefeningdetails met 24 visueel gecontroleerde, blob-identieke PNG's. 42/118 lokaal beeld, 83 PNG's, 118/118 tekst en 42 bestaande videolinks. Geen nieuwe video, geen wijziging ID's of trainings-/opslaglogica. Afgekeurde voorbeelden: kuitheffing zonder zichtbare voeten, deadlift met ongeschikte startpositie, pulldown achter het hoofd. CI opnieuw vereist; geen publicatie of merge. Individuele externe tekstvalidatie en fysieke iPhone-review blijven open.

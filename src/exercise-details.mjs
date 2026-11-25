@@ -643,7 +643,18 @@ export const exerciseDetails={
     ],
     "source": "https://www.nasm.org/resource-center/exercise-library/barbell-bicep-curl",
     "video": "https://www.youtube.com/watch?v=pQfJR-sSIvA",
-    "poses": []
+    "poses": [
+      {
+        "file": "media/exercises/bicep-curls-with-barbell-1.png",
+        "label": "Beginpositie — stang laag"
+      },
+      {
+        "file": "media/exercises/bicep-curls-with-barbell-2.png",
+        "label": "Bovenste positie — ellebogen gebogen"
+      }
+    ],
+    "artSource": "https://github.com/everkinetic/data/tree/446bb9a3d0c3beb6b84f7c9d77dfc8af707a2ab6/src/images-web",
+    "artLicense": "https://creativecommons.org/licenses/by-sa/4.0/"
   },
   "face-pull-cable-rug": {
     "primary": "Achterste schouders, middenrug",
@@ -773,7 +784,18 @@ export const exerciseDetails={
     ],
     "source": "https://www.nasm.org/resource-center/exercise-library/chest-press-machine",
     "video": "https://www.youtube.com/watch?v=lRo9zZ7EwpM",
-    "poses": []
+    "poses": [
+      {
+        "file": "media/exercises/machine-bench-press-1.png",
+        "label": "Beginpositie — handgrepen bij de borst"
+      },
+      {
+        "file": "media/exercises/machine-bench-press-2.png",
+        "label": "Eindpositie — armen naar voren gestrekt"
+      }
+    ],
+    "artSource": "https://github.com/everkinetic/data/tree/446bb9a3d0c3beb6b84f7c9d77dfc8af707a2ab6/src/images-web",
+    "artLicense": "https://creativecommons.org/licenses/by-sa/4.0/"
   },
   "deadlift-kettlebell-benen": {
     "primary": "Bilspieren, hamstrings, quadriceps",
@@ -1888,7 +1910,19 @@ export const exerciseDetails={
     ],
     "source": "https://tanrenica.com/exercises?lang=en",
     "sourceLabel": "Tanrenica (oefenregister)",
-    "poses": []
+    "poses": [
+      {
+        "file": "media/exercises/butterfly-machine-1.png",
+        "label": "Beginpositie — armen geopend"
+      },
+      {
+        "file": "media/exercises/butterfly-machine-2.png",
+        "label": "Eindpositie — armpads bij elkaar"
+      }
+    ],
+    "artSource": "https://github.com/everkinetic/data/tree/446bb9a3d0c3beb6b84f7c9d77dfc8af707a2ab6/src/images-web",
+    "artLicense": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "note": "Afgebeeld met onderarmpads; volg de instellingen van jouw machine."
   },
   "low-to-high-fly-cable-borst": {
     "primary": "Borstspieren, bovenste vezels",
@@ -1951,7 +1985,19 @@ export const exerciseDetails={
     ],
     "source": "https://tanrenica.com/exercises?lang=en",
     "sourceLabel": "Tanrenica (oefenregister)",
-    "poses": []
+    "poses": [
+      {
+        "file": "media/exercises/chest-dips-1.png",
+        "label": "Beginpositie — armen gestrekt"
+      },
+      {
+        "file": "media/exercises/chest-dips-2.png",
+        "label": "Onderste positie — ellebogen gebogen"
+      }
+    ],
+    "artSource": "https://github.com/everkinetic/data/tree/446bb9a3d0c3beb6b84f7c9d77dfc8af707a2ab6/src/images-web",
+    "artLicense": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "note": "Zak alleen tot een comfortabele diepte; de afbeelding is geen verplichte eindstand."
   },
   "bent-over-row-barbell-rug": {
     "primary": "Brede rugspier, middenrug",
@@ -2077,7 +2123,18 @@ export const exerciseDetails={
     ],
     "source": "https://tanrenica.com/exercises?lang=en",
     "sourceLabel": "Tanrenica (oefenregister)",
-    "poses": []
+    "poses": [
+      {
+        "file": "media/exercises/straight-arm-push-down-1.png",
+        "label": "Beginpositie — armen voor de romp"
+      },
+      {
+        "file": "media/exercises/straight-arm-push-down-2.png",
+        "label": "Eindpositie — greep bij de dijen"
+      }
+    ],
+    "artSource": "https://github.com/everkinetic/data/tree/446bb9a3d0c3beb6b84f7c9d77dfc8af707a2ab6/src/images-web",
+    "artLicense": "https://creativecommons.org/licenses/by-sa/4.0/"
   },
   "lat-pulldown-machine-rug": {
     "primary": "Brede rugspier",
@@ -2269,7 +2326,19 @@ export const exerciseDetails={
     ],
     "source": "https://tanrenica.com/exercises?lang=en",
     "sourceLabel": "Tanrenica (oefenregister)",
-    "poses": []
+    "poses": [
+      {
+        "file": "media/exercises/front-dumbbell-raise-1.png",
+        "label": "Beginpositie — gewichten bij de dijen"
+      },
+      {
+        "file": "media/exercises/front-dumbbell-raise-2.png",
+        "label": "Bovenste positie — één arm geheven"
+      }
+    ],
+    "artSource": "https://github.com/everkinetic/data/tree/446bb9a3d0c3beb6b84f7c9d77dfc8af707a2ab6/src/images-web",
+    "artLicense": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "note": "Afgebeeld als afwisselende uitvoering."
   },
   "arnold-press-dumbbell-schouders": {
     "primary": "Voorste en middelste schouders",
@@ -2365,7 +2434,18 @@ export const exerciseDetails={
     ],
     "source": "https://tanrenica.com/exercises?lang=en",
     "sourceLabel": "Tanrenica (oefenregister)",
-    "poses": []
+    "poses": [
+      {
+        "file": "media/exercises/front-cable-raises-2.png",
+        "label": "Beginpositie — greep bij de dij"
+      },
+      {
+        "file": "media/exercises/front-cable-raises-1.png",
+        "label": "Bovenste positie — arm voor de romp"
+      }
+    ],
+    "artSource": "https://github.com/everkinetic/data/tree/446bb9a3d0c3beb6b84f7c9d77dfc8af707a2ab6/src/images-web",
+    "artLicense": "https://creativecommons.org/licenses/by-sa/4.0/"
   },
   "shoulder-press-machine-schouders": {
     "primary": "Voorste en middelste schouders",
@@ -2386,7 +2466,18 @@ export const exerciseDetails={
     ],
     "source": "https://tanrenica.com/exercises?lang=en",
     "sourceLabel": "Tanrenica (oefenregister)",
-    "poses": []
+    "poses": [
+      {
+        "file": "media/exercises/seated-shoulder-press-machine-1.png",
+        "label": "Beginpositie — handgrepen bij de schouders"
+      },
+      {
+        "file": "media/exercises/seated-shoulder-press-machine-2.png",
+        "label": "Bovenste positie — armen gestrekt"
+      }
+    ],
+    "artSource": "https://github.com/everkinetic/data/tree/446bb9a3d0c3beb6b84f7c9d77dfc8af707a2ab6/src/images-web",
+    "artLicense": "https://creativecommons.org/licenses/by-sa/4.0/"
   },
   "lateral-raise-machine-schouders": {
     "primary": "Middelste schouders",
@@ -2512,7 +2603,18 @@ export const exerciseDetails={
     ],
     "source": "https://tanrenica.com/exercises?lang=en",
     "sourceLabel": "Tanrenica (oefenregister)",
-    "poses": []
+    "poses": [
+      {
+        "file": "media/exercises/standing-biceps-curl-with-cable-1.png",
+        "label": "Beginpositie — greep laag"
+      },
+      {
+        "file": "media/exercises/standing-biceps-curl-with-cable-2.png",
+        "label": "Bovenste positie — ellebogen gebogen"
+      }
+    ],
+    "artSource": "https://github.com/everkinetic/data/tree/446bb9a3d0c3beb6b84f7c9d77dfc8af707a2ab6/src/images-web",
+    "artLicense": "https://creativecommons.org/licenses/by-sa/4.0/"
   },
   "overhead-triceps-extension-cable-armen": {
     "primary": "Triceps",
@@ -2554,7 +2656,18 @@ export const exerciseDetails={
     ],
     "source": "https://tanrenica.com/exercises?lang=en",
     "sourceLabel": "Tanrenica (oefenregister)",
-    "poses": []
+    "poses": [
+      {
+        "file": "media/exercises/preacher-curl-with-machine-1.png",
+        "label": "Beginpositie — armen bijna gestrekt"
+      },
+      {
+        "file": "media/exercises/preacher-curl-with-machine-2.png",
+        "label": "Bovenste positie — ellebogen gebogen"
+      }
+    ],
+    "artSource": "https://github.com/everkinetic/data/tree/446bb9a3d0c3beb6b84f7c9d77dfc8af707a2ab6/src/images-web",
+    "artLicense": "https://creativecommons.org/licenses/by-sa/4.0/"
   },
   "triceps-extension-machine-armen": {
     "primary": "Triceps",
@@ -2575,7 +2688,19 @@ export const exerciseDetails={
     ],
     "source": "https://tanrenica.com/exercises?lang=en",
     "sourceLabel": "Tanrenica (oefenregister)",
-    "poses": []
+    "poses": [
+      {
+        "file": "media/exercises/triceps-extensions-using-machine-1.png",
+        "label": "Beginpositie — ellebogen gebogen"
+      },
+      {
+        "file": "media/exercises/triceps-extensions-using-machine-2.png",
+        "label": "Eindpositie — armen gestrekt"
+      }
+    ],
+    "artSource": "https://github.com/everkinetic/data/tree/446bb9a3d0c3beb6b84f7c9d77dfc8af707a2ab6/src/images-web",
+    "artLicense": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "note": "Afgebeeld met bovenarmsteun; machines kunnen verschillen."
   },
   "crunch-core": {
     "primary": "Rechte buikspieren",
@@ -2776,7 +2901,19 @@ export const exerciseDetails={
     ],
     "source": "https://www.keele.ac.uk/sportatkeele/activekeele/exerciselibrary/",
     "sourceLabel": "Sport Keele (oefenregister)",
-    "poses": []
+    "poses": [
+      {
+        "file": "media/exercises/side-bend-with-dumbbell-1.png",
+        "label": "Beginpositie — rechtop"
+      },
+      {
+        "file": "media/exercises/side-bend-with-dumbbell-2.png",
+        "label": "Onderste positie — zijwaartse buiging"
+      }
+    ],
+    "artSource": "https://github.com/everkinetic/data/tree/446bb9a3d0c3beb6b84f7c9d77dfc8af707a2ab6/src/images-web",
+    "artLicense": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "note": "Gebruik een kleine, comfortabele uitslag."
   },
   "suitcase-carry-dumbbell-core": {
     "primary": "Schuine buikspieren, rompstabilisatoren",
@@ -2922,6 +3059,30 @@ export const exerciseMedia=[
   "media/exercises/chin-ups-1.png",
   "media/exercises/chin-ups-2.png",
   "media/exercises/body-row-2.png",
-  "media/exercises/body-row-1.png"
+  "media/exercises/body-row-1.png",
+  "media/exercises/butterfly-machine-1.png",
+  "media/exercises/butterfly-machine-2.png",
+  "media/exercises/chest-dips-1.png",
+  "media/exercises/chest-dips-2.png",
+  "media/exercises/front-dumbbell-raise-1.png",
+  "media/exercises/front-dumbbell-raise-2.png",
+  "media/exercises/front-cable-raises-1.png",
+  "media/exercises/front-cable-raises-2.png",
+  "media/exercises/seated-shoulder-press-machine-1.png",
+  "media/exercises/seated-shoulder-press-machine-2.png",
+  "media/exercises/bicep-curls-with-barbell-1.png",
+  "media/exercises/bicep-curls-with-barbell-2.png",
+  "media/exercises/standing-biceps-curl-with-cable-1.png",
+  "media/exercises/standing-biceps-curl-with-cable-2.png",
+  "media/exercises/preacher-curl-with-machine-1.png",
+  "media/exercises/preacher-curl-with-machine-2.png",
+  "media/exercises/triceps-extensions-using-machine-1.png",
+  "media/exercises/triceps-extensions-using-machine-2.png",
+  "media/exercises/straight-arm-push-down-1.png",
+  "media/exercises/straight-arm-push-down-2.png",
+  "media/exercises/machine-bench-press-1.png",
+  "media/exercises/machine-bench-press-2.png",
+  "media/exercises/side-bend-with-dumbbell-1.png",
+  "media/exercises/side-bend-with-dumbbell-2.png"
 ];
 export function getExerciseDetail(id){return Object.hasOwn(exerciseDetails,id)?exerciseDetails[id]:null}

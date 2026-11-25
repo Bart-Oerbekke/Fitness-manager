@@ -78,3 +78,30 @@ Acht extra originele Everkinetic-PNG's, visueel bekeken en met identieke bronblo
 - media/exercises/body-row-2.png
 - media/exercises/body-row-1.png
 26 originele visueel beoordeelde PNG's, blob-identiek. Bij afwijkende greep of niet afgebeelde beweging staat een expliciete notitie. Totaal 30/118 oefeningen met lokaal beeld (59 PNG's), 118/118 tekst, 42 bestaande videolinks. Niet alle varianten hebben geschikt materiaal; geen andere media overgenomen.
+
+## Extra illustraties 0.13
+- media/exercises/butterfly-machine-1.png
+- media/exercises/butterfly-machine-2.png
+- media/exercises/chest-dips-1.png
+- media/exercises/chest-dips-2.png
+- media/exercises/front-dumbbell-raise-1.png
+- media/exercises/front-dumbbell-raise-2.png
+- media/exercises/front-cable-raises-1.png
+- media/exercises/front-cable-raises-2.png
+- media/exercises/seated-shoulder-press-machine-1.png
+- media/exercises/seated-shoulder-press-machine-2.png
+- media/exercises/bicep-curls-with-barbell-1.png
+- media/exercises/bicep-curls-with-barbell-2.png
+- media/exercises/standing-biceps-curl-with-cable-1.png
+- media/exercises/standing-biceps-curl-with-cable-2.png
+- media/exercises/preacher-curl-with-machine-1.png
+- media/exercises/preacher-curl-with-machine-2.png
+- media/exercises/triceps-extensions-using-machine-1.png
+- media/exercises/triceps-extensions-using-machine-2.png
+- media/exercises/straight-arm-push-down-1.png
+- media/exercises/straight-arm-push-down-2.png
+- media/exercises/machine-bench-press-1.png
+- media/exercises/machine-bench-press-2.png
+- media/exercises/side-bend-with-dumbbell-1.png
+- media/exercises/side-bend-with-dumbbell-2.png
+24 visueel beoordeelde originele Everkinetic-PNG's, blob-identiek, CC BY-SA 4.0. Verkeerde/cropped houdingen niet opgenomen. Dekking: 42/118 oefeningen met beeld (83 PNG's), 118/118 tekst, 42 videolinks ongewijzigd.
