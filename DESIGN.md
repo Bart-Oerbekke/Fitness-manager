@@ -145,3 +145,6 @@ Vanaf linkerrand (32 CSS-px) rechts swipen activeert bestaande terugroute; midde
 
 ## UX 0.18.0
 Dubbele agendanavigatie en testknop uit Vandaag, directe planactie behouden. Testworkout en technische uitleg in inklapbare instellingen; back-upwaarschuwing en updates zichtbaar. Buildernaam/summary met sleepgreep en optiemenu, geen aparte kop. Schemakaart als grote openknop met aparte opties, aanmaak via plus. Bibliotheek zoekveld en filtericoon met actieve telling, filters uitklapbaar. Terugroutes herstellen scroll per scherm/context en bestaande filter/tabselecties; geen gegevensmodelwijziging.
+
+## UX 0.19.0
+Progressie: grafieken centraal, vlakke secties en compacte records-/sessielijsten; geen rekenkundige wijziging. Korte fades bij echte navigatie, respecteer reduced motion en behoud vaste knoppen. Nederlandse bedieningsteksten, gangbare fitnesstermen en Apply to all blijven. Lokale progressieupdates, stabiele builder-ID's, deduplicatie statusupdates. Geen andere voorstellen implementeren.
