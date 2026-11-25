@@ -136,3 +136,6 @@ Extra 12 CSS-px onder dynamische veilige bovenrand, ook bij sticky trainingshead
 
 ## UX 0.17.2
 Richtingsbewuste korte pagina-animatie (220ms) met reduced-motion; preview dezelfde setkolommen als actief, alleen-lezen waarden en geen schijnbare afvinkactie. Compactere workoutkop en groepsnaam, voorbeeldtitel zonder paginatelling. Optionele korte haptiek bij echte paginawissel, starten, set afronden; niet beschikbaar = stille no-op. Geen opgeslagen namen herschrijven, geen wijziging builderacties of andere voorstellen.
+
+## UX 0.17.3
+Stabiele documentflow: tijdelijke status/PR buiten layout, foutmelding blijft bereikbaar en blokkerend. Apply to all links in gereserveerde setactierij, accentkleur en 44px tikdoel, zichtbaar bij invoer. Geen globale hertekening voor lokale set-/builderwijzigingen; focus en scroll zoveel mogelijk behouden. Vaste builderactiezone met Oefening en Opslaan, verborgen bij softwaretoetsenbord. Pagina-instellingen naast groepsnaam als bottom sheet; lege pagina verwijderen volgens bestaande regel. Geen overige UI-voorstellen implementeren.
