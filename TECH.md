@@ -78,3 +78,6 @@ Alleen app.mjs, style.css, service-worker cache v12 en tests. Geen wijzigingen a
 
 ## Exercise Library 0.12
 Losse read-only module op bestaande ID's; geen schemawijziging. PNG-afbeeldingen onveranderd uit Everkinetic/data commit 446bb9a3d0c3beb6b84f7c9d77dfc8af707a2ab6 onder CC BY-SA 4.0, bronvermelding en licentie per detail plus LICENSES.md; alleen bekeken poses, met variantlabel. Geen overname foto's met onduidelijke herkomst. Eigen Nederlandse tekst, bronverwijzingen naar NASM; geen video herhosting. Build en service-worker v13 bevatten lokale media. CI controleert ID's, alternatieven, bron, assets, offline detail en bestaande picker. Uitbreidbare dataset; niet alle standaardoefeningen hebben gecontroleerd materiaal.
+
+## Exercise Library 0.13 vervolg
+Additieve detaildataset, 118 bestaande ID's ongewijzigd. Nieuwe illustraties in bestaande offline manifest en build. Geen extra afhankelijkheden of diensten; bestaande videolinks behouden. Algemene bronregisters gelabeld, volledige individuele externe inhoudsvalidatie en fysieke iPhone-review nog open.

@@ -1149,6 +1149,1565 @@ export const exerciseDetails={
     "source": "https://www.erikakehrwaldfitness.com/exercise-library/standing-dumbbell-biceps-curl",
     "poses": [],
     "sourceLabel": "Train with Erika"
+  },
+  "front-squat-barbell-benen": {
+    "primary": "Quadriceps, bilspieren",
+    "secondary": "Adductoren, romp",
+    "equipment": "Halter, rek en veiligheidssteunen",
+    "steps": [
+      "Laat de stang op de voorzijde van je schouders rusten met ellebogen omhoog",
+      "Buig heupen en knieën terwijl je romp zo rechtop mogelijk blijft",
+      "Duw via de hele voet omhoog"
+    ],
+    "tips": [
+      "Laat ellebogen niet zakken",
+      "Gebruik veiligheidssteunen en een beheerste diepte"
+    ],
+    "alternatives": [
+      "squat-barbell-benen",
+      "goblet-squat-dumbbell-benen"
+    ],
+    "source": "https://tanrenica.com/exercises?lang=en",
+    "sourceLabel": "Tanrenica (oefenregister)",
+    "poses": [
+      {
+        "file": "media/exercises/front-squat-with-barbell-1.png",
+        "label": "Beginpositie — halter op de voorste schouders"
+      },
+      {
+        "file": "media/exercises/front-squat-with-barbell-2.png",
+        "label": "Onderste positie — heupen en knieën gebogen"
+      }
+    ],
+    "artSource": "https://github.com/everkinetic/data/tree/446bb9a3d0c3beb6b84f7c9d77dfc8af707a2ab6/src/images-web",
+    "artLicense": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "note": "Afgebeeld met gekruiste armen; een passende front-rackgreep is ook mogelijk."
+  },
+  "hip-thrust-barbell-benen": {
+    "primary": "Bilspieren",
+    "secondary": "Hamstrings, adductoren, romp",
+    "equipment": "Halter met pad, stabiele bank",
+    "steps": [
+      "Steun met je bovenrug tegen de bank en plaats de halter op je heupplooi",
+      "Duw via je voeten de heupen omhoog tot je romp en dijen ongeveer in één lijn zijn",
+      "Laat je bekken beheerst zakken"
+    ],
+    "tips": [
+      "Voorkom overstrekken van je onderrug",
+      "Zorg dat de bank niet kan schuiven"
+    ],
+    "alternatives": [
+      "glute-bridge-benen",
+      "romanian-deadlift-barbell-benen"
+    ],
+    "source": "https://tanrenica.com/exercises?lang=en",
+    "sourceLabel": "Tanrenica (oefenregister)",
+    "poses": []
+  },
+  "split-squat-barbell-benen": {
+    "primary": "Quadriceps, bilspieren",
+    "secondary": "Adductoren, romp",
+    "equipment": "Halter, rek en veiligheidssteunen",
+    "steps": [
+      "Plaats de halter op de bovenrug en zet één voet naar voren",
+      "Buig beide knieën en laat je bekken zakken terwijl beide voeten op hun plaats blijven",
+      "Duw via de voorste voet terug omhoog en wissel na de set"
+    ],
+    "tips": [
+      "Houd voldoende zijwaartse afstand tussen de voeten",
+      "Laat de voorste knie de tenen volgen"
+    ],
+    "alternatives": [
+      "bulgarian-split-squat-dumbbell-benen",
+      "reverse-lunges-dumbbell-benen"
+    ],
+    "source": "https://tanrenica.com/exercises?lang=en",
+    "sourceLabel": "Tanrenica (oefenregister)",
+    "poses": []
+  },
+  "calf-raise-barbell-benen": {
+    "primary": "Gastrocnemius, soleus",
+    "secondary": "Voet- en enkelstabilisatoren",
+    "equipment": "Halter, rek en stabiele vloer",
+    "steps": [
+      "Plaats de halter op je bovenrug met voeten parallel",
+      "Kom beheerst op de bal van beide voeten omhoog",
+      "Laat je hielen langzaam terugzakken"
+    ],
+    "tips": [
+      "Vermijd veren of knieën buigen om momentum te maken",
+      "Gebruik een veilige rekopstelling of kies dumbbells als balans beperkt is"
+    ],
+    "alternatives": [
+      "calf-raise-dumbbell-benen",
+      "standing-calf-raise-machine-benen"
+    ],
+    "source": "https://tanrenica.com/exercises?lang=en",
+    "sourceLabel": "Tanrenica (oefenregister)",
+    "poses": []
+  },
+  "walking-lunges-dumbbell-benen": {
+    "primary": "Quadriceps, bilspieren",
+    "secondary": "Hamstrings, adductoren, romp",
+    "equipment": "Twee dumbbells, vrije loopruimte",
+    "steps": [
+      "Houd dumbbells naast je lichaam en stap ruim vooruit",
+      "Buig beide knieën tot een comfortabele diepte",
+      "Duw via de voorste voet omhoog en stap met het andere been door"
+    ],
+    "tips": [
+      "Houd je bekken stabiel en de knie in lijn met je tenen",
+      "Maak geen overdreven grote passen"
+    ],
+    "alternatives": [
+      "walking-lunges-benen",
+      "reverse-lunges-dumbbell-benen"
+    ],
+    "source": "https://tanrenica.com/exercises?lang=en",
+    "sourceLabel": "Tanrenica (oefenregister)",
+    "poses": []
+  },
+  "reverse-lunges-dumbbell-benen": {
+    "primary": "Quadriceps, bilspieren",
+    "secondary": "Hamstrings, adductoren, romp",
+    "equipment": "Twee dumbbells",
+    "steps": [
+      "Sta rechtop met dumbbells naast je lichaam",
+      "Stap met één been achteruit en buig beide knieën",
+      "Duw via je voorste voet terug naar de uitgangspositie"
+    ],
+    "tips": [
+      "Laat de achterste knie niet op de grond vallen",
+      "Houd het gewicht boven de voorste voet"
+    ],
+    "alternatives": [
+      "reverse-lunges-benen",
+      "bulgarian-split-squat-dumbbell-benen"
+    ],
+    "source": "https://tanrenica.com/exercises?lang=en",
+    "sourceLabel": "Tanrenica (oefenregister)",
+    "poses": []
+  },
+  "step-up-dumbbell-benen": {
+    "primary": "Quadriceps, bilspieren",
+    "secondary": "Hamstrings, romp",
+    "equipment": "Dumbbells, stevige verhoging",
+    "steps": [
+      "Plaats één hele voet op de verhoging",
+      "Duw via die voet omhoog totdat je rechtop staat",
+      "Stap beheerst terug en wissel van been"
+    ],
+    "tips": [
+      "Zet niet krachtig af met het onderste been",
+      "Kies een hoogte waarop knie en bekken stabiel blijven"
+    ],
+    "alternatives": [
+      "walking-lunges-dumbbell-benen",
+      "bulgarian-split-squat-dumbbell-benen"
+    ],
+    "source": "https://tanrenica.com/exercises?lang=en",
+    "sourceLabel": "Tanrenica (oefenregister)",
+    "poses": []
+  },
+  "single-leg-deadlift-dumbbell-benen": {
+    "primary": "Hamstrings, bilspieren",
+    "secondary": "Rugstrekkers, enkel- en rompstabilisatoren",
+    "equipment": "Eén of twee dumbbells",
+    "steps": [
+      "Sta op één been met een licht gebogen knie",
+      "Scharnier vanuit de heup en laat het andere been naar achteren gaan",
+      "Strek de heup om terug te komen zonder het bekken te draaien"
+    ],
+    "tips": [
+      "Houd de gewichten dicht bij het standbeen",
+      "Gebruik desnoods steun en een kleine uitslag"
+    ],
+    "alternatives": [
+      "romanian-deadlift-dumbbell-benen",
+      "glute-bridge-benen"
+    ],
+    "source": "https://tanrenica.com/exercises?lang=en",
+    "sourceLabel": "Tanrenica (oefenregister)",
+    "poses": []
+  },
+  "calf-raise-dumbbell-benen": {
+    "primary": "Gastrocnemius, soleus",
+    "secondary": "Enkelstabilisatoren",
+    "equipment": "Dumbbells, stabiele vloer",
+    "steps": [
+      "Sta met dumbbells naast je lichaam",
+      "Til beide hielen gecontroleerd op",
+      "Laat de hielen rustig terug naar de vloer"
+    ],
+    "tips": [
+      "Beweeg vanuit de enkels, niet door knieën te veren",
+      "Gebruik steun als balans de beweging beperkt"
+    ],
+    "alternatives": [
+      "calf-raise-benen",
+      "standing-calf-raise-machine-benen"
+    ],
+    "source": "https://tanrenica.com/exercises?lang=en",
+    "sourceLabel": "Tanrenica (oefenregister)",
+    "poses": []
+  },
+  "leg-extension-machine-benen": {
+    "primary": "Quadriceps",
+    "secondary": "Rompstabilisatoren",
+    "equipment": "Leg extension-machine",
+    "steps": [
+      "Stel zitting en rol zo in dat je knieën bij het draaipunt liggen en de rol boven je enkels rust",
+      "Strek beide knieën beheerst",
+      "Laat de rol langzaam zakken"
+    ],
+    "tips": [
+      "Houd billen en rug tegen de steun",
+      "Forceer geen eindstand of pijnlijke bewegingsuitslag"
+    ],
+    "alternatives": [
+      "leg-press-machine-benen",
+      "squat-benen"
+    ],
+    "source": "https://tanrenica.com/exercises?lang=en",
+    "sourceLabel": "Tanrenica (oefenregister)",
+    "poses": [
+      {
+        "file": "media/exercises/leg-extensions-1.png",
+        "label": "Beginpositie — knieën gebogen"
+      },
+      {
+        "file": "media/exercises/leg-extensions-2.png",
+        "label": "Eindpositie — onderbenen opgetild"
+      }
+    ],
+    "artSource": "https://github.com/everkinetic/data/tree/446bb9a3d0c3beb6b84f7c9d77dfc8af707a2ab6/src/images-web",
+    "artLicense": "https://creativecommons.org/licenses/by-sa/4.0/"
+  },
+  "hack-squat-machine-benen": {
+    "primary": "Quadriceps, bilspieren",
+    "secondary": "Adductoren, hamstrings",
+    "equipment": "Hack squat-machine",
+    "steps": [
+      "Plaats je rug en schouders tegen de steunen en je voeten op het platform",
+      "Ontgrendel volgens de machine-instructies en buig heupen en knieën",
+      "Duw het platform weg en vergrendel de machine na de set"
+    ],
+    "tips": [
+      "Houd je hielen op het platform en je knieën in lijn",
+      "Laat het bekken niet loskomen van de rugsteun"
+    ],
+    "alternatives": [
+      "leg-press-machine-benen",
+      "squat-barbell-benen"
+    ],
+    "source": "https://tanrenica.com/exercises?lang=en",
+    "sourceLabel": "Tanrenica (oefenregister)",
+    "poses": []
+  },
+  "hip-abduction-machine-benen": {
+    "primary": "Gluteus medius en minimus",
+    "secondary": "Tensor fasciae latae, bilspieren",
+    "equipment": "Zittende heupabductiemachine",
+    "steps": [
+      "Stel de buitenste dijpads en zitting in",
+      "Duw beide knieën naar buiten zonder de romp te bewegen",
+      "Breng de knieën gecontroleerd terug"
+    ],
+    "tips": [
+      "Voorkom schommelen of draaien van het bekken",
+      "Gebruik geen geforceerde uiterste stand"
+    ],
+    "alternatives": [
+      "hip-abduction-cable-benen",
+      "single-leg-squat-benen"
+    ],
+    "source": "https://tanrenica.com/exercises?lang=en",
+    "sourceLabel": "Tanrenica (oefenregister)",
+    "poses": []
+  },
+  "hip-adduction-machine-benen": {
+    "primary": "Heupadductoren",
+    "secondary": "Rompstabilisatoren",
+    "equipment": "Zittende heupadductiemachine",
+    "steps": [
+      "Stel de binnenste dijpads in op een comfortabele spreidstand",
+      "Breng beide benen beheerst naar elkaar",
+      "Laat ze langzaam weer uit elkaar bewegen"
+    ],
+    "tips": [
+      "Forceer geen brede spreidstand",
+      "Houd je bekken op de zitting en vermijd veren"
+    ],
+    "alternatives": [
+      "hip-adduction-cable-benen",
+      "copenhagen-plank-knee-dynamic-core"
+    ],
+    "source": "https://tanrenica.com/exercises?lang=en",
+    "sourceLabel": "Tanrenica (oefenregister)",
+    "poses": []
+  },
+  "standing-calf-raise-machine-benen": {
+    "primary": "Gastrocnemius, soleus",
+    "secondary": "Enkelstabilisatoren",
+    "equipment": "Staande kuitmachine",
+    "steps": [
+      "Plaats de bal van je voeten op het platform en stel de schoudersteun in",
+      "Til je hielen omhoog met vrijwel gestrekte knieën",
+      "Laat je hielen beheerst zakken tot een comfortabele rek"
+    ],
+    "tips": [
+      "Vermijd stuiteren onderin",
+      "Gebruik de beveiliging van de machine"
+    ],
+    "alternatives": [
+      "calf-raise-dumbbell-benen",
+      "calf-raise-benen"
+    ],
+    "source": "https://tanrenica.com/exercises?lang=en",
+    "sourceLabel": "Tanrenica (oefenregister)",
+    "poses": []
+  },
+  "seated-calf-raise-machine-benen": {
+    "primary": "Soleus",
+    "secondary": "Gastrocnemius",
+    "equipment": "Zittende kuitmachine",
+    "steps": [
+      "Zit met knieën gebogen en de bal van je voeten op het platform",
+      "Plaats de pads boven je knieën en til je hielen omhoog",
+      "Laat je hielen gecontroleerd zakken en vergrendel na de set"
+    ],
+    "tips": [
+      "Plaats de pads niet rechtstreeks op de knieschijven",
+      "Maak geen verende bewegingen"
+    ],
+    "alternatives": [
+      "standing-calf-raise-machine-benen",
+      "calf-raise-benen"
+    ],
+    "source": "https://tanrenica.com/exercises?lang=en",
+    "sourceLabel": "Tanrenica (oefenregister)",
+    "poses": []
+  },
+  "walking-lunges-benen": {
+    "primary": "Quadriceps, bilspieren",
+    "secondary": "Hamstrings, romp",
+    "equipment": "Vrije loopruimte",
+    "steps": [
+      "Stap vooruit en buig beide knieën",
+      "Duw jezelf via de voorste voet omhoog",
+      "Stap door met het andere been"
+    ],
+    "tips": [
+      "Houd je knie boven de richting van de tenen",
+      "Kies een paslengte waarbij je stabiel blijft"
+    ],
+    "alternatives": [
+      "walking-lunges-dumbbell-benen",
+      "reverse-lunges-benen"
+    ],
+    "source": "https://tanrenica.com/exercises?lang=en",
+    "sourceLabel": "Tanrenica (oefenregister)",
+    "poses": []
+  },
+  "reverse-lunges-benen": {
+    "primary": "Quadriceps, bilspieren",
+    "secondary": "Hamstrings, romp",
+    "equipment": "Lichaamsgewicht",
+    "steps": [
+      "Sta rechtop en stap met één voet achteruit",
+      "Laat je achterste knie richting de vloer zakken",
+      "Duw via de voorste voet terug naar stand"
+    ],
+    "tips": [
+      "Houd de voorste hiel aan de grond",
+      "Maak de beweging kleiner als balans lastig is"
+    ],
+    "alternatives": [
+      "reverse-lunges-dumbbell-benen",
+      "walking-lunges-benen"
+    ],
+    "source": "https://www.keele.ac.uk/sportatkeele/activekeele/exerciselibrary/",
+    "sourceLabel": "Sport Keele (oefenregister)",
+    "poses": []
+  },
+  "nordic-hamstring-curl-benen": {
+    "primary": "Hamstrings",
+    "secondary": "Bilspieren, romp",
+    "equipment": "Kniekussen, betrouwbare enkelverankering of partner",
+    "steps": [
+      "Kniel met stevig gefixeerde enkels en houd heupen gestrekt",
+      "Laat je romp en dijen als één geheel langzaam voorover bewegen",
+      "Vang jezelf op met je handen en gebruik hulp om terug te komen"
+    ],
+    "tips": [
+      "Begin met een kleine uitslag en ondersteuning",
+      "Controleer de verankering en voorkom buigen in de heupen"
+    ],
+    "alternatives": [
+      "lying-leg-curl-machine-benen",
+      "seated-leg-curl-machine-benen"
+    ],
+    "source": "https://tanrenica.com/exercises?lang=en",
+    "sourceLabel": "Tanrenica (oefenregister)",
+    "poses": []
+  },
+  "calf-raise-benen": {
+    "primary": "Gastrocnemius, soleus",
+    "secondary": "Enkelstabilisatoren",
+    "equipment": "Vloer en eventueel steun",
+    "steps": [
+      "Sta rechtop met voeten parallel",
+      "Til je hielen op en pauzeer kort bovenin",
+      "Laat je hielen rustig zakken"
+    ],
+    "tips": [
+      "Gebruik geen verende kniebuiging",
+      "Houd druk verdeeld over de voorvoet"
+    ],
+    "alternatives": [
+      "calf-raise-dumbbell-benen",
+      "standing-calf-raise-machine-benen"
+    ],
+    "source": "https://www.keele.ac.uk/sportatkeele/activekeele/exerciselibrary/",
+    "sourceLabel": "Sport Keele (oefenregister)",
+    "poses": []
+  },
+  "pull-through-cable-benen": {
+    "primary": "Bilspieren, hamstrings",
+    "secondary": "Rugstrekkers, romp",
+    "equipment": "Lage kabel met touw",
+    "steps": [
+      "Sta met je rug naar de kabel en pak het touw tussen je benen",
+      "Duw je heupen naar achteren met licht gebogen knieën",
+      "Strek je heupen tot stand zonder achterover te leunen"
+    ],
+    "tips": [
+      "Laat de beweging uit de heupen komen",
+      "Houd de kabel vrij van je benen en maak er geen squat van"
+    ],
+    "alternatives": [
+      "romanian-deadlift-dumbbell-benen",
+      "glute-bridge-benen"
+    ],
+    "source": "https://tanrenica.com/exercises?lang=en",
+    "sourceLabel": "Tanrenica (oefenregister)",
+    "poses": []
+  },
+  "hip-abduction-cable-benen": {
+    "primary": "Gluteus medius en minimus",
+    "secondary": "Tensor fasciae latae, romp",
+    "equipment": "Lage kabel en enkelband",
+    "steps": [
+      "Sta zijwaarts met de buitenste enkel aan de kabel en houd steun vast",
+      "Beweeg het buitenste been zijwaarts zonder het bekken te kantelen",
+      "Breng het been langzaam terug"
+    ],
+    "tips": [
+      "Houd de tenen grotendeels vooruit",
+      "Vermijd zijwaarts leunen of zwaaien"
+    ],
+    "alternatives": [
+      "hip-abduction-machine-benen",
+      "single-leg-squat-benen"
+    ],
+    "source": "https://tanrenica.com/exercises?lang=en",
+    "sourceLabel": "Tanrenica (oefenregister)",
+    "poses": []
+  },
+  "hip-adduction-cable-benen": {
+    "primary": "Heupadductoren",
+    "secondary": "Romp, standbeenstabilisatoren",
+    "equipment": "Lage kabel en enkelband",
+    "steps": [
+      "Sta zijwaarts met de binnenste enkel aan de kabel en houd steun vast",
+      "Trek het binnenste been richting het standbeen of licht ervoor langs",
+      "Laat het been rustig naar buiten teruggaan"
+    ],
+    "tips": [
+      "Draai het bekken niet mee",
+      "Kies lichte weerstand en een beheerste uitslag"
+    ],
+    "alternatives": [
+      "hip-adduction-machine-benen",
+      "copenhagen-plank-knee-dynamic-core"
+    ],
+    "source": "https://tanrenica.com/exercises?lang=en",
+    "sourceLabel": "Tanrenica (oefenregister)",
+    "poses": []
+  },
+  "swing-kettlebell-benen": {
+    "primary": "Bilspieren, hamstrings",
+    "secondary": "Rugstrekkers, romp, onderarmen",
+    "equipment": "Kettlebell, vrije ruimte",
+    "steps": [
+      "Scharnier vanuit je heupen en hike de kettlebell tussen je benen",
+      "Strek de heupen krachtig zodat het gewicht tot ongeveer borsthoogte zweeft",
+      "Laat het gewicht terugzwaaien en vang het op met een heupscharnier"
+    ],
+    "tips": [
+      "Til de kettlebell niet actief met je armen",
+      "Leer eerst de deadlift en voorkom overstrekken van de rug"
+    ],
+    "alternatives": [
+      "deadlift-kettlebell-benen",
+      "pull-through-cable-benen"
+    ],
+    "source": "https://tanrenica.com/exercises?lang=en",
+    "sourceLabel": "Tanrenica (oefenregister)",
+    "poses": []
+  },
+  "decline-bench-press-barbell-borst": {
+    "primary": "Borstspieren",
+    "secondary": "Triceps, voorste schouders",
+    "equipment": "Decline bank met voetsteunen, halter, rek",
+    "steps": [
+      "Zet je benen vast en neem de stang veilig uit het rek",
+      "Laat de stang gecontroleerd richting onderborst zakken",
+      "Druk omhoog en plaats de stang na de set terug"
+    ],
+    "tips": [
+      "Gebruik een spotter of veiligheidssteunen",
+      "Laat de stang niet op je borst stuiteren"
+    ],
+    "alternatives": [
+      "bench-press-barbell-borst",
+      "chest-press-machine-borst"
+    ],
+    "source": "https://tanrenica.com/exercises?lang=en",
+    "sourceLabel": "Tanrenica (oefenregister)",
+    "poses": []
+  },
+  "bench-press-dumbbell-borst": {
+    "primary": "Borstspieren",
+    "secondary": "Triceps, voorste schouders",
+    "equipment": "Twee dumbbells, vlakke bank",
+    "steps": [
+      "Lig op de bank met voeten op de vloer en gewichten boven de borst",
+      "Laat de dumbbells langs je borst zakken met onderarmen ongeveer verticaal",
+      "Druk de gewichten omhoog zonder ze tegen elkaar te slaan"
+    ],
+    "tips": [
+      "Houd billen op de bank",
+      "Voorkom extreem wijde ellebogen en kies een beheerste diepte"
+    ],
+    "alternatives": [
+      "bench-press-barbell-borst",
+      "chest-press-machine-borst"
+    ],
+    "source": "https://tanrenica.com/exercises?lang=en",
+    "sourceLabel": "Tanrenica (oefenregister)",
+    "poses": []
+  },
+  "chest-fly-dumbbell-borst": {
+    "primary": "Borstspieren",
+    "secondary": "Voorste schouders, armstabilisatoren",
+    "equipment": "Twee dumbbells, vlakke bank",
+    "steps": [
+      "Lig op de bank met dumbbells boven de borst en licht gebogen ellebogen",
+      "Open je armen in een boog tot een comfortabele rek",
+      "Breng de gewichten in dezelfde boog weer samen"
+    ],
+    "tips": [
+      "Houd de ellebooghoek ongeveer gelijk",
+      "Gebruik lichte gewichten en forceer geen diepe schouderrek"
+    ],
+    "alternatives": [
+      "chest-fly-cable-borst",
+      "pec-deck-machine-borst"
+    ],
+    "source": "https://tanrenica.com/exercises?lang=en",
+    "sourceLabel": "Tanrenica (oefenregister)",
+    "poses": []
+  },
+  "incline-chest-fly-dumbbell-borst": {
+    "primary": "Borstspieren, bovenste vezels",
+    "secondary": "Voorste schouders, armstabilisatoren",
+    "equipment": "Twee dumbbells, schuine bank",
+    "steps": [
+      "Stel de bank licht schuin in en houd dumbbells boven de bovenborst",
+      "Open de armen langzaam in een boog",
+      "Breng de gewichten weer boven de borst samen"
+    ],
+    "tips": [
+      "Houd ellebogen licht gebogen",
+      "Voorkom overstrekken van de schouders onderin"
+    ],
+    "alternatives": [
+      "chest-fly-dumbbell-borst",
+      "low-to-high-fly-cable-borst"
+    ],
+    "source": "https://tanrenica.com/exercises?lang=en",
+    "sourceLabel": "Tanrenica (oefenregister)",
+    "poses": []
+  },
+  "pec-deck-machine-borst": {
+    "primary": "Borstspieren",
+    "secondary": "Voorste schouders",
+    "equipment": "Pec deck-machine",
+    "steps": [
+      "Stel de zitting zo in dat armen ongeveer op borsthoogte staan",
+      "Breng handgrepen of armpads gecontroleerd naar elkaar",
+      "Laat de armen weer openen tot een comfortabele rek"
+    ],
+    "tips": [
+      "Houd rug en bekken tegen de steun",
+      "Forceer geen diepe achterwaartse armpositie"
+    ],
+    "alternatives": [
+      "chest-fly-cable-borst",
+      "chest-fly-dumbbell-borst"
+    ],
+    "source": "https://tanrenica.com/exercises?lang=en",
+    "sourceLabel": "Tanrenica (oefenregister)",
+    "poses": []
+  },
+  "low-to-high-fly-cable-borst": {
+    "primary": "Borstspieren, bovenste vezels",
+    "secondary": "Voorste schouders, romp",
+    "equipment": "Twee lage kabels met handgrepen",
+    "steps": [
+      "Pak de lage handgrepen en stap stabiel naar voren",
+      "Beweeg je licht gebogen armen schuin omhoog en naar elkaar richting bovenborst",
+      "Laat ze langs dezelfde baan gecontroleerd teruggaan"
+    ],
+    "tips": [
+      "Voorkom dat de beweging een schouderophaal wordt",
+      "Houd romp en ellebooghoek stabiel"
+    ],
+    "alternatives": [
+      "incline-chest-fly-dumbbell-borst",
+      "chest-fly-cable-borst"
+    ],
+    "source": "https://tanrenica.com/exercises?lang=en",
+    "sourceLabel": "Tanrenica (oefenregister)",
+    "poses": []
+  },
+  "diamond-push-up-borst": {
+    "primary": "Triceps, borstspieren",
+    "secondary": "Voorste schouders, romp",
+    "equipment": "Lichaamsgewicht",
+    "steps": [
+      "Plaats je handen dicht bij elkaar onder de borst",
+      "Houd het lichaam recht en buig de ellebogen om te zakken",
+      "Duw jezelf terug omhoog"
+    ],
+    "tips": [
+      "Forceer geen ruitvorm als polsen oncomfortabel zijn",
+      "Houd ellebogen schuin naar achteren en heupen stabiel"
+    ],
+    "alternatives": [
+      "push-up-borst",
+      "close-grip-bench-press-barbell-armen"
+    ],
+    "source": "https://www.keele.ac.uk/sportatkeele/activekeele/exerciselibrary/",
+    "sourceLabel": "Sport Keele (oefenregister)",
+    "poses": []
+  },
+  "dip-borst": {
+    "primary": "Borstspieren, triceps",
+    "secondary": "Voorste schouders, romp",
+    "equipment": "Stabiele parallelle dipstangen",
+    "steps": [
+      "Steun met gestrekte armen op de stangen",
+      "Buig de ellebogen en kantel de romp licht naar voren",
+      "Duw jezelf gecontroleerd terug omhoog"
+    ],
+    "tips": [
+      "Laat de schouders niet ongecontroleerd diep zakken",
+      "Gebruik ondersteuning als je geen beheerste herhaling kunt uitvoeren"
+    ],
+    "alternatives": [
+      "chest-press-machine-borst",
+      "push-up-borst"
+    ],
+    "source": "https://tanrenica.com/exercises?lang=en",
+    "sourceLabel": "Tanrenica (oefenregister)",
+    "poses": []
+  },
+  "bent-over-row-barbell-rug": {
+    "primary": "Brede rugspier, middenrug",
+    "secondary": "Biceps, achterste schouders, rugstrekkers",
+    "equipment": "Halter",
+    "steps": [
+      "Pak de halter en scharnier vanuit je heupen met licht gebogen knieën",
+      "Trek de stang richting onderribben",
+      "Laat de stang beheerst zakken met dezelfde romphoek"
+    ],
+    "tips": [
+      "Vermijd opveren vanuit de heupen",
+      "Houd de stang dicht bij je lichaam en de rug stabiel"
+    ],
+    "alternatives": [
+      "bent-over-row-dumbbell-rug",
+      "seated-row-cable-rug"
+    ],
+    "source": "https://tanrenica.com/exercises?lang=en",
+    "sourceLabel": "Tanrenica (oefenregister)",
+    "poses": []
+  },
+  "pendlay-row-barbell-rug": {
+    "primary": "Middenrug, brede rugspier",
+    "secondary": "Biceps, achterste schouders, romp",
+    "equipment": "Halter op de vloer",
+    "steps": [
+      "Neem een bijna horizontale romphouding en pak de stang op de vloer",
+      "Trek de stang richting je romp zonder op te richten",
+      "Laat de stang beheerst op de vloer rusten voor elke volgende herhaling"
+    ],
+    "tips": [
+      "Gebruik een hoogte waarop je neutraal kunt buigen",
+      "Voorkom trekken met een ronde rug of heupzwaai"
+    ],
+    "alternatives": [
+      "bent-over-row-barbell-rug",
+      "chest-supported-row-machine-rug"
+    ],
+    "source": "https://tanrenica.com/exercises?lang=en",
+    "sourceLabel": "Tanrenica (oefenregister)",
+    "poses": []
+  },
+  "single-arm-row-dumbbell-rug": {
+    "primary": "Brede rugspier, middenrug",
+    "secondary": "Biceps, achterste schouders, romp",
+    "equipment": "Dumbbell en stabiele bank",
+    "steps": [
+      "Steun met één hand en eventueel knie op de bank",
+      "Trek de dumbbell met je elleboog naar je heup",
+      "Laat het gewicht gecontroleerd terugzakken"
+    ],
+    "tips": [
+      "Draai je romp niet open tijdens het trekken",
+      "Laat de schouder niet ongecontroleerd naar voren vallen"
+    ],
+    "alternatives": [
+      "bent-over-row-dumbbell-rug",
+      "seated-row-cable-rug"
+    ],
+    "source": "https://tanrenica.com/exercises?lang=en",
+    "sourceLabel": "Tanrenica (oefenregister)",
+    "poses": []
+  },
+  "bent-over-row-dumbbell-rug": {
+    "primary": "Brede rugspier, middenrug",
+    "secondary": "Biceps, achterste schouders, rugstrekkers",
+    "equipment": "Twee dumbbells",
+    "steps": [
+      "Scharnier vanuit de heupen met zachte knieën en laat de gewichten hangen",
+      "Trek beide ellebogen richting je heupen",
+      "Laat de dumbbells rustig zakken zonder je romphoek te veranderen"
+    ],
+    "tips": [
+      "Vermijd zwaaien en optrekken van de schouders",
+      "Gebruik een gewicht waarmee je rug stabiel blijft"
+    ],
+    "alternatives": [
+      "bent-over-row-barbell-rug",
+      "single-arm-row-dumbbell-rug"
+    ],
+    "source": "https://tanrenica.com/exercises?lang=en",
+    "sourceLabel": "Tanrenica (oefenregister)",
+    "poses": []
+  },
+  "reverse-fly-dumbbell-rug": {
+    "primary": "Achterste schouders, middenrug",
+    "secondary": "Rotator cuff, romp",
+    "equipment": "Twee lichte dumbbells",
+    "steps": [
+      "Buig vanuit de heupen met de armen onder je schouders",
+      "Beweeg je licht gebogen armen zijwaarts in een boog",
+      "Laat de gewichten langzaam terugzakken"
+    ],
+    "tips": [
+      "Houd de romp stil en ellebooghoek ongeveer gelijk",
+      "Gebruik geen schouderophaal of zwaai"
+    ],
+    "alternatives": [
+      "reverse-fly-dumbbell-schouders",
+      "reverse-pec-deck-machine-schouders"
+    ],
+    "source": "https://tanrenica.com/exercises?lang=en",
+    "sourceLabel": "Tanrenica (oefenregister)",
+    "poses": []
+  },
+  "straight-arm-pulldown-cable-rug": {
+    "primary": "Brede rugspier",
+    "secondary": "Grote ronde spier, triceps lange kop, romp",
+    "equipment": "Hoge kabel met stang of touw",
+    "steps": [
+      "Sta voor de kabel met licht gebogen heupen en armen voor je",
+      "Trek de greep in een boog naar je dijen met vrijwel vaste ellebogen",
+      "Laat de armen gecontroleerd omhoog gaan"
+    ],
+    "tips": [
+      "Maak er geen triceps pushdown van",
+      "Voorkom overstrekken van de rug bij het teruggaan"
+    ],
+    "alternatives": [
+      "lat-pulldown-cable-rug",
+      "pull-up-rug"
+    ],
+    "source": "https://tanrenica.com/exercises?lang=en",
+    "sourceLabel": "Tanrenica (oefenregister)",
+    "poses": []
+  },
+  "lat-pulldown-machine-rug": {
+    "primary": "Brede rugspier",
+    "secondary": "Biceps, middenrug",
+    "equipment": "Lat pulldown-machine",
+    "steps": [
+      "Stel de zitting en dijbeenkussen in en pak de handgrepen",
+      "Trek de ellebogen omlaag totdat de handgrepen op comfortabele borsthoogte komen",
+      "Laat de machine beheerst teruggaan"
+    ],
+    "tips": [
+      "Volg de bewegingsbaan van de machine",
+      "Trek niet achter de nek of met een ruk"
+    ],
+    "alternatives": [
+      "lat-pulldown-cable-rug",
+      "pull-up-rug"
+    ],
+    "source": "https://tanrenica.com/exercises?lang=en",
+    "sourceLabel": "Tanrenica (oefenregister)",
+    "poses": []
+  },
+  "seated-row-machine-rug": {
+    "primary": "Middenrug, brede rugspier",
+    "secondary": "Biceps, achterste schouders",
+    "equipment": "Zittende roeimachine",
+    "steps": [
+      "Stel de zitting en eventuele borststeun in zodat je de handgrepen comfortabel bereikt",
+      "Trek je ellebogen naar achteren",
+      "Strek de armen rustig terwijl de romp gesteund blijft"
+    ],
+    "tips": [
+      "Voorkom schouders optrekken",
+      "Laat het gewicht niet hard terugvallen"
+    ],
+    "alternatives": [
+      "seated-row-cable-rug",
+      "chest-supported-row-machine-rug"
+    ],
+    "source": "https://tanrenica.com/exercises?lang=en",
+    "sourceLabel": "Tanrenica (oefenregister)",
+    "poses": []
+  },
+  "chest-supported-row-machine-rug": {
+    "primary": "Middenrug, brede rugspier",
+    "secondary": "Biceps, achterste schouders",
+    "equipment": "Roeimachine met borststeun",
+    "steps": [
+      "Stel de borststeun zo in dat je de handgrepen met uitgestrekte armen bereikt",
+      "Trek je ellebogen naar achteren met borst tegen de steun",
+      "Laat de handgrepen gecontroleerd terugkomen"
+    ],
+    "tips": [
+      "Til je borst niet van de steun",
+      "Vermijd schouderophalen en botsen van gewichtstapel"
+    ],
+    "alternatives": [
+      "seated-row-machine-rug",
+      "single-arm-row-dumbbell-rug"
+    ],
+    "source": "https://tanrenica.com/exercises?lang=en",
+    "sourceLabel": "Tanrenica (oefenregister)",
+    "poses": []
+  },
+  "chin-up-rug": {
+    "primary": "Brede rugspier, biceps",
+    "secondary": "Middenrug, onderarmen, romp",
+    "equipment": "Optrekstang",
+    "steps": [
+      "Pak de stang met handpalmen naar je toe en hang gecontroleerd",
+      "Trek je ellebogen omlaag tot je kin richting de stang komt",
+      "Laat jezelf beheerst zakken"
+    ],
+    "tips": [
+      "Zwaai niet met de benen",
+      "Gebruik een ondersteunde variant als je de afdaling niet beheerst"
+    ],
+    "alternatives": [
+      "pull-up-rug",
+      "lat-pulldown-cable-rug"
+    ],
+    "source": "https://tanrenica.com/exercises?lang=en",
+    "sourceLabel": "Tanrenica (oefenregister)",
+    "poses": []
+  },
+  "inverted-row-rug": {
+    "primary": "Middenrug, brede rugspier",
+    "secondary": "Biceps, achterste schouders, romp",
+    "equipment": "Stevig gefixeerde horizontale stang",
+    "steps": [
+      "Hang onder de stang met voeten op de vloer en lichaam in één lijn",
+      "Trek je borst richting de stang",
+      "Laat jezelf gecontroleerd zakken"
+    ],
+    "tips": [
+      "Controleer dat de stang niet kan verschuiven",
+      "Maak het lichter door rechterop te staan en laat je heupen niet doorzakken"
+    ],
+    "alternatives": [
+      "seated-row-cable-rug",
+      "bent-over-row-dumbbell-rug"
+    ],
+    "source": "https://tanrenica.com/exercises?lang=en",
+    "sourceLabel": "Tanrenica (oefenregister)",
+    "poses": []
+  },
+  "overhead-press-barbell-schouders": {
+    "primary": "Voorste en middelste schouders",
+    "secondary": "Triceps, trapezius, romp",
+    "equipment": "Halter en rek",
+    "steps": [
+      "Houd de halter voor je schouders met onderarmen onder de stang",
+      "Span je romp aan en druk de stang boven je hoofd",
+      "Laat de stang gecontroleerd naar de schouders zakken"
+    ],
+    "tips": [
+      "Voorkom overmatig hol trekken van je rug",
+      "Beweeg de stang dicht langs je gezicht zonder je nek te forceren"
+    ],
+    "alternatives": [
+      "shoulder-press-dumbbell-schouders",
+      "shoulder-press-machine-schouders"
+    ],
+    "source": "https://tanrenica.com/exercises?lang=en",
+    "sourceLabel": "Tanrenica (oefenregister)",
+    "poses": []
+  },
+  "push-press-barbell-schouders": {
+    "primary": "Schouders, triceps",
+    "secondary": "Quadriceps, bilspieren, romp",
+    "equipment": "Halter en rek",
+    "steps": [
+      "Start met de halter voor je schouders",
+      "Buig de knieën kort met een rechte romp en strek de benen krachtig",
+      "Druk de halter boven je hoofd en laat hem gecontroleerd terugkomen"
+    ],
+    "tips": [
+      "Gebruik een korte dip, geen diepe squat",
+      "Vang de terugkerende stang beheerst op en leer eerst de strict press"
+    ],
+    "alternatives": [
+      "overhead-press-barbell-schouders",
+      "shoulder-press-dumbbell-schouders"
+    ],
+    "source": "https://tanrenica.com/exercises?lang=en",
+    "sourceLabel": "Tanrenica (oefenregister)",
+    "poses": []
+  },
+  "front-raise-dumbbell-schouders": {
+    "primary": "Voorste schouders",
+    "secondary": "Bovenste borst, middelste schouders, romp",
+    "equipment": "Twee dumbbells",
+    "steps": [
+      "Sta met dumbbells voor of naast je dijen",
+      "Til één of beide armen voor je tot ongeveer schouderhoogte",
+      "Laat de gewichten langzaam terugzakken"
+    ],
+    "tips": [
+      "Houd ellebogen licht gebogen",
+      "Voorkom zwaaien en overmatig achterover leunen"
+    ],
+    "alternatives": [
+      "front-raise-cable-schouders",
+      "shoulder-press-dumbbell-schouders"
+    ],
+    "source": "https://tanrenica.com/exercises?lang=en",
+    "sourceLabel": "Tanrenica (oefenregister)",
+    "poses": []
+  },
+  "arnold-press-dumbbell-schouders": {
+    "primary": "Voorste en middelste schouders",
+    "secondary": "Triceps, bovenste borst, romp",
+    "equipment": "Twee dumbbells, eventueel bank",
+    "steps": [
+      "Begin met dumbbells voor de schouders en handpalmen naar je toe",
+      "Draai de armen geleidelijk naar buiten terwijl je omhoog drukt",
+      "Keer de beweging rustig om tot de beginpositie"
+    ],
+    "tips": [
+      "Forceer de rotatie niet als de schouders oncomfortabel zijn",
+      "Houd ribben en bekken stabiel"
+    ],
+    "alternatives": [
+      "shoulder-press-dumbbell-schouders",
+      "shoulder-press-machine-schouders"
+    ],
+    "source": "https://tanrenica.com/exercises?lang=en",
+    "sourceLabel": "Tanrenica (oefenregister)",
+    "poses": [
+      {
+        "file": "media/exercises/arnold-press-1.png",
+        "label": "Onderste positie — gewichten bij schouders"
+      },
+      {
+        "file": "media/exercises/arnold-press-2.png",
+        "label": "Bovenste positie — gewichten boven het hoofd"
+      }
+    ],
+    "artSource": "https://github.com/everkinetic/data/tree/446bb9a3d0c3beb6b84f7c9d77dfc8af707a2ab6/src/images-web",
+    "artLicense": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "note": "De draai tussen de twee posities is niet afgebeeld."
+  },
+  "reverse-fly-dumbbell-schouders": {
+    "primary": "Achterste schouders",
+    "secondary": "Middenrug, rotator cuff",
+    "equipment": "Twee lichte dumbbells",
+    "steps": [
+      "Scharnier vanuit je heupen en laat de dumbbells onder je hangen",
+      "Til je licht gebogen armen zijwaarts zonder de romp te draaien",
+      "Laat ze beheerst terugzakken"
+    ],
+    "tips": [
+      "Gebruik weinig gewicht en geen zwaai",
+      "Trek de schouders niet op naar de oren"
+    ],
+    "alternatives": [
+      "reverse-pec-deck-machine-schouders",
+      "face-pull-cable-schouders"
+    ],
+    "source": "https://tanrenica.com/exercises?lang=en",
+    "sourceLabel": "Tanrenica (oefenregister)",
+    "poses": []
+  },
+  "lateral-raise-cable-schouders": {
+    "primary": "Middelste schouders",
+    "secondary": "Rotator cuff, trapezius",
+    "equipment": "Lage kabel met handgreep",
+    "steps": [
+      "Sta zijwaarts naast de kabel en pak de greep met de buitenste hand",
+      "Til de arm zijwaarts iets voor je romp tot een comfortabele hoogte",
+      "Laat de arm beheerst teruggaan"
+    ],
+    "tips": [
+      "Houd de romp stil en elleboog licht gebogen",
+      "Trek de schouder niet op"
+    ],
+    "alternatives": [
+      "lateral-raise-dumbbell-schouders",
+      "lateral-raise-machine-schouders"
+    ],
+    "source": "https://tanrenica.com/exercises?lang=en",
+    "sourceLabel": "Tanrenica (oefenregister)",
+    "poses": []
+  },
+  "front-raise-cable-schouders": {
+    "primary": "Voorste schouders",
+    "secondary": "Bovenste borst, romp",
+    "equipment": "Lage kabel en handgreep",
+    "steps": [
+      "Sta stabiel met de greep voor je dij en lichte kabelspanning",
+      "Til je arm voor je tot ongeveer schouderhoogte",
+      "Laat de greep langzaam teruggaan"
+    ],
+    "tips": [
+      "Voorkom achterover leunen",
+      "Houd pols en elleboog in een comfortabele stand"
+    ],
+    "alternatives": [
+      "front-raise-dumbbell-schouders",
+      "shoulder-press-machine-schouders"
+    ],
+    "source": "https://tanrenica.com/exercises?lang=en",
+    "sourceLabel": "Tanrenica (oefenregister)",
+    "poses": []
+  },
+  "shoulder-press-machine-schouders": {
+    "primary": "Voorste en middelste schouders",
+    "secondary": "Triceps",
+    "equipment": "Schouderpressmachine",
+    "steps": [
+      "Stel de zitting zo in dat handgrepen bij de schouders beginnen",
+      "Duw de handgrepen omhoog volgens de machinebaan",
+      "Laat ze gecontroleerd naar de startpositie zakken"
+    ],
+    "tips": [
+      "Houd de rug tegen de steun",
+      "Forceer geen eindstand of pijnlijke schouderhoek"
+    ],
+    "alternatives": [
+      "shoulder-press-dumbbell-schouders",
+      "overhead-press-barbell-schouders"
+    ],
+    "source": "https://tanrenica.com/exercises?lang=en",
+    "sourceLabel": "Tanrenica (oefenregister)",
+    "poses": []
+  },
+  "lateral-raise-machine-schouders": {
+    "primary": "Middelste schouders",
+    "secondary": "Trapezius, rotator cuff",
+    "equipment": "Lateral raise-machine",
+    "steps": [
+      "Stel de zitting en armpads zo in dat je schouders bij het draaipunt liggen",
+      "Duw de pads zijwaarts omhoog tot een comfortabele hoogte",
+      "Laat de armen beheerst terugzakken"
+    ],
+    "tips": [
+      "Houd je romp tegen de steun",
+      "Vermijd schouderophalen of stuiteren"
+    ],
+    "alternatives": [
+      "lateral-raise-dumbbell-schouders",
+      "lateral-raise-cable-schouders"
+    ],
+    "source": "https://tanrenica.com/exercises?lang=en",
+    "sourceLabel": "Tanrenica (oefenregister)",
+    "poses": []
+  },
+  "reverse-pec-deck-machine-schouders": {
+    "primary": "Achterste schouders",
+    "secondary": "Middenrug, rotator cuff",
+    "equipment": "Reverse pec deck-machine",
+    "steps": [
+      "Zit met je borst naar de steun en stel de handgrepen in",
+      "Beweeg je licht gebogen armen zijwaarts en achterwaarts",
+      "Laat de handgrepen rustig teruggaan"
+    ],
+    "tips": [
+      "Houd borst tegen de steun en nek ontspannen",
+      "Maak er geen roeibeweging van door de ellebogen sterk te buigen"
+    ],
+    "alternatives": [
+      "reverse-fly-dumbbell-schouders",
+      "face-pull-cable-schouders"
+    ],
+    "source": "https://tanrenica.com/exercises?lang=en",
+    "sourceLabel": "Tanrenica (oefenregister)",
+    "poses": []
+  },
+  "concentration-curl-dumbbell-armen": {
+    "primary": "Biceps, brachialis",
+    "secondary": "Onderarmen",
+    "equipment": "Dumbbell en bank",
+    "steps": [
+      "Zit met voeten breed en steun je bovenarm tegen je binnenste bovenbeen",
+      "Buig de elleboog en til de dumbbell richting schouder",
+      "Laat het gewicht gecontroleerd zakken"
+    ],
+    "tips": [
+      "Houd je bovenarm op zijn plaats",
+      "Draai of zwaai je romp niet mee"
+    ],
+    "alternatives": [
+      "biceps-curl-dumbbell-armen",
+      "preacher-curl-machine-armen"
+    ],
+    "source": "https://tanrenica.com/exercises?lang=en",
+    "sourceLabel": "Tanrenica (oefenregister)",
+    "poses": []
+  },
+  "triceps-extension-dumbbell-armen": {
+    "primary": "Triceps",
+    "secondary": "Schouder- en rompstabilisatoren",
+    "equipment": "Eén dumbbell, eventueel bank",
+    "steps": [
+      "Houd een dumbbell met beide handen veilig boven je hoofd",
+      "Buig je ellebogen om het gewicht achter je hoofd te laten zakken",
+      "Strek de ellebogen om terug te keren"
+    ],
+    "tips": [
+      "Houd ribben boven bekken en bovenarmen relatief stil",
+      "Gebruik een grip die het gewicht betrouwbaar vasthoudt"
+    ],
+    "alternatives": [
+      "overhead-triceps-extension-cable-armen",
+      "triceps-pushdown-cable-armen"
+    ],
+    "source": "https://tanrenica.com/exercises?lang=en",
+    "sourceLabel": "Tanrenica (oefenregister)",
+    "poses": []
+  },
+  "skull-crusher-dumbbell-armen": {
+    "primary": "Triceps",
+    "secondary": "Schouderstabilisatoren",
+    "equipment": "Twee dumbbells, vlakke bank",
+    "steps": [
+      "Lig op de bank en houd de dumbbells boven de schouders",
+      "Buig de ellebogen zodat de gewichten naast je hoofd zakken",
+      "Strek de ellebogen beheerst"
+    ],
+    "tips": [
+      "Houd de gewichten naast in plaats van boven je gezicht",
+      "Vermijd verplaatsen van de bovenarmen en gebruik beheersbaar gewicht"
+    ],
+    "alternatives": [
+      "triceps-extension-dumbbell-armen",
+      "triceps-pushdown-cable-armen"
+    ],
+    "source": "https://tanrenica.com/exercises?lang=en",
+    "sourceLabel": "Tanrenica (oefenregister)",
+    "poses": []
+  },
+  "biceps-curl-cable-armen": {
+    "primary": "Biceps, brachialis",
+    "secondary": "Onderarmspieren",
+    "equipment": "Lage kabel met stang of handgreep",
+    "steps": [
+      "Sta stabiel met de kabelgreep voor je dijen",
+      "Buig de ellebogen zonder de bovenarmen naar voren te zwaaien",
+      "Laat de greep gecontroleerd zakken"
+    ],
+    "tips": [
+      "Houd de polsen neutraal",
+      "Gebruik geen heupzwaai of achterover leunen"
+    ],
+    "alternatives": [
+      "biceps-curl-dumbbell-armen",
+      "biceps-curl-barbell-armen"
+    ],
+    "source": "https://tanrenica.com/exercises?lang=en",
+    "sourceLabel": "Tanrenica (oefenregister)",
+    "poses": []
+  },
+  "overhead-triceps-extension-cable-armen": {
+    "primary": "Triceps",
+    "secondary": "Schouder- en rompstabilisatoren",
+    "equipment": "Kabelstation met touw",
+    "steps": [
+      "Pak het touw en sta met je rug naar de kabel in een stabiele stand",
+      "Houd bovenarmen boven of naast het hoofd en strek de ellebogen",
+      "Laat de onderarmen gecontroleerd terugbuigen"
+    ],
+    "tips": [
+      "Voorkom overstrekken van de rug",
+      "Houd de kabel vrij van je hoofd en gebruik lichte weerstand"
+    ],
+    "alternatives": [
+      "triceps-extension-dumbbell-armen",
+      "triceps-pushdown-cable-armen"
+    ],
+    "source": "https://tanrenica.com/exercises?lang=en",
+    "sourceLabel": "Tanrenica (oefenregister)",
+    "poses": []
+  },
+  "preacher-curl-machine-armen": {
+    "primary": "Biceps, brachialis",
+    "secondary": "Onderarmspieren",
+    "equipment": "Preacher curl-machine",
+    "steps": [
+      "Stel de zitting zo in dat bovenarmen goed op de steun liggen",
+      "Buig de ellebogen om de handgrepen omhoog te brengen",
+      "Laat de machine beheerst zakken"
+    ],
+    "tips": [
+      "Laat de bovenarmen op de steun",
+      "Forceer geen volledige strekking tegen zware weerstand"
+    ],
+    "alternatives": [
+      "concentration-curl-dumbbell-armen",
+      "biceps-curl-cable-armen"
+    ],
+    "source": "https://tanrenica.com/exercises?lang=en",
+    "sourceLabel": "Tanrenica (oefenregister)",
+    "poses": []
+  },
+  "triceps-extension-machine-armen": {
+    "primary": "Triceps",
+    "secondary": "Onderarm- en schouderstabilisatoren",
+    "equipment": "Triceps extension-machine",
+    "steps": [
+      "Stel zitting en armpads in volgens de machine",
+      "Strek de ellebogen tegen weerstand",
+      "Laat de handgrepen langzaam terugkomen"
+    ],
+    "tips": [
+      "Houd bovenarmen tegen de steun waar van toepassing",
+      "Vermijd stoten en geforceerde eindstanden"
+    ],
+    "alternatives": [
+      "triceps-pushdown-cable-armen",
+      "skull-crusher-dumbbell-armen"
+    ],
+    "source": "https://tanrenica.com/exercises?lang=en",
+    "sourceLabel": "Tanrenica (oefenregister)",
+    "poses": []
+  },
+  "crunch-core": {
+    "primary": "Rechte buikspieren",
+    "secondary": "Schuine buikspieren",
+    "equipment": "Mat, eventueel bank",
+    "steps": [
+      "Lig op je rug met gebogen knieën",
+      "Adem uit en rol schouderbladen iets van de vloer",
+      "Laat je bovenrug gecontroleerd terugzakken"
+    ],
+    "tips": [
+      "Trek niet aan je nek",
+      "Maak geen volledige sit-up en houd de beweging klein"
+    ],
+    "alternatives": [
+      "reverse-crunch-core",
+      "crunch-cable-core"
+    ],
+    "source": "https://www.keele.ac.uk/sportatkeele/activekeele/exerciselibrary/",
+    "sourceLabel": "Sport Keele (oefenregister)",
+    "poses": [
+      {
+        "file": "media/exercises/crunches-1.png",
+        "label": "Beginpositie — bovenrug op de vloer"
+      },
+      {
+        "file": "media/exercises/crunches-2.png",
+        "label": "Eindpositie — schouderbladen opgetild"
+      }
+    ],
+    "artSource": "https://github.com/everkinetic/data/tree/446bb9a3d0c3beb6b84f7c9d77dfc8af707a2ab6/src/images-web",
+    "artLicense": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "note": "Afgebeeld met onderbenen op een bankje; voeten op de vloer is ook mogelijk."
+  },
+  "reverse-crunch-core": {
+    "primary": "Rechte buikspieren",
+    "secondary": "Schuine buikspieren, heupbuigers",
+    "equipment": "Mat",
+    "steps": [
+      "Lig op je rug met heupen en knieën gebogen",
+      "Rol het bekken op zodat je stuitje iets loskomt van de vloer",
+      "Laat het bekken rustig terugzakken"
+    ],
+    "tips": [
+      "Zwaai niet met de benen",
+      "Houd de beweging klein en gecontroleerd"
+    ],
+    "alternatives": [
+      "crunch-core",
+      "dead-bug-core"
+    ],
+    "source": "https://www.keele.ac.uk/sportatkeele/activekeele/exerciselibrary/",
+    "sourceLabel": "Sport Keele (oefenregister)",
+    "poses": []
+  },
+  "mountain-climber-core": {
+    "primary": "Rompstabilisatoren, heupbuigers",
+    "secondary": "Schouders, quadriceps",
+    "equipment": "Mat of vloer",
+    "steps": [
+      "Neem een hoge plank met handen onder schouders",
+      "Breng één knie richting borst zonder je bekken te draaien",
+      "Wissel van been in een beheerst ritme"
+    ],
+    "tips": [
+      "Laat je onderrug niet doorzakken",
+      "Kies een tempo waarbij de schouders boven de handen blijven"
+    ],
+    "alternatives": [
+      "plank-core",
+      "dead-bug-core"
+    ],
+    "source": "https://www.keele.ac.uk/sportatkeele/activekeele/exerciselibrary/",
+    "sourceLabel": "Sport Keele (oefenregister)",
+    "poses": []
+  },
+  "hanging-knee-raise-core": {
+    "primary": "Rechte buikspieren, heupbuigers",
+    "secondary": "Onderarmen, brede rugspier",
+    "equipment": "Optrekstang",
+    "steps": [
+      "Hang stabiel met voldoende grip",
+      "Breng je gebogen knieën omhoog en kantel het bekken licht achterover",
+      "Laat de benen langzaam terugzakken"
+    ],
+    "tips": [
+      "Vermijd zwaaien of kippen",
+      "Gebruik een ondersteunde kniehef als de grip onvoldoende is"
+    ],
+    "alternatives": [
+      "reverse-crunch-core",
+      "dead-bug-core"
+    ],
+    "source": "https://coresatraining.com/exercises/",
+    "sourceLabel": "Coresa (oefenregister)",
+    "poses": []
+  },
+  "hollow-hold-core": {
+    "primary": "Rechte buikspieren, rompstabilisatoren",
+    "secondary": "Heupbuigers, schouders",
+    "equipment": "Mat",
+    "steps": [
+      "Lig op de rug en kantel het bekken zodat je onderrug op de mat blijft",
+      "Til schouders en benen op tot een beheerste holle houding",
+      "Houd vast met rustige ademhaling en laat beheerst zakken"
+    ],
+    "tips": [
+      "Buig je knieën of laat armen naast je lichaam als de rug loskomt",
+      "Forceer geen lange houdtijd"
+    ],
+    "alternatives": [
+      "dead-bug-core",
+      "plank-core"
+    ],
+    "source": "https://www.keele.ac.uk/sportatkeele/activekeele/exerciselibrary/",
+    "sourceLabel": "Sport Keele (oefenregister)",
+    "poses": []
+  },
+  "wood-chop-cable-core": {
+    "primary": "Schuine buikspieren, romp",
+    "secondary": "Heupen, schouders",
+    "equipment": "Kabelstation en handgreep",
+    "steps": [
+      "Stel de kabel hoog in en sta zijwaarts met beide handen aan de greep",
+      "Trek de greep diagonaal van hoog naar laag terwijl borst en heupen gecontroleerd meedraaien",
+      "Keer langzaam terug en wissel van zijde"
+    ],
+    "tips": [
+      "Laat je knieën en voeten natuurlijk meebewegen",
+      "Draai niet explosief vanuit alleen de onderrug"
+    ],
+    "alternatives": [
+      "pallof-press-cable-core",
+      "russian-twist-dumbbell-core"
+    ],
+    "source": "https://coresatraining.com/exercises/",
+    "sourceLabel": "Coresa (oefenregister)",
+    "poses": []
+  },
+  "crunch-cable-core": {
+    "primary": "Rechte buikspieren",
+    "secondary": "Schuine buikspieren",
+    "equipment": "Hoge kabel met touw, mat",
+    "steps": [
+      "Kniel voor de kabel en houd het touw naast je hoofd",
+      "Breng ribben naar bekken door je romp gecontroleerd te buigen",
+      "Kom langzaam terug zonder alleen in de heupen te bewegen"
+    ],
+    "tips": [
+      "Trek niet met je armen aan het touw",
+      "Houd de heupen relatief stil en voorkom te zwaar gewicht"
+    ],
+    "alternatives": [
+      "crunch-core",
+      "reverse-crunch-core"
+    ],
+    "source": "https://tanrenica.com/exercises?lang=en",
+    "sourceLabel": "Tanrenica (oefenregister)",
+    "poses": []
+  },
+  "russian-twist-dumbbell-core": {
+    "primary": "Schuine buikspieren",
+    "secondary": "Rechte buikspieren, heupbuigers",
+    "equipment": "Dumbbell en mat",
+    "steps": [
+      "Zit met gebogen knieën en voeten op de vloer en houd de dumbbell voor de borst",
+      "Draai je borst rustig naar één zijde",
+      "Keer via het midden naar de andere zijde"
+    ],
+    "tips": [
+      "Gebruik lichte weerstand en voorkom geforceerde draai vanuit de onderrug",
+      "Houd voeten op de vloer als balans beperkt is"
+    ],
+    "alternatives": [
+      "pallof-press-cable-core",
+      "wood-chop-cable-core"
+    ],
+    "source": "https://www.keele.ac.uk/sportatkeele/activekeele/exerciselibrary/",
+    "sourceLabel": "Sport Keele (oefenregister)",
+    "poses": []
+  },
+  "side-bend-dumbbell-core": {
+    "primary": "Schuine buikspieren, quadratus lumborum",
+    "secondary": "Rugstrekkers, romp",
+    "equipment": "Eén dumbbell",
+    "steps": [
+      "Sta rechtop met de dumbbell aan één zijde",
+      "Buig de romp rustig zijwaarts richting het gewicht",
+      "Kom terug tot rechtop en wissel na de set"
+    ],
+    "tips": [
+      "Buig niet voorover of naar achteren",
+      "Gebruik een kleine comfortabele uitslag zonder te zwaaien"
+    ],
+    "alternatives": [
+      "suitcase-carry-dumbbell-core",
+      "side-plank-core"
+    ],
+    "source": "https://www.keele.ac.uk/sportatkeele/activekeele/exerciselibrary/",
+    "sourceLabel": "Sport Keele (oefenregister)",
+    "poses": []
+  },
+  "suitcase-carry-dumbbell-core": {
+    "primary": "Schuine buikspieren, rompstabilisatoren",
+    "secondary": "Onderarmen, trapezius, bilspieren",
+    "equipment": "Eén dumbbell, vrije looproute",
+    "steps": [
+      "Til de dumbbell veilig op en houd deze naast je lichaam",
+      "Loop rechtop met gelijkmatige passen",
+      "Zet het gewicht beheerst neer en wissel van hand"
+    ],
+    "tips": [
+      "Leun niet naar of weg van het gewicht",
+      "Houd de schouders ontspannen en kies een vrij pad"
+    ],
+    "alternatives": [
+      "suitcase-carry-kettlebell-core",
+      "side-plank-core"
+    ],
+    "source": "https://tanrenica.com/exercises?lang=en",
+    "sourceLabel": "Tanrenica (oefenregister)",
+    "poses": []
+  },
+  "farmer-carry-kettlebell-core": {
+    "primary": "Onderarmen, trapezius, rompstabilisatoren",
+    "secondary": "Bilspieren, quadriceps",
+    "equipment": "Twee kettlebells, vrije looproute",
+    "steps": [
+      "Til beide kettlebells op met een beheerste heupscharnier",
+      "Loop rechtop met de gewichten naast je lichaam",
+      "Zet beide gewichten gecontroleerd neer"
+    ],
+    "tips": [
+      "Houd de romp stabiel en vermijd haastige passen",
+      "Gebruik een afstand die je grip aankan"
+    ],
+    "alternatives": [
+      "suitcase-carry-kettlebell-core",
+      "suitcase-carry-dumbbell-core"
+    ],
+    "source": "https://tanrenica.com/exercises?lang=en",
+    "sourceLabel": "Tanrenica (oefenregister)",
+    "poses": []
+  },
+  "suitcase-carry-kettlebell-core": {
+    "primary": "Schuine buikspieren, rompstabilisatoren",
+    "secondary": "Onderarmen, trapezius, bilspieren",
+    "equipment": "Eén kettlebell, vrije looproute",
+    "steps": [
+      "Til de kettlebell veilig op en houd hem naast je lichaam",
+      "Loop zonder zijwaarts te leunen",
+      "Zet het gewicht beheerst neer en wissel van zijde"
+    ],
+    "tips": [
+      "Houd schouders en bekken horizontaal",
+      "Stop voordat de grip verloren gaat"
+    ],
+    "alternatives": [
+      "suitcase-carry-dumbbell-core",
+      "farmer-carry-kettlebell-core"
+    ],
+    "source": "https://tanrenica.com/exercises?lang=en",
+    "sourceLabel": "Tanrenica (oefenregister)",
+    "poses": []
+  },
+  "turkish-get-up-kettlebell-core": {
+    "primary": "Schouder- en rompstabilisatoren, bilspieren",
+    "secondary": "Quadriceps, triceps, heupspieren",
+    "equipment": "Lichte kettlebell en vrije mat",
+    "steps": [
+      "Lig op de rug met het gewicht boven één schouder en de knie aan die zijde gebogen",
+      "Rol via de vrije elleboog naar de hand, til je heupen en breng het vrije been onder je tot halfkniel",
+      "Kom tot stand met het gewicht stabiel boven je en keer alle stappen langzaam om"
+    ],
+    "tips": [
+      "Oefen eerst zonder gewicht en onder begeleiding als de beweging nieuw is",
+      "Houd de pols boven de schouder en stop als controle verloren gaat"
+    ],
+    "alternatives": [
+      "overhead-press-barbell-schouders",
+      "side-plank-core"
+    ],
+    "source": "https://www.keele.ac.uk/sportatkeele/activekeele/exerciselibrary/",
+    "sourceLabel": "Sport Keele (oefenregister)",
+    "poses": []
   }
 };
 export const exerciseMedia=[
@@ -1176,6 +2735,14 @@ export const exerciseMedia=[
   "media/exercises/dumbbell-incline-bench-press-1.png",
   "media/exercises/dumbbell-incline-bench-press-2.png",
   "media/exercises/lateral-dumbbell-raises-2.png",
-  "media/exercises/lateral-dumbbell-raises-1.png"
+  "media/exercises/lateral-dumbbell-raises-1.png",
+  "media/exercises/front-squat-with-barbell-1.png",
+  "media/exercises/front-squat-with-barbell-2.png",
+  "media/exercises/leg-extensions-1.png",
+  "media/exercises/leg-extensions-2.png",
+  "media/exercises/arnold-press-1.png",
+  "media/exercises/arnold-press-2.png",
+  "media/exercises/crunches-1.png",
+  "media/exercises/crunches-2.png"
 ];
 export function getExerciseDetail(id){return Object.hasOwn(exerciseDetails,id)?exerciseDetails[id]:null}

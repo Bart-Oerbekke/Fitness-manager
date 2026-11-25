@@ -81,7 +81,7 @@ try{
  await click('[data-action="back"]');
  assert.equal(await evaluate("document.querySelectorAll('.exercise-poses img').length"),2);
  await click('[data-action="exercise-detail"][data-id="diamond-push-up-borst"]');
- assert.ok(await evaluate("document.querySelector('#app').textContent.includes('nog geen gecontroleerde uitleg')"));
+ assert.ok(await evaluate("document.querySelector('#app').textContent.includes('Uitvoering')&&document.querySelector('#app').textContent.includes('Nog geen gecontroleerde illustratie')"));
  await click('[data-action="back"]');
  assert.equal(await evaluate("document.querySelector('#search').value"),'Bench Dip');
  assert.equal(await evaluate("document.activeElement.dataset.id"),'bench-dip-armen');

@@ -38,3 +38,14 @@ Eigen Nederlandse instructies; geraadpleegde NASM-bron per oefening in src/exerc
 - media/exercises/lateral-dumbbell-raises-2.png
 - media/exercises/lateral-dumbbell-raises-1.png
 Deze acht afbeeldingen zijn visueel op variant en volgorde beoordeeld, ongewijzigd overgenomen van dezelfde Everkinetic-commit, blob-SHA identiek. Nederlandse eigen tekst met aanvullende referenties NASM, E3 Rehab, Hawkes Physiotherapy en Train with Erika. Video's blijven externe links op verzoek; bij Pallof Press bronpagina met video. Titels/afzender of verwijzing vanuit bron gecontroleerd, geen volledige videoreview. Nieuwe dekking: 46/118 uitleg, 42/118 videolinks, 13/118 lokaal beeld (25 PNG). Niet gecontroleerde media niet toegevoegd.
+
+## Volledige tekstdekking 0.13
+- media/exercises/front-squat-with-barbell-1.png
+- media/exercises/front-squat-with-barbell-2.png
+- media/exercises/leg-extensions-1.png
+- media/exercises/leg-extensions-2.png
+- media/exercises/arnold-press-1.png
+- media/exercises/arnold-press-2.png
+- media/exercises/crunches-1.png
+- media/exercises/crunches-2.png
+Acht extra originele Everkinetic-PNG's, visueel bekeken en met identieke bronblob. Bij de crunch en front squat is een variantnotitie toegevoegd. 118/118 eigen Nederlandse beschrijvingen, 42 bestaande videolinks behouden, 17/118 oefeningen met lokaal beeld (33 PNG's). Video is optioneel en niet verder uitgebreid. Algemene oefenregisters Tanrenica, Sport Keele en Coresa geraadpleegd; nieuwe tekst is redactionele zelfreview, geen individueel bron- of coachcertificaat. Niet alle oefenvarianten zijn afzonderlijk extern gevalideerd. Geen foto's met onzekere rechten gebruikt.
