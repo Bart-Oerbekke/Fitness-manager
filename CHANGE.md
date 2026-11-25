@@ -202,3 +202,6 @@ De bouwer en preview gebruiken stippen bij meerdere pagina’s. De preview slaat
 ## Swipe-pagina’s tijdens training (0.15.2)
 
 De actieve sessie bewaart haar eigen pagina-indeling. Een lege standaardpagina verdwijnt zodra die overbodig is. Vandaag biedt een voorbeeldworkout met drie gevulde pagina’s.
+
+## 0.16.0 — UI/UX revisie
+Gebruiker selecteerde negen verbeteringen en gaf akkoord voor de bestaande Vercel-testomgeving, uitsluitend bij groene CI. Basis e559f51d121d1a645cb18d39b09a91691766f594 (live 0.15.2). Scope: compacte trainingskaarten, sticky sessievoortgang en tijd, groene voltooide sets, inklapbare builderkaarten met samenvatting, rustiger Vandaag, compacte agenda met weekstatistieken onder activiteiten, grafiek met eenheid, raster en datum-as, consistente stijl, subtiele beweging met reduced-motion. Geen wijziging aan core, opslag, oefening-ID's, media of accountconfiguratie. Geen extra kosten of merge. Risico's: smalle schermen, verborgen ongeldige velden, behoud van invoer bij inklappen, sticky header/keyboard en serviceworker-update. Acceptatie: bestaande flows, browserlayout, update en opslagregressies blijven groen; drie trainingspagina's en sessievoortgang blijven intact. Fysieke iPhone-review volgt door gebruiker. CI vereist.
