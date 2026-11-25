@@ -176,12 +176,12 @@ try{
  await click('#nav [data-page="schemas"]');
  await click('[data-action="schema-tab"][data-id="workouts"]');
  assert.equal(await evaluate("document.querySelectorAll('.schema-card .manage-link').length"),0);
- await evaluate("const q=document.querySelector('#workout-search');q.value='Update test';q.dispatchEvent(new Event('input',{bubbles:true}))");
+ await evaluate("(()=>{const q=document.querySelector('#workout-search');q.value='Update test';q.dispatchEvent(new Event('input',{bubbles:true}))})()");
  await click('[data-action="workout-open"][data-id="update-test-workout"]');
  await click('[data-action="back"]');
  assert.equal(await evaluate("document.querySelector('#workout-search').value"),'Update test');
  assert.equal(await evaluate("document.querySelector('.schema-tabs .on').dataset.id"),'workouts');
- await evaluate("const q=document.querySelector('#workout-search');q.value='';q.dispatchEvent(new Event('input',{bubbles:true}))");
+ await evaluate("(()=>{const q=document.querySelector('#workout-search');q.value='';q.dispatchEvent(new Event('input',{bubbles:true}))})()");
  await click('[data-action="workout-open"][data-id="update-test-workout"]');
  await reviewLayout('Workout preview','.set');
  assert.equal(await evaluate("getComputedStyle(document.querySelector('.preview-dock')).position"),'fixed');
