@@ -154,14 +154,14 @@ try{
  assert.ok(await evaluate("!!document.querySelector('.cal-shell')"));
  console.log('PASS_AGENDA_ROUTES');
  await click('#nav [data-page="settings"]');
- assert.equal(await evaluate("document.querySelector('#installed-version').textContent"),'0.17.1');
+ assert.equal(await evaluate("document.querySelector('#installed-version').textContent"),'0.17.2');
  await click('[data-action="update-check"]');
  assert.ok(await evaluate("document.querySelector('#update-message').textContent.includes('Geen internet')"));
  await cdp('Network.emulateNetworkConditions',{offline:false,latency:0,downloadThroughput:-1,uploadThroughput:-1});
  // Change served files in this disposable CI checkout only; restore in finally.
  originalApp=await readFile('src/app.mjs','utf8');originalSW=await readFile('sw.js','utf8');
- await writeFile('src/app.mjs',originalApp.replace('const APP_VERSION="0.17.1"','const APP_VERSION="0.17.2-test"'));
- await writeFile('sw.js',originalSW.replace('fitness-manager-shell-v24','fitness-manager-shell-v24-ci-update'));
+ await writeFile('src/app.mjs',originalApp.replace('const APP_VERSION="0.17.2"','const APP_VERSION="0.17.3-test"'));
+ await writeFile('sw.js',originalSW.replace('fitness-manager-shell-v25','fitness-manager-shell-v25-ci-update'));
  await wait(()=>evaluate("!!document.querySelector('[data-action=update-check]:not([disabled])')"),'update check ready');
  await click('[data-action="update-check"]');
  await wait(()=>evaluate("!!document.querySelector('[data-action=update-apply]:not([disabled])')"),'new worker waiting');
@@ -302,7 +302,7 @@ try{
  await click('#nav [data-page="agenda"]');
  assert.ok(await evaluate("document.querySelector('.cal-day-agenda').textContent.includes('Offline test')"));
  await click('#nav [data-page="settings"]');
- assert.equal(await evaluate("document.querySelector('#installed-version').textContent"),'0.17.2-test');
+ assert.equal(await evaluate("document.querySelector('#installed-version').textContent"),'0.17.3-test');
  console.log('PASS_APP_UPDATE');
  // Management UI: exercise the archive, resume and history flows before final backup restore.
  await click('#nav [data-page="schemas"]');
@@ -394,14 +394,27 @@ try{
  }
  const selectedWorkoutPage=()=>evaluate("Number(document.querySelector('.workout-page:not([hidden])').dataset.workoutPage)");
  assert.equal(await selectedWorkoutPage(),0);
+ assert.equal(await evaluate("document.querySelector('#app h1').textContent"),'Voorbeeldworkout');
+ assert.ok(await evaluate("document.querySelector('.workout-page:not([hidden]) .set-columns').textContent.includes('Reps')"));
+ assert.ok(await evaluate("(()=>{const p=document.querySelector('.workout-page:not([hidden])');return [...p.querySelectorAll('input[data-field]')].every(n=>n.disabled)&&getComputedStyle(p.querySelector('.field')).borderTopColor==='rgba(0, 0, 0, 0)'&&getComputedStyle(p.querySelector('.check')).visibility==='hidden'})()"));
+ await evaluate("window.hapticCalls=[];Object.defineProperty(navigator,'vibrate',{configurable:true,value:ms=>{window.hapticCalls.push(ms);return true}})");
  await swipeWorkout(-140,0);
  assert.equal(await selectedWorkoutPage(),1,'swipe from blank preview canvas');
+ assert.equal(await evaluate("document.querySelector('.workout-page:not([hidden])').classList.contains('page-forward')"),true);
+ assert.deepEqual(await evaluate("window.hapticCalls"),[8]);
+ await cdp('Emulation.setEmulatedMedia',{features:[{name:'prefers-reduced-motion',value:'reduce'}]});
+ assert.equal(await evaluate("getComputedStyle(document.querySelector('.workout-page:not([hidden])')).animationName"),'none');
+ await cdp('Emulation.setEmulatedMedia',{features:[]});
  await swipeWorkout(-8,140);
  assert.equal(await selectedWorkoutPage(),1,'vertical gesture does not switch');
  await swipeWorkout(140,0);
  assert.equal(await selectedWorkoutPage(),0,'reverse swipe');
+ assert.equal(await evaluate("document.querySelector('.workout-page:not([hidden])').classList.contains('page-backward')"),true);
+ assert.deepEqual(await evaluate("window.hapticCalls"),[8,8]);
  await swipeWorkout(140,0);
  assert.equal(await selectedWorkoutPage(),0,'no swipe beyond first page');
+ assert.deepEqual(await evaluate("window.hapticCalls"),[8,8]);
+ await evaluate("Object.defineProperty(navigator,'vibrate',{configurable:true,value:undefined})");
  await sleep(400);
  await click('[data-action="start"]');
  assert.equal(await evaluate("document.querySelectorAll('.workout-dot').length"),3);
