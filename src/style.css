@@ -506,3 +506,31 @@ html:has(#app .screen-header [data-action="back"]){overscroll-behavior-x:none}
 .settings-details[open]>summary::after{transform:rotate(225deg)}
 .settings-details-body{border-top:1px solid #303945;padding-top:8px;color:#b3bdca;font-size:13px}
 .settings-details-body .demo-link{margin-top:10px}
+
+/* 0.19 — charts first, fewer nested cards; navigation fades do not alter fixed geometry */
+.progress-dashboard,.exercise-progress-content{display:grid;gap:14px}
+.progress-section{min-width:0;padding:8px 2px 13px;border-bottom:1px solid #303945}
+.progress-section h2{font-size:17px;margin:0 0 8px}
+.progress-section .metric-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(86px,1fr));gap:8px;margin:9px 0}
+.progress-section .metric-grid>div{background:transparent;border:0;padding:4px 0;gap:3px}
+.progress-section .metric-grid>div+div{border-left:1px solid #303945;padding-left:10px;border-radius:0}
+.progress-section .metric-grid strong{font-size:21px}
+.progress-section .load-chart{padding:4px 0 0;gap:7px}
+.progress-section .load-column{height:84px;width:64%}
+.progress-section .load-legend{gap:5px 10px}
+.progress-section .muscle-row{border-color:#262e38}
+.progress-section .period-bar{margin:0 0 8px}
+.progress-list{display:grid;gap:0}
+.progress-list-row{display:grid;grid-template-columns:minmax(0,1fr) auto 18px;align-items:center;text-align:left;gap:8px;width:100%;min-height:48px;border:0;border-bottom:1px solid #303945;border-radius:0;background:transparent;color:inherit;padding:9px 2px;font-size:14px;font-weight:400}
+.progress-list-row:last-child{border-bottom:0}
+.progress-list-row .record-name{display:grid;gap:3px;min-width:0;overflow-wrap:anywhere}
+.progress-list-row .record-value{color:#ffad60;font-size:14px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.progress-list-row .ui-icon{width:18px;height:18px;color:#aeb6c2}
+.progress-history-link{display:flex;gap:3px;align-items:center;font-size:12px;min-height:44px;padding:0 2px}
+.progress-history-link .ui-icon{width:16px;height:16px}
+.exercise-progress-content .progress-periods{margin:0}
+.exercise-progress-content .exercise-chart-panel{padding:4px 0 10px}
+.exercise-chart-panel .progress-chart{display:block;width:100%;max-height:275px;background:transparent;margin:4px 0 8px}
+.exercise-chart-panel .form-hint{font-size:11px;line-height:1.45}
+.progress-section .chip{min-height:44px}
+@media(max-width:360px){.progress-section .metric-grid strong{font-size:18px}.progress-list-row{gap:5px}.progress-list-row .record-value{font-size:12px}}
