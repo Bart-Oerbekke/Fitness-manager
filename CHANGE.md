@@ -169,3 +169,6 @@ Gebruiker akkoord voor inhoudsuitbreiding; geen nieuwe schermen of trainingsfunc
 
 ## 0.13 — volledige tekstdekking
 Gebruiker akkoord: alle 118 beschrijvingen, zoveel mogelijk passende offline afbeeldingen, video's optioneel en niet verder uitbreiden. Basis 157a63f2e5c6696414acbfe67b8b0f0b20d4b45f, vorige CI push en PR groen. 72 aanvullende eigen NL records, 8 nieuwe visueel gecontroleerde en blob-identieke PNG's, 118/118 tekst en 17/118 beeld (33 PNG), 42 bestaande video's. Geen verandering aan ID's, oude records, trainingslogica of opslag; geen publicatie, merge of kosten. Zelfreview en algemene bronregisters; niet alle individuele varianten extern gevalideerd, geen onafhankelijke trainerreview. CI vereist; fysieke iPhone-review open. Browserregressie voor nieuwe gevulde oefening zonder afbeelding bijgewerkt.
+
+### Beeldtranche vervolg 0.13
+13 aanvullende oefeningdetails voorzien van 26 visueel gecontroleerde, blob-identieke Everkinetic-PNG's. Bronvolgorde waar nodig omgekeerd, variantnotities toegevoegd; onduidelijke deadlift-, kuitmachine- en andere tekeningen niet overgenomen. 30/118 lokaal beeld, 59 PNG's, 118/118 tekst, 42 video's ongewijzigd. Geen schema-, opslag- of trainingswijziging. CI opnieuw vereist. Geen deployment of main-merge.

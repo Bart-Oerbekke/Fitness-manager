@@ -49,3 +49,32 @@ Deze acht afbeeldingen zijn visueel op variant en volgorde beoordeeld, ongewijzi
 - media/exercises/crunches-1.png
 - media/exercises/crunches-2.png
 Acht extra originele Everkinetic-PNG's, visueel bekeken en met identieke bronblob. Bij de crunch en front squat is een variantnotitie toegevoegd. 118/118 eigen Nederlandse beschrijvingen, 42 bestaande videolinks behouden, 17/118 oefeningen met lokaal beeld (33 PNG's). Video is optioneel en niet verder uitgebreid. Algemene oefenregisters Tanrenica, Sport Keele en Coresa geraadpleegd; nieuwe tekst is redactionele zelfreview, geen individueel bron- of coachcertificaat. Niet alle oefenvarianten zijn afzonderlijk extern gevalideerd. Geen foto's met onzekere rechten gebruikt.
+
+## Aanvullende illustraties 0.13
+- media/exercises/biceps-curl-with-dumbbell-1.png
+- media/exercises/biceps-curl-with-dumbbell-2.png
+- media/exercises/bicep-hammer-curl-with-dumbbell-1.png
+- media/exercises/bicep-hammer-curl-with-dumbbell-2.png
+- media/exercises/bridging-1.png
+- media/exercises/bridging-2.png
+- media/exercises/close-grip-barbell-bench-press-2.png
+- media/exercises/close-grip-barbell-bench-press-1.png
+- media/exercises/seated-cable-rows-2.png
+- media/exercises/seated-cable-rows-1.png
+- media/exercises/dumbbell-shoulder-press-1.png
+- media/exercises/dumbbell-shoulder-press-2.png
+- media/exercises/romanian-dead-lift-1.png
+- media/exercises/romanian-dead-lift-2.png
+- media/exercises/triceps-pushdown-with-cable-1.png
+- media/exercises/triceps-pushdown-with-cable-2.png
+- media/exercises/rear-lunges-with-dumbbell-1.png
+- media/exercises/rear-lunges-with-dumbbell-2.png
+- media/exercises/walking-lunges-1.png
+- media/exercises/walking-lunges-2.png
+- media/exercises/step-ups-with-dumbbells-1.png
+- media/exercises/step-ups-with-dumbbells-2.png
+- media/exercises/chin-ups-1.png
+- media/exercises/chin-ups-2.png
+- media/exercises/body-row-2.png
+- media/exercises/body-row-1.png
+26 originele visueel beoordeelde PNG's, blob-identiek. Bij afwijkende greep of niet afgebeelde beweging staat een expliciete notitie. Totaal 30/118 oefeningen met lokaal beeld (59 PNG's), 118/118 tekst, 42 bestaande videolinks. Niet alle varianten hebben geschikt materiaal; geen andere media overgenomen.

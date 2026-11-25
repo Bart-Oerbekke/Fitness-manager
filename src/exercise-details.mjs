@@ -359,7 +359,19 @@ export const exerciseDetails={
     ],
     "source": "https://www.nasm.org/resource-center/exercise-library/close-grip-bench-press",
     "video": "https://www.youtube.com/watch?v=LJeqLAmJLfs",
-    "poses": []
+    "poses": [
+      {
+        "file": "media/exercises/close-grip-barbell-bench-press-2.png",
+        "label": "Armen gestrekt"
+      },
+      {
+        "file": "media/exercises/close-grip-barbell-bench-press-1.png",
+        "label": "Stang bij de borst"
+      }
+    ],
+    "artSource": "https://github.com/everkinetic/data/tree/446bb9a3d0c3beb6b84f7c9d77dfc8af707a2ab6/src/images-web",
+    "artLicense": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "note": "Gebruik een comfortabele greep rond schouderbreedte; de tekening toont een smallere greep. Veiligheidssteunen of spotter zijn niet afgebeeld."
   },
   "seated-single-leg-curl-machine-benen": {
     "primary": "Hamstrings",
@@ -445,7 +457,19 @@ export const exerciseDetails={
     ],
     "source": "https://www.nasm.org/resource-center/exercise-library/romanian-deadlift-barbell",
     "video": "https://www.youtube.com/watch?v=xgusDooVfKU",
-    "poses": []
+    "poses": [
+      {
+        "file": "media/exercises/romanian-dead-lift-1.png",
+        "label": "Rechtop met halter"
+      },
+      {
+        "file": "media/exercises/romanian-dead-lift-2.png",
+        "label": "Heupen achterwaarts"
+      }
+    ],
+    "artSource": "https://github.com/everkinetic/data/tree/446bb9a3d0c3beb6b84f7c9d77dfc8af707a2ab6/src/images-web",
+    "artLicense": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "note": "De tekening toont een onderhandse greep; voor de uitvoering heeft een bovenhandse greep de voorkeur. Zak niet verder dan je neutrale rughouding toelaat."
   },
   "bulgarian-split-squat-dumbbell-benen": {
     "primary": "Quadriceps, bilspieren",
@@ -586,7 +610,18 @@ export const exerciseDetails={
     ],
     "source": "https://www.nasm.org/resource-center/exercise-library/floor-bridge",
     "video": "https://www.youtube.com/watch?v=Z3cY3d3BBo4",
-    "poses": []
+    "poses": [
+      {
+        "file": "media/exercises/bridging-1.png",
+        "label": "Bekken op de vloer"
+      },
+      {
+        "file": "media/exercises/bridging-2.png",
+        "label": "Heupen omhoog"
+      }
+    ],
+    "artSource": "https://github.com/everkinetic/data/tree/446bb9a3d0c3beb6b84f7c9d77dfc8af707a2ab6/src/images-web",
+    "artLicense": "https://creativecommons.org/licenses/by-sa/4.0/"
   },
   "biceps-curl-barbell-armen": {
     "primary": "Biceps, brachialis",
@@ -943,7 +978,18 @@ export const exerciseDetails={
     ],
     "source": "https://www.nasm.org/resource-center/exercise-library/seated-machine-row-close-grip",
     "video": "https://www.youtube.com/watch?v=k0cTJCfxa0Y",
-    "poses": []
+    "poses": [
+      {
+        "file": "media/exercises/seated-cable-rows-2.png",
+        "label": "Armen naar voren gestrekt"
+      },
+      {
+        "file": "media/exercises/seated-cable-rows-1.png",
+        "label": "Handgreep richting romp"
+      }
+    ],
+    "artSource": "https://github.com/everkinetic/data/tree/446bb9a3d0c3beb6b84f7c9d77dfc8af707a2ab6/src/images-web",
+    "artLicense": "https://creativecommons.org/licenses/by-sa/4.0/"
   },
   "shoulder-press-dumbbell-schouders": {
     "primary": "Voorste en middelste schouders",
@@ -964,7 +1010,19 @@ export const exerciseDetails={
     ],
     "source": "https://www.youtube.com/watch?v=MMjBnEBnZKM",
     "video": "https://www.youtube.com/watch?v=MMjBnEBnZKM",
-    "poses": []
+    "poses": [
+      {
+        "file": "media/exercises/dumbbell-shoulder-press-1.png",
+        "label": "Gewichten bij schouders"
+      },
+      {
+        "file": "media/exercises/dumbbell-shoulder-press-2.png",
+        "label": "Gewichten boven het hoofd"
+      }
+    ],
+    "artSource": "https://github.com/everkinetic/data/tree/446bb9a3d0c3beb6b84f7c9d77dfc8af707a2ab6/src/images-web",
+    "artLicense": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "note": "Afgebeeld in zittende variant."
   },
   "lateral-raise-dumbbell-schouders": {
     "primary": "Middelste schouders",
@@ -1107,7 +1165,18 @@ export const exerciseDetails={
       "biceps-curl-barbell-armen"
     ],
     "source": "https://blog.nasm.org/9-best-arm-sculpting-exercises-for-tone-and-strength",
-    "poses": []
+    "poses": [
+      {
+        "file": "media/exercises/bicep-hammer-curl-with-dumbbell-1.png",
+        "label": "Armen naast het lichaam"
+      },
+      {
+        "file": "media/exercises/bicep-hammer-curl-with-dumbbell-2.png",
+        "label": "Gewichten omhoog, neutrale greep"
+      }
+    ],
+    "artSource": "https://github.com/everkinetic/data/tree/446bb9a3d0c3beb6b84f7c9d77dfc8af707a2ab6/src/images-web",
+    "artLicense": "https://creativecommons.org/licenses/by-sa/4.0/"
   },
   "triceps-pushdown-cable-armen": {
     "primary": "Triceps",
@@ -1127,7 +1196,19 @@ export const exerciseDetails={
       "triceps-extension-dumbbell-armen"
     ],
     "source": "https://blog.nasm.org/9-best-arm-sculpting-exercises-for-tone-and-strength",
-    "poses": []
+    "poses": [
+      {
+        "file": "media/exercises/triceps-pushdown-with-cable-1.png",
+        "label": "Ellebogen gebogen"
+      },
+      {
+        "file": "media/exercises/triceps-pushdown-with-cable-2.png",
+        "label": "Armen naar beneden gestrekt"
+      }
+    ],
+    "artSource": "https://github.com/everkinetic/data/tree/446bb9a3d0c3beb6b84f7c9d77dfc8af707a2ab6/src/images-web",
+    "artLicense": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "note": "Afgebeeld met stang; touwvariant is ook mogelijk."
   },
   "biceps-curl-dumbbell-armen": {
     "primary": "Biceps, brachialis",
@@ -1147,8 +1228,20 @@ export const exerciseDetails={
       "hammer-curl-dumbbell-armen"
     ],
     "source": "https://www.erikakehrwaldfitness.com/exercise-library/standing-dumbbell-biceps-curl",
-    "poses": [],
-    "sourceLabel": "Train with Erika"
+    "poses": [
+      {
+        "file": "media/exercises/biceps-curl-with-dumbbell-1.png",
+        "label": "Armen naast het lichaam"
+      },
+      {
+        "file": "media/exercises/biceps-curl-with-dumbbell-2.png",
+        "label": "Ellebogen gebogen"
+      }
+    ],
+    "sourceLabel": "Train with Erika",
+    "artSource": "https://github.com/everkinetic/data/tree/446bb9a3d0c3beb6b84f7c9d77dfc8af707a2ab6/src/images-web",
+    "artLicense": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "note": "Draai de handpalmen naar voren zoals beschreven; de tekeningen tonen ook een neutrale startgreep."
   },
   "front-squat-barbell-benen": {
     "primary": "Quadriceps, bilspieren",
@@ -1265,7 +1358,19 @@ export const exerciseDetails={
     ],
     "source": "https://tanrenica.com/exercises?lang=en",
     "sourceLabel": "Tanrenica (oefenregister)",
-    "poses": []
+    "poses": [
+      {
+        "file": "media/exercises/walking-lunges-1.png",
+        "label": "Rechtop"
+      },
+      {
+        "file": "media/exercises/walking-lunges-2.png",
+        "label": "Onderste positie van de lunge"
+      }
+    ],
+    "artSource": "https://github.com/everkinetic/data/tree/446bb9a3d0c3beb6b84f7c9d77dfc8af707a2ab6/src/images-web",
+    "artLicense": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "note": "De doorstap is niet afgebeeld; stap na het opstaan door met het andere been."
   },
   "reverse-lunges-dumbbell-benen": {
     "primary": "Quadriceps, bilspieren",
@@ -1286,7 +1391,19 @@ export const exerciseDetails={
     ],
     "source": "https://tanrenica.com/exercises?lang=en",
     "sourceLabel": "Tanrenica (oefenregister)",
-    "poses": []
+    "poses": [
+      {
+        "file": "media/exercises/rear-lunges-with-dumbbell-1.png",
+        "label": "Rechtop"
+      },
+      {
+        "file": "media/exercises/rear-lunges-with-dumbbell-2.png",
+        "label": "Onderste positie na stap achteruit"
+      }
+    ],
+    "artSource": "https://github.com/everkinetic/data/tree/446bb9a3d0c3beb6b84f7c9d77dfc8af707a2ab6/src/images-web",
+    "artLicense": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "note": "De staprichting is niet zichtbaar in stilstaande beelden; stap achteruit volgens de uitleg."
   },
   "step-up-dumbbell-benen": {
     "primary": "Quadriceps, bilspieren",
@@ -1307,7 +1424,19 @@ export const exerciseDetails={
     ],
     "source": "https://tanrenica.com/exercises?lang=en",
     "sourceLabel": "Tanrenica (oefenregister)",
-    "poses": []
+    "poses": [
+      {
+        "file": "media/exercises/step-ups-with-dumbbells-1.png",
+        "label": "Voor de verhoging"
+      },
+      {
+        "file": "media/exercises/step-ups-with-dumbbells-2.png",
+        "label": "Voet op de verhoging"
+      }
+    ],
+    "artSource": "https://github.com/everkinetic/data/tree/446bb9a3d0c3beb6b84f7c9d77dfc8af707a2ab6/src/images-web",
+    "artLicense": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "note": "De eindstand boven op de verhoging is niet afgebeeld; strek het standbeen volgens de uitleg."
   },
   "single-leg-deadlift-dumbbell-benen": {
     "primary": "Hamstrings, bilspieren",
@@ -2032,7 +2161,19 @@ export const exerciseDetails={
     ],
     "source": "https://tanrenica.com/exercises?lang=en",
     "sourceLabel": "Tanrenica (oefenregister)",
-    "poses": []
+    "poses": [
+      {
+        "file": "media/exercises/chin-ups-1.png",
+        "label": "Hangende positie"
+      },
+      {
+        "file": "media/exercises/chin-ups-2.png",
+        "label": "Opgetrokken positie"
+      }
+    ],
+    "artSource": "https://github.com/everkinetic/data/tree/446bb9a3d0c3beb6b84f7c9d77dfc8af707a2ab6/src/images-web",
+    "artLicense": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "note": "Gebruik de onderhandse greep zoals beschreven."
   },
   "inverted-row-rug": {
     "primary": "Middenrug, brede rugspier",
@@ -2053,7 +2194,19 @@ export const exerciseDetails={
     ],
     "source": "https://tanrenica.com/exercises?lang=en",
     "sourceLabel": "Tanrenica (oefenregister)",
-    "poses": []
+    "poses": [
+      {
+        "file": "media/exercises/body-row-2.png",
+        "label": "Armen gestrekt onder stang"
+      },
+      {
+        "file": "media/exercises/body-row-1.png",
+        "label": "Borst richting stang"
+      }
+    ],
+    "artSource": "https://github.com/everkinetic/data/tree/446bb9a3d0c3beb6b84f7c9d77dfc8af707a2ab6/src/images-web",
+    "artLicense": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "note": "Voeten steunen op de vloer; de vloer en stangbevestiging zijn niet afgebeeld."
   },
   "overhead-press-barbell-schouders": {
     "primary": "Voorste en middelste schouders",
@@ -2743,6 +2896,32 @@ export const exerciseMedia=[
   "media/exercises/arnold-press-1.png",
   "media/exercises/arnold-press-2.png",
   "media/exercises/crunches-1.png",
-  "media/exercises/crunches-2.png"
+  "media/exercises/crunches-2.png",
+  "media/exercises/biceps-curl-with-dumbbell-1.png",
+  "media/exercises/biceps-curl-with-dumbbell-2.png",
+  "media/exercises/bicep-hammer-curl-with-dumbbell-1.png",
+  "media/exercises/bicep-hammer-curl-with-dumbbell-2.png",
+  "media/exercises/bridging-1.png",
+  "media/exercises/bridging-2.png",
+  "media/exercises/close-grip-barbell-bench-press-2.png",
+  "media/exercises/close-grip-barbell-bench-press-1.png",
+  "media/exercises/seated-cable-rows-2.png",
+  "media/exercises/seated-cable-rows-1.png",
+  "media/exercises/dumbbell-shoulder-press-1.png",
+  "media/exercises/dumbbell-shoulder-press-2.png",
+  "media/exercises/romanian-dead-lift-1.png",
+  "media/exercises/romanian-dead-lift-2.png",
+  "media/exercises/triceps-pushdown-with-cable-1.png",
+  "media/exercises/triceps-pushdown-with-cable-2.png",
+  "media/exercises/rear-lunges-with-dumbbell-1.png",
+  "media/exercises/rear-lunges-with-dumbbell-2.png",
+  "media/exercises/walking-lunges-1.png",
+  "media/exercises/walking-lunges-2.png",
+  "media/exercises/step-ups-with-dumbbells-1.png",
+  "media/exercises/step-ups-with-dumbbells-2.png",
+  "media/exercises/chin-ups-1.png",
+  "media/exercises/chin-ups-2.png",
+  "media/exercises/body-row-2.png",
+  "media/exercises/body-row-1.png"
 ];
 export function getExerciseDetail(id){return Object.hasOwn(exerciseDetails,id)?exerciseDetails[id]:null}
