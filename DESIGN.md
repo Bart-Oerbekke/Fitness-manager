@@ -121,3 +121,33 @@ Donkere stijl behouden. Gemeenschappelijke periodebalk met 44px pijltjes, 24px S
 
 ## UX 0.12
 Zelfstandige bibliotheek: compacte rijen, naam opent detail; ster blijft apart. Detail toont twee posekaarten of één voor hold, Nederlandse instructies, techniekfouten, spieren, materiaal, alternatieven en bron. Externe video via herkenbare knop, internet nodig; geen iframe/autoplay. Onbeschikbare uitleg/afbeelding/video eerlijk melden. Terug naar gefilterde lijst en scrollpositie; bestaande progressieactie bereikbaar. Geen wijziging aan training/pickers.
+
+## UX 0.16
+Behoud donker/oranje identiteit en 44px primaire doelen. Oefeningnaam en setvoortgang in één compacte kop, afgeronde sets met rustige groene achtergrond en leesbare waarden. Sticky trainingsstatus met tijd en sets. Builderkaart is een native details-element met samenvatting; invoer blijft in DOM en validatie opent verborgen velden. Vandaag prioriteert eerstvolgende activiteit, dan snelle start en ondersteunende informatie; weekstatistieken onder de agenda. Grafiek gebruikt datumproportionele x-as, raster, gelabelde eenheid en toegankelijke datapunttitels. Respecteer reduced motion. Geen wijziging aan domein- of opslagmodel.
+
+## UX 0.16.1
+Workoutpreview heeft een vaste compacte actiezone boven de safe area met Bewerken secundair en Start training primair. Agendaperiode is de kop; pijlen zonder zware achtergrond, compacte Maand/Week-pill met behoud 44px tikgebied. Geen generieke Agendatitel of dubbel plusje; toevoegen op de datum zelf, terug naar vandaag alleen indien relevant. Geen nieuwe trainingsfuncties of gegevensmodel.
+
+## UX 0.17
+Vaste trainingsactiezone; annuleren in trainingsmenu met bevestiging; afzonderlijke rusttimer erboven. Gedeelde setkolommen, 16px invoer, enkelvoudige focusindicator, 44px tikdoelen. Kopieeractie in header, niet over toetsenbord. Safe area, footer en timer verdwijnen bij invoer. Afvinken wijzigt relevante DOM en voortgang. Modale formulieren als bottom sheets met scrollbare velden en vaste acties. Compacte vijf-tabnavigatie, subtielere omlijning; builder en paginanavigatie inhoudelijk ongewijzigd.
+
+## UX 0.17.1
+Extra 12 CSS-px onder dynamische veilige bovenrand, ook bij sticky trainingsheader. Volledig workoutcanvas vangt horizontale swipes op (preview, training en builder), inclusief lege ruimte. Normale verticale scroll, pinch-zoom en interactieve velden/knoppen blijven beschermd. Geen andere UI-voorstellen automatisch implementeren.
+
+## UX 0.17.2
+Richtingsbewuste korte pagina-animatie (220ms) met reduced-motion; preview dezelfde setkolommen als actief, alleen-lezen waarden en geen schijnbare afvinkactie. Compactere workoutkop en groepsnaam, voorbeeldtitel zonder paginatelling. Optionele korte haptiek bij echte paginawissel, starten, set afronden; niet beschikbaar = stille no-op. Geen opgeslagen namen herschrijven, geen wijziging builderacties of andere voorstellen.
+
+## UX 0.17.3
+Stabiele documentflow: tijdelijke status/PR buiten layout, foutmelding blijft bereikbaar en blokkerend. Apply to all links in gereserveerde setactierij, accentkleur en 44px tikdoel, zichtbaar bij invoer. Geen globale hertekening voor lokale set-/builderwijzigingen; focus en scroll zoveel mogelijk behouden. Vaste builderactiezone met Oefening en Opslaan, verborgen bij softwaretoetsenbord. Pagina-instellingen naast groepsnaam als bottom sheet; lege pagina verwijderen volgens bestaande regel. Geen overige UI-voorstellen implementeren.
+
+## UX 0.17.4
+Vanaf linkerrand (32 CSS-px) rechts swipen activeert bestaande terugroute; midden van workout blijft voor paginawisseling. Geen swipe-navigatie bij modal, invoer, toetsenbord of root-tab; verticale scroll/zoom behouden. Active training behouden; onopgeslagen builderwijzigingen niet zonder bevestiging verlaten. Geen nieuw navigatiemodel of datawijzigingen.
+
+## UX 0.18.0
+Dubbele agendanavigatie en testknop uit Vandaag, directe planactie behouden. Testworkout en technische uitleg in inklapbare instellingen; back-upwaarschuwing en updates zichtbaar. Buildernaam/summary met sleepgreep en optiemenu, geen aparte kop. Schemakaart als grote openknop met aparte opties, aanmaak via plus. Bibliotheek zoekveld en filtericoon met actieve telling, filters uitklapbaar. Terugroutes herstellen scroll per scherm/context en bestaande filter/tabselecties; geen gegevensmodelwijziging.
+
+## UX 0.19.0
+Progressie: grafieken centraal, vlakke secties en compacte records-/sessielijsten; geen rekenkundige wijziging. Korte fades bij echte navigatie, respecteer reduced motion en behoud vaste knoppen. Nederlandse bedieningsteksten, gangbare fitnesstermen en Apply to all blijven. Lokale progressieupdates, stabiele builder-ID's, deduplicatie statusupdates. Geen andere voorstellen implementeren.
+
+## UX 0.19.1
+Programmadetail: compacte kop zonder statuskaart, menu naast titel, workoutrij direct openen met onafhankelijk optiemenu. Weekknoppen tot zes weken; langere programma's directe select met pijlen. Horizontale swipe op planning, rand-terug behoudt prioriteit. Lokale weekupdate, tijdlijn met datumkolom, status, compacte activiteit en verplaatsactie achter menu. Bestaande data en routes behouden.

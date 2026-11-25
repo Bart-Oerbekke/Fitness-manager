@@ -245,3 +245,332 @@ dialog button:focus-visible{outline-offset:1px}
 .workout-page { touch-action: pan-y pinch-zoom; }
 .workout-page[hidden] { display: none; }
 .fitness .cal-more { font-size: 12px; padding-inline: 7px; }
+
+/* 0.16 — presentation only */
+:root{--card-radius:10px;--completed:#a6d99a}
+.card,.manage-card,.today-tile,.today-hero,.today-empty{border-radius:var(--card-radius)}
+.primary,.outline,.icon-btn,.day-icon,.menu-icon{border-radius:10px}
+.card{background:#1b222b;border:1px solid #303946}
+.workout-page.stack{gap:8px}
+.workout-page .workout-card{margin:0;border-radius:9px}
+.workout-card .intro{padding:8px 10px;min-height:48px}
+.workout-card .intro>div{min-width:0;flex:1}
+.workout-card .intro h2{margin-top:2px;font-size:16px;overflow-wrap:anywhere;line-height:1.25}
+.workout-card-meta{display:block;font-size:11px;color:#b3bdca;line-height:1.25}
+.workout-card .set{min-height:46px;padding-block:1px;border-top:1px solid #333c48}
+.workout-card .history{padding:5px 10px;border-top:1px solid #333c48}
+.workout-card .set-actions{border-top:1px solid #333c48}
+.workout-card .set-actions button{font-size:12px}
+.workout-card .set-complete{background:#1b2a25}
+.workout-card .set-complete .set-number{color:var(--completed)}
+.workout-card .set-complete .field{border-color:#486657;background:#1a2421}
+.workout-card .set-complete .field input:disabled{color:#c4d9cd;opacity:1;-webkit-text-fill-color:#c4d9cd}
+.workout-card .set-complete .check.done span{background:#294938;color:#a9e3a0;border-color:#7ab58a}
+.training-sticky{position:sticky;top:0;z-index:2;background:#10151b;border-bottom:1px solid #394350;padding:4px 8px 8px;margin:0 -2px 10px;border-radius:0 0 10px 10px}
+.training-sticky .screen-header{padding:0!important;min-height:44px!important}
+.training-sticky .training-status{font-variant-numeric:tabular-nums;min-height:22px;margin:0 1px 4px}
+.training-sticky #elapsed{font-size:14px;font-weight:650;color:#e3eaf2}
+.training-sticky .progress{height:5px}
+#app[data-view="training"] .workout-pages{scroll-margin-top:102px}
+.builder-card .head{background:#242d38;padding-block:2px}
+.builder-card .head .row button{color:#b3bdca}
+.builder-card .head .row .danger{color:#ffa1a1}
+.builder-card .builder-fold>summary{display:grid;grid-template-columns:minmax(0,1fr) 22px;grid-template-rows:auto auto;align-items:center;gap:2px 6px;padding:10px;min-height:48px;cursor:pointer;list-style:none}
+.builder-fold>summary::-webkit-details-marker{display:none}
+.builder-fold>summary::after{content:"";grid-column:2;grid-row:1/3;width:9px;height:9px;border-right:2px solid #b3bdca;border-bottom:2px solid #b3bdca;transform:rotate(45deg);justify-self:center}
+.builder-fold[open]>summary::after{transform:rotate(225deg)}
+.builder-fold>summary:focus-visible{outline:2px solid var(--orange);outline-offset:-3px}
+.builder-summary-name{font-size:16px;font-weight:650;overflow-wrap:anywhere}
+.builder-fold>summary small{font-size:12px;overflow-wrap:anywhere}
+.builder-fold[open]>.inside{border-top:1px solid #394350}
+.today-shell .dashboard{gap:10px}
+.today-hero{padding:13px 12px;border-left-width:3px;background:#202a34}
+.today-hero h2{font-size:21px;line-height:1.25}
+.today-tile{padding:11px 12px;background:#171e26}
+.today-tile h3{font-size:15px;color:#e5ebf2}
+.today-shell .demo-link{font-size:12px;color:#b3bdca}
+.cal-header{min-height:48px;padding:4px 0 5px}
+.cal-controls{gap:4px;padding-bottom:4px}
+.cal-controls .period-bar{gap:4px}
+.cal-switch{padding:0}
+.cal-legend{margin:3px 0 6px;gap:7px}
+.cal-shell .week-stats{margin:10px 0 0}
+.cal-week-day{padding-block:3px}
+.cal-week-items .cal-entry{margin-bottom:3px}
+.progress-chart .chart-grid{stroke:#46515e;stroke-width:.6}
+.progress-chart .chart-series{fill:none;stroke:var(--orange);stroke-width:2.25;stroke-linejoin:round;stroke-linecap:round}
+.progress-chart .chart-point{fill:var(--orange);stroke:#1b222b;stroke-width:1.2}
+.progress-chart text{fill:#c2cbd6;font-size:10px;font-variant-numeric:tabular-nums}
+.load-column{background:repeating-linear-gradient(to top,transparent 0,transparent 23px,#394350 24px,transparent 25px)}
+button:not(:disabled){transition:background-color .12s ease,border-color .12s ease}
+button:not(:disabled):active{filter:brightness(.88)}
+.training-sticky .progress i{transition:width .18s ease}
+.workout-page.page-enter{animation:workout-enter .16s ease-out}
+@keyframes workout-enter{from{opacity:.65;transform:translateX(5px)}to{opacity:1;transform:translateX(0)}}
+@media(prefers-reduced-motion:reduce){.workout-page.page-enter{animation:none}button:not(:disabled){transition:none}.training-sticky .progress i{transition:none}}
+
+/* 0.16.1 — restrained navigation and stable actions */
+#app[data-view="preview"]{padding-bottom:calc(72px + env(safe-area-inset-bottom))}
+.preview-dock{position:fixed;z-index:3;left:50%;bottom:0;transform:translateX(-50%);width:min(100%,540px);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.55fr);gap:8px;padding:9px 12px max(9px,env(safe-area-inset-bottom));background:#10151b;border-top:1px solid #2d3641}
+.preview-dock button{min-height:44px;min-width:0;font-size:14px;padding:6px 9px;border-radius:9px}
+.preview-dock .outline{border-color:#424c59;color:#dbe2ea;background:#202832}
+#app[data-view="preview"] .workout-card .field input:disabled::placeholder{color:#c5ceda;opacity:1;-webkit-text-fill-color:#c5ceda}
+#app[data-view="preview"] .workout-card .field input:disabled{opacity:1}
+.screen-header.sub-header{gap:5px;min-height:48px;padding:3px 0 7px}
+.screen-header.sub-header .icon-btn[data-action="back"]{background:transparent;border-color:transparent;color:#d6dfe9}
+.screen-header.sub-header .icon-btn[data-action="back"] .ui-icon{width:20px;height:20px}
+.screen-header.sub-header h1{font-size:17px;line-height:1.3;overflow-wrap:anywhere}
+.workout-dots{margin:0}
+.workout-page-name{font-size:14px;margin:0 0 3px}
+.agenda-toolbar{display:block;padding:3px 0 0;min-height:0}
+.agenda-toolbar .period-bar{grid-template-columns:minmax(0,1fr) 44px 44px;gap:0;margin:0;min-height:44px}
+.agenda-toolbar .period-label{grid-column:1;grid-row:1;text-align:left;padding-left:2px}
+.agenda-toolbar .period-label strong{font-size:22px;letter-spacing:-.5px;line-height:1.15}
+.agenda-toolbar .period-label small{font-size:12px;margin-top:2px}
+.agenda-toolbar .cal-arrow[data-n="-1"]{grid-column:2;grid-row:1}
+.agenda-toolbar .cal-arrow[data-n="1"]{grid-column:3;grid-row:1}
+.agenda-toolbar .cal-arrow{background:transparent;border-color:transparent;color:#d7dfe9}
+.agenda-toolbar .cal-arrow .ui-icon{width:20px;height:20px}
+.agenda-view-row{display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:44px}
+.agenda-toolbar .cal-switch{display:flex;width:auto;padding:0;gap:2px;background:transparent;align-items:center}
+.agenda-toolbar .cal-switch button{min-height:44px;min-width:66px;padding:0;background:transparent;border:0;display:grid;place-items:center;font-size:12px}
+.agenda-toolbar .cal-switch button span{display:block;padding:6px 12px;min-width:64px;border-radius:7px;color:#aeb6c1;background:#181e25}
+.agenda-toolbar .cal-switch button.on span{background:#303a46;color:#f4f6fa;box-shadow:inset 0 0 0 1px #485361}
+.agenda-reset{font-size:12px;padding:0 4px;min-height:44px;color:#ffac57}
+.cal-shell .cal-legend{margin:0 0 3px;padding:0 2px 5px;font-size:10px;gap:8px}
+.cal-shell .cal-grid{border-radius:9px}
+.cal-shell .cal-cell{min-height:61px}
+.cal-shell .cal-cell.is-selected{box-shadow:inset 0 0 0 1px #ff8900}
+.cal-shell .cal-agenda-head{margin-top:8px;padding:0;align-items:center}
+.cal-shell .cal-agenda-head h2{font-size:16px;text-transform:capitalize}
+.cal-shell .cal-day-add .ui-icon{width:18px;height:18px}
+@media(max-width:360px){.agenda-toolbar .period-label strong{font-size:20px}.cal-shell .cal-cell{min-height:57px}}
+@media(prefers-reduced-motion:no-preference){.workout-page.page-enter{animation-duration:.14s}.agenda-toolbar .cal-switch button span{transition:background-color .14s ease,color .14s ease}}
+
+/* 0.17 — iPhone training ergonomics */
+:root{--training-dock-height:calc(60px + env(safe-area-inset-bottom));--fm-viewport-top:0px;--fm-viewport-bottom:0px;--fm-viewport-height:100dvh;--fm-line:#303945;--fm-radius:10px}
+#app[data-view="training"]{padding-bottom:calc(152px + env(safe-area-inset-bottom))}
+.training-dock{position:fixed;z-index:3;left:50%;bottom:0;transform:translateX(-50%);width:min(100%,540px);height:var(--training-dock-height);padding:7px 12px calc(8px + env(safe-area-inset-bottom));display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.5fr);gap:8px;background:#10151b;border-top:1px solid var(--fm-line)}
+.training-dock button{min-height:44px;min-width:0;padding:5px 8px;font-size:14px;border-radius:9px}
+.training-dock .training-add{display:flex;align-items:center;justify-content:center;gap:6px;border:1px solid #424c59;color:#dce4ed;background:#202832}
+.training-add .ui-icon{width:18px;height:18px}
+.training-dock.typing{display:none}
+#app[data-view="training"] .rest-dock{bottom:var(--training-dock-height);padding:4px 12px;z-index:4;background:#191f27;border-top:1px solid var(--fm-line)}
+.training-sticky{top:max(env(safe-area-inset-top),var(--fm-viewport-top));padding:3px 8px 7px;z-index:2;background:#10151b;border-radius:0 0 10px 10px}
+.training-sticky .screen-header h1{flex:1}
+.training-menu{min-width:44px;width:44px;min-height:44px;padding:0;display:grid;place-items:center;color:#b3bdca}
+.training-menu .ui-icon{width:21px;height:21px}
+.training-sticky .training-status{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:6px;min-height:44px;align-items:center;margin:0 1px 3px}
+.training-sticky #elapsed{grid-column:3;text-align:right}
+#app[data-view="training"] .workout-pages{scroll-margin-top:calc(112px + env(safe-area-inset-top))}
+#accessory{position:static;inset:auto;width:auto;z-index:auto;padding:0;display:flex;align-items:center;justify-content:center;pointer-events:auto;grid-column:2}
+#accessory button{min-height:44px;padding:4px 7px;font-size:12px;gap:4px;background:transparent;color:#ffb568;border:0;box-shadow:none;border-radius:7px}
+#accessory[hidden]{display:none}
+#app[data-view="training"] .workout-card{border:0;border-radius:var(--fm-radius);background:#191f27}
+#app[data-view="training"] .workout-card .intro{padding:8px 10px 5px}
+#app[data-view="training"] .set-columns,#app[data-view="training"] .workout-card .set{display:grid;grid-template-columns:30px minmax(0,1fr) minmax(0,1fr) 44px;gap:6px;align-items:center;padding-inline:10px}
+#app[data-view="training"] .set-columns.bodyweight,#app[data-view="training"] .workout-card .set.bodyweight{grid-template-columns:30px minmax(0,1fr) 44px}
+#app[data-view="training"] .set-columns{min-height:27px;font-size:11px;font-weight:600;color:#aeb8c5;text-align:center}
+#app[data-view="training"] .workout-card .set{min-height:48px;border-top:1px solid #2b3440;padding-block:2px}
+#app[data-view="training"] .workout-card .field{border:1px solid transparent;border-radius:7px;background:#252d37;min-height:36px;padding:0 7px}
+#app[data-view="training"] .workout-card .field input{font-size:16px;text-align:center;padding:5px 0;outline:none;box-shadow:none;border:0;min-width:0}
+#app[data-view="training"] .workout-card .field:focus-within{border-color:var(--orange);background:#2b3037;box-shadow:0 0 0 1px var(--orange)}
+#app[data-view="training"] .workout-card .field .unit{display:none}
+#app[data-view="training"] .workout-card .set-complete{background:#1b2823}
+#app[data-view="training"] .workout-card .set-complete .field{background:transparent;border-color:transparent}
+#app[data-view="training"] .workout-card .set-complete input{color:#c4d9cd}
+#app[data-view="training"] .workout-card .check span{border-radius:6px}
+#app[data-view="training"] .workout-card .set-actions{justify-content:flex-end;gap:2px;padding:0 6px;border-top:1px solid #2b3440}
+#app[data-view="training"] .workout-card .set-actions button{display:grid;place-items:center;width:44px;min-width:44px;min-height:44px;padding:0}
+#app[data-view="training"] .workout-card .set-actions .ui-icon{width:19px;height:19px}
+#app[data-view="training"] .workout-card .history{background:#161c23;border-top:1px solid #2b3440}
+dialog#dialog{position:fixed;inset:auto 0 var(--fm-viewport-bottom);margin:0 auto;width:min(100%,540px);max-width:100%;max-height:min(88dvh,calc(var(--fm-viewport-height) - 12px));border:1px solid #36414d;border-bottom:0;border-radius:17px 17px 0 0;padding:0;background:#1b222b;overflow:hidden}
+dialog#dialog .compact-form{display:grid;grid-template-rows:auto minmax(0,1fr) auto;max-height:min(88dvh,calc(var(--fm-viewport-height) - 12px));padding:10px 12px max(10px,env(safe-area-inset-bottom));gap:8px}
+dialog#dialog .dialog-heading{min-height:44px;border-bottom:1px solid #303945;padding-bottom:3px}
+dialog#dialog .dialog-x{background:transparent;border:0}
+dialog#dialog .dialog-x .ui-icon{width:20px;height:20px}
+dialog#dialog .dialog-fields{overflow:auto;overscroll-behavior:contain;min-height:0;align-content:start;padding:2px 2px 5px}
+dialog#dialog .dialog-actions{padding-top:7px;gap:7px}
+dialog#dialog .dialog-actions:has([type=submit][hidden]){grid-template-columns:minmax(0,1fr)}
+dialog#dialog [hidden]{display:none}
+dialog#dialog[open]{animation:sheet-in .16s ease-out}
+@keyframes sheet-in{from{transform:translateY(10px);opacity:.7}to{transform:translateY(0);opacity:1}}
+nav.navvisible{padding:3px 3px max(5px,env(safe-area-inset-bottom));background:#141a21;border-top:1px solid #2d3641}
+.navvisible button{min-height:44px;gap:2px;font-size:10px}
+.navvisible button .ui-icon{width:21px;height:21px;stroke-width:1.65}
+.navvisible button.active{color:#ffad60}
+.card,.manage-card,.today-tile,.today-hero,.today-empty{border-radius:var(--fm-radius)}
+.card{border-color:#2c3541}
+.manage-card,.metric-grid>div{border-color:#303945}
+.icon-btn,.day-icon,.menu-icon{background:transparent;border-color:transparent;color:#c3cdd9}
+.icon-btn .ui-icon,.day-icon .ui-icon,.menu-icon .ui-icon{width:21px;height:21px}
+.period-bar .cal-arrow{background:transparent;border-color:transparent}
+.form-control{border-color:#414b58}
+@media(prefers-reduced-motion:reduce){dialog#dialog[open]{animation:none}}
+
+/* 0.17.1 — safe top margin and full workout swipe canvas */
+:root{--fm-safe-top:calc(env(safe-area-inset-top, 0px) + 12px)}
+body{padding-top:var(--fm-safe-top)}
+main#app{padding-top:0;min-height:calc(100dvh - var(--fm-safe-top))}
+#app[data-view="preview"],#app[data-view="training"],#app[data-view="builder"]{touch-action:pan-y pinch-zoom}
+#app[data-view="preview"] .set input:disabled,#app[data-view="preview"] .set button:disabled{pointer-events:none}
+.training-sticky{top:max(var(--fm-safe-top),calc(var(--fm-viewport-top) + 8px))}
+#app[data-view="training"] .workout-pages{scroll-margin-top:calc(112px + var(--fm-safe-top))}
+
+/* 0.17.2 — directional page motion and consistent workout cards */
+.workout-pages{overflow-x:clip;overflow-y:visible}
+.workout-page.page-forward{animation:workout-forward .22s cubic-bezier(.2,.7,.25,1) both}
+.workout-page.page-backward{animation:workout-backward .22s cubic-bezier(.2,.7,.25,1) both}
+@keyframes workout-forward{from{transform:translateX(22px);opacity:.72}to{transform:translateX(0);opacity:1}}
+@keyframes workout-backward{from{transform:translateX(-22px);opacity:.72}to{transform:translateX(0);opacity:1}}
+@media(prefers-reduced-motion:reduce){.workout-page.page-forward,.workout-page.page-backward{animation:none}}
+#app[data-view="preview"] .workout-summary{margin:0 0 2px;font-size:13px}
+#app:is([data-view="preview"],[data-view="training"],[data-view="builder"]) .workout-dots{margin:0;gap:0}
+#app:is([data-view="preview"],[data-view="training"],[data-view="builder"]) .workout-dot{flex-basis:26px}
+#app:is([data-view="preview"],[data-view="training"],[data-view="builder"]) .workout-page-name{margin:-3px 0 1px;font-size:13px;line-height:1.25}
+#app[data-view="preview"] .screen-header.sub-header{padding:0;min-height:44px}
+#app[data-view="preview"] .workout-card{border:0;border-radius:var(--fm-radius);background:#191f27}
+#app[data-view="preview"] .workout-card .intro{padding:8px 10px 5px}
+#app[data-view="preview"] .set-columns,#app[data-view="preview"] .workout-card .set{display:grid;grid-template-columns:30px minmax(0,1fr) minmax(0,1fr) 44px;gap:6px;align-items:center;padding-inline:10px}
+#app[data-view="preview"] .set-columns.bodyweight,#app[data-view="preview"] .workout-card .set.bodyweight{grid-template-columns:30px minmax(0,1fr) 44px}
+#app[data-view="preview"] .set-columns{min-height:27px;font-size:11px;font-weight:600;color:#aeb8c5;text-align:center}
+#app[data-view="preview"] .workout-card .set{min-height:48px;border-top:1px solid #2b3440;padding-block:2px}
+#app[data-view="preview"] .workout-card .field{border:1px solid transparent;border-radius:7px;background:#252d37;min-height:36px;padding:0 7px}
+#app[data-view="preview"] .workout-card .field input{font-size:16px;text-align:center;padding:5px 0;outline:none;box-shadow:none;border:0;min-width:0}
+#app[data-view="preview"] .workout-card .field .unit{display:none}
+#app[data-view="preview"] .workout-card .check{visibility:hidden}
+
+/* 0.17.3 — stable canvas, inline copy and builder dock */
+#storage-status{position:fixed;z-index:5;left:50%;transform:translateX(-50%);bottom:calc(60px + env(safe-area-inset-bottom));width:max-content;max-width:calc(100% - 24px);border-radius:8px;margin:0;padding:3px 8px;background:#202832;color:#c1cad5;pointer-events:none;font-size:10px;line-height:1.3}
+body:has(#app[data-view="training"]) #storage-status{bottom:calc(120px + env(safe-area-inset-bottom))}
+body:has(#app.keyboard-open) #storage-status:not(.storage-blocked){visibility:hidden}
+#storage-status.storage-blocked{pointer-events:auto;z-index:10;top:var(--fm-safe-top);bottom:auto;width:min(100% - 24px,516px);max-height:calc(var(--fm-viewport-height) - var(--fm-safe-top) - 12px);overflow:auto;padding:12px;border:1px solid #92613e;box-shadow:0 8px 24px #000b}
+#app[data-view="training"] .pr-notice{position:fixed;z-index:4;bottom:calc(148px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);width:min(calc(100% - 24px),516px);margin:0;pointer-events:none;box-shadow:0 4px 16px #0008}
+#app[data-view="training"].keyboard-open .pr-notice{visibility:hidden}
+#app[data-view="training"] .training-status{grid-template-columns:minmax(0,1fr) auto}
+#app[data-view="training"] .training-status #elapsed{grid-column:2}
+#app[data-view="training"] .workout-card .set-actions{display:grid;grid-template-columns:minmax(0,1fr) 44px 44px;align-items:center;min-height:46px}
+.apply-slot{min-width:0;min-height:44px;display:flex;align-items:center}
+#accessory{position:static;inset:auto;width:100%;display:flex;justify-content:flex-start;padding:0;pointer-events:auto}
+#app[data-view="training"] .workout-card .set-actions #accessory button{display:flex;align-items:center;justify-content:center;width:auto;min-width:0;min-height:44px;gap:5px;padding:5px 9px;font-size:12px;color:#ffbf7a;background:#3c2c1d;border:1px solid #805429;border-radius:8px;white-space:nowrap}
+#accessory button:disabled{opacity:.45}
+#accessory[hidden]{display:none}
+#app[data-view="builder"]{padding-bottom:calc(80px + env(safe-area-inset-bottom))}
+.builder-dock{position:fixed;z-index:3;left:50%;bottom:0;transform:translateX(-50%);width:min(100%,540px);min-height:calc(60px + env(safe-area-inset-bottom));padding:7px 12px calc(8px + env(safe-area-inset-bottom));display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.5fr);gap:8px;background:#10151b;border-top:1px solid var(--fm-line)}
+.builder-dock button{min-height:44px;min-width:0;padding:5px 8px;font-size:14px;border-radius:9px}
+.builder-dock .builder-add{display:flex;align-items:center;justify-content:center;gap:6px;border:1px solid #424c59;color:#dce4ed;background:#202832}
+.builder-add .ui-icon{width:18px;height:18px}
+.builder-dock.typing{display:none}
+.builder-page-heading{display:grid;grid-template-columns:44px minmax(0,1fr) 44px;align-items:center;min-height:44px;margin-top:-7px}
+#app[data-view="builder"] .builder-page-heading .workout-page-name{grid-column:2;margin:0}
+.builder-page-menu{grid-column:3;display:grid;place-items:center;min-width:44px;min-height:44px;padding:0;background:transparent;color:#b3bdca}
+.builder-page-menu .ui-icon{width:21px;height:21px}
+#app:is([data-view="training"],[data-view="builder"]){overflow-anchor:none;min-height:calc(100svh - var(--fm-safe-top))}
+#app[data-view="training"] .workout-card .set input{scroll-margin-top:calc(116px + var(--fm-safe-top));scroll-margin-bottom:64px}
+
+/* 0.17.4 — in-app edge back gesture; preserve vertical scrolling and zoom */
+#app:has(.screen-header [data-action="back"]){touch-action:pan-y pinch-zoom}
+html:has(#app .screen-header [data-action="back"]){overscroll-behavior-x:none}
+
+/* 0.18 — remove duplicate chrome, keep accessible controls */
+.schema-card{position:relative;padding:0;gap:0}
+.schema-card-open{width:100%;display:grid;gap:7px;min-height:64px;text-align:left;background:transparent;border:0;padding:12px 56px 12px 12px;border-radius:10px;font-weight:400}
+.schema-card-open h2{font-size:16px;line-height:1.25}
+.schema-card-open .row{gap:8px;min-width:0}
+.schema-card-open .manage-icon{width:36px;height:36px}
+.schema-card-open .manage-stats{min-width:0;gap:6px}
+.schema-card-open .manage-stats strong{overflow-wrap:anywhere}
+.schema-card-menu{position:absolute;right:6px;top:7px;min-height:44px;min-width:44px}
+.schema-card-open:focus-visible{outline-offset:-3px}
+.builder-card{position:relative}
+.builder-card-tools{position:absolute;right:4px;top:3px;display:flex;gap:0;z-index:1}
+.builder-card-tools button{min-width:44px;width:44px;min-height:44px;display:grid;place-items:center;padding:0;background:transparent;color:#b3bdca;border:0}
+.builder-card-tools .drag-handle{touch-action:none;cursor:grab;font-size:21px}
+.builder-card-tools .ui-icon{width:21px;height:21px}
+#app[data-view="builder"] .builder-card .builder-fold>summary{padding-right:96px;min-height:54px}
+.library-search-row{display:grid;grid-template-columns:minmax(0,1fr) 44px;gap:6px;align-items:center}
+.library-search-row #search{width:100%;min-width:0;font-size:16px}
+.library-filter-button{position:relative;display:grid;place-items:center;width:44px;min-height:44px;padding:0;color:#c4cdd7}
+.library-filter-button[aria-expanded=true]{background:#303945;color:#ffad60}
+.library-filter-button .ui-icon{width:22px;height:22px}
+.filter-count{position:absolute;top:2px;right:2px;font-size:10px;background:#ffad60;color:#191f27;border-radius:10px;min-width:14px;padding:1px 3px;line-height:1.2}
+.library-filter-panel{padding:9px;background:#191f27;border-radius:9px;gap:5px}
+.library-filter-panel[hidden]{display:none}
+.library-filter-panel select{width:100%;min-width:0}
+.library-custom-link{display:flex;align-items:center;gap:5px;padding:4px 0;font-size:12px}
+.library-custom-link .ui-icon{width:17px;height:17px}
+.settings-details{display:block}
+.settings-details>summary{min-height:44px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;font-size:15px;font-weight:600;list-style:none}
+.settings-details>summary::-webkit-details-marker{display:none}
+.settings-details>summary::after{content:"";width:8px;height:8px;border-right:2px solid #b3bdca;border-bottom:2px solid #b3bdca;transform:rotate(45deg);margin-right:4px}
+.settings-details[open]>summary::after{transform:rotate(225deg)}
+.settings-details-body{border-top:1px solid #303945;padding-top:8px;color:#b3bdca;font-size:13px}
+.settings-details-body .demo-link{margin-top:10px}
+
+/* 0.19 — charts first, fewer nested cards; navigation fades do not alter fixed geometry */
+.progress-dashboard,.exercise-progress-content{display:grid;gap:14px}
+.progress-section{min-width:0;padding:8px 2px 13px;border-bottom:1px solid #303945}
+.progress-section h2{font-size:17px;margin:0 0 8px}
+.progress-section .metric-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(86px,1fr));gap:8px;margin:9px 0}
+.progress-section .metric-grid>div{background:transparent;border:0;padding:4px 0;gap:3px}
+.progress-section .metric-grid>div+div{border-left:1px solid #303945;padding-left:10px;border-radius:0}
+.progress-section .metric-grid strong{font-size:21px}
+.progress-section .load-chart{padding:4px 0 0;gap:7px}
+.progress-section .load-column{height:84px;width:64%}
+.progress-section .load-legend{gap:5px 10px}
+.progress-section .muscle-row{border-color:#262e38}
+.progress-section .period-bar{margin:0 0 8px}
+.progress-list{display:grid;gap:0}
+.progress-list-row{display:grid;grid-template-columns:minmax(0,1fr) auto 18px;align-items:center;text-align:left;gap:8px;width:100%;min-height:48px;border:0;border-bottom:1px solid #303945;border-radius:0;background:transparent;color:inherit;padding:9px 2px;font-size:14px;font-weight:400}
+.progress-list-row:last-child{border-bottom:0}
+.progress-list-row .record-name{display:grid;gap:3px;min-width:0;overflow-wrap:anywhere}
+.progress-list-row .record-value{color:#ffad60;font-size:14px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.progress-list-row .ui-icon{width:18px;height:18px;color:#aeb6c2}
+.progress-history-link{display:flex;gap:3px;align-items:center;font-size:12px;min-height:44px;padding:0 2px}
+.progress-history-link .ui-icon{width:16px;height:16px}
+.exercise-progress-content .progress-periods{margin:0}
+.exercise-progress-content .exercise-chart-panel{padding:4px 0 10px}
+.exercise-chart-panel .progress-chart{display:block;width:100%;max-height:275px;background:transparent;margin:4px 0 8px}
+.exercise-chart-panel .form-hint{font-size:11px;line-height:1.45}
+.progress-section .chip{min-height:44px}
+@media(max-width:360px){.progress-section .metric-grid strong{font-size:18px}.progress-list-row{gap:5px}.progress-list-row .record-value{font-size:12px}}
+
+/* 0.19.1 — program detail */
+#app[data-view="programView"] .screen-header h1{flex:1;min-width:0;overflow-wrap:anywhere}
+#app[data-view="programView"] .program-header-menu{min-width:44px;min-height:44px;border:0;background:transparent;color:#b3bdca}
+.program-overview{display:grid;gap:8px;padding:2px 2px 12px;border-bottom:1px solid #303945;margin-bottom:12px}
+.program-overview small{font-size:12px}
+.program-overview strong{font-size:15px}
+.program-overview .program-status.active{color:#a1d96a}
+.program-overview .progress{height:5px;margin:0}
+#app[data-view="programView"] .section-heading{margin-top:10px}
+#app[data-view="programView"] .section-heading h2,.program-schedule h2{font-size:17px}
+.program-workout{display:grid;grid-template-columns:minmax(0,1fr) 44px;align-items:center;gap:3px;padding:4px 6px;border-color:#2c3541}
+.program-workout-open{display:flex;align-items:center;gap:10px;min-height:52px;min-width:0;text-align:left;border:0;background:transparent;padding:4px 5px;color:inherit}
+.program-workout-copy{display:grid;gap:3px;min-width:0;overflow-wrap:anywhere}
+.program-workout-copy strong{font-size:15px}
+.program-workout-copy small{font-size:12px}
+.program-workout .menu-icon{border:0;background:transparent;min-width:44px;min-height:44px}
+.program-schedule{margin-top:16px;touch-action:pan-y pinch-zoom}
+.program-week-tabs{display:grid;grid-template-columns:repeat(auto-fit,minmax(72px,1fr));gap:4px;margin:5px 0 8px}
+.program-week-chip{min-height:44px;padding:4px 2px;border:0;border-radius:7px;background:#191f27;color:#b3bdca;font-size:12px}
+.program-week-chip.on{background:#3c2c1d;color:#ffad60;font-weight:600}
+.program-long-weeks{display:grid;grid-template-columns:44px minmax(0,1fr) 44px;gap:5px;align-items:center;margin:5px 0 8px}
+.program-long-weeks select{width:100%;min-width:0;min-height:44px;font-size:16px}
+.program-week-range{margin:0 0 8px;padding:0 2px;font-size:12px;color:#aeb6c2}
+.program-timeline{min-height:88px;overflow-x:clip}
+.timeline-row{display:grid;grid-template-columns:40px minmax(0,1fr) 44px;gap:7px;align-items:center;min-height:70px;border-bottom:1px solid #303945;padding:3px 0}
+.timeline-row:last-child{border-bottom:0}
+.timeline-date{display:grid;gap:0;text-align:center;align-content:center;line-height:1.15}
+.timeline-date small{font-size:10px;text-transform:uppercase}
+.timeline-date strong{font-size:21px;font-variant-numeric:tabular-nums}
+.timeline-open{display:flex;align-items:center;justify-content:space-between;gap:7px;min-width:0;min-height:52px;border:0;border-left:3px solid var(--event-color,#ff9b36);border-radius:0;background:transparent;padding:4px 5px 4px 9px;text-align:left;color:inherit}
+.timeline-copy{display:grid;gap:3px;min-width:0;overflow-wrap:anywhere}
+.timeline-copy strong{font-size:15px}
+.timeline-copy small{font-size:12px}
+.timeline-open .ui-icon{flex-shrink:0;width:16px;height:16px;color:#aeb6c2}
+.timeline-done .timeline-open{border-left-color:#a1d96a}
+.timeline-done .timeline-open .ui-icon{color:#a1d96a}
+.timeline-paused .timeline-open{border-left-color:#657182}
+.timeline-menu{min-width:44px;min-height:44px;padding:0;background:transparent;border:0;color:#b3bdca}
+.timeline-menu .ui-icon{width:20px;height:20px}
