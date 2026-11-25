@@ -121,3 +121,6 @@ Donkere stijl behouden. Gemeenschappelijke periodebalk met 44px pijltjes, 24px S
 
 ## UX 0.12
 Zelfstandige bibliotheek: compacte rijen, naam opent detail; ster blijft apart. Detail toont twee posekaarten of één voor hold, Nederlandse instructies, techniekfouten, spieren, materiaal, alternatieven en bron. Externe video via herkenbare knop, internet nodig; geen iframe/autoplay. Onbeschikbare uitleg/afbeelding/video eerlijk melden. Terug naar gefilterde lijst en scrollpositie; bestaande progressieactie bereikbaar. Geen wijziging aan training/pickers.
+
+## UX 0.16
+Behoud donker/oranje identiteit en 44px primaire doelen. Oefeningnaam en setvoortgang in één compacte kop, afgeronde sets met rustige groene achtergrond en leesbare waarden. Sticky trainingsstatus met tijd en sets. Builderkaart is een native details-element met samenvatting; invoer blijft in DOM en validatie opent verborgen velden. Vandaag prioriteert eerstvolgende activiteit, dan snelle start en ondersteunende informatie; weekstatistieken onder de agenda. Grafiek gebruikt datumproportionele x-as, raster, gelabelde eenheid en toegankelijke datapunttitels. Respecteer reduced motion. Geen wijziging aan domein- of opslagmodel.
