@@ -190,3 +190,9 @@ Op verzoek zijn de 153 schematische PNG's uit 0.13.1 en hun verwijzingen verwijd
 Vanaf Vandaag kan een geplande fitnessworkout direct starten. Zonder geplande fitnessworkout toont Vandaag maximaal drie recent uitgevoerde workouts die nog beschikbaar zijn, met een route naar alle workouts. Een bestaande actieve sessie houdt de hervatknop.
 
 Controle: syntax, 52 Node-tests en statische build lokaal geslaagd. iPhone-beoordeling volgt via een preview.
+
+## Workoutpagina’s (0.15.0)
+
+Bouwer en workoutpreview tonen zelfbenoemde workoutpagina’s met tik- en swipenavigatie. Bestaande workouts beginnen op één pagina. Oefeningen in een gekoppeld blok delen de pagina van de eerste oefening. Koppelen staat direct op de kaart. Verplaatsen van een geplande training vraagt bevestiging met beide datums.
+
+Acceptatie: groepswijzigingen blijven na opslaan zichtbaar, bestaande workouts openen zonder migratie, een gekoppeld blok blijft samen en een geannuleerde verplaatsing bewaart de datum. Actieve trainingsvolgorde en historiedata blijven intact. Fysieke iPhone-review volgt via de preview.

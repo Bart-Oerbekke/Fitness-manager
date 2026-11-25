@@ -231,3 +231,9 @@ dialog button:focus-visible{outline-offset:1px}
 .exercise-credit{color:#b3bdca;font-size:12px;line-height:1.5;margin:12px 0}
 #app[data-view="exerciseDetail"] a:not(.exercise-video){color:#ffb568;text-underline-offset:2px}
 @media(max-width:360px){.exercise-poses img{height:140px}.exercise-poses.single img{height:170px}}
+.workout-tabs { display: flex; overflow-x: auto; gap: 4px; margin-bottom: 10px; }
+.workout-tabs button { flex: 0 0 auto; min-height: 44px; padding-inline: 10px; }
+.workout-tabs [aria-pressed="true"] { border-color: #ff9b36; color: #ffac57; }
+.workout-page { touch-action: pan-y pinch-zoom; }
+.workout-page[hidden] { display: none; }
+.fitness .cal-more { font-size: 12px; padding-inline: 7px; }

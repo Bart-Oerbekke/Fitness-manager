@@ -213,8 +213,16 @@ try{
  assert.equal(await evaluate("document.querySelectorAll('.set').length"),1);
  await click('[data-action="workout-edit"]');
  await reviewLayout('Workout-builder','#builder-form');
+ await click('[data-action="workout-add-page"]');
+ await evaluate("document.querySelector('#dialog-form [name=name]').value='Core'");
+ await click('#dialog-form [type=submit]');
+ assert.equal(await evaluate("document.querySelector('[data-workout-page]:not([hidden])').dataset.workoutPage"),'1');
+ await click('[data-action="workout-page"][data-n="0"]');
+ await evaluate("const group=document.querySelector('[name=workoutGroup0]');group.value='Core';group.dispatchEvent(new Event('change',{bubbles:true}))");
+ assert.equal(await evaluate("document.querySelector('[data-workout-page=\"0\"]').hidden"),true);
  await evaluate("document.querySelector('.builder-advanced').open=true;document.querySelector('[name=warmup0]').value='1'");
  await click('#builder-form button[type=submit]');
+ assert.equal(await evaluate("document.querySelector('[data-workout-page=\"1\"] .set')!==null"),true);
  assert.equal(await evaluate("document.querySelectorAll('.set.warmup').length"),1);
  assert.equal(await evaluate("document.querySelectorAll('.set').length"),2);
  await click('[data-action="back"]');
