@@ -123,7 +123,7 @@ export const exerciseDetails={
       "incline-push-up-borst"
     ],
     "source": "https://www.nasm.org/resource-center/exercise-library/incline-barbell-bench-press",
-    "video": null,
+    "video": "https://www.youtube.com/watch?v=BjGLs6KGWUc",
     "poses": [
       {
         "file": "media/exercises/incline-bench-press-2.png",
@@ -157,7 +157,7 @@ export const exerciseDetails={
       "inverted-row-rug"
     ],
     "source": "https://www.nasm.org/resource-center/exercise-library/pull-up",
-    "video": null,
+    "video": "https://www.youtube.com/watch?v=9yVGh3XbJ34",
     "poses": [
       {
         "file": "media/exercises/pull-ups-1.png",
@@ -191,7 +191,7 @@ export const exerciseDetails={
       "goblet-squat-dumbbell-benen"
     ],
     "source": "https://www.nasm.org/resource-center/exercise-library/leg-press",
-    "video": null,
+    "video": "https://www.youtube.com/watch?v=cDGOn-yfKJA",
     "poses": [
       {
         "file": "media/exercises/leg-press-1.png",
@@ -226,7 +226,7 @@ export const exerciseDetails={
       "romanian-deadlift-dumbbell-benen"
     ],
     "source": "https://www.nasm.org/resource-center/exercise-library/seated-leg-curl",
-    "video": null,
+    "video": "https://www.youtube.com/watch?v=_2Kd0d-JEUM",
     "poses": [
       {
         "file": "media/exercises/seated-leg-curl-1.png",
@@ -289,7 +289,7 @@ export const exerciseDetails={
       "bird-dog-core"
     ],
     "source": "https://www.nasm.org/resource-center/exercise-library/plank",
-    "video": null,
+    "video": "https://www.youtube.com/watch?v=mwlp75MS6Rg",
     "poses": []
   },
   "dead-bug-core": {
@@ -312,7 +312,7 @@ export const exerciseDetails={
       "pallof-press-cable-core"
     ],
     "source": "https://www.nasm.org/resource-center/exercise-library/dead-bug",
-    "video": null,
+    "video": "https://www.youtube.com/watch?v=bxn9FBrt4-A",
     "poses": []
   },
   "bird-dog-core": {
@@ -335,7 +335,7 @@ export const exerciseDetails={
       "side-plank-core"
     ],
     "source": "https://www.nasm.org/resource-center/exercise-library/bird-dog",
-    "video": null,
+    "video": "https://www.youtube.com/watch?v=ZdAHe9_HeEw",
     "poses": []
   },
   "close-grip-bench-press-barbell-armen": {
@@ -358,7 +358,7 @@ export const exerciseDetails={
       "diamond-push-up-borst"
     ],
     "source": "https://www.nasm.org/resource-center/exercise-library/close-grip-bench-press",
-    "video": null,
+    "video": "https://www.youtube.com/watch?v=LJeqLAmJLfs",
     "poses": []
   },
   "seated-single-leg-curl-machine-benen": {
@@ -379,7 +379,7 @@ export const exerciseDetails={
       "lying-leg-curl-machine-benen"
     ],
     "source": "https://www.nasm.org/resource-center/exercise-library/single-leg-seated-leg-curl",
-    "video": null,
+    "video": "https://www.youtube.com/watch?v=PXNJ71rksvU",
     "poses": []
   },
   "romanian-deadlift-dumbbell-benen": {
@@ -403,6 +403,372 @@ export const exerciseDetails={
     ],
     "source": "https://www.youtube.com/watch?v=aa57T45iFSE",
     "video": "https://www.youtube.com/watch?v=aa57T45iFSE",
+    "poses": []
+  },
+  "deadlift-barbell-benen": {
+    "primary": "Bilspieren, hamstrings, quadriceps",
+    "secondary": "Rugstrekkers, rompstabilisatoren, onderarmen",
+    "equipment": "Halter en schijven",
+    "steps": [
+      "Sta met de stang boven je middenvoet; buig je heupen en knieën.",
+      "Pak de stang vast, span je romp aan en duw de vloer weg.",
+      "Strek heupen en knieën; zet de stang beheerst terug."
+    ],
+    "tips": [
+      "Houd de stang dicht bij je lichaam en je rug neutraal.",
+      "Leun bovenaan niet achterover en ruk niet aan de stang."
+    ],
+    "alternatives": [
+      "deadlift-kettlebell-benen",
+      "romanian-deadlift-barbell-benen"
+    ],
+    "source": "https://www.nasm.org/resource-center/exercise-library/barbell-deadlift",
+    "video": "https://www.youtube.com/watch?v=Z6gcRfPNcZo",
+    "poses": []
+  },
+  "romanian-deadlift-barbell-benen": {
+    "primary": "Hamstrings, bilspieren",
+    "secondary": "Rugstrekkers, rompstabilisatoren, onderarmen",
+    "equipment": "Halter",
+    "steps": [
+      "Sta rechtop met de stang voor je bovenbenen en knieën licht gebogen.",
+      "Duw je heupen achteruit en laat de stang langs je benen dalen.",
+      "Strek je heupen om weer rechtop te komen."
+    ],
+    "tips": [
+      "Stop de daling voordat je rug rond trekt.",
+      "Vermijd diepe kniebuiging; houd de stang dichtbij."
+    ],
+    "alternatives": [
+      "romanian-deadlift-dumbbell-benen",
+      "good-morning-barbell-benen"
+    ],
+    "source": "https://www.nasm.org/resource-center/exercise-library/romanian-deadlift-barbell",
+    "video": "https://www.youtube.com/watch?v=xgusDooVfKU",
+    "poses": []
+  },
+  "bulgarian-split-squat-dumbbell-benen": {
+    "primary": "Quadriceps, bilspieren",
+    "secondary": "Hamstrings, adductoren, rompstabilisatoren",
+    "equipment": "Dumbbells, stevig bankje",
+    "steps": [
+      "Plaats één voet achter je op het bankje en de andere stevig voor je.",
+      "Buig het voorste been en laat je bekken gecontroleerd zakken.",
+      "Duw via de voorste voet omhoog; wissel van been."
+    ],
+    "tips": [
+      "Laat de voorste knie in lijn met de voet bewegen.",
+      "Begin zonder gewicht als je balans nog onvoldoende is."
+    ],
+    "alternatives": [
+      "split-squat-barbell-benen",
+      "reverse-lunges-dumbbell-benen",
+      "step-up-dumbbell-benen"
+    ],
+    "source": "https://www.nasm.org/resource-center/exercise-library/bulgarian-split-squat",
+    "video": "https://www.youtube.com/watch?v=hbw7hdyOpq0",
+    "poses": []
+  },
+  "goblet-squat-dumbbell-benen": {
+    "primary": "Quadriceps, bilspieren",
+    "secondary": "Adductoren, rompstabilisatoren",
+    "equipment": "dumbbell",
+    "steps": [
+      "Houd de dumbbell met beide handen dicht voor je borst.",
+      "Buig heupen en knieën en zak binnen je comfortabele bereik.",
+      "Duw via je hele voet terug naar stand."
+    ],
+    "tips": [
+      "Houd je hielen op de vloer en knieën in lijn met de voeten.",
+      "De videodemonstratie kan een kettlebellvariant tonen."
+    ],
+    "alternatives": [
+      "goblet-squat-kettlebell-benen",
+      "squat-benen",
+      "leg-press-machine-benen"
+    ],
+    "source": "https://www.nasm.org/resource-center/exercise-library/goblet-squat",
+    "video": "https://www.youtube.com/watch?v=nfX7IFK9UNI",
+    "poses": []
+  },
+  "goblet-squat-kettlebell-benen": {
+    "primary": "Quadriceps, bilspieren",
+    "secondary": "Adductoren, rompstabilisatoren",
+    "equipment": "kettlebell",
+    "steps": [
+      "Houd de kettlebell met beide handen dicht voor je borst.",
+      "Buig heupen en knieën en zak binnen je comfortabele bereik.",
+      "Duw via je hele voet terug naar stand."
+    ],
+    "tips": [
+      "Houd je hielen op de vloer en knieën in lijn met de voeten.",
+      "De videodemonstratie kan een dumbbellvariant tonen."
+    ],
+    "alternatives": [
+      "goblet-squat-dumbbell-benen",
+      "squat-benen",
+      "leg-press-machine-benen"
+    ],
+    "source": "https://www.nasm.org/resource-center/exercise-library/goblet-squat",
+    "video": "https://www.youtube.com/watch?v=nfX7IFK9UNI",
+    "poses": []
+  },
+  "good-morning-barbell-benen": {
+    "primary": "Hamstrings, bilspieren",
+    "secondary": "Rugstrekkers, rompstabilisatoren",
+    "equipment": "Halter en rek",
+    "steps": [
+      "Leg een lichte stang stabiel op je bovenrug.",
+      "Buig je knieën licht en duw je heupen naar achteren.",
+      "Strek de heupen en keer beheerst terug."
+    ],
+    "tips": [
+      "Begin licht; houd je rug neutraal en nek in lijn.",
+      "Forceer geen diepe vooroverbuiging."
+    ],
+    "alternatives": [
+      "romanian-deadlift-barbell-benen",
+      "romanian-deadlift-dumbbell-benen"
+    ],
+    "source": "https://www.nasm.org/resource-center/exercise-library/good-mornings",
+    "video": "https://www.youtube.com/watch?v=Daq-wJMUnes",
+    "poses": []
+  },
+  "single-leg-squat-benen": {
+    "primary": "Quadriceps, bilspieren",
+    "secondary": "Adductoren, kuitspieren, rompstabilisatoren",
+    "equipment": "Lichaamsgewicht, eventueel steun",
+    "steps": [
+      "Sta op één been en span je romp aan.",
+      "Buig de heup en knie van je standbeen binnen je controlebereik.",
+      "Duw via je standvoet omhoog; wissel van been."
+    ],
+    "tips": [
+      "Gebruik zo nodig een steun of een verhoogd zitvlak.",
+      "Laat de knie niet ongecontroleerd naar binnen vallen."
+    ],
+    "alternatives": [
+      "squat-benen",
+      "reverse-lunges-benen"
+    ],
+    "source": "https://www.nasm.org/resource-center/exercise-library/single-leg-squat",
+    "video": "https://www.youtube.com/watch?v=sSXnaFyhiZs",
+    "poses": []
+  },
+  "glute-bridge-benen": {
+    "primary": "Bilspieren",
+    "secondary": "Hamstrings, rompstabilisatoren",
+    "equipment": "Mat",
+    "steps": [
+      "Lig op je rug met gebogen knieën en voeten op de vloer.",
+      "Span je buik en billen aan en til je heupen op.",
+      "Laat het bekken langzaam terugzakken."
+    ],
+    "tips": [
+      "Strek vanuit je heupen zonder je onderrug hol te trekken.",
+      "Houd beide voeten stevig op de vloer."
+    ],
+    "alternatives": [
+      "hip-thrust-barbell-benen",
+      "romanian-deadlift-dumbbell-benen"
+    ],
+    "source": "https://www.nasm.org/resource-center/exercise-library/floor-bridge",
+    "video": "https://www.youtube.com/watch?v=Z3cY3d3BBo4",
+    "poses": []
+  },
+  "biceps-curl-barbell-armen": {
+    "primary": "Biceps, brachialis",
+    "secondary": "Onderarmspieren",
+    "equipment": "Halter",
+    "steps": [
+      "Sta rechtop en houd de stang onderhands vast.",
+      "Buig je ellebogen en breng de stang richting je schouders.",
+      "Laat de stang beheerst terugzakken."
+    ],
+    "tips": [
+      "Houd bovenarmen grotendeels stil en polsen neutraal.",
+      "Gebruik geen zwaai vanuit rug of heupen."
+    ],
+    "alternatives": [
+      "biceps-curl-dumbbell-armen",
+      "biceps-curl-cable-armen",
+      "hammer-curl-dumbbell-armen"
+    ],
+    "source": "https://www.nasm.org/resource-center/exercise-library/barbell-bicep-curl",
+    "video": "https://www.youtube.com/watch?v=pQfJR-sSIvA",
+    "poses": []
+  },
+  "face-pull-cable-rug": {
+    "primary": "Achterste schouders, middenrug",
+    "secondary": "Externe schouderrotatoren, biceps",
+    "equipment": "Kabelstation met touw",
+    "steps": [
+      "Stel de kabel ongeveer op gezichtshoogte in.",
+      "Trek het touw richting je gezicht en breng de handen uit elkaar.",
+      "Laat je armen gecontroleerd terugstrekken."
+    ],
+    "tips": [
+      "Houd je romp stabiel; zwaai niet achterover.",
+      "Kies een gewicht waarmee je de schouders gecontroleerd kunt bewegen."
+    ],
+    "alternatives": [
+      "reverse-fly-dumbbell-rug",
+      "reverse-pec-deck-machine-schouders",
+      "seated-row-cable-rug"
+    ],
+    "source": "https://www.nasm.org/resource-center/exercise-library/face-pull",
+    "video": "https://www.youtube.com/watch?v=eTCBSFlCJ_s",
+    "poses": []
+  },
+  "face-pull-cable-schouders": {
+    "primary": "Achterste schouders, middenrug",
+    "secondary": "Externe schouderrotatoren, biceps",
+    "equipment": "Kabelstation met touw",
+    "steps": [
+      "Stel de kabel ongeveer op gezichtshoogte in.",
+      "Trek het touw richting je gezicht en breng de handen uit elkaar.",
+      "Laat je armen gecontroleerd terugstrekken."
+    ],
+    "tips": [
+      "Houd je romp stabiel; zwaai niet achterover.",
+      "Kies een gewicht waarmee je de schouders gecontroleerd kunt bewegen."
+    ],
+    "alternatives": [
+      "reverse-fly-dumbbell-schouders",
+      "reverse-pec-deck-machine-schouders",
+      "seated-row-cable-rug"
+    ],
+    "source": "https://www.nasm.org/resource-center/exercise-library/face-pull",
+    "video": "https://www.youtube.com/watch?v=eTCBSFlCJ_s",
+    "poses": []
+  },
+  "box-jump-benen": {
+    "primary": "Quadriceps, bilspieren, kuitspieren",
+    "secondary": "Hamstrings, rompstabilisatoren",
+    "equipment": "Stevige lage plyobox",
+    "steps": [
+      "Sta voor de box en buig heupen en knieën licht.",
+      "Spring met beide voeten op de box en land zacht met hele voeten op het oppervlak.",
+      "Sta stabiel rechtop en stap voorzichtig terug naar de vloer."
+    ],
+    "tips": [
+      "Kies een lage, stabiele box met voldoende landingsruimte.",
+      "Stop als je niet meer gecontroleerd kunt landen; spring niet terug naar beneden."
+    ],
+    "alternatives": [
+      "squat-jump-benen",
+      "squat-benen",
+      "step-up-dumbbell-benen"
+    ],
+    "source": "https://www.nasm.org/resource-center/exercise-library/box-jumps",
+    "video": "https://www.youtube.com/watch?v=DXu-8TAJwi4",
+    "poses": []
+  },
+  "incline-push-up-borst": {
+    "primary": "Borstspieren, triceps",
+    "secondary": "Voorste schouders, rompstabilisatoren",
+    "equipment": "Stevige verhoging",
+    "steps": [
+      "Plaats je handen op een stabiele verhoging en stap naar achteren.",
+      "Houd je lichaam in één lijn en laat je borst beheerst zakken.",
+      "Duw jezelf terug naar de startpositie."
+    ],
+    "tips": [
+      "Voorkom dat je heupen doorzakken.",
+      "Kies een hogere verhoging om de oefening lichter te maken."
+    ],
+    "alternatives": [
+      "push-up-borst",
+      "chest-press-machine-borst"
+    ],
+    "source": "https://www.nasm.org/resource-center/exercise-library/incline-push-up",
+    "video": "https://www.youtube.com/watch?v=0JUrOH--Kdk",
+    "poses": []
+  },
+  "squat-jump-benen": {
+    "primary": "Quadriceps, bilspieren, kuitspieren",
+    "secondary": "Hamstrings, rompstabilisatoren",
+    "equipment": "Lichaamsgewicht",
+    "steps": [
+      "Sta met voeten ongeveer op schouderbreedte.",
+      "Zak in een beheerste squat en spring omhoog.",
+      "Land zacht met gebogen heupen en knieën en herstel je balans."
+    ],
+    "tips": [
+      "Laat de knieën in lijn met de voeten bewegen.",
+      "Stop als de landing niet meer beheerst is."
+    ],
+    "alternatives": [
+      "box-jump-benen",
+      "squat-benen"
+    ],
+    "source": "https://www.nasm.org/resource-center/exercise-library/squat-jump",
+    "video": "https://www.youtube.com/watch?v=tZSYZdtbONc",
+    "poses": []
+  },
+  "chest-press-machine-borst": {
+    "primary": "Borstspieren",
+    "secondary": "Triceps, voorste schouders",
+    "equipment": "Chest press-machine",
+    "steps": [
+      "Stel de zitting zo in dat de handgrepen ongeveer op borsthoogte zijn.",
+      "Steun met je rug tegen de leuning en duw de grepen naar voren.",
+      "Breng de grepen langzaam terug binnen een pijnvrij bereik."
+    ],
+    "tips": [
+      "Houd je polsen neutraal en voeten stevig op de vloer.",
+      "Laat het gewicht niet terugvallen; forceer geen diepe schouderpositie."
+    ],
+    "alternatives": [
+      "bench-press-barbell-borst",
+      "bench-press-dumbbell-borst",
+      "incline-push-up-borst"
+    ],
+    "source": "https://www.nasm.org/resource-center/exercise-library/chest-press-machine",
+    "video": "https://www.youtube.com/watch?v=lRo9zZ7EwpM",
+    "poses": []
+  },
+  "deadlift-kettlebell-benen": {
+    "primary": "Bilspieren, hamstrings, quadriceps",
+    "secondary": "Rugstrekkers, rompstabilisatoren, onderarmen",
+    "equipment": "Kettlebell",
+    "steps": [
+      "Zet de kettlebell tussen je voeten.",
+      "Duw de heupen naar achteren, buig de knieën en pak de greep vast.",
+      "Strek je heupen en knieën en zet het gewicht beheerst terug."
+    ],
+    "tips": [
+      "Houd het gewicht dicht bij je lichaam en de rug neutraal.",
+      "Leun bovenaan niet achterover."
+    ],
+    "alternatives": [
+      "deadlift-barbell-benen",
+      "romanian-deadlift-dumbbell-benen"
+    ],
+    "source": "https://www.nasm.org/resource-center/exercise-library/kettlebell-deadlift",
+    "video": "https://www.youtube.com/watch?v=LnIMaf-XOpM",
+    "poses": []
+  },
+  "pike-push-up-schouders": {
+    "primary": "Schouders, triceps",
+    "secondary": "Borstspieren, rompstabilisatoren",
+    "equipment": "Lichaamsgewicht, mat",
+    "steps": [
+      "Plaats handen en voeten op de vloer en til je heupen omhoog tot een omgekeerde V.",
+      "Buig je ellebogen en beweeg je hoofd gecontroleerd richting de vloer.",
+      "Duw via je handen terug naar de uitgangspositie."
+    ],
+    "tips": [
+      "Zet geen lichaamsgewicht op je hoofd of nek.",
+      "Maak de beweging kleiner als je schouders of romp niet stabiel blijven."
+    ],
+    "alternatives": [
+      "shoulder-press-dumbbell-schouders",
+      "shoulder-press-machine-schouders",
+      "incline-push-up-borst"
+    ],
+    "source": "https://www.nasm.org/resource-center/exercise-library/pike-push-up",
+    "video": "https://www.youtube.com/watch?v=2b5t0Cu2nQI",
     "poses": []
   }
 };

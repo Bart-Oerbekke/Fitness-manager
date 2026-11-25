@@ -158,3 +158,6 @@ Gebruiker keurt P-59 t/m P-62 goed. Prioriteit: bron/licentie en juiste variant 
 
 ### Implementatie 0.12
 14/118 redactionele details, acht met lokale illustraties (15 PNG), vijf met directe NASM-video. Alle 118 IDs ongewijzigd, eigen oefeningen tonen eerlijke fallback. Bibliotheekdetails inclusief progressie, favoriet, filter/scroll terug, alternatieven, bron/licentie; pickers en actieve kaart intact. Bouw en shell v13 nemen lokale media en licenties mee. Testscript toetst offline decode, navigatie, ontbrekende content, bestaande stromen. CI nog vereist. Geen publicatie.
+
+### Inhoudelijke uitbreiding en zelfreview 0.12
+Eerste volledige CI op d220ab22d15937ff7c462fef23963e1a59e20aeb: run 45590743905, 49/49 Node-tests, build 27 bestanden, offline detail en alle browserregressies geslaagd. Daarna 17 extra brongebonden Nederlandse details, directe videolinks voor de 9 eerdere records zonder video. Totaal 31/118 uitleg, 31 video, 8/118 lokaal beeld (15 PNG's). Goblet-video kan andere materiaalvariant tonen; beide Face Pull-ID's blijven behouden. UI vermeldt dekking expliciet; algemene categorie bij ontbrekende details is geen primaire spier. Niet alle video's integraal bekeken; geen onafhankelijke coachreview. Nieuwe volledige CI vereist. Geen publicatie of merge.
