@@ -105,9 +105,3 @@ Acht extra originele Everkinetic-PNG's, visueel bekeken en met identieke bronblo
 - media/exercises/side-bend-with-dumbbell-1.png
 - media/exercises/side-bend-with-dumbbell-2.png
 24 visueel beoordeelde originele Everkinetic-PNG's, blob-identiek, CC BY-SA 4.0. Verkeerde/cropped houdingen niet opgenomen. Dekking: 42/118 oefeningen met beeld (83 PNG's), 118/118 tekst, 42 videolinks ongewijzigd.
-
-## Schematische illustraties 0.13.1
-
-De bestanden met voorvoegsel `fm-` zijn voor Fitness Manager getekend aan de hand van de eigen Nederlandse uitvoeringsbeschrijvingen. Ze bevatten geen overgenomen afbeeldingen. De eerdere bestandsvermeldingen voor Everkinetic en hun CC BY-SA 4.0-licentie blijven van toepassing op het Everkinetic-materiaal.
-
-Dekking in deze versie: 118 standaard-ID's met Nederlandse tekst en lokaal beeld, verdeeld over 83 Everkinetic-PNG's en 153 schematische PNG's. De 42 bestaande externe videolinks blijven optioneel.
