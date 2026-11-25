@@ -290,7 +290,7 @@ function exerciseChart(rows,key,unit){
 }
 function exerciseProgress(){const all=exerciseMetrics(db.history,selectedExercise,"",dateToday()),name=all[0]?.name||allLibrary().find(x=>x.id===selectedExercise)?.name||"Oefening",variant=all.find(v=>v.key===progressVariant)||all[0];if(!variant)return header(name,progressBack)+'<p class="empty">Nog geen voltooide werksets.</p>';const from=progressMonths?monthShift(dateToday(),-progressMonths):"",v=exerciseMetrics(db.history,selectedExercise,from,dateToday()).find(x=>x.key===variant.key),metric=variant.bodyweight?"reps":progressMetric,key={weight:"maxWeight",reps:"maxReps",e1rm:"e1rm",volume:"volume"}[metric],unit=metric==="reps"?"reps":"kg",rows=(v?.rows||[]).filter(x=>x[key]!==null);return header(name,progressBack)+'<p class="muted">'+h(variant.bodyweight?"Bodyweight":variant.equipment||"Gewicht")+(variant.ea?" · each":"")+'</p>'+(all.length>1?'<div class="chip-row">'+all.map(x=>b(h((x.bodyweight?"Bodyweight":x.equipment||"Gewicht")+(x.ea?" · ea":"")),"progress-variant",x.key===variant.key?"chip on":"chip",'data-id="'+h(x.key)+'"')).join("")+'</div>':"")+'<div class="chip-row">'+[1,3,6,12,0].map(m=>b(m?m+"M":"Alles","progress-period",m===progressMonths?"chip on":"chip",'data-n="'+m+'"')).join("")+'</div><div class="metric-grid">'+(variant.bodyweight?[["Record reps (alles)",variant.maxReps,"reps"],["Werksetsessies",v?.rows.length||0,""]]:[["Record kg (alles)",variant.maxWeight,"kg"],["Beste 1RM (alles)",variant.e1rm,"kg"],["Volume periode",v?.volume||0,"kg"]]).map(([k,n,u])=>'<div><small>'+k+'</small><strong>'+amount(n)+' <small>'+u+'</small></strong></div>').join("")+'</div><section class="card inside"><div class="chip-row">'+(variant.bodyweight?[["reps","Reps"]]:[["weight","Gewicht"],["e1rm","1RM"],["volume","Volume"],["reps","Reps"]]).map(([k,l])=>b(l,"progress-metric",metric===k?"chip on":"chip",'data-id="'+k+'"')).join("")+'</div>'+(rows.length?exerciseChart(rows,key,unit):'<p class="empty">Geen waarden in deze periode.</p>')+'<p class="form-hint">Werksets; warming-up uitgesloten. 1RM is een schatting (1–10 reps). Volume = kg × reps, ×2 bij each of dumbbell, niet dubbel.</p></section>'+rows.slice().reverse().map(r=>card(fmt(r.date),b(amount(r[key])+" "+unit+" ›","history-open","link",'data-id="'+h(r.id)+'"'))).join("")}
 
-const APP_VERSION="0.17.3";
+const APP_VERSION="0.17.4";
 let updateRegistration=null,updateMessage="Nog niet gecontroleerd",updateBusy=false,updateApplying=false,updateSeenController=null;
 function updateBlocked(){return restoreBusy||!booted||!!db.active||!!storageError||!!queue?.status.failure||$("dialog").open||page!=="settings"}
 function updatePanel(){
@@ -375,30 +375,57 @@ function cancelHistory(){if(historyDraft&&!confirm("Wijzigingen niet opslaan?"))
 function historyOptions(i){syncHistory();const e=historyDraft?.exercises[i];if(!e)return;const list=historyDraft.exercises,attr='data-i="'+i+'"';showDialog(e.name,'<div class="action-menu">'+menuAction("up","Omhoog","he-move",attr+' data-n="-1" '+(i===0?"disabled":""))+menuAction("down","Omlaag","he-move",attr+' data-n="1" '+(i===list.length-1?"disabled":""))+menuAction("edit","Vervangen","he-replace",attr)+b(e.mode==="time"?"Uitvoering: seconden (wijzigen)":"Uitvoering: reps (wijzigen)","he-mode","outline full",attr)+menuAction("copy","Koppel aan volgende","he-link",attr+' '+(i===list.length-1?"disabled":""))+(e.pairId?menuAction("close","Blok ontkoppelen","he-unlink",attr):"")+menuAction("trash","Oefening verwijderen","he-remove",attr,true)+'</div>',()=>{});$("dialog-form").querySelector('button[type="submit"]').hidden=true}
 function historyDelete(){const x=db.history.find(s=>s.id===detailId);if(!x)return;const linked=!!event(x.eventId);showDialog("Training verwijderen",'<p>'+h(x.name)+' · '+h(fmt(x.date))+'</p><p>De geregistreerde prestaties verdwijnen uit je historie en statistieken.</p>'+(linked?'<label class="checklabel"><input type="checkbox" name="alsoPlan"> Ook de gekoppelde geplande activiteit verwijderen</label><p class="form-hint">Zonder vinkje wordt de activiteit weer gepland.</p>':"")+'<label class="checklabel"><input type="checkbox" required name="confirmDelete"> Ik wil deze registratie verwijderen.</label>',f=>{if(!deleteHistory(db,x.id,f.has("alsoPlan"))){alert("Rond de actieve training eerst af.");return}save();detailId=null;go(historyBack==="exerciseProgress"?"progress":historyBack)})}
 
+function navigateFrom(t,back){
+ const destination=t.dataset.page;
+ if(back&&page==="exerciseDetail"&&destination==="libraryView"){returnToLibrary();return}
+ if(page==="historyEditor"&&destination==="historyEditorCancel"){cancelHistory();return}
+ if(destination!=="builder")libraryReturn=false;
+ if(back&&page==="preview"&&destination==="programView")opened=previewProgram;
+ go(destination);
+}
+function backGestureButton(){
+ if(!booted||storageError||queue?.status.failure||restoreBusy||updateApplying||$("app").inert||$("dialog").open||$("app").classList.contains("keyboard-open"))return null;
+ return $("app").querySelector('.screen-header [data-action="back"]:not(:disabled)');
+}
 let workoutTouch=null;
 document.addEventListener("touchstart",ev=>{
-  const t=ev.touches[0];
-  const root=$("app"),target=ev.target;
-  workoutTouch=ev.touches.length===1&&["preview","training","builder"].includes(page)&&
-    root.contains(target)&&root.querySelectorAll("[data-workout-page]").length>1&&!$("dialog").open&&
-    !target.closest("input:not(:disabled),select,textarea,button:not(:disabled),label,a,summary,[contenteditable],.drag-handle,.preview-dock,.training-dock,.rest-dock")?
-    {x:t.clientX,y:t.clientY,id:t.identifier,view:page,index:workoutPage}:null;
+ const t=ev.touches[0],root=$("app"),target=ev.target;
+ workoutTouch=null;
+ if(ev.touches.length!==1||!t||$("dialog").open||root.inert||!booted||
+    target.closest("input:not(:disabled),select,textarea,button:not(:disabled),label,a,summary,[contenteditable],.drag-handle,.preview-dock,.training-dock,.builder-dock,.rest-dock,#nav,#storage-status"))return;
+ const inApp=root.contains(target),edge=t.clientX<=32&&(inApp||target===document.body||target===document.documentElement)&&!!backGestureButton();
+ const workout=inApp&&["preview","training","builder"].includes(page)&&root.querySelectorAll("[data-workout-page]").length>1;
+ if(edge||workout)workoutTouch={x:t.clientX,y:t.clientY,id:t.identifier,view:page,index:workoutPage,edge,workout,vertical:false};
 },{passive:true});
+document.addEventListener("touchmove",ev=>{
+ const s=workoutTouch;if(!s||ev.touches.length!==1){workoutTouch=null;return}
+ const t=[...ev.touches].find(touch=>touch.identifier===s.id);if(!t)return;
+ const dx=t.clientX-s.x,dy=t.clientY-s.y;
+ if(Math.abs(dy)>14&&Math.abs(dy)>Math.abs(dx)*1.2)s.vertical=true;
+ if(s.edge&&!s.vertical&&dx>12&&dx>Math.abs(dy)*1.6&&ev.cancelable)ev.preventDefault();
+},{passive:false});
 document.addEventListener("touchcancel",()=>{workoutTouch=null});
 document.addEventListener("touchend",ev=>{
-  const start=workoutTouch;
-  workoutTouch=null;
-  if(!start||page!==start.view||workoutPage!==start.index||$("dialog").open||ev.touches.length)return;
-  const t=[...ev.changedTouches].find(touch=>touch.identifier===start.id);
-  if(!t)return;
-  const dx=t.clientX-start.x,dy=t.clientY-start.y;
-  if(Math.abs(dx)>50&&Math.abs(dx)>Math.abs(dy)*1.5){
-    const index=workoutPage+Math.sign(-dx);
-    if($("app").querySelector('[data-workout-page="'+index+'"]')){
-      suppressClickUntil=Date.now()+350;
-      selectWorkoutPage(index,true);
-    }
-  }
+ const start=workoutTouch;workoutTouch=null;
+ if(!start||start.vertical||page!==start.view||workoutPage!==start.index||$("dialog").open||ev.touches.length)return;
+ const t=[...ev.changedTouches].find(touch=>touch.identifier===start.id);if(!t)return;
+ const dx=t.clientX-start.x,dy=t.clientY-start.y;
+ if(start.edge&&dx>65&&dx>Math.abs(dy)*1.6){
+   const back=backGestureButton();if(!back)return;
+   suppressClickUntil=Date.now()+350;
+   if(page==="builder"&&draft){
+     syncBuilder();
+     const saved=workout(draft.id);
+     if((!saved||JSON.stringify(draft)!==JSON.stringify(saved))&&!confirm("Wijzigingen niet opslaan?"))return;
+   }
+   lightFeedback();navigateFrom(back,true);return;
+ }
+ if(start.workout&&Math.abs(dx)>50&&Math.abs(dx)>Math.abs(dy)*1.5){
+   const index=workoutPage+Math.sign(-dx);
+   if($("app").querySelector('[data-workout-page="'+index+'"]')){
+     suppressClickUntil=Date.now()+350;selectWorkoutPage(index,true);
+   }
+ }
 },{passive:true});
 document.addEventListener("toggle",ev=>{const fold=ev.target;if(page==="builder"&&fold.matches?.(".builder-fold")&&fold.isConnected){const i=Number(fold.dataset.builderIndex);if(fold.open)builderClosed.delete(i);else builderClosed.add(i)}},true);
 document.addEventListener("invalid",ev=>{
@@ -429,7 +456,7 @@ document.addEventListener("focusin",ev=>{const t=ev.target;if(page==="training"&
 document.addEventListener("focusout",ev=>{if(ev.target.dataset.field)setTimeout(()=>{if(!document.activeElement?.dataset?.field&&!document.activeElement?.closest("#accessory")){activeCell=null;updateAccessory()}},80)});
 $("accessory").addEventListener("pointerdown",e=>e.preventDefault());window.visualViewport?.addEventListener("resize",scheduleViewport);window.visualViewport?.addEventListener("scroll",scheduleViewport);window.addEventListener("resize",scheduleViewport);$("dialog").addEventListener("close",scheduleViewport);
 document.addEventListener("click",ev=>{const t=ev.target.closest("[data-action]");if(!t||t.disabled||updateApplying||restoreBusy)return;const a=t.dataset.action,i=Number(t.dataset.i),eid=t.dataset.id;if((!booted||storageError||queue?.status.failure)&&!["storage-export","storage-reload"].includes(a))return;switch(a){
-case "nav":case "back":if(a==="back"&&page==="exerciseDetail"&&t.dataset.page==="libraryView"){returnToLibrary();break}if(page==="historyEditor"&&t.dataset.page==="historyEditorCancel"){cancelHistory();break}if(t.dataset.page!=="builder")libraryReturn=false;if(a==="back"&&page==="preview"&&t.dataset.page==="programView")opened=previewProgram;go(t.dataset.page);break;
+case "nav":case "back":navigateFrom(t,a==="back");break;
 case "agenda-today":selected=dateToday();week=monday(selected);go("agenda");break;
 case "agenda-add":selected=dateToday();week=monday(selected);go("agenda");calendarAdd();break;
 case "library-open":libraryReturn=false;libraryScroll=0;libraryFocusId=null;go("libraryView");break;
