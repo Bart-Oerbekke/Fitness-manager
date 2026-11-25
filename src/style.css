@@ -534,3 +534,43 @@ html:has(#app .screen-header [data-action="back"]){overscroll-behavior-x:none}
 .exercise-chart-panel .form-hint{font-size:11px;line-height:1.45}
 .progress-section .chip{min-height:44px}
 @media(max-width:360px){.progress-section .metric-grid strong{font-size:18px}.progress-list-row{gap:5px}.progress-list-row .record-value{font-size:12px}}
+
+/* 0.19.1 — program detail */
+#app[data-view="programView"] .screen-header h1{flex:1;min-width:0;overflow-wrap:anywhere}
+#app[data-view="programView"] .program-header-menu{min-width:44px;min-height:44px;border:0;background:transparent;color:#b3bdca}
+.program-overview{display:grid;gap:8px;padding:2px 2px 12px;border-bottom:1px solid #303945;margin-bottom:12px}
+.program-overview small{font-size:12px}
+.program-overview strong{font-size:15px}
+.program-overview .program-status.active{color:#a1d96a}
+.program-overview .progress{height:5px;margin:0}
+#app[data-view="programView"] .section-heading{margin-top:10px}
+#app[data-view="programView"] .section-heading h2,.program-schedule h2{font-size:17px}
+.program-workout{display:grid;grid-template-columns:minmax(0,1fr) 44px;align-items:center;gap:3px;padding:4px 6px;border-color:#2c3541}
+.program-workout-open{display:flex;align-items:center;gap:10px;min-height:52px;min-width:0;text-align:left;border:0;background:transparent;padding:4px 5px;color:inherit}
+.program-workout-copy{display:grid;gap:3px;min-width:0;overflow-wrap:anywhere}
+.program-workout-copy strong{font-size:15px}
+.program-workout-copy small{font-size:12px}
+.program-workout .menu-icon{border:0;background:transparent;min-width:44px;min-height:44px}
+.program-schedule{margin-top:16px;touch-action:pan-y pinch-zoom}
+.program-week-tabs{display:grid;grid-template-columns:repeat(auto-fit,minmax(72px,1fr));gap:4px;margin:5px 0 8px}
+.program-week-chip{min-height:44px;padding:4px 2px;border:0;border-radius:7px;background:#191f27;color:#b3bdca;font-size:12px}
+.program-week-chip.on{background:#3c2c1d;color:#ffad60;font-weight:600}
+.program-long-weeks{display:grid;grid-template-columns:44px minmax(0,1fr) 44px;gap:5px;align-items:center;margin:5px 0 8px}
+.program-long-weeks select{width:100%;min-width:0;min-height:44px;font-size:16px}
+.program-week-range{margin:0 0 8px;padding:0 2px;font-size:12px;color:#aeb6c2}
+.program-timeline{min-height:88px;overflow-x:clip}
+.timeline-row{display:grid;grid-template-columns:40px minmax(0,1fr) 44px;gap:7px;align-items:center;min-height:70px;border-bottom:1px solid #303945;padding:3px 0}
+.timeline-row:last-child{border-bottom:0}
+.timeline-date{display:grid;gap:0;text-align:center;align-content:center;line-height:1.15}
+.timeline-date small{font-size:10px;text-transform:uppercase}
+.timeline-date strong{font-size:21px;font-variant-numeric:tabular-nums}
+.timeline-open{display:flex;align-items:center;justify-content:space-between;gap:7px;min-width:0;min-height:52px;border:0;border-left:3px solid var(--event-color,#ff9b36);border-radius:0;background:transparent;padding:4px 5px 4px 9px;text-align:left;color:inherit}
+.timeline-copy{display:grid;gap:3px;min-width:0;overflow-wrap:anywhere}
+.timeline-copy strong{font-size:15px}
+.timeline-copy small{font-size:12px}
+.timeline-open .ui-icon{flex-shrink:0;width:16px;height:16px;color:#aeb6c2}
+.timeline-done .timeline-open{border-left-color:#a1d96a}
+.timeline-done .timeline-open .ui-icon{color:#a1d96a}
+.timeline-paused .timeline-open{border-left-color:#657182}
+.timeline-menu{min-width:44px;min-height:44px;padding:0;background:transparent;border:0;color:#b3bdca}
+.timeline-menu .ui-icon{width:20px;height:20px}
